@@ -1,0 +1,16 @@
+<html>
+  {{> head
+    title='Sample Handlebars page'
+    extraHTML='<meta charset="utf8">'
+  }}
+  <body>
+    <ul>
+      {{#each list}}
+        <li>{{@key}}: {{this}}</li>
+      {{/each}}
+    </ul>
+    {{#unless list}}
+      <p>No data found</p>
+    {{/unless}}
+  </body>
+<html>
