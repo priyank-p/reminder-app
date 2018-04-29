@@ -1,0 +1,6 @@
+var/
+node_modules/
+static/webpack-bundles/
+
+.DS_Store
+*.log
