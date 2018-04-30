@@ -8,8 +8,8 @@ function readJSON(filePath) {
   return JSON.parse(contents);
 }
 
-const webpackStats = readJSON('../var/webpack-bundles.json');
-const { chunks: webpackChunks } = webpackStats;
+let webpackStats = readJSON('../var/webpack-bundles.json');
+let { chunks: webpackChunks } = webpackStats;
 function render_bundle(bundle, attrs = '') {
   const chunk = webpackChunks[bundle];
   if (chunk === undefined) {
@@ -20,15 +20,23 @@ function render_bundle(bundle, attrs = '') {
   chunk.forEach(chunkFile => {
     const path = chunkFile.publicPath;
     if (path.endsWith('.js')) {
-      html += `<script src="${path}" ${attrs}>`;
+      html += `<script src="${path}" ${attrs}>\n`;
     } else if (path.endsWith('.css')) {
-      html += `<link rel="stylesheet" href="${path}" ${attrs}>`;
+      html += `<link rel="stylesheet" href="${path}" ${attrs}>\n`;
     }
   });
 
   return html;
 }
 
+// updated webpack bundles is and ment to be here
+// for tests
+function __updateBundle(newBundle) {
+  webpackStats = newBundle;
+  webpackChunks = newBundle.chunks;
+}
+
 module.exports = {
-  render_bundle
+  render_bundle,
+  __updateBundle
 };
