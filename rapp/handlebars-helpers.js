@@ -28,7 +28,7 @@ function render_bundle(bundle, attrs) {
   chunk.forEach(chunkFile => {
     const path = chunkFile.publicPath;
     if (path.endsWith('.js')) {
-      html += `<script src="${path}" ${attrs}></script>`;
+      html += `<script src="${path}" ${attrs}></script>\n`;
     } else if (path.endsWith('.css')) {
       html += `<link rel="stylesheet" href="${path}" ${attrs}>\n`;
     }

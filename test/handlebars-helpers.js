@@ -18,7 +18,7 @@ handlebarsHelpers.__updateBundle(webpack_dev_bundle);
 
 (function test_correct_html_rendering() {
   const expected = {
-    js: '<script src="/webpack/main.js" >\n',
+    js: '<script src="/webpack/main.js" ></script>\n',
     css: '<link rel="stylesheet" href="/webpack/styles.css" >\n'
   };
 
@@ -33,7 +33,7 @@ handlebarsHelpers.__updateBundle(webpack_dev_bundle);
 
 (function test_adding_attributes_to_render_bundle() {
   const expected = {
-    js: '<script src="/webpack/main.js" data-js="main-bundle">\n',
+    js: '<script src="/webpack/main.js" data-js="main-bundle"></script>\n',
     css: '<link rel="stylesheet" href="/webpack/styles.css" data-css="css-bundle">\n'
   };
 
@@ -56,8 +56,8 @@ handlebarsHelpers.__updateBundle(webpack_prod_bundle);
         i.e js and css in one bundle.
   */
   const expected = {
-    js: '<script src="/webpack-bundles/main-122cd28c64172654bd14.js" >\n',
-    css: '<script src="/webpack-bundles/reminder-app-bd23999de3211229320.js" >\n'
+    js: '<script src="/webpack-bundles/main-122cd28c64172654bd14.js" ></script>\n',
+    css: '<script src="/webpack-bundles/reminder-app-bd23999de3211229320.js" ></script>\n'
           + '<link rel="stylesheet" href="/webpack-bundles/styles-bd23999de3211229320.css" >\n'
   };
 
