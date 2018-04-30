@@ -1,0 +1,12 @@
+{
+  "chunks": {
+    "main": [{
+      "name": "main.js",
+      "publicPath": "/webpack/main.js"
+    }],
+    "styles": [{
+      "name": "styles.css",
+      "publicPath": "/webpack/styles.css"
+    }]
+  }
+}

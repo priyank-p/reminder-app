@@ -1,0 +1,18 @@
+{
+  "chunks": {
+    "main": [{
+      "name": "main-122cd28c64172654bd14.js",
+      "publicPath": "/webpack-bundles/main-122cd28c64172654bd14.js"
+    },{
+      "name": "main-122cd28c64172654bd14.js.map",
+      "publicPath": "/webpack-bundles/main-122cd28c64172654bd14.js.map"
+    }],
+    "styles": [{
+      "name": "styles-bd23999de3211229320.css",
+      "publicPath": "/webpack-bundles/styles-bd23999de3211229320.css"
+    },{
+      "name": "styles-bd23999de3211229320.css.map",
+      "publicPath": "/webpack-bundles/styles-bd23999de3211229320.css.map"
+    }]
+  }
+}
