@@ -3,6 +3,7 @@ const express = require('express');
 const handlebars = require('express-handlebars');
 const proxy = require('http-proxy-middleware');
 const minifyHTML = require('express-minify-html');
+const views = require('./views');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 process.chdir(ROOT_DIR);
@@ -29,9 +30,8 @@ app.use(minifyHTML({
 }));
 
 app.set('view engine', 'hbs');
-app.get('/', function (req, res) {
-    res.render('index');
-});
+
+views(app);
 
 const port = process.env.PORT || 7213;
 const host = process.env.HOST || 'localhost';
