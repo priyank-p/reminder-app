@@ -20,6 +20,7 @@
   },
   "scripts": {
     "start": "nodemon tools/dev-server.js --config tools/nodemon.json",
+    "build": "webpack --config tools/webpack.config.js -p --env production",
     "test": "mocha"
   },
   "keywords": [],
