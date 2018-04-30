@@ -7,7 +7,13 @@
       "name": "main-122cd28c64172654bd14.js.map",
       "publicPath": "/webpack-bundles/main-122cd28c64172654bd14.js.map"
     }],
-    "styles": [{
+    "app": [{
+      "name": "reminder-app-bd23999de3211229320.js",
+      "publicPath": "/webpack-bundles/reminder-app-bd23999de3211229320.js"
+    },{
+      "name": "reminder-app-bd23999de3211229320.js.map",
+      "publicPath": "/webpack-bundles/reminder-app-bd23999de3211229320.js.map"
+    },{
       "name": "styles-bd23999de3211229320.css",
       "publicPath": "/webpack-bundles/styles-bd23999de3211229320.css"
     },{
