@@ -11,7 +11,7 @@ const spawnOpts = {
 
 const webpackDevServer = './node_modules/.bin/webpack-dev-server';
 const webpackProcess = spawn(webpackDevServer, ['--config', 'tools/webpack.config.js'], spawnOpts);
-const expressServer = spawn('node', ['server', '--dev'], spawnOpts);
+const expressServer = spawn('node', ['rapp', '--dev'], spawnOpts);
 
 devProcesses.set('webpack', webpackProcess);
 devProcesses.set('express-server', expressServer);

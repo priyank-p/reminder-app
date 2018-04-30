@@ -6,7 +6,7 @@ const {
   webpack_prod_bundle
 } = fixtures;
 
-const handlebarsHelpers = require('../server/handlebars-helpers');
+const handlebarsHelpers = require('../rapp/handlebars-helpers');
 const { render_bundle } = handlebarsHelpers;
 handlebarsHelpers.__updateBundle(webpack_dev_bundle);
 
