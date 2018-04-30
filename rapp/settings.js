@@ -1,7 +1,7 @@
 const path = require('path');
 const handlebars = require('express-handlebars');
 const minifyHTML = require('express-minify-html');
-const handlebarsHelpers = require('./handlebars-helpers')
+const handlebarsHelpers = require('./handlebars-helpers');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 module.exports = (app) => {

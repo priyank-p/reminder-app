@@ -1,9 +1,13 @@
+const path = require('path');
 const express = require('express');
 const settings = require('./settings');
 const views = require('./views');
 
 const devlopment = process.argv[2] == 'dev';
 const app = express();
+const STATIC_DIR = path.resolve(__dirname, '../static');
+app.use('/static', express.static(STATIC_DIR));
+
 settings(app);
 views(app);
 
