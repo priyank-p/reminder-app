@@ -1,7 +1,7 @@
 {
-  "name": "app",
+  "name": "reminder-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Reminder app in node.js",
   "main": "index.js",
   "dependencies": {
     "express": "^4.16.3",
@@ -21,6 +21,6 @@
     "start": "nodemon tools/dev-server.js --config tools/nodemon.json"
   },
   "keywords": [],
-  "author": "",
+  "author": "Priyank Patel <priyankp390@gmail.com>",
   "license": "MIT"
 }
