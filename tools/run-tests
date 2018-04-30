@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+'use strict';
+const path = require('path');
+const fs = require('fs');
+
+let status = [];
+const TEST_DIR = path.resolve(__dirname, '../test');
+let jsFiles = process.argv.slice(2);
+if (jsFiles.length === 0) {
+  jsFiles = fs.readdirSync(TEST_DIR).filter(file => file.includes('.js'));
+}
+
+// set globals
+global.assert = require('assert');
+global.fixtures = require('../test/fixtures');
+
+jsFiles.forEach(file => {
+  file = path.join(TEST_DIR, file);
+  if (!fs.existsSync(file)) {
+    console.error(`Test file ${file} does not exsist.`);
+    process.exit(1);
+  }
+
+  console.log('running test file: ', file);
+  require(file);
+});
