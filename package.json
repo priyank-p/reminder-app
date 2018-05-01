@@ -15,11 +15,21 @@
   "devDependencies": {
     "http-proxy-middleware": "0.18.0",
     "nodemon": "1.17.3",
+    "nyc": "11.7.1",
     "webpack-dev-server": "3.1.3"
   },
   "scripts": {
     "start": "nodemon tools/dev-server.js --config tools/nodemon.json",
-    "build": "webpack --config tools/webpack.config.js -p --env production"
+    "build": "webpack --config tools/webpack.config.js -p --env production",
+    "coverage": "nyc ./tools/run-tests"
+  },
+  "nyc": {
+    "report-dir": "var/nyc",
+    "temp-directory": "var/.nyc_output",
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ]
   },
   "keywords": [],
   "author": "Priyank Patel <priyankp390@gmail.com>",
