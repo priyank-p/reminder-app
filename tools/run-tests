@@ -2,13 +2,31 @@
 'use strict';
 const path = require('path');
 const fs = require('fs');
+const argparser = require('../rapp/argparser');
 
-let status = [];
 const TEST_DIR = path.resolve(__dirname, '../test');
-let jsFiles = process.argv.slice(2);
-if (jsFiles.length === 0) {
+const args = argparser(`
+Run node tests:
+
+Usage:
+./tools/run-tests file-one.js file-two.js
+./tools/run-tests # to run all the tests
+`);
+
+args.parse();
+let jsFiles = args.nargs;
+if (!jsFiles) {
   jsFiles = fs.readdirSync(TEST_DIR).filter(file => file.includes('.js'));
 }
+
+// add .js at the end if doesn't already exist.
+jsFiles = jsFiles.map(file => {
+  if (!file.endsWith('.js')) {
+    return file + '.js';
+  }
+
+  return file;
+});
 
 // set globals
 global.assert = require('assert');
