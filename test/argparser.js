@@ -1,8 +1,7 @@
 const argparser = require('../rapp/argparser');
 
-// Test all the errors thrown
 {
-  // test no required passed in
+  // Test all the errors thrown
   const errorData = [
     ['--one', { required: true }, []],
     ['--two', { required: true, alias: '-t' }, []],
@@ -18,7 +17,7 @@ const argparser = require('../rapp/argparser');
 
   // test passing argument not described
   assert.throws(() => {
-    const args = new argsparser();
+    const args = new argparser();
     args.parse(['-c', '--noargh']);
   });
 }
