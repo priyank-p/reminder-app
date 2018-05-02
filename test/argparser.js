@@ -52,3 +52,10 @@ const argparser = require('../rapp/argparser');
   assert.deepStrictEqual(args.one, 'one_value');
   assert.deepStrictEqual(args.two, 'two_value');
 })();
+
+(function test_nargs() {
+  const args = new argparser();
+  const nargs = ['one', 'two', 'three'];
+  args.parse(nargs);
+  assert.deepStrictEqual(args.nargs, nargs);
+})();

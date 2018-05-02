@@ -41,8 +41,11 @@ class ArgParser {
         console.log(this.helpText);
       }
 
-      // check if it a arg is not return for now..!
-      if (!this.isArg(arg)) { return; }
+      if (!this.isArg(arg)) {
+        if (!this.nargs) { this.nargs = []; }
+        this.nargs.push(arg);
+        return;
+      }
 
       const escapedArg = arg.replace(/=.*/, '');
       const opts = this.args[escapedArg] || this.aliases[escapedArg];
