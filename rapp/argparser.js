@@ -1,3 +1,8 @@
+const {
+  ArgumentRequiredError,
+  ArgumentParsingError
+} = require('./errors');
+
 class ArgParser {
   constructor(helpText) {
     this.helpText = helpText;
@@ -42,7 +47,7 @@ class ArgParser {
       const escapedArg = arg.replace(/=.*/, '');
       const opts = this.args[escapedArg] || this.aliases[escapedArg];
       if (!opts) {
-        throw new Error(`ArgumentParsingError: unkown argument ${arg} was passed.`);
+        throw new ArgumentParsingError(`unkown argument ${arg} was passed.`);
       }
 
       let {
@@ -78,7 +83,7 @@ class ArgParser {
       }
 
       if (required && this[dest] === undefined) {
-        throw new Error(`ArgumentRequiredError: ${arg} is required to be passed.`);
+        throw new ArgumentRequiredError(`${arg} is required to be passed.`);
       }
     }
 
