@@ -1,6 +1,3 @@
-const assert = require('assert');
-const path = require('path');
-
 const {
   webpack_dev_bundle,
   webpack_prod_bundle
