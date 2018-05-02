@@ -14,7 +14,7 @@ class ArgParser {
      - dest (string): the key.
      - required (boolean): weather or not flag value is required.
   */
-  add(arg, opts) {
+  add(arg, opts = {}) {
     const { alias } = opts;
     opts.dest = opts.dest || arg.replace(/^--?/, '');
     this.args[arg] = opts;
@@ -39,7 +39,8 @@ class ArgParser {
       // check if it a arg is not return for now..!
       if (!this.isArg(arg)) { return; }
 
-      const opts = this.args[arg] || this.aliases[arg];
+      const escapedArg = arg.replace(/=.*/, '');
+      const opts = this.args[escapedArg] || this.aliases[escapedArg];
       if (!opts) {
         throw new Error(`ArgumentParsingError: unkown argument ${arg} was passed.`);
       }
