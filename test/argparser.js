@@ -12,14 +12,14 @@ const argparser = require('../rapp/argparser');
       const args = new argparser();
       args.add(arg, opts);
       args.parse(argv);
-    }, /^Error: ArgumentRequiredError/);
+    }, /^ArgumentRequiredError:/);
   });
 
   // test passing argument not described
   assert.throws(() => {
     const args = new argparser();
     args.parse(['-c', '--noargh']);
-  }, /^Error: ArgumentParsingError/);
+  }, /^ArgumentParsingError:/);
 }
 
 (function test_dest_option() {
