@@ -3,7 +3,7 @@ const {
   webpack_prod_bundle
 } = fixtures;
 
-const handlebarsHelpers = require('../rapp/handlebars-helpers');
+const handlebarsHelpers = require('../app/handlebars-helpers');
 const { render_bundle } = handlebarsHelpers;
 handlebarsHelpers.__updateBundle(webpack_dev_bundle);
 
