@@ -2,8 +2,22 @@ const path = require('path');
 const express = require('express');
 const settings = require('./settings');
 const views = require('./views');
+const argparser = require('./argparser');
 
-const devlopment = process.argv[2] == '--dev';
+const args = argparser(`
+Run rapp server.
+
+--dev, -d    Launch in devlopment mode
+`);
+
+args.add('--dev', { alias: '-d', type: 'boolean', default: false });
+args.parse();
+
+const development = args.dev;
+const production = !development;
+process.env.RAPP_DEVELOPMENT = development;
+process.env.RAPP_PRODUCTION = production;
+
 const app = express();
 const STATIC_DIR = path.resolve(__dirname, '../static');
 app.use('/static', express.static(STATIC_DIR));
@@ -17,7 +31,7 @@ app.listen(port, () => {
 });
 
 // if devlopment respond to /webpack from webpack-dev-server
-if (devlopment) {
+if (development) {
   const proxy = require('http-proxy-middleware');
   const host = process.env.HOST || 'localhost';
 
