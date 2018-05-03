@@ -2,7 +2,7 @@
 'use strict';
 const path = require('path');
 const fs = require('fs');
-const argparser = require('../rapp/argparser');
+const argparser = require('../app/argparser');
 
 const TEST_DIR = path.resolve(__dirname, '../test');
 const args = argparser(`

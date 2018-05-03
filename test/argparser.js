@@ -1,4 +1,4 @@
-const argparser = require('../rapp/argparser');
+const argparser = require('../app/argparser');
 
 {
   // Test all the errors thrown
