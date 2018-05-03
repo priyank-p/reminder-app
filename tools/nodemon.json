@@ -11,7 +11,7 @@
   "watch": [
     "tools/dev-server.js",
     "tools/webpack.config.js",
-    "rapp/"
+    "app/"
   ],
   "env": {
     "NODE_ENV": "development"
