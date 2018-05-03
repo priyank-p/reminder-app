@@ -13,13 +13,15 @@ module.exports = (app) => {
     app.get('/coverage', (req, res) => {
       if (!coverageAvalible) {
         res.setHeader('Content-Type', 'text/html');
-        res.write('Run <code>npx nyc ./tools/run-tests</code>');
+        res.send('Run <code>npm run coverage</code> to generate reports, before you can view them.');
+        return;
       }
 
       res.sendFile(path.join(COVERAGE_DIR, 'index.html'));
     });
 
     app.get('/coverage/:path', (req, res) => {
+      console.log(req.path);
       const reqPath = req.path.replace(/^\/coverage\//, '');
       const filePath = path.join(COVERAGE_DIR, reqPath);
       res.sendFile(filePath);
