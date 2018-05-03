@@ -9,9 +9,8 @@ module.exports = (app) => {
   const dev = process.env.RAPP_DEVELOPMENT === 'true';
   if (dev) {
     const COVERAGE_DIR = path.resolve(__dirname, '../var/nyc/lcov-report');
-    const coverageAvalible = fs.existsSync(COVERAGE_DIR);
     app.get('/coverage', (req, res) => {
-      if (!coverageAvalible) {
+      if (!fs.existsSync(COVERAGE_DIR)) {
         res.setHeader('Content-Type', 'text/html');
         res.send('Run <code>npm run coverage</code> to generate reports, before you can view them.');
         return;
