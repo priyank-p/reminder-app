@@ -22,7 +22,7 @@ module.exports = (app) => {
     // add cache-control no-cache to html files
     const isHTMLRequest = req.path.endsWith('/') || req.path.includes('.html');
     if (isHTMLRequest) {
-      res.setHeader('Cache-Control', 'no-cache, must-revalidate')
+      res.setHeader('Cache-Control', 'no-cache, must-revalidate');
     }
 
     if (production) {
