@@ -49,4 +49,9 @@ module.exports = (app) => {
 
     next();
   });
+
+  if (production) {
+    const compression = require('compression');
+    app.use(compression());
+  }
 };
