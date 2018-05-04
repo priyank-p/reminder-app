@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+'use strict';
+
+const run = require('./run');
+
+console.log('Running all the tests...');
+async function testAll() {
+  await run('./test-npm-dependencies');
+  await run('./run-tests');
+}
+
+testAll()
+.then(() => {
+  console.log('All test ran successfully!');
+})
+.catch(() => {
+  console.log('Some test failed, check traceback above for more details.');
+});
