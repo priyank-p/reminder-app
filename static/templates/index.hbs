@@ -3,12 +3,13 @@
     {{> head-content
       title='Reminder App'
     }}
-    <link rel="stylesheet" href="static/css/reminder-app.css">
+    {{{ render_bundle 'main-css' }}}
   </head>
   <body>
     <header>Reminder App</header>
     <main>
       {{> reminder-app-main-partial }}
     </main>
+    {{{ render_bundle 'main' }}}
   </body>
 <html>
