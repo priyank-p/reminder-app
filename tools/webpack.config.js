@@ -22,10 +22,8 @@ module.exports = (env) => {
     mode: production ? "production" : "development",
     context: ROOT_DIR,
     entry: {
-      'main': [
-          './static/js/index.js',
-          './static/scss/reminder-app.scss'
-        ]
+      'main': './static/js/index.js',
+      'main-css': './static/scss/reminder-app.scss'
     },
     plugins: [
         new BundleTracker({
