@@ -4,6 +4,7 @@
   "description": "Reminder app in node.js",
   "main": "index.js",
   "dependencies": {
+    "compression": "^1.7.2",
     "express": "4.16.3",
     "express-handlebars": "3.0.0",
     "express-minify-html": "0.12.0",
