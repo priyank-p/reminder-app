@@ -1,7 +1,7 @@
 const { spawn } = require('child_process');
 
 const defaultOpts = {
-  cwd: process.cwd(),
+  cwd: __dirname,
   env: process.env,
   stdio: 'inherit'
 };
