@@ -1,6 +1,5 @@
 const path = require('path');
 const handlebars = require('express-handlebars');
-const minifyHTML = require('express-minify-html');
 const handlebarsHelpers = require('./handlebars-helpers');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
@@ -11,19 +10,6 @@ module.exports = (app) => {
     extname: '.hbs',
     partialsDir: 'static/templates/partials',
     helpers: handlebarsHelpers
-  }));
-
-  app.use(minifyHTML({
-    override: true,
-    exception_url: false,
-    htmlMinifier: {
-      removeComments: true,
-      collapseWhitespace: true,
-      collapseBooleanAttributes: true,
-      removeAttributeQuotes: true,
-      removeEmptyAttributes: true,
-      minifyJS: true
-    }
   }));
 
   app.set('view engine', 'hbs');
@@ -53,11 +39,26 @@ module.exports = (app) => {
   if (production) {
     const compression = require('compression');
     const helmet = require('helmet');
+    const minifyHTML = require('express-minify-html');
 
     // enables compression in production
     app.use(compression());
 
     // ensures security related stuff
     app.use(helmet());
+
+    // compress html in production
+    app.use(minifyHTML({
+      override: true,
+      exception_url: false,
+      htmlMinifier: {
+        removeComments: true,
+        collapseWhitespace: true,
+        collapseBooleanAttributes: true,
+        removeAttributeQuotes: true,
+        removeEmptyAttributes: true,
+        minifyJS: true
+      }
+    }));
   }
 };
