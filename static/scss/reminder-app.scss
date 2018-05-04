@@ -1,5 +1,32 @@
+$fonts: sans-serif, serif, Arial;
+
 html, body {
   padding: 0;
   margin: 0;
-  font-family: Arial;
+  font-family: $fonts;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+header {
+  height: 54px;
+  font-family: Verdana, Arial;
+  font-size: 24px;
+  font-style: oblique;
+  font-weight: 800;
+  padding: 12px 14px;
+  background-color: #fff;
+  z-index: 1;
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.4),
+              0px 0px 2px 1px rgba(0, 0, 0, 0.3),
+              0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f1f1f1;
+  margin-top: 4px;
 }
