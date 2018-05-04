@@ -1,8 +1,8 @@
 const path = require('path');
 const express = require('express');
 const settings = require('./settings');
-const views = require('./views');
 const argparser = require('./argparser');
+const routes = require('./routes');
 
 const args = argparser(`
 Run rapp server.
@@ -21,9 +21,9 @@ process.env.RAPP_PRODUCTION = production;
 const app = express();
 const STATIC_DIR = path.resolve(__dirname, '../static');
 app.use('/static', express.static(STATIC_DIR));
+app.use('/', routes);
 
 settings(app);
-views(app);
 
 const port = process.env.PORT || 7213;
 app.listen(port, () => {
