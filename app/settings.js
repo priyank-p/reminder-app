@@ -52,6 +52,12 @@ module.exports = (app) => {
 
   if (production) {
     const compression = require('compression');
+    const helmet = require('helmet');
+
+    // enables compression in production
     app.use(compression());
+
+    // ensures security related stuff
+    app.use(helmet());
   }
 };
