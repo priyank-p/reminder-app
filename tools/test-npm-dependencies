@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+'use strict';
+
+const packageJSON = require('../package.json');
+const dependecies = {
+  ...packageJSON.dependecies,
+  ...packageJSON.devDependencies
+};
+
+for (let dependency in dependecies) {
+  let version = dependecies[dependency];
+  if (version.includes('^')) {
+    throw new Error(`package.json has a unpinned depency for ${dependency}, `
+                  + 'please make sure the depency is pinned to specific version.');
+  }
+}
