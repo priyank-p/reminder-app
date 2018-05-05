@@ -37,9 +37,20 @@ main {
   border-radius: 50%;
   text-align: center;
   padding-top: 0.5px;
-  font-size: 32px;
+  font-size: 27px;
   bottom: 16px;
   right: 16px;
   user-select: none;
-  transition: all 0.2s ease-out;
+  border: 4px solid teal;
+}
+
+#add-action-btn:focus, #add-action-btn:hover {
+  outline: none;
+  background-color: #fff;
+  color: teal;
+}
+
+#add-action-btn:active {
+  border-color: #156767;
+  box-shadow: inset 0px 0px 14px 2px rgba(0, 0, 0, 0.4);
 }
