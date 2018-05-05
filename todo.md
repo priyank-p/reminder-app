@@ -38,6 +38,7 @@ research which database service to use with express:
     for really simple app.
 
 ### General plan
+
 By the time most of the things in to-do list are implemented
 push the code to github with this additonal steps:
   - Setup linting (..no linting yet for simplicity ..or perhaps lazyness)
