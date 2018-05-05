@@ -1,1 +1,1 @@
-
+const { $ } = require('./dom');
