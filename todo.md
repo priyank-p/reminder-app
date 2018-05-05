@@ -1,28 +1,29 @@
 # Todo list for the project.
-[ ] Add add reminder modal
-[ ] Add desing and component for showing added reminders
-[ ] Add backend database for reminders
-[ ] Add hotkeys for all the thing you can do
-[ ] Setup rate limiting for request (express-rate-limiting)
-[ ] Add babel in middle for transpling down to es5
-[ ] Add post-css for automatic css vendors
-[ ] Use strongloop or any other process manager for running express process
-[ ] Help Tutorial
-[ ] Favicon for reminder app
-[ ] logos for reminder app
-[ ] better debug logging usign debug module
-[ ] Revise all the security and best pratices from express website
-[ ] Revisit the design of the page and improve
-[ ] Revist js file and tests
-[ ] Setup test that can run in browser using karma.
-[ ] Design a way, so a user can configure diffrent thing
-[ ] Maybe then provide /settings page to configure that
-[ ] Use a service-worker
-[ ] Improve performace on backend
-[ ] Improve css performance, i.e painting reflows
-[ ] Improve and check backend perf by checking time for a request route,
+
+- [ ] Add add reminder modal
+- [ ] Add desing and component for showing added reminders
+- [ ] Add backend database for reminders
+- [ ] Add hotkeys for all the thing you can do
+- [ ] Setup rate limiting for request (express-rate-limiting)
+- [ ] Add babel in middle for transpling down to es5
+- [ ] Add post-css for automatic css vendors
+- [ ] Use strongloop or any other process manager for running express process
+- [ ] Help Tutorial
+- [ ] Favicon for reminder app
+- [ ] logos for reminder app
+- [ ] better debug logging usign debug module
+- [ ] Revise all the security and best pratices from express website
+- [ ] Revisit the design of the page and improve
+- [ ] Revist js file and tests
+- [ ] Setup test that can run in browser using karma.
+- [ ] Design a way, so a user can configure diffrent thing
+- [ ] Maybe then provide /settings page to configure that
+- [ ] Use a service-worker
+- [ ] Improve performace on backend
+- [ ] Improve css performance, i.e painting reflows
+- [ ] Improve and check backend perf by checking time for a request route,
     and database query's.
-[ ] Lastly re-ogranize parts of code base and refactor.
+- [ ] Lastly re-ogranize parts of code base and refactor.
 
 (As of writing Saturday May 14, 2018, it looks like a lot still needs to be done
 even after 64 commits.)
