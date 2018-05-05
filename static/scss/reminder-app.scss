@@ -1,5 +1,7 @@
 @import './common.scss';
 
+$body-background-color: #f1f1f1;
+g
 %bold-solid-text {
   font-family: Verdana, Arial;
   font-size: 24px;
@@ -21,19 +23,22 @@ header {
 main {
   width: 100%;
   min-height: 100vh;
-  background-color: #f1f1f1;
+  background-color: $body-background-color;
   margin-top: 4px;
 }
 
 /* TODO: Add hover, focus stats styles */
 #add-action-btn {
+  $size: 45px;
+  $background-color: teal;
+
   @extend %bold-solid-text;
   position: fixed;
-  height: 45px;
-  width: 45px;
+  height: $size;
+  width: $size;
   display: inline-block;
   color: #fff;
-  background-color: teal;
+  background-color: $background-color;
   border-radius: 50%;
   text-align: center;
   padding-top: 0.5px;
@@ -41,7 +46,7 @@ main {
   bottom: 16px;
   right: 16px;
   user-select: none;
-  border: 4px solid teal;
+  border: 4px solid $background-color;
 }
 
 #add-action-btn:focus, #add-action-btn:hover {
