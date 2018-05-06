@@ -17,10 +17,10 @@ process.env.RAPP_DEVELOPMENT = development.toString();
 process.env.RAPP_PRODUCTION = production.toString();
 
 const app = express();
-const STATIC_DIR = path.resolve(__dirname, '../static');
-app.use('/static', express.static(STATIC_DIR));
 const settings = require('./settings');
 settings(app);
+const STATIC_DIR = path.resolve(__dirname, '../static');
+app.use('/static', express.static(STATIC_DIR));
 
 // apply all the routes
 const routes = require('./routes');
