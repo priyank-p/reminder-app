@@ -47,4 +47,4 @@ module.exports = {
   RAPPErrors,
   ArgumentRequiredError,
   ArgumentParsingError
-}
+};
