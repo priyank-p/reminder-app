@@ -11,6 +11,8 @@ class RAPPErrors extends Error {
   constructor(msg, errorDescription) {
     super(msg);
     this.name = this.constructor.name; // the name will be the class extending this
+
+    /* istanbul ignore else: just for old node version compatibility */
     if (typeof Error.captureStackTrace === 'function') {
       Error.captureStackTrace(this, this.constructor);
     } else {
