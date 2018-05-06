@@ -1,8 +1,6 @@
 const path = require('path');
 const express = require('express');
-const settings = require('./settings');
 const argparser = require('./argparser');
-const routes = require('./routes');
 
 const args = argparser(`
 Run rapp server.
@@ -15,15 +13,23 @@ args.parse();
 
 const development = args.dev;
 const production = !development;
-process.env.RAPP_DEVELOPMENT = development;
-process.env.RAPP_PRODUCTION = production;
+process.env.RAPP_DEVELOPMENT = development.toString();
+process.env.RAPP_PRODUCTION = production.toString();
 
 const app = express();
 const STATIC_DIR = path.resolve(__dirname, '../static');
 app.use('/static', express.static(STATIC_DIR));
-app.use('/', routes);
-
+const settings = require('./settings');
 settings(app);
+
+// apply all the routes
+const routes = require('./routes');
+for (let routePath in routes) {
+  const _routes = routes[routePath];
+  _routes.forEach(route => {
+    app.use(routePath, route);
+  });
+}
 
 const port = process.env.PORT || 7213;
 app.listen(port, () => {
