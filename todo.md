@@ -1,24 +1,26 @@
 # Todo list for the project.
 
 - [ ] Add add reminder modal
-- [ ] Add desing and component for showing added reminders
+- [ ] Add design and component for showing added reminders
 
   Expanding the todo, so for reminder the model should
   could add a reminder, it could have a deadline/due date or time.
   since the due date is optional people could set up stuff just to reminde
-  them about something like, something they need to do everyday. 
-    
+  them about something like, something they need to do everyday.
+
     - Model for it there is a due data:
       If there is a due date, send them desktop notification,
       If the tab is open, send out a alert tone,
       Highlight the reminder that will be due in 10 mins.
-  
+
     - Model for thing thats don't have a set due date
       If this is something that they need to get remided on a specific
-      day, or date then allow them to mark it done, on the day if the app 
+      day, or date then allow them to mark it done, on the day if the app
       is opened for the first time alert them about the reminder by design.
 
-
+- [ ] After thinking about the first model, we will need a settings
+      page to customize diffrent stuff, ie alert types though not everything
+      should be in settings or in working order until proper backend db is set.
 - [ ] Add backend database for reminders
 - [ ] Add hotkeys for all the thing you can do
 - [ ] Setup rate limiting for request (express-rate-limiting)
