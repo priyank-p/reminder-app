@@ -26,5 +26,6 @@ hotkeyHandler({ key: 'a' });
 assert.deepStrictEqual(hotkeysHandlerCounts.a, 1);
 
 hotkeyHandler({ key: 'Ctrl' });
+assert.deepStrictEqual(hotkeys._previousKeypress, 'Ctrl');
 hotkeyHandler({ key: 'b' });
 assert.deepStrictEqual(hotkeysHandlerCounts['Ctrl+b'], 1);
