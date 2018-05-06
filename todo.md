@@ -21,7 +21,12 @@
 - [ ] After thinking about the first model, we will need a settings
       page to customize diffrent stuff, ie alert types though not everything
       should be in settings or in working order until proper backend db is set.
-- [ ] Add backend database for reminders
+- [ ] Add backend database for reminders:
+        It would have to be leveldb since other requires a db service running
+        on one's computer, a jsondb would be suffice though level is written in c++ and
+        is faster than any other node based json db, for simplicty and quick devlopment the
+        decided db of choice is `LevelDB`
+- [ ] Since leveldb is now to our db service, it needs promise support and error handling.
 - [ ] Add hotkeys for all the thing you can do
 - [ ] Setup rate limiting for request (express-rate-limiting)
 - [ ] Add babel in middle for transpling down to es5
@@ -51,15 +56,6 @@
 
 (As of writing Saturday May 14, 2018, it looks like a lot still needs to be done
 even after 64 commits.)
-
-## General Thing to consider
-
-Currently, there is one thing that needs more general, and
-research which database service to use with express:
-  - leveldb - although simple as the app grows it would be hard to
-    do data shuffuling -- ie migrations if you will of Django.
-  - mongodb or any really sql, nosql type db - It feels like overkill
-    for really simple app.
 
 ### General plan
 
