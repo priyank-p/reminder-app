@@ -15,6 +15,8 @@
 - [ ] Use the debug module in browser for debugging and:
         Automatically pass `<script>localStorage.debug = {theEnvDebugVariable}`
         for browser debugging. It will also pretty print in browser with is great.
+- [ ] Internal stuff - Make argparser automactically create help for each argument
+      By the help opt passed.
 - [ ] Revise all the security and best pratices from express website
 - [ ] Revisit the design of the page and improve
 - [ ] Revist js file and tests
