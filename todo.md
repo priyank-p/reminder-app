@@ -12,6 +12,9 @@
 - [ ] Favicon for reminder app
 - [ ] logos for reminder app
 - [ ] better debug logging usign debug module
+- [ ] Use the debug module in browser for debugging and:
+        Automatically pass `<script>localStorage.debug = {theEnvDebugVariable}`
+        for browser debugging. It will also pretty print in browser with is great.
 - [ ] Revise all the security and best pratices from express website
 - [ ] Revisit the design of the page and improve
 - [ ] Revist js file and tests
