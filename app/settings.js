@@ -1,4 +1,5 @@
 const path = require('path');
+const bodyParser = require('body-parser');
 const handlebars = require('express-handlebars');
 const handlebarsHelpers = require('./handlebars-helpers');
 
@@ -38,6 +39,7 @@ module.exports = (app) => {
     helpers: handlebarsHelpers
   }));
 
+  app.use(bodyParser.urlencoded({ extended: false }));
   app.set('view engine', 'hbs');
 
   // Configure headers
