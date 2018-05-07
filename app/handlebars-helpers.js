@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const development = process.env.RAPP_DEVELOPMENT === 'true';
 function readJSON(filePath) {
   filePath = path.resolve(__dirname, filePath);
 
@@ -8,7 +9,9 @@ function readJSON(filePath) {
   return JSON.parse(contents);
 }
 
-let webpackStats = readJSON('../var/webpack-bundles.json');
+const filePath = development ?
+    '../var/webpack-dev-bundles.json' : '../var/webpack-bundles.json';
+let webpackStats = readJSON(filePath);
 let { chunks: webpackChunks } = webpackStats;
 function render_bundle(bundle, attrs) {
   // we do a bit of shuffling to make sure

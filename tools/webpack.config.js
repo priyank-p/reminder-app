@@ -25,12 +25,6 @@ module.exports = (env) => {
       'main': './static/js/index.js',
       'main-css': './static/scss/reminder-app.scss'
     },
-    plugins: [
-        new BundleTracker({
-          path: path.join(ROOT_DIR, 'var'),
-          filename: 'webpack-bundles.json'
-        })
-      ],
     output: {
       publicPath: '/static/webpack-bundles/',
       path: path.join(ROOT_DIR, '/static/webpack-bundles'),
@@ -65,19 +59,27 @@ module.exports = (env) => {
   };
 
   if (production) {
-    config.plugins.push(
+    config.plugins = [
+      new BundleTracker({
+        path: path.join(ROOT_DIR, 'var'),
+        filename: 'webpack-bundles.json'
+      }),
       new MiniCssExtractPlugin({
         filename: "[name]-[contenthash].css",
         chunkFilename: "[id].css"
       })
-    );
+    ];
   } else {
-    config.plugins.push(
+    config.plugins = [
+      new BundleTracker({
+        path: path.join(ROOT_DIR, 'var'),
+        filename: 'webpack-dev-bundles.json'
+      }),
       new MiniCssExtractPlugin({
         filename: "[name].css",
         chunkFilename: "[id].css"
       })
-    );
+    ];
 
     config.output.publicPath = '/webpack/';
     config.devServer = {
