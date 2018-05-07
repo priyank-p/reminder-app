@@ -59,3 +59,29 @@ main {
   border-color: #156767;
   box-shadow: inset 0px 0px 14px 2px rgba(0, 0, 0, 0.4);
 }
+
+#add-reminder-modal.open { display: block; }
+#add-reminder-modal {
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #4c4c4c7d;
+  z-index: 1;
+
+  form {
+    cursor: initial;
+    color: #000;
+    background-color: #fff;
+    margin: 5% auto;
+    width: 700px;
+    height: auto;
+    max-height: 99vh;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+}
