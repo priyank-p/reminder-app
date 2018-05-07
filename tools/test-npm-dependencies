@@ -3,7 +3,7 @@
 
 const packageJSON = require('../package.json');
 const dependecies = {
-  ...packageJSON.dependecies,
+  ...packageJSON.dependencies,
   ...packageJSON.devDependencies
 };
 
