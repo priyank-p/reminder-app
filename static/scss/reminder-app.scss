@@ -28,7 +28,7 @@ main {
 }
 
 /* TODO: Add hover, focus stats styles */
-#add-action-btn {
+#add-reminder-btn {
   $size: 45px;
   $background-color: teal;
 
@@ -49,13 +49,13 @@ main {
   border: 4px solid $background-color;
 }
 
-#add-action-btn:focus, #add-action-btn:hover {
+#add-reminder-btn:focus, #add-reminder-btn:hover {
   outline: none;
   background-color: #fff;
   color: teal;
 }
 
-#add-action-btn:active {
+#add-reminder-btn:active {
   border-color: #156767;
   box-shadow: inset 0px 0px 14px 2px rgba(0, 0, 0, 0.4);
 }

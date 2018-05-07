@@ -2,7 +2,7 @@ const { $ } = require('./dom');
 const { addHotkey } = require('./hotkeys');
 
 const reminderModal = $('#add-reminder-modal');
-const addReminderBtn = $('#add-action-btn');
+const addReminderBtn = $('#add-reminder-btn');
 function toogleReminderModal() {
   reminderModal.classList.toggle('open');
 }
