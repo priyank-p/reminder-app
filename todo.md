@@ -3,6 +3,9 @@
 - [ ] Add add reminder modal
 - [ ] Add design and component for showing added reminders
 
+  First, design the inputs, for title, reminder and the submit
+  button now that add reminder modal has be made.
+
   Expanding the todo, so for reminder the model should
   could add a reminder, it could have a deadline/due date or time.
   since the due date is optional people could set up stuff just to reminde
