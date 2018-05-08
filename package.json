@@ -36,10 +36,7 @@
   "nyc": {
     "report-dir": "var/nyc",
     "temp-directory": "var/.nyc_output",
-    "reporter": [
-      "lcov",
-      "text-summary"
-    ]
+    "reporter": [ "lcov", "text-summary" ]
   },
   "keywords": [],
   "author": "Priyank Patel <priyankp390@gmail.com>",
