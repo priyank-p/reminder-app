@@ -18,6 +18,12 @@
       day, or date then allow them to mark it done, on the day if the app
       is opened for the first time alert them about the reminder by design.
 
+  Further expanding point one:
+    - The due date picker should be a smart dropdown, It should have
+    weekday, Monday, Tuesday... and a search bar to search stuff, along with that
+    it should also have a input for inputing a date. The goal is make it short simple, easy and
+    quick to use.
+
 - [ ] After thinking about the first model, we will need a settings
       page to customize diffrent stuff, ie alert types though not everything
       should be in settings or in working order until proper backend db is set.
