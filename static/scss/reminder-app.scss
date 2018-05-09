@@ -1,8 +1,5 @@
 @import './common.scss';
 
-$body-background-color: #f1f1f1;
-$fonts: Verdana, Arial;
-
 %bold-solid-text {
   font-family: $fonts;
   font-size: 24px;
@@ -31,7 +28,6 @@ main {
 /* TODO: Add hover, focus stats styles */
 #add-reminder-btn {
   $size: 45px;
-  $background-color: teal;
 
   @extend %bold-solid-text;
   position: fixed;
@@ -39,7 +35,7 @@ main {
   width: $size;
   display: inline-block;
   color: #fff;
-  background-color: $background-color;
+  background-color: $theme-color;
   border-radius: 50%;
   text-align: center;
   padding-top: 0.5px;
@@ -47,13 +43,13 @@ main {
   bottom: 16px;
   right: 16px;
   user-select: none;
-  border: 4px solid $background-color;
+  border: 4px solid $theme-color;
 }
 
 #add-reminder-btn:focus, #add-reminder-btn:hover {
   outline: none;
   background-color: #fff;
-  color: teal;
+  color: $theme-color;
 }
 
 #add-reminder-btn:active {
@@ -123,7 +119,7 @@ main {
     display: block;
     height: 40px;
     color: #fff;
-    background-color: teal;
+    background-color: $theme-color;
     font-family: $fonts;
     border-radius: 5px;
     margin: 4px 9px;
