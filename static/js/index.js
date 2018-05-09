@@ -7,7 +7,11 @@ function toogleReminderModal() {
   reminderModal.classList.toggle('open');
 }
 
-addHotkey('a', toogleReminderModal);
+// add hotkey
+addHotkey('a', () => {
+  reminderModal.classList.add('open');
+});
+
 addReminderBtn.addEventListener('click', toogleReminderModal);
 reminderModal.addEventListener('click', (e) => {
   // if the modal was clicked and not the form
