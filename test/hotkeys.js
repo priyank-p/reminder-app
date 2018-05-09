@@ -1,31 +1,60 @@
 // setup globals
-let hotkeyHandler = null;
 global.document = {
+  eventHandler: null,
   addEventListener(type, func) {
-    hotkeyHandler = func;
+    this.eventHandler = func;
   }
 };
 
-const hotkeys = require('../static/js/hotkeys');
-const hotkeysHandlerCounts =  {
-  'a': 0,
-  'Ctrl+b': 0
+global.navigator = {
+  platform: 'Win32'
 };
 
-assert.deepStrictEqual(hotkeys._hotkeys, {});
+const hotkeys = require('../static/js/hotkeys');
+const { _hotkeys, _checkHotkeys } = hotkeys;
+const noop = () => {};
 
-hotkeys.addHotkey('a', () => {
-  hotkeysHandlerCounts.a++;
-});
-hotkeys.addHotkey('Ctrl+b', () => {
-  hotkeysHandlerCounts['Ctrl+b']++;
-});
-assert.notDeepEqual(hotkeys._hotkeys, undefined);
+(function test_addHotkeys_function() {
+  hotkeys.addHotkey('Ctrl+P', noop);
+  assert.deepStrictEqual(_hotkeys['Control+P'], noop);
 
-hotkeyHandler({ key: 'a' });
-assert.deepStrictEqual(hotkeysHandlerCounts.a, 1);
+  // test that in mac platforms it uses meta key
+  global.navigator.platform = 'MacIntel';
+  hotkeys.addHotkey('Ctrl+P', noop);
+  assert.deepStrictEqual(_hotkeys['Meta+P'], noop);
 
-hotkeyHandler({ key: 'Ctrl' });
-assert.deepStrictEqual(hotkeys._previousKeypress, 'Ctrl');
-hotkeyHandler({ key: 'b' });
-assert.deepStrictEqual(hotkeysHandlerCounts['Ctrl+b'], 1);
+  // reset stuff
+  global.navigator.platform = 'Win32';
+})();
+
+function getCountTracker() {
+  let count = 0;
+  return {
+    get count() {
+      return count;
+    },
+    handler() { count++; }
+  };
+}
+
+(function test_checkHotkeys_function() {
+  const singleHotkey = getCountTracker();
+  const comboHotkey = getCountTracker();
+
+  hotkeys.addHotkey('a', singleHotkey.handler);
+  hotkeys.addHotkey('Ctrl+a', comboHotkey.handler);
+  assert.deepStrictEqual(_hotkeys['a'], singleHotkey.handler);
+  assert.deepStrictEqual(_hotkeys['Control+a'], comboHotkey.handler);
+
+  _checkHotkeys({ key: 'a' });
+  assert.deepStrictEqual(hotkeys._previousKeypress, 'a');
+
+  _checkHotkeys({ key: 'Control' });
+  assert.deepStrictEqual(hotkeys._previousKeypress, 'Control');
+  _checkHotkeys({ key: 'a' });
+  assert.deepStrictEqual(hotkeys._previousKeypress, 'a');
+
+  // check that each of the function is **only** called once
+  assert.deepStrictEqual(singleHotkey.count, 1);
+  assert.deepStrictEqual(comboHotkey.count, 1);
+})();
