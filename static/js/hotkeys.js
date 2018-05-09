@@ -1,34 +1,34 @@
 let previousKeypress = null;
 let hotkeys = {};
 
-let noop = () => {};
-
-// TODO: Should we support lowercase too???
 function addHotkey(keyBinding, handler) {
+  const useMetaKey = navigator.platform.includes('Mac');
+  if (useMetaKey) {
+    keyBinding = keyBinding.replace('Ctrl', 'Meta');
+  }
+
+  keyBinding = keyBinding.replace('Ctrl', 'Control');
   hotkeys[keyBinding] = handler;
 }
 
-function checkHotkey(e) {
+function checkHotkeys(e) {
   // for comboKey we don't care it previousKeypress was null
   // since hotkeys[comboKey] will not return a handler
   const currentKey = e.key;
   const comboKey = `${previousKeypress}+${currentKey}`;
   previousKeypress = currentKey;
 
-  // we get both, single key's handler and combo key handler
-  // since there could be a single key handler and a combo handler i.e
-  //  Ctrl+O and O
-  const singleKeyHandler = hotkeys[currentKey] || noop;
-  const comboKeyHandler = hotkeys[comboKey] || noop;
-  singleKeyHandler();
-  comboKeyHandler();
+  const noop = () => {};
+  const handler = hotkeys[comboKey] || hotkeys[currentKey] || noop;
+  handler(e);
 }
 
-document.addEventListener('keypress', checkHotkey);
+document.addEventListener('keydown', checkHotkeys);
 module.exports = {
   addHotkey,
 
-  // for tests or for internal use.
+  // for use in tests or for debugging purposes
+  _checkHotkeys: checkHotkeys,
   get _hotkeys() {
     return hotkeys;
   },
