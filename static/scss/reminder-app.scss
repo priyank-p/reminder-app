@@ -114,7 +114,7 @@ main {
   }
 
   textarea {
-    resize: none;
+    max-width: 512px !important;
     height: 110px;
     width: 330px;
   }
