@@ -1,9 +1,9 @@
-$fonts: sans-serif, serif, Arial;
+@import './vars.scss';
 
 html, body {
   padding: 0;
   margin: 0;
-  font-family: $fonts;
+  font-family: sans-serif, serif, Arial;
 }
 
 * {
