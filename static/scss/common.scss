@@ -22,8 +22,10 @@ h1 {
 
 button, label {
   cursor: pointer;
+  font-size: $font-size;
 }
 
 input, textarea {
   font-family: $fonts;
+  font-size: $input-font-size;
 }
