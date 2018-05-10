@@ -29,3 +29,10 @@ input, textarea {
   font-family: $fonts;
   font-size: $input-font-size;
 }
+
+
+%bold-solid-text {
+  font-size: $big-font-size;
+  font-style: oblique;
+  font-weight: 800;
+}
