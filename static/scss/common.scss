@@ -3,7 +3,7 @@
 html, body {
   padding: 0;
   margin: 0;
-  font-family: sans-serif, serif, Arial;
+  font-family: $fonts;
 }
 
 * {
@@ -23,6 +23,6 @@ button, label {
   cursor: pointer;
 }
 
-input, textarea, label {
+input, textarea {
   font-family: $fonts;
 }
