@@ -22,3 +22,7 @@ h1 {
 button, label {
   cursor: pointer;
 }
+
+input, textarea, label {
+  font-family: $fonts;
+}

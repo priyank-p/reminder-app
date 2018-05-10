@@ -89,13 +89,11 @@ main {
 
   label {
     display: block;
-    font-family: $fonts;
   }
 
   input, textarea {
     border: 2px solid #ccc;
     margin: 4px 9px;
-    font-family: $fonts;
     font-size: 13px;
   }
 
@@ -120,7 +118,6 @@ main {
     height: 40px;
     color: #fff;
     background-color: $theme-color;
-    font-family: $fonts;
     border-radius: 5px;
     border: 2px solid $theme-color;
     margin: 4px 9px;
