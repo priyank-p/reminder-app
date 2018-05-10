@@ -93,7 +93,6 @@ main {
   input, textarea {
     border: 2px solid #ccc;
     margin: 4px 9px;
-    font-size: 13px;
   }
 
   input:focus, textarea:focus {
@@ -120,7 +119,6 @@ main {
     border-radius: 5px;
     border: 2px solid $theme-color;
     margin: 4px 9px;
-    font-size: 14px;
   }
 
   button:hover {
