@@ -122,7 +122,13 @@ main {
     background-color: $theme-color;
     font-family: $fonts;
     border-radius: 5px;
+    border: 2px solid $theme-color;
     margin: 4px 9px;
     font-size: 14px;
+  }
+
+  button:hover {
+    background-color: #f1f1f1;
+    color: $theme-color;
   }
 }
