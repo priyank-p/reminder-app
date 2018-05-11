@@ -25,12 +25,13 @@ function disableHotkey(hotkey) {
 }
 
 function reEnableHotkey(hotkey) {
+  hotkey = getHotkey(hotkey);
   if (!disabledHotkeys.includes(hotkey)) {
     throw new Error('Cannot re-enable hotkey that not disabled!');
   }
 
-  const pos = hotkey.indexOf(hotkey);
-  disabledHotkeys.splice(pos , 1);
+  const pos = disabledHotkeys.indexOf(hotkey);
+  disabledHotkeys.splice(pos, 1);
 }
 
 function isHotkeyDisabled(hotkey) {
