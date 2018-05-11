@@ -59,3 +59,31 @@ const argparser = require('../app/argparser');
   args.parse(nargs);
   assert.deepStrictEqual(args.nargs, nargs);
 })();
+
+(function test_removing_spaces() {
+  const args = new argparser();
+  const nargs = ['one', '', 'two', 'three'];
+  args.parse(nargs);
+  assert.deepStrictEqual(args.nargs, nargs);
+})();
+
+(function test_applying_defaults() {
+  const args = new argparser();
+  args.add('--one', { default: 'default-value' });
+  args.parse([]);
+  assert.deepStrictEqual(args.one, 'default-value');
+})();
+
+(function test_next_arg_is_not_set_to_value() {
+  /*
+    Test that --arg --next-arg
+    does not parse down to:
+      args.arg = '--next-arg'
+  */
+  const args = new argparser();
+  args.add('--one');
+  args.add('--two')
+  args.parse(['--one', '--two']);
+
+  assert.deepStrictEqual(args.one, undefined);
+})();

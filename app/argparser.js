@@ -79,7 +79,7 @@ class ArgParser {
     // set the defaults and check for required stuff
     for (let arg in this.args) {
       let { dest, default: _default, required, type } = this.args[arg];
-      if (_default && this[dest] !== undefined) {
+      if (_default && this[dest] === undefined) {
         this[dest] = _default;
       }
 
