@@ -11,7 +11,9 @@ global.navigator = {
 };
 
 const hotkeys = require('../static/js/hotkeys');
-const { _hotkeys, _checkHotkeys } = hotkeys;
+const {
+  _hotkeys, _checkHotkeys, _disabledHotkeys
+} = hotkeys;
 const noop = () => {};
 
 (function test_addHotkeys_function() {
@@ -57,4 +59,44 @@ function getCountTracker() {
   // check that each of the function is **only** called once
   assert.deepStrictEqual(singleHotkey.count, 1);
   assert.deepStrictEqual(comboHotkey.count, 1);
+})();
+
+(function test_disable_hotkeys_function() {
+  let called = false;
+  hotkeys.addHotkey('Ctrl+D', () => { called = true; });
+  hotkeys.disableHotkey('Ctrl+D');
+
+  // trigger hotkey: Ctrl+D
+  _checkHotkeys({ key: 'Control' });
+  _checkHotkeys({ key: 'D' });
+
+  const isDisabled = hotkeys.isHotkeyDisabled('Ctrl+D');
+  assert.deepStrictEqual(called, false);
+  assert.deepStrictEqual(isDisabled, true);
+})();
+
+(function test_reEnabled_hotkey_function() {
+  let called = false;
+  hotkeys.addHotkey('d', () => { called = true; });
+  hotkeys.disableHotkey('d');
+  _checkHotkeys({ key: 'd' });
+
+  let isDisabled = hotkeys.isHotkeyDisabled('d');
+  assert.deepStrictEqual(called, false);
+  assert.deepStrictEqual(isDisabled, true);
+
+  hotkeys.reEnableHotkey('d');
+  _checkHotkeys({ key: 'd' });
+  isDisabled = hotkeys.isHotkeyDisabled('d');
+
+  assert.deepStrictEqual(called, true);
+  assert.deepStrictEqual(isDisabled, false);
+})();
+
+(function test_reEnabling_not_added_hotkey() {
+  // first amke sure it not yet disabled!
+  assert.deepStrictEqual(_disabledHotkeys['Not_Added'], undefined);
+  assert.throws(() => {
+    hotkeys.reEnableHotkey('Not_Added');
+  }, /^Error: Cannot re-enable hotkey that not disabled!/);
 })();
