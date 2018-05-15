@@ -1,6 +1,7 @@
 const path = require('path');
 const BundleTracker = require('webpack-bundle-tracker');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const port = +process.env.PORT + 1 || 7322;
@@ -60,6 +61,7 @@ module.exports = (env) => {
 
   if (production) {
     config.plugins = [
+      new CleanWebpackPlugin(['webpack-bundles']),
       new BundleTracker({
         path: path.join(ROOT_DIR, 'var'),
         filename: 'webpack-bundles.json'
