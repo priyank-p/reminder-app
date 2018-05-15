@@ -27,7 +27,6 @@ module.exports = (app) => {
         collapseWhitespace: true,
         collapseBooleanAttributes: true,
         removeAttributeQuotes: true,
-        removeEmptyAttributes: true,
         minifyJS: true
       }
     }));
