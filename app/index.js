@@ -1,6 +1,8 @@
 const path = require('path');
 const express = require('express');
 const argparser = require('./argparser');
+const settings = require('./settings');
+const routes = require('./routes');
 const env = require('./env');
 
 const args = argparser(`
@@ -18,13 +20,12 @@ env.setEnv('development', development);
 env.setEnv('production', production);
 
 const app = express();
-const settings = require('./settings');
 settings(app);
+
 const STATIC_DIR = path.resolve(__dirname, '../static');
 app.use('/static', express.static(STATIC_DIR));
 
 // apply all the routes
-const routes = require('./routes');
 for (let routePath in routes) {
   const _routes = routes[routePath];
   _routes.forEach(route => {
