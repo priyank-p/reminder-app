@@ -34,6 +34,7 @@
         decided db of choice is `LevelDB`
 - [ ] Since leveldb is now to our db service, it needs promise support and error handling.
 - [ ] Add hotkeys for all the thing you can do
+- [ ] Add push notification support for due notifications.
 - [ ] Setup rate limiting for request (express-rate-limiting)
 - [ ] Add babel in middle for transpling down to es5
 - [ ] Add post-css for automatic css vendors
