@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const argparser = require('./argparser');
+const env = require('./env');
 
 const args = argparser(`
 Run rapp server.
@@ -13,8 +14,8 @@ args.parse();
 
 const development = args.dev;
 const production = !development;
-process.env.RAPP_DEVELOPMENT = development.toString();
-process.env.RAPP_PRODUCTION = production.toString();
+env.setEnv('development', development);
+env.setEnv('production', production);
 
 const app = express();
 const settings = require('./settings');

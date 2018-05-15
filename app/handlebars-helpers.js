@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const env = require('./env');
 
-const development = process.env.RAPP_DEVELOPMENT === 'true';
+const { development } = env;
 function readJSON(filePath) {
   filePath = path.resolve(__dirname, filePath);
 

@@ -2,9 +2,10 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const handlebars = require('express-handlebars');
 const handlebarsHelpers = require('./handlebars-helpers');
+const env = require('./env');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
-const production = process.env.RAPP_PRODUCTION === 'true';
+const { production } = env;
 module.exports = (app) => {
   if (production) {
     const compression = require('compression');
