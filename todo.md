@@ -18,6 +18,7 @@
 - [ ] Help Tutorial
 - [ ] Favicon for reminder app
 - [ ] logos for reminder app
+- [ ] Make the reminder due date picker smarter.
 - [ ] better debug logging usign debug module
 - [ ] Use the debug module in browser for debugging and:
         Automatically pass `<script>localStorage.debug = {theEnvDebugVariable}`
