@@ -13,3 +13,13 @@ reminderModal.addEventListener('click', (e) => {
     toogleReminderModal();
   }
 });
+
+function toggleDropdown(e) {
+  const el = e.target;
+  el.classList.toggle('show');
+}
+
+const dropdowns = $('.dropdown-section .title', 'nodelist');
+dropdowns.forEach(dropdown => {
+  dropdown.addEventListener('click', toggleDropdown);
+});
