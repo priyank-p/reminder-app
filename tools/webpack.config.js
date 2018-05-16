@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
-const port = +process.env.PORT + 1 || 7322;
+const port = +process.env.PORT + 1 || 7213;
 const host = process.env.HOST || 'localhost';
 const { ALLOWED_HOSTS } = process.env;
 const allowedHosts = ALLOWED_HOSTS ? [ALLOWED_HOSTS] : undefined;
