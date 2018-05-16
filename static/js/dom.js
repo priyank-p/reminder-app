@@ -1,7 +1,10 @@
-function $(sel) {
+function $(sel, type) {
   const els = document.querySelectorAll(sel);
-  if (els && els.length == 1) {
-    // return node instead of node list
+  if (type === 'nodelist') {
+    return els;
+  }
+
+  if (type === 'node' || (els && els.length == 1)) {
     return els[0];
   }
 

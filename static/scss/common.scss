@@ -36,3 +36,34 @@ input, textarea {
   font-style: oblique;
   font-weight: 800;
 }
+
+.dropdown-section {
+  padding: 8px 10px;
+
+  .title {
+    display: block;
+    background-color: #e0e0e0;
+    color: #000;
+    cursor: pointer;
+  }
+
+  .title::before {
+    content: '+ ';
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .title, .content {
+    padding: 10px 7px;
+  }
+
+  .content {
+    display: none;
+    background-color: #f1f1f1;
+    color: #000;
+  }
+
+  .content.show {
+    display: block;
+  }
+}

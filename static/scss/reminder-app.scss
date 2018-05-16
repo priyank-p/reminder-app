@@ -70,10 +70,10 @@ main {
     margin: 5% auto;
     width: 570px;
     height: auto;
-    max-height: 99vh;
     border-radius: 5px;
     border: 1px solid #ccc;
     padding: 18px;
+    overflow: scroll;
   }
 
   label, input, textarea, button {

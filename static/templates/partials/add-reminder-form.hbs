@@ -4,12 +4,22 @@
     {{!--<div class="close">&times;</div>--}}
     <h1>Add Reminder</h1>
 
-    {{!-- Title input --}}
     <label for="reminder-title">Title:</label>
-    <input id="reminder-title" type="text" placeholder="Reminder Title" autofocus>
+    <input id="reminder-title" type="text" placeholder="Reminder Title" autofocus required>
 
     <label for="reminder-textarea">Reminder:</label>
-    <textarea id="reminder-textarea" placeholder="Enter reminder..."></textarea>
+    <textarea id="reminder-textarea" placeholder="Enter reminder..." required></textarea>
+
+    <div class="dropdown-section">
+      <div class="title">Add due date or time</div>
+      <div class="content">
+        <label for="reminder-due-date">Reminder Due Date:</label>
+        <input type="date">
+
+        <label for="reminder-due-time">Reminder Due Date:</label>
+        <input type="time">
+      </div>
+    </div>
 
     <button type="submit">Add Reminder</button>
   </form>
