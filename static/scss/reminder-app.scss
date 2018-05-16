@@ -74,6 +74,10 @@ main {
     border: 1px solid #ccc;
     padding: 18px;
     overflow: scroll;
+
+    .dropdown-section {
+      width: 82%;
+    }
   }
 
   label, input, textarea, button {

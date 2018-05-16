@@ -63,7 +63,7 @@ input, textarea {
     color: #000;
   }
 
-  .content.show {
+  .title.show + .content {
     display: block;
   }
 }
