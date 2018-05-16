@@ -7,7 +7,7 @@
   not clear or estatic.
 */
 
-class RAPPErrors extends Error {
+class AppErrors extends Error {
   constructor(msg, errorDescription) {
     super(msg);
     this.name = this.constructor.name; // the name will be the class extending this
@@ -25,28 +25,4 @@ class RAPPErrors extends Error {
   }
 }
 
-const ArgumentRequiredErrorDesc = `
-This error is thown by argparser, when a argument required to run
-a files is not passed in, pass \`help\` or \`-h\` to get more information.
-`;
-class ArgumentRequiredError extends RAPPErrors {
-  constructor(msg) {
-    super(msg, ArgumentRequiredErrorDesc);
-  }
-}
-
-const ArgumentParsingErrorDesc = `
-This error occurs when, argparser encounters a parsing error
-when parsing arguments.
-`;
-class ArgumentParsingError extends RAPPErrors {
-  constructor(msg) {
-    super(msg, ArgumentParsingErrorDesc);
-  }
-}
-
-module.exports = {
-  RAPPErrors,
-  ArgumentRequiredError,
-  ArgumentParsingError
-};
+module.exports = AppErrors;

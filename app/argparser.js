@@ -1,7 +1,7 @@
 const {
   ArgumentRequiredError,
   ArgumentParsingError
-} = require('./errors');
+} = require('./errors/argparser-errors');
 
 class ArgParser {
   constructor(helpText) {
