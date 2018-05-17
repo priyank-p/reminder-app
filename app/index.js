@@ -10,10 +10,8 @@ Run rapp server.
 args.add('--dev', { alias: '-d', type: 'boolean', default: false });
 args.parse();
 
-const development = args.dev;
-const production = !development;
-env.setEnv('development', development);
-env.setEnv('production', production);
+env.setEnv('development', args.dev);
+env.setEnv('production', !args.dev);
 
 // load all the app  modules later once
 // the env is set so they apply correct
@@ -42,7 +40,7 @@ app.listen(port, () => {
 });
 
 // if devlopment respond to /webpack from webpack-dev-server
-if (development) {
+if (env.development) {
   const proxy = require('http-proxy-middleware');
   const host = process.env.HOST || 'localhost';
 
