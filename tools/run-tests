@@ -2,6 +2,7 @@
 'use strict';
 const path = require('path');
 const fs = require('fs');
+const glob = require('glob');
 const argparser = require('../app/argparser');
 const env = require('../app/env');
 
@@ -18,7 +19,8 @@ Usage:
 args.parse();
 let jsFiles = args.nargs;
 if (!jsFiles) {
-  jsFiles = fs.readdirSync(TEST_DIR).filter(file => file.includes('.js'));
+  jsFiles = glob.sync('test/**/*.js', { ignore: 'test/fixtures/**' })
+    .map(file => file.replace('test/', ''));
 }
 
 // add .js at the end if doesn't already exist.
