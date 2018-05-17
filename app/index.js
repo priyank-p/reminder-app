@@ -1,5 +1,3 @@
-const path = require('path');
-const express = require('express');
 const argparser = require('./argparser');
 const env = require('./env');
 
@@ -17,14 +15,20 @@ const production = !development;
 env.setEnv('development', development);
 env.setEnv('production', production);
 
-const app = express();
+// load all the app  modules later once
+// the env is set so they apply correct
+// setting depending the mode (production | development)
+const path = require('path');
+const express = require('express');
 const settings = require('./settings');
-settings(app);
+const routes = require('./routes');
+
+const app = express();
 const STATIC_DIR = path.resolve(__dirname, '../static');
+settings(app);
 app.use('/static', express.static(STATIC_DIR));
 
 // apply all the routes
-const routes = require('./routes');
 for (let routePath in routes) {
   const _routes = routes[routePath];
   _routes.forEach(route => {
