@@ -1,7 +1,22 @@
 #!/usr/bin/env node
 'use strict';
 
-const run = require('./run');
+const path = require('path');
+const _run = require('./run');
+
+/*
+  Simple wrapper to run:
+    ./run-tests as
+    /full/path/to/run-tests
+*/
+function run(cmd) {
+  if (cmd.startsWith('./')) {
+    cmd = path.join(__dirname, cmd);
+    return _run(cmd);
+  }
+
+  return _run(cmd);
+}
 
 console.log('Running all the tests...');
 async function testAll() {
