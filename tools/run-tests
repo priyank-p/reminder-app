@@ -3,7 +3,9 @@
 const path = require('path');
 const fs = require('fs');
 const argparser = require('../app/argparser');
+const env = require('../app/env');
 
+env.setEnv('tests', true);
 const TEST_DIR = path.resolve(__dirname, '../test');
 const args = argparser(`
 Run node tests:
