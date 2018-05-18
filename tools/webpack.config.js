@@ -2,6 +2,7 @@ const path = require('path');
 const BundleTracker = require('webpack-bundle-tracker');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpackEntries = require('./webpack-entries');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const port = +process.env.PORT + 1 || 7213;
@@ -22,10 +23,7 @@ module.exports = (env) => {
   const config = {
     mode: production ? "production" : "development",
     context: ROOT_DIR,
-    entry: {
-      'main': './static/js/index.js',
-      'main-css': './static/scss/reminder-app.scss'
-    },
+    entry: webpackEntries,
     output: {
       publicPath: '/static/webpack-bundles/',
       path: path.join(ROOT_DIR, '/static/webpack-bundles'),
@@ -50,6 +48,28 @@ module.exports = (env) => {
               }
             }
           ]),
+        },
+        {
+          test: /\.css$/,
+          use: cssLoaders(production, [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                  sourceMap: true
+              }
+            },
+          ])
+        },
+        {
+          test: /\.(woff(2)?|ttf|eot|svg|otf|png)(\?v=\d+\.\d+\.\d+)?$/,
+          use: [{
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/'
+            }
+          }]
         }
       ]
     },
