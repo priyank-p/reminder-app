@@ -1,7 +1,7 @@
 @import './common.scss';
 
 header {
-  @extend %bold-solid-text;
+  @extend .solid-bold-text;
   height: 54px;
   padding: 12px 14px;
   background-color: #fff;
@@ -22,7 +22,7 @@ main {
 #add-reminder-btn {
   $size: 45px;
 
-  @extend %bold-solid-text;
+  @extend .solid-bold-text;
   position: fixed;
   height: $size;
   width: $size;
