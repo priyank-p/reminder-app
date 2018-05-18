@@ -6,7 +6,7 @@ const defaultOpts = {
   stdio: 'pipe'
 };
 
-function run(commandToRun, passedOpts) {
+function run(commandToRun, passedOpts = {}) {
   const args = commandToRun.split(' ');
   const cmd = args[0];
   args.splice(0, 1);
