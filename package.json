@@ -9,6 +9,7 @@
     "express": "4.16.3",
     "express-handlebars": "3.0.0",
     "express-minify-html": "0.12.0",
+    "font-awesome": "4.7.0",
     "helmet": "3.12.0"
   },
   "devDependencies": {
