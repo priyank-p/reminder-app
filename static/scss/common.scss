@@ -30,8 +30,7 @@ input, textarea {
   font-size: $input-font-size;
 }
 
-// TODO: rename this to .solid-bold-text
-%bold-solid-text {
+.solid-bold-text {
   font-size: $big-font-size;
   font-style: oblique;
   font-weight: 800;
