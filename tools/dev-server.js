@@ -10,7 +10,8 @@ const spawnOpts = {
 };
 
 const webpackDevServer = './node_modules/.bin/webpack-dev-server';
-const webpackProcess = spawn(webpackDevServer, ['--config', 'tools/webpack.config.js', '--hot'], spawnOpts);
+const webpackArgs = ['--config', 'tools/webpack.config.js', '--hot', '--quiet'];
+const webpackProcess = spawn(webpackDevServer, webpackArgs, spawnOpts);
 
 // we delay in starting the webpack server because
 // we want to wait for webpack to finish writing the
