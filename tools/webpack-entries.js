@@ -3,8 +3,12 @@ const mainBundle = {
   'main-css': './static/scss/reminder-app.scss'
 };
 
+const FontAwesomeBasePath = './node_modules/@fortawesome/fontawesome-free-webfonts/css/';
 const vendorBundle = {
-  'vendor': './node_modules/font-awesome/css/font-awesome.css'
+  'vendor': [
+      FontAwesomeBasePath + 'fontawesome.css',
+      FontAwesomeBasePath + 'fa-solid.css'
+    ]
 };
 
 const bundles = {
