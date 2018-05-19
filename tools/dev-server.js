@@ -23,7 +23,13 @@ setTimeout(() => {
 
 devProcesses.set('webpack', webpackProcess);
 
+let alreadyKilled = false;
 function killProcesses() {
+  if (alreadyKilled) {
+    return;
+  }
+
+  alreadyKilled = true;
   devProcesses.forEach((proc, name) => {
     process.kill(-proc.pid);
   });
