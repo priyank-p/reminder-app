@@ -12,17 +12,10 @@ const spawnOpts = {
 const webpackDevServer = './node_modules/.bin/webpack-dev-server';
 const webpackArgs = ['--config', 'tools/webpack.config.js', '--hot', '--quiet'];
 const webpackProcess = spawn(webpackDevServer, webpackArgs, spawnOpts);
-
-// we delay in starting the webpack server because
-// we want to wait for webpack to finish writing the
-// bundles json file.
-setTimeout(() => {
-  console.log('Staring express server...');
-  const expressServer = spawn('node', ['app', '--dev'], spawnOpts);
-  devProcesses.set('express-server', expressServer);
-}, 2000);
+const expressServer = spawn('node', ['app', '--dev'], spawnOpts);
 
 devProcesses.set('webpack', webpackProcess);
+devProcesses.set('express-server', expressServer);
 
 let alreadyKilled = false;
 function killProcesses() {
