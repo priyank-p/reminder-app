@@ -11,6 +11,7 @@
   "watch": [
     "tools/dev-server.js",
     "tools/webpack.config.js",
+    "tools/webpack.enteries.js",
     "app/"
   ],
   "env": {

@@ -10,7 +10,7 @@ const spawnOpts = {
 };
 
 const webpackDevServer = './node_modules/.bin/webpack-dev-server';
-const webpackArgs = ['--config', 'tools/webpack.config.js', '--hot', '--quiet'];
+const webpackArgs = ['--config', 'tools/webpack.config.js', '--hot'];
 const webpackProcess = spawn(webpackDevServer, webpackArgs, spawnOpts);
 const expressServer = spawn('node', ['app', '--dev'], spawnOpts);
 

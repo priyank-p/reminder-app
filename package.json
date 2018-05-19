@@ -4,12 +4,12 @@
   "description": "Reminder app in node.js",
   "main": "index.js",
   "dependencies": {
+    "@fortawesome/fontawesome-free-webfonts": "1.0.9",
     "body-parser": "1.18.3",
     "compression": "1.7.2",
     "express": "4.16.3",
     "express-handlebars": "3.0.0",
     "express-minify-html": "0.12.0",
-    "font-awesome": "4.7.0",
     "helmet": "3.12.0"
   },
   "devDependencies": {
