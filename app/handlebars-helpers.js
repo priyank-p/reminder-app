@@ -14,6 +14,13 @@ const filePath = development ?
     '../var/webpack-dev-bundles.json' : '../var/webpack-bundles.json';
 let webpackStats = readJSON(filePath);
 let { chunks: webpackChunks } = webpackStats;
+
+if (development) {
+  const file = path.resolve(__dirname, filePath);
+  fs.watchFile(file, () => {
+    webpackChunks = readJSON(file).chunks;
+  });
+}
 function render_bundle(bundle, attrs) {
   // we do a bit of shuffling to make sure
   // attrs is a string and only present if it was passed in
