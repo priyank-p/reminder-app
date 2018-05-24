@@ -26,5 +26,3 @@ module.exports = {
   post,
   get
 };
-
-window.request = module.exports;
