@@ -39,7 +39,7 @@ module.exports = (app) => {
     helpers: handlebarsHelpers
   }));
 
-  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
   app.set('view engine', 'hbs');
 
   // Configure headers
