@@ -1,10 +1,12 @@
 /*
-  Goal here is to have extenable custom error
+  Goal here is to have extendable custom error
   to have better stack trace. The main benefit is let
   say we have a FieldRequiredError somewhere the ideal thing to do is
   throw new Error('FiledRequiredError: ...error');
   the first line would be: `Error: FiledRequiredError: ...error` which is rather
-  not clear or estatic.
+  not clear or estatic. Rather with custom error message we can provide clear error
+  message title and then a full traceback at the end which is much more nicer of way
+  to handle errors.
 */
 
 class AppErrors extends Error {
