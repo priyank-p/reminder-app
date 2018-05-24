@@ -156,4 +156,9 @@ main {
     max-height: 30px;
     @extend .handle-text-overflow;
   }
+
+  .due-date {
+    content: "Due: ";
+    @extend .error;
+  }
 }
