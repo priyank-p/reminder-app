@@ -1,5 +1,9 @@
 const mainBundle = {
-  'main': './static/js/index.js',
+  'main': [
+    './static/js/index.js',
+    './static/js/app-hotkeys.js',
+    './static/js/event-listeners.js'
+  ],
   'main-css': './static/scss/reminder-app.scss'
 };
 
