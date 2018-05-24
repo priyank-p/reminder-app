@@ -5,19 +5,21 @@
     <h1>Add Reminder</h1>
 
     <label for="reminder-title">Title:</label>
-    <input id="reminder-title" type="text" placeholder="Reminder Title" autofocus required>
+    <input id="reminder-title" type="text"
+      name=title placeholder="Reminder Title" autofocus required>
 
     <label for="reminder-textarea">Reminder:</label>
-    <textarea id="reminder-textarea" placeholder="Enter reminder..." required></textarea>
+    <textarea id="reminder-textarea" placeholder="Enter reminder..."
+      name="reminder" required></textarea>
 
     <div class="dropdown-section">
       <div class="title">Add due date or time</div>
       <div class="content">
         <label for="reminder-due-date">Reminder Due Date:</label>
-        <input type="date">
+        <input type="date" name="due_date">
 
         <label for="reminder-due-time">Reminder Due Date:</label>
-        <input type="time">
+        <input type="time" name="due_time">
       </div>
     </div>
 
