@@ -56,6 +56,10 @@ module.exports = (app) => {
     if (production) {
       res.setHeader('Strict-Transport-Security', 'max-age=31536000');
 
+      // All the static files should have hashes in production
+      // and we want to take full advantage -- and event when
+      // we implement service-worker we still want this to here
+      // for older browser complatibility.
       if (req.path.includes('/static/')) {
         res.setHeader('Cache-Control', 'public, max-age=31536000');
       }
