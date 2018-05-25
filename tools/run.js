@@ -3,7 +3,7 @@ const { spawn } = require('child_process');
 const defaultOpts = {
   cwd: __dirname,
   env: process.env,
-  stdio: 'pipe'
+  stdio: 'inherit'
 };
 
 function run(commandToRun, passedOpts = {}) {
