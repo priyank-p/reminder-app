@@ -2,7 +2,7 @@ const express = require('express');
 const reminders = require('../models/reminders');
 
 const router = new express.Router();
-router.post('/reminders/add', async (req, res) => {
+router.post('/reminders/add', (req, res) => {
   if (Object.keys(req.body).length === 0) {
     res.status(500);
     res.send('Reminder must be passed in!');
