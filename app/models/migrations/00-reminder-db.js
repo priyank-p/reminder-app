@@ -4,10 +4,9 @@
 
 const { db, tableName } = require('../reminders-db');
 
-(async function migrate_00_reminder_db() {
+async function migrate_00_reminder_db() {
   await db.waitUntilReady();
 
-  console.log(db.hasTable(tableName));
   if (!db.hasTable(tableName)) {
     await db.createTable(tableName);
     await db.addField(tableName, 'title', { type: String });
@@ -15,4 +14,6 @@ const { db, tableName } = require('../reminders-db');
     await db.addField(tableName, 'due_date', { type: Date });
     await db.addField(tableName, 'due_time', { type: String });
   }
-})();
+}
+
+module.exports = migrate_00_reminder_db;
