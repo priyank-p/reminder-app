@@ -13,6 +13,7 @@ async function migrate_00_reminder_db() {
     await db.addField(tableName, 'reminder', { type: String });
     await db.addField(tableName, 'due_date', { type: Date });
     await db.addField(tableName, 'due_time', { type: String });
+    await db.addField(tableName, 'create_at', { type: Date, timestamp: true });
   }
 }
 
