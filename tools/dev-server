@@ -3,7 +3,7 @@
 
 const run = require('./run');
 const env = require('../app/env');
-const needToMigrate = require('./migration_status');
+const needToMigrate = require('./migration-status');
 
 env.setEnv('mode', 'devlopment');
 (async function dev_server() {
