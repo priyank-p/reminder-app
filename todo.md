@@ -29,8 +29,6 @@
 - [ ] Use a service-worker
 - [ ] Improve performace on backend
 - [ ] Improve css performance, i.e painting reflows
-- [ ] Improve and check backend perf by checking time for a request route,
-    and database query's.
 - [ ] Lastly re-ogranize parts of code base and refactor.
 
 (As of writing Saturday May 14, 2018, it looks like a lot still needs to be done
