@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
+const { promisify } = require('util');
+const run = require('./run');
+
+const readdir = promisify(fs.readdir);
+const migrationDir = path.resolve(__dirname, '../app/models/migrations');
+(async function do_migrate_db() {
+  const migrationFiles = await readdir(migrationDir);
+  console.log('Running migrations...');
+  migrationFiles.forEach(async migrationFile => {
+    console.log('    Applying migration', path.basename(migrationFile, '.js'));
+    await run(`node ${path.join(migrationDir, migrationFile)}`, { silent: true });
+  });
+})();
