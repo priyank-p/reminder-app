@@ -4,7 +4,7 @@
 
 const { db, tableName } = require('../reminders-db');
 
-(async function migrate_01_reminder_db_required_fields() {
+async function migrate_01_reminder_db_required_fields() {
   await db.waitUntilReady();
 
   const levelDB = db.db;
@@ -15,4 +15,6 @@ const { db, tableName } = require('../reminders-db');
   });
 
   await levelDB.put('__InternalProps', __InternalProps);
-})();
+}
+
+module.exports = migrate_01_reminder_db_required_fields;

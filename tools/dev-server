@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+'use strict';
+
+const run = require('./run');
+const env = require('../app/env');
+const needToMigrate = require('./migration_status');
+
+env.setEnv('mode', 'devlopment');
+(async function dev_server() {
+  if (needToMigrate) {
+    await run('./do-migrate-db');
+  }
+
+  require('./dev-server.js');
+})();
