@@ -14,7 +14,7 @@ env.setEnv('development', args.dev);
 env.setEnv('production', !args.dev);
 
 if (env.development) {
-  env.setEnv('mode', 'dev');
+  env.setEnv('mode', 'devlopment');
 }
 
 // load all the app  modules later once
