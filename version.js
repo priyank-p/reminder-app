@@ -1,5 +1,5 @@
 /** VERSIONFILE
-  Version file to keep track of version required through
+  Version file to keep track of version required throughout
   the app.
 */
 
