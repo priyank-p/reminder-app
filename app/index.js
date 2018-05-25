@@ -13,6 +13,10 @@ args.parse();
 env.setEnv('development', args.dev);
 env.setEnv('production', !args.dev);
 
+if (env.development) {
+  env.setEnv('mode', 'dev');
+}
+
 // load all the app  modules later once
 // the env is set so they apply correct
 // setting depending the mode (production | development)
