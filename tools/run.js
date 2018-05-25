@@ -11,7 +11,11 @@ function run(commandToRun, passedOpts = {}) {
   const cmd = args[0];
   args.splice(0, 1);
 
-  console.log('+', commandToRun);
+  if (!passedOpts.silent) {
+    console.log('+', commandToRun);
+  }
+
+  delete passedOpts.silent;
   const opts = { ...defaultOpts, ...passedOpts };
   const proc = spawn(cmd, args, opts);
 
