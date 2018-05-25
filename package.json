@@ -35,7 +35,8 @@
     "dev": "nodemon tools/dev-server --config tools/nodemon.json",
     "build": "webpack --config tools/webpack.config.js -p --env production",
     "coverage": "nyc ./tools/run-tests",
-    "prod": "npm run build && node app"
+    "prod": "npm run build && node app",
+    "migrations": "./tools/run-migrations"
   },
   "nyc": {
     "report-dir": "var/nyc",
