@@ -22,9 +22,14 @@ async function getReminders() {
   return reminders;
 }
 
+async function updateReminders(updatedReminders) {
+  await db.updateTable(tableName, updatedReminders);
+}
+
 const isReady = initDB();
 module.exports = {
   isReady,
   addReminder,
-  getReminders
+  getReminders,
+  updateReminders
 };
