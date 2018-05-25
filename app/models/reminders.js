@@ -1,4 +1,4 @@
-const { db, tableName } = require('./reminder-db');
+const { db, tableName } = require('./reminders-db');
 
 async function initDB() {
   await db.waitUntilReady();
