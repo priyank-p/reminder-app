@@ -33,7 +33,7 @@ reminderForm.addEventListener('submit', function (e) {
     reminder[input.name] = input.value;
   });
 
-  request.post('/', reminder);
+  request.post('/api/reminders/add', reminder);
   toogleReminderModal();
   e.preventDefault();
 });

@@ -1,7 +1,9 @@
 const env = require('../env');
 const appRoutes = require('./app-routes');
+const apiRoutes = require('./api');
 const routes = {
-  '/': [appRoutes]
+  '/': [appRoutes],
+  '/api': [apiRoutes]
 };
 
 const { development } = env;
