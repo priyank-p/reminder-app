@@ -3,7 +3,12 @@
 
 const fs = require('fs');
 const path = require('path');
+const env = require('../app/env');
 const { promisify } = require('util');
+
+if (!env.mode) {
+  env.setEnv('mode', 'devlopment');
+}
 
 const readdir = promisify(fs.readdir);
 const migrationDir = path.resolve(__dirname, '../app/models/migrations');
