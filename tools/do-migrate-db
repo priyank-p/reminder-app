@@ -3,16 +3,38 @@
 
 const fs = require('fs');
 const path = require('path');
-const env = require('../app/env');
 const { promisify } = require('util');
+const env = require('../app/env');
+const version = require('../version');
 
 if (!env.mode) {
   env.setEnv('mode', 'devlopment');
 }
 
 const readdir = promisify(fs.readdir);
+const writeFile = promisify(fs.writeFile);
 const migrationDir = path.resolve(__dirname, '../app/models/migrations');
-(async function do_migrate_db() {
+
+async function update_migration_version() {
+  const versionFile = path.resolve(__dirname, '../var/version.js');
+  let versions;
+  try {
+    versions = require(versionFile);
+    versions.MIGRATION_VERSION = version.MIGRATION_VERSION;
+  } catch(e) {
+    versions = {
+      MIGRATION_VERSION: version.MIGRATION_VERSION
+    };
+  }
+
+  fs.open(versionFile, 'w+', async () => {
+    await writeFile(versionFile, `module.exports = ${
+      JSON.stringify(versions, null, 2)
+    };`);
+  });
+}
+
+async function do_migrate_db() {
   const migrationFiles = await readdir(migrationDir);
   console.log('Running migrations...');
   const migrations = [];
@@ -28,4 +50,8 @@ const migrationDir = path.resolve(__dirname, '../app/models/migrations');
     console.log('    Applying migration', migrations[i].file);
     await migrations[i].migration();
   }
-})();
+
+  await update_migration_version();
+}
+
+do_migrate_db();
