@@ -11,7 +11,10 @@ async function migrate_01_reminder_db_required_fields() {
   const fieldsPreviouslyAdded = ['title', 'reminder', 'due_date', 'due_time'];
   const __InternalProps = await levelDB.get('__InternalProps');
   fieldsPreviouslyAdded.forEach(field => {
-    __InternalProps.tables[tableName][field].required = true;
+    const _field = __InternalProps.tables[tableName][field];
+    if (_field) {
+      _field.required = true;
+    }
   });
 
   await levelDB.put('__InternalProps', __InternalProps);
