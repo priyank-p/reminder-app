@@ -1,8 +1,11 @@
 const express = require('express');
-const router = express.Router();
+const reminders = require('../models/reminders');
 
-router.get('/', (req, res) => {
-  res.render('index');
+const router = express.Router();
+router.get('/', async (req, res) => {
+  res.render('index', {
+    reminders: await reminders.getReminders()
+  });
 });
 
 module.exports = router;

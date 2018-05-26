@@ -1,4 +1,10 @@
-{{> reminders}}
+{{#each reminders}}
+  {{> reminders}}
+{{/each}}
+
+{{#unless reminders}}
+  <h4>No reminders have been added!</h4>
+{{/unless}}
 
 <button id="add-reminder-btn">+</button>
 {{!-- Add reminder form --}}
