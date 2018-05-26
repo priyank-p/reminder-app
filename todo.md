@@ -13,7 +13,8 @@
 - [ ] Help Tutorial
 - [ ] Favicon for reminder app
 - [ ] logos for reminder app
-- [ ] Allow a user to add comment on a reminder, this will be a awesome!
+- [ ] Allow a user to add comment on a reminder, this will be a awesome, and allow
+      a user to put status of their reminder.
 - [ ] Allow, a quick due date picker, v1 should be a Input: `Due in ___ days.` one a user enter
       the due date and time should update accordingly.
 - [ ] better debug logging usign debug module
