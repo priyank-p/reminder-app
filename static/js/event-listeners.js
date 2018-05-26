@@ -32,14 +32,17 @@ reminderForm.addEventListener('submit', function (e) {
   inputElements.forEach(input => {
     reminder[input.name] = input.value;
   });
-  
+
   if (reminder.due_date) {
     const time = reminder.due_time ? 'T' + reminder.due_time : '';
     reminder.due_date = new Date(reminder.due_date + time);
   }
 
   delete reminder.due_time;
-  request.post('/api/reminders/add', reminder);
+  request.post('/api/reminders/add', reminder)
+    .then(() => {
+      window.location.reload()
+    });
   toogleReminderModal();
   e.preventDefault();
 });
