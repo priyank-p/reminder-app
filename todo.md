@@ -13,6 +13,7 @@
 - [ ] Help Tutorial
 - [ ] Favicon for reminder app
 - [ ] logos for reminder app
+- [ ] Allow a user to add comment on a reminder, this will be a awesome!
 - [ ] Make the reminder due date picker smarter.
 - [ ] better debug logging usign debug module
 - [ ] Use the debug module in browser for debugging and:
