@@ -167,3 +167,22 @@ main {
     @extend .error;
   }
 }
+
+h4.no-reminders {
+  font-size: 25px;
+  padding-top: 50px;
+}
+
+div.no-reminders {
+  font-size: 16px;
+  padding: 8px;
+}
+
+.no-reminders {
+  color: #000;
+  margin: 0 33%;
+  width: 33%;
+  height: auto;
+  vertical-align: middle;
+  text-align: center;
+}
