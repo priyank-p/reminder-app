@@ -7,7 +7,6 @@ async function initDB() {
 async function addReminder(fields) {
   for (let field in fields) {
     if (field === 'due_date') {
-      fields[field] = new Date(field[field]);
       continue;
     }
 
@@ -18,7 +17,7 @@ async function addReminder(fields) {
 }
 
 async function getReminders() {
-  const reminders = await db.getAllRows();
+  const reminders = await db.getAllRows(tableName);
   return reminders;
 }
 
@@ -31,5 +30,6 @@ module.exports = {
   isReady,
   addReminder,
   getReminders,
-  updateReminders
+  updateReminders,
+  db
 };
