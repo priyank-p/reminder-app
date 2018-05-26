@@ -1,9 +1,16 @@
 <div class="reminders">
-  <div class="reminder" data-id="{{ id }}" title="{{ title }}">
-    <div class="title">{{title}}</div>
-    <div class="content">
-      {{reminder}}
+  {{#each reminders}}
+    <div class="reminder" data-id="{{ id }}" title="{{ title }}">
+      <div class="title">{{title}}</div>
+      <div class="content">
+        {{reminder}}
+      </div>
+      <div class="due-date">{{due_date}}</div>
     </div>
-    <div class="due-date">{{due_date}}</div>
-  </div>
+  {{/each}}
+
+  {{!-- If there are no reminders --}}
+  {{#unless reminders}}
+    <h4>No reminder(s) have been added yet!</h4>
+  {{/unless}}
 </div>
