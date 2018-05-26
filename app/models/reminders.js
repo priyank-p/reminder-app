@@ -25,11 +25,16 @@ async function updateReminders(updatedReminders) {
   await db.updateTable(tableName, updatedReminders);
 }
 
+async function deleteReminder(id) {
+  await db.deleteRow(tableName, id);
+}
+
 const isReady = initDB();
 module.exports = {
+  db,
   isReady,
   addReminder,
   getReminders,
   updateReminders,
-  db
+  deleteReminder
 };
