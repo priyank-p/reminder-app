@@ -14,7 +14,8 @@
 - [ ] Favicon for reminder app
 - [ ] logos for reminder app
 - [ ] Allow a user to add comment on a reminder, this will be a awesome!
-- [ ] Make the reminder due date picker smarter.
+- [ ] Allow, a quick due date picker, v1 should be a Input: `Due in ___ days.` one a user enter
+      the due date and time should update accordingly.
 - [ ] better debug logging usign debug module
 - [ ] Use the debug module in browser for debugging and:
         Automatically pass `<script>localStorage.debug = {theEnvDebugVariable}`
