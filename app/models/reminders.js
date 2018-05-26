@@ -10,7 +10,7 @@ async function addReminder(fields) {
       continue;
     }
 
-    fields[field] = fields[field].toString();
+    fields[field] = fields[field].toString().trim();
   }
 
   await db.addRow(tableName, fields);
