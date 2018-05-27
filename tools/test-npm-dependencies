@@ -1,6 +1,11 @@
 #!/usr/bin/env node
 'use strict';
 
+/*
+  This checks that any package's that are added are pinned
+  to certain version so the app does not break due to a update
+  unknown upstream update.
+*/
 const packageJSON = require('../package.json');
 const dependecies = {
   ...packageJSON.dependencies,
