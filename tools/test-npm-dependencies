@@ -6,6 +6,7 @@
   to certain version so the app does not break due to a update
   unknown upstream update.
 */
+// TODO: We should only enforce this for dependencies, not devDependencies.
 const packageJSON = require('../package.json');
 const dependecies = {
   ...packageJSON.dependencies,
