@@ -7,3 +7,7 @@ npm-scripts:
    * `npm test` - runs all the tests, `tools/test-all`
    * `npm run coverage` - gets the coverage report of test, will be
    at `var/lcov-report/index.html`
+
+#### npm dependencies
+We prefer to have pinned dependencies for every npm package. This should
+allow us to avoid any breakage in app due to an upstream breaking changes.
