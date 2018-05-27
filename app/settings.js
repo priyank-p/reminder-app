@@ -12,6 +12,9 @@ module.exports = (app) => {
     const helmet = require('helmet');
     const minifyHTML = require('express-minify-html');
 
+    // enable view cache to avoid sync fs calls
+    app.set('view cache', true);
+
     // enables compression in production
     app.use(compression());
 
