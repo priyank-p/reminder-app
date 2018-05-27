@@ -55,7 +55,12 @@ function __updateBundle(newBundle) {
   webpackChunks = newBundle.chunks;
 }
 
+function preserve_whitespace(html) {
+  return html.replace(/\n/g, '<br>');
+}
+
 module.exports = {
   render_bundle,
+  preserve_whitespace,
   __updateBundle
 };
