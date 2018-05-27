@@ -37,6 +37,7 @@
     "build": "webpack --config tools/webpack.config.js -p --env production",
     "coverage": "nyc ./tools/run-tests",
     "prod": "npm run build && node app",
+    "test": "./tools/test-all",
     "migrations": "./tools/run-migrations"
   },
   "nyc": {
