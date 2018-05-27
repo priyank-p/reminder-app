@@ -46,7 +46,7 @@ handlebarsHelpers.__updateBundle(webpack_dev_bundle);
 handlebarsHelpers.__updateBundle(webpack_prod_bundle);
 (function test_render_bundle_for_multiple_file_in_bundle() {
   /*
-    Test weather the render_bundle handles multip files in one
+    Test weather the render_bundle handles multips files in one
     entry so two cases:
       - one the map files generated in prod build
       - second multip files to render in one bundle
