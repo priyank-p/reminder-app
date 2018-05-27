@@ -1,3 +1,4 @@
+const escapeHTML = require('escape-html');
 const { db, tableName } = require('./reminders-db');
 
 async function initDB() {
@@ -10,7 +11,10 @@ async function addReminder(fields) {
       continue;
     }
 
-    fields[field] = fields[field].toString().trim();
+    // escape html early on, before adding it to db.
+    let sanatized = fields[field].toString().trim();
+    sanatized = escapeHTML(sanatized);
+    fields[field] = sanatized;
   }
 
   await db.addRow(tableName, fields);
