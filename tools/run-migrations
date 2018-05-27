@@ -34,7 +34,7 @@ async function update_migration_version() {
   });
 }
 
-async function do_migrate_db() {
+async function run_migrations() {
   const migrationFiles = await readdir(migrationDir);
   console.log('Running migrations...');
   const migrations = [];
@@ -54,4 +54,4 @@ async function do_migrate_db() {
   await update_migration_version();
 }
 
-do_migrate_db();
+run_migrations();
