@@ -1,12 +1,10 @@
 const path = require('path');
-const { promisify } = require('util');
-const run = require('./run');
-const rimraf = promisify(require('rimraf'));
+const fs = require('fs-extra');
 
 
 async function resetTestDB() {
-  const dbPath = path.resolve(__dirname, '../var/reminder-app-test')
-  await rimraf(dbPath);
+  const dbPath = path.resolve(__dirname, '../var/reminder-app-test');
+  await fs.remove(dbPath);
 }
 
 async function run_migration(number) {
