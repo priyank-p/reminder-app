@@ -10,7 +10,7 @@ global.navigator = {
   platform: 'Win32'
 };
 
-const hotkeys = require('../static/js/hotkeys');
+const hotkeys = require('../../static/js/hotkeys');
 const {
   _hotkeys, _checkHotkeys, _disabledHotkeys
 } = hotkeys;

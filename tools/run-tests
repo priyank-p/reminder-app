@@ -20,7 +20,7 @@ Usage:
 args.parse();
 let jsFiles = args.nargs;
 if (!jsFiles) {
-  jsFiles = glob.sync('test/**/*.js', { ignore: 'test/fixtures/**' })
+  jsFiles = glob.sync('test/node-tests/**/*.js')
     .map(file => file.replace('test/', ''));
 }
 
