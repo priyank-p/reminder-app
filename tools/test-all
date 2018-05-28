@@ -22,6 +22,7 @@ console.log('Running all the tests...');
 async function testAll() {
   await run('./test-npm-dependencies');
   await run('./run-tests');
+  await run('./test-migrations');
 }
 
 testAll()
