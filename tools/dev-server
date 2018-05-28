@@ -8,7 +8,7 @@ const needToMigrate = require('./migration-status');
 env.setEnv('mode', 'devlopment');
 (async function dev_server() {
   if (needToMigrate) {
-    await run('./run-migrations');
+    await run('./run-migrations --devlopment');
   }
 
   require('./dev-server.js');

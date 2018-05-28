@@ -6,9 +6,27 @@ const path = require('path');
 const { promisify } = require('util');
 const env = require('../app/env');
 const version = require('../version');
+const argparser = require('../app/argparser');
 
-if (!env.mode) {
-  env.setEnv('mode', 'devlopment');
+const args = argparser(`
+Run migrations on database.
+The database will not work unless migration are not applied.
+
+Flags:
+  --production, -p   Runs the migrations on production db. [default]
+  --development, -d          Runs migrations on devlopment db.
+  --test, -t         Runs migrations on test db.
+`);
+
+args.add('--production', { type: 'boolean', alias: '-p' });
+args.add('--development', { type: 'boolean', alias: '-d' });
+args.add('--test', { type: 'boolean', alias: '-t' });
+
+args.parse();
+if (args.test || args.development) {
+  env.setEnv('mode', args.test ? 'test' : 'development');
+} else {
+  env.setEnv('production', true);
 }
 
 const readdir = promisify(fs.readdir);
