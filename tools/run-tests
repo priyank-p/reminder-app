@@ -38,7 +38,7 @@ jsFiles = jsFiles.map(file => {
 
 // set globals
 global.assert = require('assert');
-global.fixtures = require('../test/fixtures');
+global.fixtures = require('../test/node-tests/fixtures');
 
 jsFiles.forEach(file => {
   file = path.join(TEST_DIR, file);
