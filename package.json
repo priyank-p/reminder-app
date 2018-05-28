@@ -36,7 +36,7 @@
   "scripts": {
     "dev": "nodemon tools/dev-server --config tools/nodemon.json",
     "build": "webpack --config tools/webpack.config.js -p --env production",
-    "coverage": "nyc ./tools/run-tests",
+    "coverage": "nyc ./tools/test-all",
     "prod": "npm run build && node app",
     "test": "./tools/test-all",
     "migrations": "./tools/run-migrations"
