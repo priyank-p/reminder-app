@@ -11,3 +11,5 @@ module.exports = {
   tableName: 'reminders',
   db
 };
+
+env.setEnv('reminder-db', module.exports);

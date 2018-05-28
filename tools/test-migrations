@@ -1,0 +1,60 @@
+#!/usr/bin/env node
+'use strict';
+
+'use strict';
+const path = require('path');
+const fs = require('fs');
+const glob = require('glob');
+const argparser = require('../app/argparser');
+const env = require('../app/env');
+
+// to make test runnable from anywhere
+process.chdir(path.resolve(__dirname, '../'));
+
+env.setEnv('tests', true);
+env.setEnv('mode', 'test');
+const TEST_DIR = path.resolve(__dirname, '../test/migrations');
+const args = argparser(`
+Run migration tests:
+
+Usage:
+./tools/run-tests file-one.js file-two.js
+./tools/run-tests # to run all the tests
+`);
+
+args.parse();
+let testFiles = args.nargs;
+if (!testFiles) {
+  testFiles = glob.sync('test/migrations/**/*.js')
+    .map(file => file.replace('test/migrations', ''));
+}
+
+// add .js at the end if doesn't already exist.
+testFiles = testFiles.map(file => {
+  if (!file.endsWith('.js')) {
+    return file + '.js';
+  }
+
+  return file;
+});
+
+// set globals
+global.assert = require('assert');
+global.env = env;
+global.migrationFiles = fs.readdirSync(path.resolve(__dirname, '../app/models/migrations'));
+global.migrations = require('./test-migration-helpers');
+
+(async function run_migration_test() {
+  for (let i = 0; i < testFiles.length; i++) {
+    let file = testFiles[i];
+    file = path.join(TEST_DIR, file);
+    if (!fs.existsSync(file)) {
+      console.error(`Test file ${file} does not exsist.`);
+      process.exit(1);
+    }
+
+    console.log('running migration test: ', path.basename(file));
+    await global.migrations.resetTestDB();
+    require(file);
+  }
+})();
