@@ -28,7 +28,7 @@
 - [ ] Revist js file and tests
 - [ ] Setup test that can run in browser using karma.
 - [ ] Design a way, so a user can configure diffrent thing
-- [ ] Maybe then provide /settings page to configure that
+- [ ] Create a `/settings` page to configure various stuff
 - [ ] Use a service-worker
 - [ ] Improve performace on backend
 - [ ] Improve css performance, i.e painting reflows
