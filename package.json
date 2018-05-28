@@ -25,6 +25,7 @@
     "node-sass": "4.9.0",
     "nodemon": "1.17.4",
     "nyc": "11.8.0",
+    "rimraf": "2.6.2",
     "sass-loader": "7.0.1",
     "source-map-loader": "0.2.3",
     "webpack": "4.8.3",
