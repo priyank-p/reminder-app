@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 'use strict';
 
+const path = require('path');
 const run = require('./run');
 const env = require('../app/env');
 const needToMigrate = require('./migration-status');
+
+const ROOT_DIR = path.resolve(__dirname, '../');
 
 env.setEnv('mode', 'devlopment');
 (async function dev_server() {
@@ -11,5 +14,7 @@ env.setEnv('mode', 'devlopment');
     await run('./run-migrations --devlopment');
   }
 
-  require('./dev-server.js');
+  let cmd = 'npx nodemon tools/dev-server.js';
+  cmd += ' --config tools/nodemon.json';
+  run(cmd, { cwd: ROOT_DIR });
 })();
