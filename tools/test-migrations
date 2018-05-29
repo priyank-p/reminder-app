@@ -55,6 +55,7 @@ global.migrations = require('./test-migration-helpers');
 
     console.log('running migration test: ', path.basename(file));
     await global.migrations.resetTestDB();
-    require(file);
+    const test = require(file);
+    await test();
   }
 })();

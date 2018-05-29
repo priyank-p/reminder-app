@@ -1,4 +1,4 @@
-(async function test_db_table_created() {
+async function test_db_table_created() {
   await migrations.run_migration(0);
 
   const { db } = env['reminder-db'];
@@ -17,4 +17,6 @@
     'create_at'
   ];
   assert.deepEqual(Object.keys(InternalProps.tables.reminders), expectedRows);
-})();
+}
+
+module.exports = test_db_table_created;
