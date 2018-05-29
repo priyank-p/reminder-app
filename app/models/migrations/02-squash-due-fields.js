@@ -13,15 +13,17 @@ async function migration_02_squash_due_fields() {
   delete InternalProps.tables[tableName].due_time;
   InternalProps.tables[tableName].due_date.required = false;
 
-  const rows = db.getAllRows(tableName);
+  const rows = await db.getAllRows(tableName);
   for (const row in rows) {
     const due_time = rows[row].due_time;
     if (due_time) {
-      rows[row].due_date = new Date(rows[row].due_date + 'T' + due_time);
+      rows[row].due_date.setHours(...due_time.split(':'));
+      delete rows[row].due_time;
     }
   }
 
   await levelDB.put('__InternalProps', InternalProps);
+  await levelDB.put(tableName, rows);
 }
 
 module.exports = migration_02_squash_due_fields;
