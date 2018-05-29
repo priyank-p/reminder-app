@@ -26,5 +26,16 @@ some of which are named pretty in a self-explantory way:
   files by webpack, all the files will have sourcemaps, and hashes in files names. The file name are updated
   across templates using the `render_bundle` handlebars helpers.
 
-<!-- TODO: Add a section explaining the webpack process. -->
+## Webpack Process
 
+When the dev server runs, using `tools/dev-server`, we start the `webpack-dev-server`
+alongside with the express/node server. Then we create a proxy, which routes all the request
+from `/webpack` to `webpack-dev-server`. The whole proxy thing is done using `http-proxy-middleware`
+in the `app/index.js` file.
+
+The webpack config `webpack.config.js` unlike most project, is not actually on
+the top-level, but is located in `tools/webpack.config.js` to avoid clutter on root
+directory of project. We organized the webpack entry point in `tools/webpack.entry.js`
+file.
+
+The webpack process, handle both `css` or `scss` and `js` files.
