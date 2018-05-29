@@ -1,6 +1,8 @@
 async function prep() {
-  await migrations.run_migration(0);
-  await migrations.run_migration(1);
+  // await migrations.run_migration(0);
+  // await migrations.run_migration(1);
+
+  await migrations.run_migrations_upto(1);
 }
 
 async function test_migration_02() {

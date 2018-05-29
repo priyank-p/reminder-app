@@ -24,7 +24,23 @@ async function run_migration(number) {
   }
 }
 
+async function run_migrations_upto(num) {
+  const files = migrationFiles.filter((file) => {
+    const migrationID = +file.split('-')[0];
+    if (migrationID <= num) {
+      return true;
+    }
+  });
+
+  for (let i in files) {
+    const filePath = path.join(__dirname, '../app/models/migrations', files[i]);
+    const migrationFunction = require(filePath);
+    await migrationFunction();
+  }
+}
+
 module.exports = {
   resetTestDB,
-  run_migration
+  run_migration,
+  run_migrations_upto
 };
