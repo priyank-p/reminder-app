@@ -40,7 +40,8 @@
     "coverage": "nyc ./tools/test-all",
     "prod": "npm run build && node tools/run-migrations && node app",
     "test": "./tools/test-all",
-    "migrations": "./tools/run-migrations -d"
+    "migrations": "./tools/run-migrations -d",
+    "lint": "eslint ."
   },
   "nyc": {
     "report-dir": "var/nyc",
