@@ -76,3 +76,22 @@ input, textarea {
 .error {
   color: $error-red;
 }
+
+@mixin scrollbars($size, $background-color) {
+  ::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $background-color;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: mix($background-color, white, 20%);
+  }
+}
+
+html, body {
+  @include scrollbars(10px, grey);
+}
