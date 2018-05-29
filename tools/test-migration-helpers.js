@@ -25,7 +25,7 @@ async function run_migration(number) {
 }
 
 async function run_migrations_upto(num) {
-  const files = migrationFiles.filter((file) => {
+  const files = global.migrationFiles.filter((file) => {
     const migrationID = +file.split('-')[0];
     if (migrationID <= num) {
       return true;
@@ -41,7 +41,7 @@ async function run_migrations_upto(num) {
 
 // must be called after migrations are ran!
 async function removeAllRows() {
-  const { db } = env['reminder-db'];
+  const { db } = global.env['reminder-db'];
   const allRows = await db.getAllRows('reminders');
   for (let row in allRows) {
     await db.deleteRow('reminders', allRows[row].id);
