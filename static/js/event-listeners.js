@@ -41,7 +41,7 @@ reminderForm.addEventListener('submit', function (e) {
   delete reminder.due_time;
   request.post('/api/reminders/add', reminder)
     .then(() => {
-      window.location.reload()
+      window.location.reload();
     });
   toogleReminderModal();
   e.preventDefault();

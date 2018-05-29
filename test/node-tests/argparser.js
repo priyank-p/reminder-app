@@ -28,7 +28,7 @@ const argparser = require('../../app/argparser');
   args.parse(['--dest', 'destination']);
 
   assert.deepStrictEqual(args['dest'], undefined);
-  assert.deepStrictEqual(args['new-dest'], 'destination')
+  assert.deepStrictEqual(args['new-dest'], 'destination');
 })();
 
 (function test_type_bool() {
@@ -82,7 +82,7 @@ const argparser = require('../../app/argparser');
   */
   const args = new argparser();
   args.add('--one');
-  args.add('--two')
+  args.add('--two');
   args.parse(['--one', '--two']);
 
   assert.deepStrictEqual(args.one, undefined);

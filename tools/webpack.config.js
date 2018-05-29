@@ -1,6 +1,6 @@
 const path = require('path');
 const BundleTracker = require('webpack-bundle-tracker');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpackEntries = require('./webpack-entries');
 
@@ -21,7 +21,7 @@ function cssLoaders(isProd, bundles) {
 module.exports = (env) => {
   const production = env === 'production';
   const config = {
-    mode: production ? "production" : "development",
+    mode: production ? 'production' : 'development',
     context: ROOT_DIR,
     entry: webpackEntries,
     output: {
@@ -38,13 +38,13 @@ module.exports = (env) => {
             {
               loader: 'css-loader',
               options: {
-                  sourceMap: true
+                sourceMap: true
               }
             },
             {
               loader: 'sass-loader',
               options: {
-                  sourceMap: true
+                sourceMap: true
               }
             }
           ]),
@@ -56,7 +56,7 @@ module.exports = (env) => {
             {
               loader: 'css-loader',
               options: {
-                  sourceMap: true
+                sourceMap: true
               }
             },
           ])
@@ -74,7 +74,7 @@ module.exports = (env) => {
       ]
     },
     resolve: {
-      extensions: [".js", ".json", ".scss", ".css"],
+      extensions: ['.js', '.json', '.scss', '.css'],
     },
     devtool: production ? 'source-map' : 'cheap-module-eval-source-map'
   };
@@ -87,8 +87,8 @@ module.exports = (env) => {
         filename: 'webpack-bundles.json'
       }),
       new MiniCssExtractPlugin({
-        filename: "[name]-[contenthash].css",
-        chunkFilename: "[id].css"
+        filename: '[name]-[contenthash].css',
+        chunkFilename: '[id].css'
       })
     ];
   } else {
@@ -98,8 +98,8 @@ module.exports = (env) => {
         filename: 'webpack-dev-bundles.json'
       }),
       new MiniCssExtractPlugin({
-        filename: "[name].css",
-        chunkFilename: "[id].css"
+        filename: '[name].css',
+        chunkFilename: '[id].css'
       })
     ];
 
