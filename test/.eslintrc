@@ -1,0 +1,6 @@
+{
+  "globals": {
+    "assert": false,
+    "fixtures": false
+  }
+}
