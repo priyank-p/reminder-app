@@ -57,5 +57,6 @@ global.migrations = require('./test-migration-helpers');
     await global.migrations.resetTestDB();
     const test = require(file);
     await test();
+    await migrations.removeAllRows();
   }
 })();

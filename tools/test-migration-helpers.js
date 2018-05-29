@@ -39,8 +39,18 @@ async function run_migrations_upto(num) {
   }
 }
 
+// must be called after migrations are ran!
+async function removeAllRows() {
+  const { db } = env['reminder-db'];
+  const allRows = await db.getAllRows('reminders');
+  for (let row in allRows) {
+    await db.deleteRow('reminders', allRows[row].id);
+  }
+}
+
 module.exports = {
   resetTestDB,
   run_migration,
-  run_migrations_upto
+  run_migrations_upto,
+  removeAllRows
 };
