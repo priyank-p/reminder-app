@@ -12,7 +12,7 @@ const runOpts = {
 console.log('Running all the tests...');
 async function testAll() {
   await Promise.all([
-    run('node node_modules/.bin/eslint .', runOpts),
+    run('node node_modules/.bin/eslint . --cache --cache-location=var/.eslintcache', runOpts),
     run('node tools/test-npm-dependencies', runOpts),
     run('node tools/run-tests', runOpts),
     run('node tools/test-migrations', runOpts)

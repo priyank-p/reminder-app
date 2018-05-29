@@ -41,7 +41,7 @@
     "prod": "npm run build && node tools/run-migrations && node app",
     "test": "./tools/test-all",
     "migrations": "./tools/run-migrations -d",
-    "lint": "eslint ."
+    "lint": "eslint . --cache --cache-location=var/.eslintcache"
   },
   "nyc": {
     "report-dir": "var/nyc",
