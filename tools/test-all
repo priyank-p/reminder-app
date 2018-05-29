@@ -20,9 +20,11 @@ function run(cmd) {
 
 console.log('Running all the tests...');
 async function testAll() {
-  await run('./test-npm-dependencies');
-  await run('./run-tests');
-  await run('./test-migrations');
+  await Promise.all([
+    run('./test-npm-dependencies'),
+    run('./run-tests'),
+    run('./test-migrations')
+  ]);
 }
 
 testAll()
