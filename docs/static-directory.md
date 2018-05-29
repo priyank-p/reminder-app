@@ -20,7 +20,6 @@ some of which are named pretty in a self-explantory way:
   which we can require anywhere in templates, like `{{> partial-name-without-.hbs.extension }}`. Its possible
   to use handlebars helpers here, all the helpers are currently located at `app/handlebars-helpers.js` files,
   if you want to add one you will need to create the helper there and export it.
-  <!-- TODO: Add a note about render_bundle handlebars helper. -->
 
   * `static/webpack-bundles` - created when you run `npm run build`, holds all the created frontend
   files by webpack, all the files will have sourcemaps, and hashes in files names. The file name are updated
@@ -39,3 +38,24 @@ directory of project. We organized the webpack entry point in `tools/webpack.ent
 file.
 
 The webpack process, handle both `css` or `scss` and `js` files.
+
+## Rendering webpack bundles
+
+To render new webpack bundles, you will need to use a handlebars helper called
+`render_bundles` this accepts two arguments, the first one is webpack bundle name
+from `tools/webpack.entries.js` and the other argument which is optional the html
+attributes to add. And the call must be inside handlebars triple braces `{{{` since
+it addes html,  so we will want it to be unescaped.
+
+This `render_bundle` helpers handle couple of thing, it can also render html, css
+as `<script>` and `<link>`. It also support muliple files in one entry so its possible
+to render both `css`, `js` mixed bundle. It will adjust the link to have hash file name
+in production.
+
+```
+// to render a webpack bundle called "main"
+{{{ render_bundle 'main' 'async' }}}
+
+// would lead to this output
+<script src="<link>" async></script>
+```
