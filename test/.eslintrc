@@ -1,6 +1,8 @@
 {
   "globals": {
     "assert": false,
-    "fixtures": false
+    "fixtures": false,
+    "migrations": false,
+    "env": false
   }
 }
