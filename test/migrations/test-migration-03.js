@@ -23,7 +23,16 @@ async function test_row_are_escaped_after_migration() {
   assert.deepEqual(escapeHTML(row.reminder), reminderRow.reminder);
 }
 
+async function migration_runs_sucessfully_with_no_rows() {
+  const { db } = env['reminder-db'];
+  const levelDB = db.db;
+
+  await levelDB.del('reminders');
+  await migrations.run_migration(3);
+}
+
 module.exports = async function() {
   await prep_for_migration();
   await test_row_are_escaped_after_migration();
+  await migration_runs_sucessfully_with_no_rows();
 };
