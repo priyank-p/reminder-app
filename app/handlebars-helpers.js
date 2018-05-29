@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const dateFormat = require('dateformat');
 const env = require('./env');
 
 const { development } = env;
@@ -59,8 +60,19 @@ function preserve_whitespace(html) {
   return html.replace(/\n/g, '<br>');
 }
 
+function format_due_date(date) {
+  if (date === '') {
+    return;
+  }
+
+  let due_date = dateFormat(date, 'shortDate');
+  due_date += ' ' + dateFormat(date, 'h:mm TT');
+  return due_date;
+}
+
 module.exports = {
   render_bundle,
+  format_due_date,
   preserve_whitespace,
   __updateBundle
 };
