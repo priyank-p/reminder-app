@@ -1,7 +1,4 @@
-async function prep() {
-  // await migrations.run_migration(0);
-  // await migrations.run_migration(1);
-
+async function prepare_for_test() {
   await migrations.run_migrations_upto(1);
 }
 
@@ -22,6 +19,6 @@ async function test_migration_02() {
 }
 
 module.exports = async function() {
-  await prep();
+  await prepare_for_test();
   await test_migration_02();
 };
