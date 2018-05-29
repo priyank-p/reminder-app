@@ -11,7 +11,7 @@ function readJSON(filePath) {
 }
 
 const filePath = development ?
-    '../var/webpack-dev-bundles.json' : '../var/webpack-bundles.json';
+  '../var/webpack-dev-bundles.json' : '../var/webpack-bundles.json';
 let webpackStats = readJSON(filePath);
 let { chunks: webpackChunks } = webpackStats;
 
