@@ -2,28 +2,20 @@
 'use strict';
 
 const path = require('path');
-const _run = require('./run');
+const run = require('./run');
 
-/*
-  Simple wrapper to run:
-    ./run-tests as
-    /full/path/to/run-tests
-*/
-function run(cmd) {
-  if (cmd.startsWith('./')) {
-    cmd = path.join(__dirname, cmd);
-    return _run(cmd);
-  }
-
-  return _run(cmd);
-}
+const ROOT_DIR = path.resolve(__dirname, '../');
+const runOpts = {
+  cwd: ROOT_DIR
+};
 
 console.log('Running all the tests...');
 async function testAll() {
   await Promise.all([
-    run('./test-npm-dependencies'),
-    run('./run-tests'),
-    run('./test-migrations')
+    run('./node_modules/.bin/eslint .', runOpts),
+    run('./tools/test-npm-dependencies', runOpts),
+    run('./tools/run-tests', runOpts),
+    run('./tools/test-migrations', runOpts)
   ]);
 }
 
