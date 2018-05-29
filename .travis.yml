@@ -9,4 +9,8 @@ cache:
     - node_modules
 
 script:
-  - ./tools/test-all
+  - npm run coverage
+
+after_success:
+  - npm i codecov
+  - nyc report --reporter=lcov > codecov.info && codecov
