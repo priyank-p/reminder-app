@@ -6,6 +6,6 @@ try {
   if (version.MIGRATION_VERSION === migrationVersion) {
     needToMigrate = false;
   }
-} catch(e) {}
+} catch(e) {} // eslint-disable-line no-empty
 
 module.exports = needToMigrate;

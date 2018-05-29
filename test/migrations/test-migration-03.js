@@ -6,7 +6,6 @@ async function prep_for_migration() {
 
 async function test_row_are_escaped_after_migration() {
   const { db } = env['reminder-db'];
-  const levelDB = db.db;
 
   const row = {
     title: '<h1>title</h1>',
