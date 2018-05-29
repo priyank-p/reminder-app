@@ -1,6 +1,6 @@
 # var directory
 
-This directory, ignore by git, hold all the devlopement
+This directory, ignore by git, hold all the development
 and app data, such as database and webpack files.
 
 Things stored in `var/` directory:
