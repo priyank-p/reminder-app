@@ -9,3 +9,4 @@ Things stored in `var/` directory:
   - `webpack-bundles.json` and/or `webpack-dev-bundles.json` to track
   webpack bundles, used by `render_bundle`, handlebars helper.
   - Lastly, `version.js` file use to keep track of migration or other versions.
+  - `.eslintcache` is also stored in var, which makes linting a lot faster.
