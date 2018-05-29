@@ -8,10 +8,10 @@ const needToMigrate = require('./migration-status');
 
 const ROOT_DIR = path.resolve(__dirname, '../');
 
-env.setEnv('mode', 'devlopment');
+env.setEnv('mode', 'development');
 (async function dev_server() {
   if (needToMigrate) {
-    await run('./run-migrations --devlopment');
+    await run('./run-migrations --development');
   }
 
   let cmd = 'npx nodemon tools/dev-server.js';
