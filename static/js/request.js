@@ -1,12 +1,3 @@
-function get(url, headers = {}) {
-  const request = new Request(url, {
-    method: 'GET',
-    headers: new Headers(headers)
-  });
-
-  return fetch(request);
-}
-
 const defaultPostHeaders = {
   'Content-Type': 'application/json'
 };
@@ -42,5 +33,4 @@ function deleteReq(url, opts = {}) {
 module.exports = {
   delete: deleteReq,
   post,
-  get
 };
