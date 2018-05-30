@@ -1,6 +1,6 @@
 # Reminder App Docs
 
-Reminder App - still under devlopment reminder app.
+Reminder App - still under development reminder app.
 
 ### What does reminder-app use?
 

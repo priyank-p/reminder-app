@@ -4,7 +4,7 @@ const env = require('./env');
 const args = argparser(`
 Run rapp server.
 
---dev, -d    Launch in devlopment mode
+--dev, -d    Launch in development mode
 `);
 
 args.add('--dev', { alias: '-d', type: 'boolean', default: false });
@@ -14,7 +14,7 @@ env.setEnv('development', args.dev);
 env.setEnv('production', !args.dev);
 
 if (env.development) {
-  env.setEnv('mode', 'devlopment');
+  env.setEnv('mode', 'development');
 }
 
 // load all the app  modules later once
@@ -43,7 +43,7 @@ app.listen(port, () => {
   console.log(`Server started on port: ${port}`);
 });
 
-// if devlopment respond to /webpack from webpack-dev-server
+// if development respond to /webpack from webpack-dev-server
 if (env.development) {
   const proxy = require('http-proxy-middleware');
   const host = process.env.HOST || 'localhost';

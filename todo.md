@@ -1,6 +1,6 @@
 # Todo list for the project.
 
-- [ ] Investigate webpack flakes during devlopment.
+- [ ] Investigate webpack flakes during development.
 - [ ] Write browser extensions for quickly adding reminder from toolbar
       while still using reminder app in background, this should be done using
       something like cross browser WebExtensions.
