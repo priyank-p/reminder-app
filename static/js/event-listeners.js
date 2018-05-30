@@ -40,7 +40,7 @@ reminderForm.addEventListener('submit', function (e) {
   }
 
   delete reminder.due_time;
-  request.post('/api/reminders/add', reminder)
+  request.post('/api/reminders/add', { body: reminder })
     .then(() => {
       window.location.reload();
     });
@@ -95,7 +95,7 @@ reminders.addEventListener('click', (e) => {
   if (el.classList.contains('delete-reminder')) {
     const reminder = el.parentElement;
     const id = reminder.getAttribute('data-id');
-    request.delete(`/api/reminders/delete/${id}`)
+    request.post(`/api/reminders/delete/${id}`, { method: 'DELETE' })
       .then(() => {
         reminder.parentElement.removeChild(reminder);
       });
