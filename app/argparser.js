@@ -38,7 +38,7 @@ class ArgParser {
 
     args.forEach((arg, index) => {
       /* istanbul ignore if: can't test for console.log */
-      if (arg === 'help' || arg === '-h') {
+      if (arg === 'help' || arg === '--help' || arg === '-h') {
         console.log(this.helpText);
         process.exit(0);
       }
