@@ -189,3 +189,16 @@ div.no-reminders {
   vertical-align: middle;
   text-align: center;
 }
+
+form .dropdown-section .quick-choose {
+  margin-bottom: 10px;
+  padding-left: 10px;
+
+  input {
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    margin: initial !important;
+    width: 65px !important;
+  }
+}
