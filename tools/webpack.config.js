@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpackEntries = require('./webpack-entries');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
-const port = +process.env.PORT + 1 || 7213;
+const port = +process.env.PORT + 1 || 7214;
 const host = process.env.HOST || 'localhost';
 const { ALLOWED_HOSTS } = process.env;
 const allowedHosts = ALLOWED_HOSTS ? [ALLOWED_HOSTS] : undefined;
