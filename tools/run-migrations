@@ -15,7 +15,7 @@ The database will not work unless migration are not applied.
 
 Flags:
   --production, -p   Runs the migrations on production db. [default]
-  --development, -d          Runs migrations on devlopment db.
+  --development, -d          Runs migrations on development db.
   --test, -t         Runs migrations on test db.
 `);
 
