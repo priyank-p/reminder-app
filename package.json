@@ -36,7 +36,7 @@
     "webpack-dev-server": "3.1.4"
   },
   "scripts": {
-    "dev": "nodemon tools/dev-server --config tools/nodemon.json",
+    "dev": "./tools/dev-server",
     "build": "webpack --config tools/webpack.config.js -p --env production",
     "coverage": "nyc ./tools/test-all",
     "prod": "npm run build && node tools/run-migrations && node app",
