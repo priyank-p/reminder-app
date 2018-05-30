@@ -1,5 +1,6 @@
 # Todo list for the project.
 
+- [ ] Investigate webpack flakes during devlopment.
 - [ ] After thinking about the first model, we will need a settings
       page to customize diffrent stuff, ie alert types though not everything
       should be in settings or in working order until proper backend db is set.
