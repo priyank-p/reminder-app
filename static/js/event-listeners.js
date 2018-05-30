@@ -88,3 +88,16 @@ quickDueDatePicker.addEventListener('input', (e) => {
   const el = e.target;
   setDueDate(el.value);
 });
+
+const reminders = $('.reminders');
+reminders.addEventListener('click', (e) => {
+  const el = e.target;
+  if (el.classList.contains('delete-reminder')) {
+    const reminder = el.parentElement;
+    const id = reminder.getAttribute('data-id');
+    request.delete(`/api/reminders/delete/${id}`)
+      .then(() => {
+        reminder.parentElement.removeChild(reminder);
+      });
+  }
+});
