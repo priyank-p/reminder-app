@@ -96,7 +96,7 @@ main {
 
   input:focus, textarea:focus {
     outline: none;
-    border-color: teal;
+    border-color: $theme-color;
   }
 
   input {
