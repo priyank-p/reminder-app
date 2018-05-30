@@ -13,7 +13,6 @@ async function test_db_table_created() {
     'title',
     'reminder',
     'due_date',
-    'due_time',
     'create_at'
   ];
   assert.deepEqual(Object.keys(InternalProps.tables.reminders), expectedRows);
