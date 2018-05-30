@@ -25,4 +25,5 @@ testAll()
 })
 .catch(() => {
   console.log('Some test failed, check traceback above for more details.');
+  process.exit(1);
 });
