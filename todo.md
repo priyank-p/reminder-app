@@ -1,6 +1,9 @@
 # Todo list for the project.
 
 - [ ] Investigate webpack flakes during devlopment.
+- [ ] Write browser extensions for quickly adding reminder from toolbar
+      while still using reminder app in background, this should be done using
+      something like cross browser WebExtensions.
 - [ ] After thinking about the first model, we will need a settings
       page to customize diffrent stuff, ie alert types though not everything
       should be in settings or in working order until proper backend db is set.
