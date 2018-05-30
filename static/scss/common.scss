@@ -77,7 +77,7 @@ input, textarea {
   color: $error-red;
 }
 
-@mixin scrollbars($size, $background-color) {
+@mixin custom-scrollbar($size, $background-color) {
   ::-webkit-scrollbar {
     width:  $size;
     height: $size;
@@ -93,5 +93,5 @@ input, textarea {
 }
 
 html, body {
-  @include scrollbars(10px, grey);
+  @include custom-scrollbar(10px, grey);
 }
