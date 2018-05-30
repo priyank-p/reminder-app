@@ -7,6 +7,7 @@ const env = require('../app/env');
 const needToMigrate = require('./migration-status');
 
 const ROOT_DIR = path.resolve(__dirname, '../');
+const argparser = require('../app/argparser');
 
 env.setEnv('mode', 'development');
 (async function dev_server() {
@@ -14,7 +15,7 @@ env.setEnv('mode', 'development');
     await run('./run-migrations --development');
   }
 
-  let cmd = 'npx nodemon tools/dev-server.js';
-  cmd += ' --config tools/nodemon.json';
+  let cmd = 'npx nodemon --config tools/nodemon.json';
+  cmd += ' tools/dev-server.js -- ' + process.argv.splice(2).join(' ');
   run(cmd, { cwd: ROOT_DIR });
 })();
