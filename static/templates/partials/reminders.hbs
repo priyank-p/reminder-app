@@ -2,6 +2,7 @@
   {{#each reminders}}
     <div class="reminder" data-id="{{ id }}" title="{{ title }}">
       <div class="title">{{title}}</div>
+      <div class="delete-reminder fas fa-minus-circle"></div>
       <div class="content">{{{preserve_whitespace reminder}}}</div>
       <div class="due-date">{{format_due_date due_date}}</div>
     </div>

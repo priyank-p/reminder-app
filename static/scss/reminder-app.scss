@@ -143,6 +143,7 @@ main {
   height: auto;
   max-width: 320px;
   margin: 10px;
+  position: relative;
 
   * {
     font-family: $fonts;
@@ -156,7 +157,18 @@ main {
   .title {
     font-size: 16px;
     max-height: 30px;
+    margin-right: 20px;
     @extend .handle-text-overflow;
+  }
+
+  .delete-reminder {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 9px;
+    margin-right: 2px;
+    font-size: 20px;
+    color: #b50107;
   }
 
   .content {
