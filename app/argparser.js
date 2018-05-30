@@ -40,7 +40,7 @@ class ArgParser {
       /* istanbul ignore if: can't test for console.log */
       if (arg === 'help' || arg === '-h') {
         console.log(this.helpText);
-        return;
+        process.exit(0);
       }
 
       if (!this.isArg(arg)) {
