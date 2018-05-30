@@ -16,8 +16,7 @@ function post(url, body, _headers = {}) {
   const request = new Request(url, {
     method: 'POST',
     headers: new Headers(headers),
-    body: JSON.stringify(body),
-    ...opts
+    body: JSON.stringify(body)
   });
 
   return fetch(request);
