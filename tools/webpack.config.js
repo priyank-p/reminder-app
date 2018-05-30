@@ -27,7 +27,7 @@ module.exports = (env) => {
     output: {
       publicPath: '/static/webpack-bundles/',
       path: path.join(ROOT_DIR, '/static/webpack-bundles'),
-      filename: production ? '[name]-[hash].js' : '[name].js',
+      filename: production ? '[name]-[chunkhash].js' : '[name].js',
     },
     module: {
       rules: [
