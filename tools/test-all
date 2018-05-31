@@ -22,7 +22,7 @@ async function testAll() {
   }
 
   await Promise.all([
-    run('node node_modules/.bin/eslint . --cache --cache-location=var/.eslintcache', runOpts),
+    run('npx eslint . --cache --cache-location=var/.eslintcache', runOpts),
     run('node tools/test-npm-dependencies', runOpts),
     run('node tools/run-tests', runOpts),
     run('node tools/test-migrations', runOpts)
