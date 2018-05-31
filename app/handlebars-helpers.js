@@ -7,7 +7,19 @@ const { development } = env;
 function readJSON(filePath) {
   filePath = path.resolve(__dirname, filePath);
 
-  const contents = fs.readFileSync(filePath, 'utf8');
+  let contents;
+  try {
+    contents = fs.readFileSync(filePath, 'utf8');
+  } catch(e) {
+    if (development) {
+      // we watch the files for changes,
+      // so its fine.
+      contents = {};
+    } else {
+      throw e;
+    }
+  }
+
   return JSON.parse(contents);
 }
 
