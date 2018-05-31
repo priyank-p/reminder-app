@@ -11,6 +11,7 @@ process.chdir(path.resolve(__dirname, '../'));
 
 env.setEnv('tests', true);
 env.setEnv('mode', 'test');
+env.setEnv('development', true);
 const TEST_DIR = path.resolve(__dirname, '../test');
 const args = argparser(`
 Run node tests:

@@ -2,6 +2,7 @@
 'use strict';
 
 const path = require('path');
+const fs = require('fs');
 const run = require('./run');
 
 const ROOT_DIR = path.resolve(__dirname, '../');
@@ -10,7 +11,16 @@ const runOpts = {
 };
 
 console.log('Running all the tests...');
+const webpackBundleFile = path.resolve(__dirname, '../var/webpack-dev-bundles.json');
 async function testAll() {
+  if (!fs.existsSync(webpackBundleFile)) {
+    console.log('Creating webpack bundles file...');
+    await run('npx webpack --config tools/webpack.config.js', {
+      ...runOpts,
+      silent: true
+    });
+  }
+
   await Promise.all([
     run('node node_modules/.bin/eslint . --cache --cache-location=var/.eslintcache', runOpts),
     run('node tools/test-npm-dependencies', runOpts),
