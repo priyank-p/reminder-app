@@ -9,6 +9,7 @@
       should be in settings or in working order until proper backend db is set.
 - [ ] Since leveldb is now to our db service, it needs promise support and error handling.
 - [ ] Add hotkeys for all the thing you can do
+- [ ] Use a service-worker
 - [ ] Add push notification support for due notifications.
 - [ ] Setup better, backup system and add a tools, to revert db from backup.
 - [ ] Setup rate limiting for request (express-rate-limiting)
@@ -34,7 +35,6 @@
 - [ ] Setup test that can run in browser using karma.
 - [ ] Design a way, so a user can configure diffrent thing
 - [ ] Create a `/settings` page to configure various stuff
-- [ ] Use a service-worker
 - [ ] Improve performace on backend
 - [ ] Improve css performance, i.e painting reflows
 - [ ] Lastly re-ogranize parts of code base and refactor.
