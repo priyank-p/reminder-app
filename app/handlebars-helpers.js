@@ -31,6 +31,15 @@ function render_bundle(bundle, attrs) {
     attrs = '';
   }
 
+  if (development && webpackChunks === undefined) {
+    return `
+      <script>
+        document.body.innerHTML = 'Looks like, webpack process is done compiling frontend assets. ';
+        document.body.innerHTML += 'Please try refreshing it couple of seconds';
+      </script>
+    `;
+  }
+
   const chunk = webpackChunks[bundle];
   if (chunk === undefined) {
     throw new Error(`bundle, ${bundle} was not built by webpack.`);
