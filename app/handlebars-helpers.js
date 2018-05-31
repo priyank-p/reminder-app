@@ -28,7 +28,7 @@ const filePath = development ?
 let webpackStats = readJSON(filePath);
 let { chunks: webpackChunks } = webpackStats;
 
-if (development) {
+if (development && env.mode !== 'test') {
   const file = path.resolve(__dirname, filePath);
   fs.watchFile(file, () => {
     webpackChunks = readJSON(file).chunks;
