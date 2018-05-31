@@ -50,6 +50,15 @@ if (env.development) {
 
   app.use('/webpack', proxy({
     target: `http://${host}:${+port + 1}`,
-    changeOrigin: true
+    changeOrigin: true,
+    onError(err, req, res) {
+      res.setHeader('Content-Type', 'applications/javascript');
+      res.send(`
+        <script>
+         document.body.innerHTML = 'Webpack process in not, yet started, please';
+         document.body.innerHTML += 'reload in couple of mintes';
+        </script>
+      `);
+    }
   }));
 }
