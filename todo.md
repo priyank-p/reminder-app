@@ -7,8 +7,6 @@
 - [ ] After thinking about the first model, we will need a settings
       page to customize diffrent stuff, ie alert types though not everything
       should be in settings or in working order until proper backend db is set.
-- [ ] Since leveldb is now to our db service, it needs promise support and error handling.
-- [ ] Add hotkeys for all the thing you can do
 - [ ] Use a service-worker
 - [ ] Add push notification support for due notifications.
 - [ ] Setup better, backup system and add a tools, to revert db from backup.
