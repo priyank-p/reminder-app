@@ -27,7 +27,7 @@ router.delete('/reminders/delete/:id', async (req, res) => {
   const id = +req.params.id;
   if (isNaN(id)) {
     res.status(500);
-    res.send('Reminder id to delete must be passed in, must be valid integer');
+    res.send('Reminder id to delete must be passed in, and must be valid integer');
     return;
   }
 
@@ -37,7 +37,7 @@ router.delete('/reminders/delete/:id', async (req, res) => {
     })
     .catch(() => {
       res.status(500);
-      res.send(`Cannot delete reminder with id: ${id} that is not added!`);
+      res.send(`Cannot delete reminder with id: ${id} that is not added yet!`);
     });
 });
 
