@@ -94,7 +94,7 @@ function getCountTracker() {
 })();
 
 (function test_reEnabling_not_added_hotkey() {
-  // first amke sure it not yet disabled!
+  // first make sure it not yet disabled!
   assert.deepStrictEqual(_disabledHotkeys['Not_Added'], undefined);
   assert.throws(() => {
     hotkeys.reEnableHotkey('Not_Added');
