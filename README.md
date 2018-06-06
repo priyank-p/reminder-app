@@ -6,6 +6,7 @@ Install the npm dependencies using `npm i` if you haven't already then:
 ```bash
 node tools/dev-server
 
-# if on unix you can also do
+# if on unix you can also do, which works for almost
+# most of our tools in tools/
 ./tools/dev-server
 ```
