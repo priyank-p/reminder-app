@@ -12,4 +12,6 @@ module.exports = {
   db
 };
 
-env.setEnv('reminder-db', module.exports);
+if (env.tests) {
+  env.setEnv('reminder-db', module.exports);
+}
