@@ -5,15 +5,17 @@
 const { db, tableName } = require('../reminders-db');
 
 async function migrate_00_reminder_db() {
-  await db.waitUntilReady();
-
-  if (!db.hasTable(tableName)) {
-    await db.createTable(tableName);
-    await db.addField(tableName, 'title', { type: String, required: true });
-    await db.addField(tableName, 'reminder', { type: String, required: true });
-    await db.addField(tableName, 'due_date', { type: Date });
-    await db.addField(tableName, 'create_at', { type: Date, timestamp: true });
+  const tableAdded = await db.hasTable(tableName);
+  if (tableAdded) {
+    return;
   }
+
+  const reminders = await db.createTable(tableName);
+  const { types } = db;
+  await reminders.addField({ name: 'title', type: types.string, required: true });
+  await reminders.addField({ name: 'reminder', type: types.string, required: true });
+  await reminders.addField({ name:'due_date',  type: types.date });
+  await reminders.addField({ name: 'create_at', type: types.date, default: Date.now });
 }
 
 module.exports = migrate_00_reminder_db;
