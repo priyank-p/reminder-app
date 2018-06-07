@@ -42,7 +42,7 @@ async function run_migrations_upto(num) {
 // must be called after migrations are ran!
 async function removeAllRows() {
   const { db } = global.env['reminder-db'];
-  const allRows = await db.getAllRows('reminders');
+  const allRows = await db.getRows('reminders');
   for (let row in allRows) {
     await db.deleteRow('reminders', allRows[row].id);
   }
