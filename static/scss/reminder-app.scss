@@ -181,6 +181,7 @@ main {
     margin: 3px 0;
     white-space: pre-line;
   }
+
   .edit-content {
     top: 35px;
     width: 93.5%;
@@ -248,6 +249,7 @@ form .dropdown-section .quick-choose {
 
 .context-menu {
   position: relative;
+  z-index: 2; // when edit ui is not hidden we need this to be on top
   padding: 0;
 
   .context-menu-button {
