@@ -12,7 +12,6 @@ const db = new Uplevel(DB_PATH);
 const reminders = new Uplevel.UplevelTableInstance(db, 'reminders');
 
 module.exports = {
-  tableName: 'reminders',
   reminders,
   db
 };
