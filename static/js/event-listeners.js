@@ -93,7 +93,8 @@ const reminders = $('.reminders');
 reminders.addEventListener('click', (e) => {
   const el = e.target;
   if (el.classList.contains('delete-reminder')) {
-    const reminder = el.parentElement;
+    const reminder = el.parentElement.parentElement.parentElement;
+    console.log(reminder);
     const id = reminder.getAttribute('data-id');
     request.post(`/api/reminders/delete/${id}`, { method: 'DELETE' })
       .then(() => {
