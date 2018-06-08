@@ -254,6 +254,10 @@ form .dropdown-section .quick-choose {
       color: white;
     }
   }
+
+  .menu.show {
+    display: block;
+  }
 }
 
 .menu .delete-reminder:hover {

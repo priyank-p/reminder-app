@@ -89,10 +89,14 @@ quickDueDatePicker.addEventListener('input', (e) => {
   setDueDate(el.value);
 });
 
+function hasClass(el, _class) {
+  return el.classList.contains(_class);
+}
+
 const reminders = $('.reminders');
 reminders.addEventListener('click', (e) => {
   const el = e.target;
-  if (el.classList.contains('delete-reminder')) {
+  if (hasClass(el, 'delete-reminder')) {
     const reminder = el.parentElement.parentElement.parentElement;
     console.log(reminder);
     const id = reminder.getAttribute('data-id');
@@ -101,4 +105,17 @@ reminders.addEventListener('click', (e) => {
         reminder.parentElement.removeChild(reminder);
       });
   }
+
+  if (hasClass(el, 'context-menu-button')) {
+    const menu = el.parentElement.querySelector('.menu');
+    menu.classList.toggle('show');
+    e.stopPropagation();
+    return false;
+  }
+});
+
+document.body.addEventListener('click', () => {
+  $('.menu.show', 'nodelist').forEach(el => {
+    el.classList.remove('show');
+  });
 });
