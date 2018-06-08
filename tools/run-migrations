@@ -31,8 +31,10 @@ if (args.test || args.development) {
 
   // create a backup for production db.
   const DB_PATH = path.resolve(__dirname, '../var/reminder-app');
-  const DB_BACKUP = path.resolve(__dirname, '../var/backup/reminder-app');
-  fsExtra.copySync(DB_PATH, DB_BACKUP);
+  if (fs.existsSync(DB_PATH)) {
+    const DB_BACKUP = path.resolve(__dirname, '../var/backup/reminder-app');
+    fsExtra.copySync(DB_PATH, DB_BACKUP);
+  }
 }
 
 const readdir = promisify(fs.readdir);
