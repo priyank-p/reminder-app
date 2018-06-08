@@ -33,11 +33,8 @@ async function getReminders() {
   return reminders;
 }
 
-async function updateReminder(updatedReminder) {
+async function updateReminder(id, updatedReminder) {
   const reminders = await db.getTableInstance(tableName);
-  const id = updatedReminder.id;
-  delete updatedReminder[id];
-
   await reminders.updateRow(id, updatedReminder);
 }
 
