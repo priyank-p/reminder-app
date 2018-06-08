@@ -27,6 +27,7 @@ main {
   position: fixed;
   height: $size;
   width: $size;
+  z-index: 4;
   display: inline-block;
   color: #fff;
   background-color: $theme-color;
@@ -60,6 +61,7 @@ main {
 #add-reminder-modal {
   display: none;
   cursor: pointer;
+  z-index: 5;
   position: fixed;
   overflow: auto;
   top: 0;
@@ -67,7 +69,6 @@ main {
   width: 100%;
   height: 100%;
   background-color: #4c4c4c7d;
-  z-index: 1;
 
   form {
     cursor: initial;
