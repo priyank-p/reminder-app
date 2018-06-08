@@ -164,18 +164,48 @@ main {
     max-height: 145px;
   }
 
-  .title {
+  .title .edit-title {
     font-size: 16px;
     max-height: 30px;
     margin-right: 20px;
     @extend .handle-text-overflow;
   }
 
-  .content {
+  .edit-title {
+    top: 5;
+  }
+
+  .content .edit-content {
     display: inline-table;
     line-height: 1.5;
     margin: 3px 0;
     white-space: pre-line;
+  }
+  .edit-content {
+    top: 33px;
+    width: 93.5%;
+    resize: none;
+    position: absolute;
+    z-index: 1;
+    border: none !important;
+    height: 30%;
+    overflow: hidden;
+  }
+
+  .edit {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    border: none !important;
+  }
+
+  .edit.show {
+    display: block;
+  }
+
+  .edit:focus {
+    outline: none;
+    border-bottom: 1px solid $theme-color;
   }
 
   .due-date {
