@@ -8,7 +8,14 @@
   </head>
   <body>
     <header>Reminder App</header>
-    <main>{{> main-partial }}</main>
+    <main>
+      {{> reminders}}
+
+      <button id="add-reminder-btn">+</button>
+      {{!-- Add reminder form --}}
+      {{> add-reminder-form }}
+    </main>
+
     {{{ render_bundle 'main' }}}
   </body>
 <html>
