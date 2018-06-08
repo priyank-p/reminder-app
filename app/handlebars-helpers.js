@@ -81,6 +81,10 @@ function preserve_whitespace(html) {
   return html.replace(/\n/g, '<br>');
 }
 
+function replace_with_newlines(text) {
+  return text.replace(/\n/g, '\\n');
+}
+
 function format_due_date(date) {
   if (date === '') {
     return;
@@ -95,5 +99,6 @@ module.exports = {
   render_bundle,
   format_due_date,
   preserve_whitespace,
+  replace_with_newlines,
   __updateBundle
 };
