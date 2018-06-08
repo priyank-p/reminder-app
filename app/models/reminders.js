@@ -1,5 +1,5 @@
 const escapeHTML = require('escape-html');
-const { db, tableName } = require('./reminders-db');
+const { reminders } = require('./reminders-db');
 
 function validateReminder(fields) {
   for (let field in fields) {
@@ -25,25 +25,23 @@ function validateReminder(fields) {
 
 async function addReminder(fields) {
   fields = validateReminder(fields);
-  await db.addRow(tableName, fields);
+  await reminders.addRow(fields);
 }
 
 async function getReminders() {
-  const reminders = await db.getRows(tableName);
-  return reminders;
+  const rows = await reminders.getRows();
+  return rows;
 }
 
 async function updateReminder(id, updatedReminder) {
-  const reminders = await db.getTableInstance(tableName);
   await reminders.updateRow(id, updatedReminder);
 }
 
 async function deleteReminder(id) {
-  await db.deleteRow(tableName, id);
+  await reminders.deleteRow(id);
 }
 
 module.exports = {
-  db,
   addReminder,
   getReminders,
   updateReminder,
