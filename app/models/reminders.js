@@ -1,7 +1,7 @@
 const escapeHTML = require('escape-html');
 const { db, tableName } = require('./reminders-db');
 
-async function addReminder(fields) {
+function validateReminder(fields) {
   for (let field in fields) {
     if (field === 'due_date') {
       continue;
@@ -20,6 +20,11 @@ async function addReminder(fields) {
     fields[field] = sanatized;
   }
 
+  return fields;
+}
+
+async function addReminder(fields) {
+  fields = validateReminder(fields);
   await db.addRow(tableName, fields);
 }
 
