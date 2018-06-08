@@ -2,7 +2,14 @@
   {{#each reminders}}
     <div class="reminder" data-id="{{ id }}" title="{{ title }}">
       <div class="title">{{title}}</div>
-      <div class="delete-reminder fas fa-minus-circle"></div>
+
+      <div class="context-menu">
+        <div class="context-menu-button fas fa-ellipsis-v"></div>
+        <div class="menu">
+          <div class="delete-reminder">Delete Reminder</div>
+        </div>
+      </div>
+
       <div class="content">{{{preserve_whitespace reminder}}}</div>
       <div class="due-date">{{format_due_date due_date}}</div>
     </div>
@@ -12,8 +19,7 @@
   {{#unless reminders}}
     <h4 class="no-reminders">No reminder(s) have been added yet!</h4>
     <div class="no-reminders">
-      Go Ahead, and click `a` or click the add button on
-      bottom-right corner, to open add reminder modal, and add a reminder.
+      Go Ahead, and click `a` or click the add button on bottom-right corner, to open add reminder modal, and add a reminder.
     </div>
   {{/unless}}
 </div>
