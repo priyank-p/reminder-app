@@ -10,10 +10,8 @@
     <header>Reminder App</header>
     <main>
       {{> reminders}}
-
-      <button id="add-reminder-btn">+</button>
-      {{!-- Add reminder form --}}
       {{> add-reminder-form }}
+      <button id="add-reminder-btn">+</button>
     </main>
 
     {{{ render_bundle 'main' }}}
