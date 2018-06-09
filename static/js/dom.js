@@ -1,4 +1,4 @@
-function $(sel, type) {
+export function $(sel, type) {
   const els = document.querySelectorAll(sel);
   if (type === 'nodelist') {
     return els;
@@ -10,7 +10,3 @@ function $(sel, type) {
 
   return els;
 }
-
-module.exports = {
-  $
-};
