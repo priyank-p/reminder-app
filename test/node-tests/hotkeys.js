@@ -14,7 +14,13 @@ const hotkeys = require('../../static/js/hotkeys');
 const {
   _hotkeys, _checkHotkeys, _disabledHotkeys
 } = hotkeys;
+
 const noop = () => {};
+const target = {
+  target: {
+    tagName: 'DIV'
+  }
+};
 
 (function test_addHotkeys_function() {
   hotkeys.addHotkey('Ctrl+P', noop);
@@ -48,13 +54,18 @@ function getCountTracker() {
   assert.deepStrictEqual(_hotkeys['a'], singleHotkey.handler);
   assert.deepStrictEqual(_hotkeys['Control+a'], comboHotkey.handler);
 
-  _checkHotkeys({ key: 'a' });
+  _checkHotkeys({ key: 'a', ...target });
   assert.deepStrictEqual(hotkeys._previousKeypress, 'a');
 
-  _checkHotkeys({ key: 'Control' });
+  _checkHotkeys({ key: 'Control', ...target });
   assert.deepStrictEqual(hotkeys._previousKeypress, 'Control');
-  _checkHotkeys({ key: 'a' });
+  _checkHotkeys({ key: 'a', ...target });
   assert.deepStrictEqual(hotkeys._previousKeypress, 'a');
+
+  // check that hotkeys are not triggred if
+  // it input or textarea
+  _checkHotkeys({ key: 'a', target: { tagName: 'INPUT' } });
+  _checkHotkeys({ key: 'a', target: { tagName: 'TEXTAREA' } });
 
   // check that each of the function is **only** called once
   assert.deepStrictEqual(singleHotkey.count, 1);
@@ -67,8 +78,8 @@ function getCountTracker() {
   hotkeys.disableHotkey('Ctrl+D');
 
   // trigger hotkey: Ctrl+D
-  _checkHotkeys({ key: 'Control' });
-  _checkHotkeys({ key: 'D' });
+  _checkHotkeys({ key: 'Control', ...target });
+  _checkHotkeys({ key: 'D', ...target });
 
   const isDisabled = hotkeys.isHotkeyDisabled('Ctrl+D');
   assert.deepStrictEqual(called, false);
@@ -79,14 +90,14 @@ function getCountTracker() {
   let called = false;
   hotkeys.addHotkey('d', () => { called = true; });
   hotkeys.disableHotkey('d');
-  _checkHotkeys({ key: 'd' });
+  _checkHotkeys({ key: 'd', ...target });
 
   let isDisabled = hotkeys.isHotkeyDisabled('d');
   assert.deepStrictEqual(called, false);
   assert.deepStrictEqual(isDisabled, true);
 
   hotkeys.reEnableHotkey('d');
-  _checkHotkeys({ key: 'd' });
+  _checkHotkeys({ key: 'd', ...target });
   isDisabled = hotkeys.isHotkeyDisabled('d');
 
   assert.deepStrictEqual(called, true);

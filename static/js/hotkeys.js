@@ -43,6 +43,13 @@ function isHotkeyDisabled(hotkey) {
 }
 
 function checkHotkeys(e) {
+  // we don't want to trigger an event if the
+  // user is typing something.
+  const isInputElement = /input|textarea/i;
+  if (isInputElement.test(e.target.tagName)) {
+    return;
+  }
+
   // for comboKey we don't care it previousKeypress was null
   // since hotkeys[comboKey] will not return a handler
   const currentKey = e.key;
