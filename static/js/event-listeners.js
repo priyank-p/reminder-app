@@ -1,4 +1,4 @@
-import { $ } from './dom';
+import $ from './dom';
 import request from './request';
 import dateFormat from 'dateformat';
 
