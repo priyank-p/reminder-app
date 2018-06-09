@@ -93,6 +93,12 @@ function hasClass(el, _class) {
   return el.classList.contains(_class);
 }
 
+function hideContextMenus() {
+  $('.menu.show', 'nodelist').forEach(el => {
+    el.classList.remove('show');
+  });
+}
+
 const reminders = $('.reminders');
 reminders.addEventListener('click', (e) => {
   const el = e.target;
@@ -107,6 +113,8 @@ reminders.addEventListener('click', (e) => {
   }
 
   if (hasClass(el, 'context-menu-button')) {
+    hideContextMenus();
+
     const menu = el.parentElement.querySelector('.menu');
     menu.classList.toggle('show');
     e.stopPropagation();
@@ -115,7 +123,5 @@ reminders.addEventListener('click', (e) => {
 });
 
 document.body.addEventListener('click', () => {
-  $('.menu.show', 'nodelist').forEach(el => {
-    el.classList.remove('show');
-  });
+  hideContextMenus();
 });
