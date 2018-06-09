@@ -1,6 +1,6 @@
-const { $ } = require('./dom');
-const request = require('./request');
-const dateFormat = require('dateformat');
+import { $ } from './dom';
+import request from './request';
+import dateFormat from 'dateformat';
 
 const reminderModal = $('#add-reminder-modal');
 const addReminderBtn = $('#add-reminder-btn');
