@@ -172,8 +172,8 @@ main {
     @extend .handle-text-overflow;
   }
 
-  .edit-title {
-    top: 6;
+  .title.hide, .content.hide {
+    display: none;
   }
 
   .content .edit-content {
@@ -184,20 +184,14 @@ main {
   }
 
   .edit-content {
-    top: 35px;
-    width: 93.5%;
+    width: 100%;
     resize: none;
-    position: absolute;
-    z-index: 1;
     border: none !important;
-    height: 30%;
-    overflow: hidden;
+    overflow-y: auto;
   }
 
   .edit {
     display: none;
-    position: absolute;
-    z-index: 1;
     border: none !important;
   }
 

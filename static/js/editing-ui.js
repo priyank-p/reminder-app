@@ -5,15 +5,22 @@ function getEditElements(id) {
   const reminder = $(selector);
 
   const editElements = reminder.querySelectorAll('.edit');
-  return editElements;
+  const reminderElements = [
+    reminder.querySelector('.title'),
+    reminder.querySelector('.content')
+  ];
+
+  return [ editElements, reminderElements ];
 }
 
 export function showEditingUI(reminderId) {
-  const editElements = getEditElements(reminderId);
+  const [ editElements, reminderElements ] = getEditElements(reminderId);
   editElements.forEach(el => el.classList.add('show'));
+  reminderElements.forEach(el => el.classList.add('hide'));
 }
 
 export function hideEditingUI(reminderId) {
-  const editElements = getEditElements(reminderId);
+  const [ editElements, reminderElements ] = getEditElements(reminderId);
   editElements.forEach(el => el.classList.remove('show'));
+  reminderElements.forEach(el => el.classList.remove('hide'));
 }
