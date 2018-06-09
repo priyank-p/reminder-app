@@ -1,4 +1,4 @@
-export function $(sel, type) {
+export default function $(sel, type) {
   const els = document.querySelectorAll(sel);
   if (type === 'nodelist') {
     return els;

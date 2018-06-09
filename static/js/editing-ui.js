@@ -1,4 +1,4 @@
-import { $ } from './dom';
+import $ from './dom';
 
 function getEditElements(id) {
   const selector = `.reminder[data-id="${id}"]`;
