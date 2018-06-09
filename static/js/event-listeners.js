@@ -1,5 +1,6 @@
 import $ from './dom';
-import request from './request';
+import * as request from './request';
+import * as editingUI from './editing-ui';
 import dateFormat from 'dateformat';
 
 const reminderModal = $('#add-reminder-modal');
@@ -102,14 +103,22 @@ function hideContextMenus() {
 const reminders = $('.reminders');
 reminders.addEventListener('click', (e) => {
   const el = e.target;
+  const reminder = el.parentElement.parentElement.parentElement;
+  const id = reminder.getAttribute('data-id');
+
   if (hasClass(el, 'delete-reminder')) {
-    const reminder = el.parentElement.parentElement.parentElement;
-    console.log(reminder);
-    const id = reminder.getAttribute('data-id');
     request.post(`/api/reminders/delete/${id}`, { method: 'DELETE' })
       .then(() => {
         reminder.parentElement.removeChild(reminder);
       });
+  }
+
+  if (hasClass(el, 'edit-reminder')) {
+    editingUI.showEditingUI(id);
+    hideContextMenus();
+
+    e.stopPropagation();
+    return false;
   }
 
   if (hasClass(el, 'context-menu-button')) {
