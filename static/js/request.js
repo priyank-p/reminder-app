@@ -2,7 +2,7 @@ const defaultPostHeaders = {
   'Content-Type': 'application/json'
 };
 
-function post(url, opts) {
+export function post(url, opts) {
   if (typeof opts.body === 'object') {
     opts.body = JSON.stringify(opts.body);
   }
@@ -17,7 +17,3 @@ function post(url, opts) {
 
   return fetch(url, requestData);
 }
-
-module.exports = {
-  post,
-};
