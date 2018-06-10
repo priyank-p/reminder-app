@@ -111,6 +111,11 @@ reminders.addEventListener('click', (e) => {
     return false;
   }
 
+  if (hasClass(el, 'update-reminder')) {
+    const updatedReminder = getReminder(reminder, { isEditingUI: true });
+    editingUI.updateReminder(id, updatedReminder);
+  }
+
   if (hasClass(el, 'cancel-editing')) {
     editingUI.hideEditingUI(id);
   }
