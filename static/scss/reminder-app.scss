@@ -198,6 +198,10 @@ main {
     margin-bottom: $margin-size;
   }
 
+  .edit.error {
+    border-color: $error-red;
+  }
+
   .edit.show {
     display: block;
   }
@@ -205,6 +209,10 @@ main {
   .edit:focus {
     outline: none;
     border-bottom: 2px solid $theme-color;
+  }
+
+  .edit.error:focus {
+    border-color: $error-red;
   }
 
   .due-date {
