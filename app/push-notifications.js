@@ -31,5 +31,6 @@ async function saveSubscription(pushSubscription) {
 }
 
 module.exports = {
+  webPushData,
   saveSubscription
 };
