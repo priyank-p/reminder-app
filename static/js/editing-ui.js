@@ -1,4 +1,5 @@
 import $ from './dom';
+import * as request from './request';
 
 function getEditElements(id) {
   const selector = `.reminder[data-id="${id}"]`;
@@ -24,4 +25,34 @@ export function hideEditingUI(reminderId) {
   const [ editElements, reminderElements ] = getEditElements(reminderId);
   editElements.forEach(el => el.classList.remove('show'));
   reminderElements.forEach(el => el.classList.remove('hide'));
+}
+
+function updateReminderElement(id, reminder) {
+  const reminderElement = $(`.reminder[data-id="${id}"]`);
+  const title = reminderElement.querySelector('.title');
+  const content = reminderElement.querySelector('.content');
+
+  title.innerText = reminder.title;
+  content.innerText = reminder.reminder;
+  hideEditingUI(id);
+}
+
+function showErrorUI() {
+  // TODO
+}
+
+export function updateReminder(id, updatedReminder) {
+  const route = `/api/reminders/update/${id}`;
+  const data = {
+    body: updatedReminder
+  };
+
+  request.post(route, data)
+    .then(() => {
+      updateReminderElement(id, updatedReminder);
+    })
+    .catch((err) => {
+      console.log(err);
+      showErrorUI(id);
+    });
 }

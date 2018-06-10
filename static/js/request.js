@@ -15,5 +15,14 @@ export function post(url, opts) {
     ...opts
   };
 
-  return fetch(url, requestData);
+  const request = fetch(url, requestData)
+    .then(res => {
+      if (!res.ok) {
+        throw Error();
+      }
+
+      return res;
+    });
+
+  return request;
 }
