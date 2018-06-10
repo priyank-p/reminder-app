@@ -4,12 +4,11 @@
 const path = require('path');
 const run = require('./run');
 const env = require('../app/env');
-const needToMigrate = require('./migration-status');
 
 const ROOT_DIR = path.resolve(__dirname, '../');
-const argparser = require('../app/argparser');
 
 env.setEnv('mode', 'development');
+const needToMigrate = require('./migration-status');
 (async function dev_server() {
   if (needToMigrate) {
     await run('./run-migrations --development');
