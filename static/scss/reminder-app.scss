@@ -186,13 +186,16 @@ main {
   .edit-content {
     width: 100%;
     resize: none;
-    border: none !important;
     overflow-y: auto;
   }
 
   .edit {
+    $margin-size: 4px;
+
     display: none;
-    border: none !important;
+    border: 1px solid #ccc;
+    margin-top: $margin-size;
+    margin-bottom: $margin-size;
   }
 
   .edit.show {
@@ -201,7 +204,7 @@ main {
 
   .edit:focus {
     outline: none;
-    border-bottom: 1px solid $theme-color;
+    border-bottom: 2px solid $theme-color;
   }
 
   .due-date {
