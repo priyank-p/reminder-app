@@ -2,6 +2,7 @@ import $ from './dom';
 import * as request from './request';
 import * as editingUI from './editing-ui';
 import dateFormat from 'dateformat';
+import { getReminder } from './reminder-utils.js';
 
 const reminderModal = $('#add-reminder-modal');
 const addReminderBtn = $('#add-reminder-btn');
@@ -29,18 +30,7 @@ dropdowns.forEach(dropdown => {
 
 const reminderForm = $('#add-reminder-modal form');
 reminderForm.addEventListener('submit', function (e) {
-  const inputElements = e.target.querySelectorAll('input, textarea');
-  const reminder = {};
-  inputElements.forEach(input => {
-    reminder[input.name] = input.value;
-  });
-
-  if (reminder.due_date) {
-    const time = reminder.due_time ? 'T' + reminder.due_time : '';
-    reminder.due_date = new Date(reminder.due_date + time);
-  }
-
-  delete reminder.due_time;
+  const reminder = getReminder(e.target, { isEditingUI: false });
   request.post('/api/reminders/add', { body: reminder })
     .then(() => {
       window.location.reload();
