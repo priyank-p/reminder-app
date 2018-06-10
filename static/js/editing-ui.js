@@ -37,8 +37,14 @@ function updateReminderElement(id, reminder) {
   hideEditingUI(id);
 }
 
-function showErrorUI() {
-  // TODO
+function showErrorUI(id) {
+  const [ editElements ] = getEditElements(id);
+  editElements.forEach(el => el.classList.add('error'));
+}
+
+function removeErrorUI(id) {
+  const [ editElements ] = getEditElements(id);
+  editElements.forEach(el => el.classList.remove('error'));
 }
 
 export function updateReminder(id, updatedReminder) {
@@ -49,10 +55,10 @@ export function updateReminder(id, updatedReminder) {
 
   request.post(route, data)
     .then(() => {
+      removeErrorUI(id);
       updateReminderElement(id, updatedReminder);
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(() => {
       showErrorUI(id);
     });
 }
