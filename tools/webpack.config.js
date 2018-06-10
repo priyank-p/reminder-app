@@ -81,7 +81,9 @@ module.exports = (env) => {
 
   if (production) {
     config.plugins = [
-      new CleanWebpackPlugin(['webpack-bundles']),
+      new CleanWebpackPlugin(['static/webpack-bundles'], {
+        root: ROOT_DIR,
+      }),
       new BundleTracker({
         path: path.join(ROOT_DIR, 'var'),
         filename: 'webpack-bundles.json'
