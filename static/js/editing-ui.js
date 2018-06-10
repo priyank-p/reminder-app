@@ -4,10 +4,11 @@ function getEditElements(id) {
   const selector = `.reminder[data-id="${id}"]`;
   const reminder = $(selector);
 
-  const editElements = reminder.querySelectorAll('.edit');
+  const editElements = reminder.querySelectorAll('.edit,.edit-ui');
   const reminderElements = [
     reminder.querySelector('.title'),
-    reminder.querySelector('.content')
+    reminder.querySelector('.content'),
+    reminder.querySelector('.context-menu')
   ];
 
   return [ editElements, reminderElements ];

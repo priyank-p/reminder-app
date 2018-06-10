@@ -168,7 +168,7 @@ main {
   .title, .edit-title {
     font-size: 16px;
     max-height: 30px;
-    margin-right: 20px;
+    margin-right: 40px;
     @extend .handle-text-overflow;
   }
 
@@ -285,6 +285,10 @@ form .dropdown-section .quick-choose {
     }
   }
 
+  &.hide {
+    display: none;
+  }
+
   .menu.show {
     display: block;
   }
@@ -292,4 +296,22 @@ form .dropdown-section .quick-choose {
 
 .menu .delete-reminder:hover {
   background-color: $error-red !important;
+}
+
+.edit-ui {
+  display: none;
+  position: relative;
+  z-index: 2; // when edit ui is not hidden we need this to be on top
+  padding: 0;
+
+  .update-reminder:hover { color: #265d29; }
+  .cancel-editing:hover { color: $error-red; }
+  i { padding: 0 1px; }
+  &.show { display: block; }
+
+  .container {
+    position: absolute;
+    top: -35px;
+    right: -7px;
+  }
 }
