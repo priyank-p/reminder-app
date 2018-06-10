@@ -1,14 +1,22 @@
 const fs = require('fs');
 const path = require('path');
+const { promisify } = require('util');
 const webPush = require('web-push');
+
+const writeFile = promisify(fs.writeFile);
+const dataPath = path.resolve(__dirname, '../var/push-notifications.json');
 
 let webPushData;
 try {
-  webPushData = require('../var/push-notifications');
+  webPushData = require(dataPath);
 } catch(e) {
-  const keysPath = path.resolve(__dirname, '../var/push-notifications.json');
   const vapidKeys = webPush.generateVAPIDKeys();
-  fs.writeFileSync(keysPath, JSON.stringify(vapidKeys, null, 2), 'utf8');
+  webPushData = {
+    subscriptions: [],
+    ...vapidKeys
+  };
+
+  fs.writeFileSync(dataPath, JSON.stringify(webPushData, null, 2), 'utf8');
 }
 
 webPush.setVapidDetails(
@@ -16,3 +24,12 @@ webPush.setVapidDetails(
   webPushData.publicKey,
   webPushData.privateKey
 );
+
+async function saveSubscription(pushSubscription) {
+  webPushData.subscriptions.push(pushSubscription);
+  await writeFile(dataPath, JSON.stringify(webPushData, null, 2), 'utf8');
+}
+
+module.exports = {
+  saveSubscription
+};
