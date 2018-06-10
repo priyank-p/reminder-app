@@ -70,6 +70,10 @@ module.exports = (env) => {
               outputPath: 'assets/'
             }
           }]
+        },
+        {
+          test: /app-hotkeys\.js/,
+          use: './tools/sw-loader'
         }
       ]
     },
