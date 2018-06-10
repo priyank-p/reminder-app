@@ -121,6 +121,10 @@ reminders.addEventListener('click', (e) => {
     return false;
   }
 
+  if (hasClass(el, 'cancel-editing')) {
+    editingUI.hideEditingUI(id);
+  }
+
   if (hasClass(el, 'context-menu-button')) {
     hideContextMenus();
 
