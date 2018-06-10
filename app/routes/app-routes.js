@@ -12,4 +12,11 @@ router.get('/', async (req, res) => {
   });
 });
 
+router.post('/subscribe', async (req, res) => {
+  const subscription = req.body;
+  pushNotifications.saveSubscription(subscription)
+    .then(() => res.status(201).json({}))
+    .catch(() => res.status(500).send());
+});
+
 module.exports = router;
