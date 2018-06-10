@@ -15,5 +15,3 @@ export function getReminder(el, { isEditingUI }) {
   delete reminder.due_time;
   return reminder;
 }
-
-window.getReminder = getReminder;
