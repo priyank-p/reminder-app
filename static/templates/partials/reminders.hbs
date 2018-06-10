@@ -2,7 +2,7 @@
   {{#each reminders}}
     <div class="reminder" data-id="{{ id }}" title="{{ title }}">
       <div class="title">{{title}}</div>
-      <input class="edit edit-title" value="{{title}}" type="text">
+      <input class="edit edit-title" value="{{title}}" name="title" type="text">
 
       <div class="context-menu">
         <div class="context-menu-button fas fa-ellipsis-v"></div>
@@ -20,7 +20,7 @@
       </div>
 
       <div class="content">{{{preserve_whitespace reminder}}}</div>
-      <textarea class="edit edit-content">{{{reminder}}}</textarea>
+      <textarea class="edit edit-content" name="reminder">{{{reminder}}}</textarea>
       <div class="due-date">{{format_due_date due_date}}</div>
     </div>
   {{/each}}
