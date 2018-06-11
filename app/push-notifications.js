@@ -30,7 +30,15 @@ async function saveSubscription(pushSubscription) {
   await writeFile(dataPath, JSON.stringify(webPushData, null, 2), 'utf8');
 }
 
+async function sendPushNotification(data) {
+  data = JSON.stringify(data);
+  for (let sub of webPushData.subscriptions) {
+    await webPush.sendNotification(sub, data);
+  }
+}
+
 module.exports = {
   webPushData,
-  saveSubscription
+  saveSubscription,
+  sendPushNotification
 };
