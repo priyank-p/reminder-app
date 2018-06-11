@@ -91,7 +91,7 @@ function format_due_date(date) {
   }
 
   let due_date = dateFormat(date, 'shortDate');
-  due_date += ' ' + dateFormat(date, 'h:mm TT');
+  due_date += ' ' + dateFormat(date, 'shortTime');
   return due_date;
 }
 
