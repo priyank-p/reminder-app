@@ -49,10 +49,12 @@ module.exports = (app) => {
   app.use(function (req, res, next) {
     res.setHeader('X-Frame-Options', 'DENY');
     res.setHeader('X-XSS-Protection', '1; mode=block');
+    res.setHeader('Service-Worker-Allowed', '/'); // TODO: Move sw to top-level.
 
     // add cache-control no-cache to html files
     const isHTMLRequest = req.path.endsWith('/') || req.path.includes('.html');
-    if (isHTMLRequest) {
+    const isSW = req.path.includes('reminder-app-sw.js');
+    if (isHTMLRequest || isSW) {
       res.setHeader('Cache-Control', 'no-cache, must-revalidate');
     }
 
@@ -63,7 +65,7 @@ module.exports = (app) => {
       // and we want to take full advantage -- and event when
       // we implement service-worker we still want this to here
       // for older browser complatibility.
-      if (req.path.includes('/static/')) {
+      if (req.path.includes('/static/') && !isSW) {
         res.setHeader('Cache-Control', 'public, max-age=31536000');
       }
     }
