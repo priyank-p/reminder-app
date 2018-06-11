@@ -79,7 +79,7 @@ module.exports = (env) => {
           }]
         },
         {
-          test: /app-hotkeys\.js/,
+          test: /reminder-app-sw\.js/,
           use: './tools/sw-loader'
         }
       ]
