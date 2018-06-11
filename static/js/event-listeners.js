@@ -90,6 +90,12 @@ function hideContextMenus() {
   });
 }
 
+// auto resize the textarea for editing ui
+function resize(el) {
+  el.style.height = 'auto';
+  el.style.height = (el.scrollHeight) + 'px';
+}
+
 const reminders = $('.reminders');
 reminders.addEventListener('click', (e) => {
   const el = e.target;
@@ -106,6 +112,7 @@ reminders.addEventListener('click', (e) => {
   if (hasClass(el, 'edit-reminder')) {
     editingUI.showEditingUI(id);
     hideContextMenus();
+    resize(reminder.querySelector('textarea'));
 
     e.stopPropagation();
     return false;
@@ -130,15 +137,11 @@ reminders.addEventListener('click', (e) => {
   }
 });
 
-// auto resize the textarea for editing ui
-const textareas = $('textarea');
-function resize() {
-  this.style.height = 'auto';
-  this.style.height = (this.scrollHeight) + 'px';
-}
-
-textareas.forEach(el => {
-  el.addEventListener('input', resize);
+document.body.addEventListener('input', (e) => {
+  const isTextarea = /textarea/i;
+  if (isTextarea.test(e.target.tagName)) {
+    resize(e.target);
+  }
 });
 
 document.body.addEventListener('click', () => {
