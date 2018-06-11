@@ -8,7 +8,7 @@ self.addEventListener('activate', function (event) {
 
 self.addEventListener('push', function(event) {
   console.log(event);
-  const { body, title, tag } = event.json();
+  const { body, title, tag } = event.data.json();
 
   event.waitUntil(
     self.registration.showNotification(title, {
