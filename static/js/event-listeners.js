@@ -130,6 +130,17 @@ reminders.addEventListener('click', (e) => {
   }
 });
 
+// auto resize the textarea for editing ui
+const textareas = $('textarea');
+function resize() {
+  this.style.height = 'auto';
+  this.style.height = (this.scrollHeight) + 'px';
+}
+
+textareas.forEach(el => {
+  el.addEventListener('input', resize);
+});
+
 document.body.addEventListener('click', () => {
   hideContextMenus();
 });
