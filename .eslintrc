@@ -16,5 +16,8 @@
     "quotes": [ "error", "single" ],
     "semi": [ "error", "always" ],
     "no-trailing-spaces": "error"
+  },
+  "globals": {
+    "publicKey": false
   }
 }
