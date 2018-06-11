@@ -4,8 +4,7 @@ const mainBundle = {
     './static/js/app-hotkeys.js',
     './static/js/event-listeners.js'
   ],
-  'main-css': './static/scss/reminder-app.scss',
-  'service-worker': './static/js/reminder-app-sw.js'
+  'main-css': './static/scss/reminder-app.scss'
 };
 
 const FontAwesomeBasePath = './node_modules/@fortawesome/fontawesome-free-webfonts/css/';
