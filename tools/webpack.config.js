@@ -100,8 +100,9 @@ module.exports = (env) => {
     devtool: production ? 'source-map' : 'cheap-module-eval-source-map',
     optimization: {
       concatenateModules: true,
+      runtimeChunk: true,
       splitChunks: {
-        chunks: 'all',
+        chunks: 'all'
       }
     }
   };
