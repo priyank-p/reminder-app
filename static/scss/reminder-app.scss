@@ -288,8 +288,8 @@ form .dropdown-section .quick-choose {
     }
 
     div:hover {
-      background-color: #0365d6;
-      color: white;
+      background-color: #e5e5e5;
+      color: #000;
     }
   }
 
@@ -300,10 +300,6 @@ form .dropdown-section .quick-choose {
   .menu.show {
     display: block;
   }
-}
-
-.menu .delete-reminder:hover {
-  background-color: $error-red !important;
 }
 
 .edit-ui {
