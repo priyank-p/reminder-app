@@ -49,7 +49,10 @@ module.exports = (app) => {
   app.use(function (req, res, next) {
     res.setHeader('X-Frame-Options', 'DENY');
     res.setHeader('X-XSS-Protection', '1; mode=block');
-    res.setHeader('Service-Worker-Allowed', '/'); // TODO: Move sw to top-level.
+
+    if (!production) {
+      res.setHeader('Service-Worker-Allowed', '/');
+    }
 
     // add cache-control no-cache to html files
     const isHTMLRequest = req.path.endsWith('/') || req.path.includes('.html');

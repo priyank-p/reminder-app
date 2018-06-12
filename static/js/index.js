@@ -3,7 +3,7 @@ import * as PushNotifications from './push-notifications';
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     async function register() {
-      const reg = await navigator.serviceWorker.register('/static/js/reminder-app-sw.js', {
+      const reg = await navigator.serviceWorker.register(swPath, {
         scope: '/'
       });
 
