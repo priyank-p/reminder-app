@@ -37,6 +37,10 @@ module.exports = (env) => {
       filename: production ? '[name]-[chunkhash].js' : '[name].js',
     },
     module: {
+      noParse: (file) => {
+        const isSW = /reminder-app-sw\.js/.test(file);
+        return isSW;
+      },
       rules: [
         {
           test: /\.(sass|scss)$/,
@@ -80,7 +84,12 @@ module.exports = (env) => {
         },
         {
           test: /reminder-app-sw\.js/,
-          use: './tools/sw-loader'
+          use: {
+            loader: './tools/sw-loader',
+            options: {
+              emitDevFile: !production
+            }
+          }
         }
       ]
     },

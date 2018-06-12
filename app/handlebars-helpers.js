@@ -32,8 +32,10 @@ if (development && env.mode !== 'test') {
   const file = path.resolve(__dirname, filePath);
   fs.watchFile(file, () => {
     webpackChunks = readJSON(file).chunks;
+    env['sw-path'] = webpackChunks['sw'][0];
   });
 }
+
 function render_bundle(bundle, attrs) {
   // we do a bit of shuffling to make sure
   // attrs is a string and only present if it was passed in
@@ -95,6 +97,12 @@ function format_due_date(date) {
   return due_date;
 }
 
+webpackChunks['sw'].forEach(bundle => {
+  // there is a .js.map file here too in production.
+  if (/\.js$/.test(bundle.path)) {
+    env['sw-path'] = bundle.path;
+  }
+});
 module.exports = {
   render_bundle,
   format_due_date,

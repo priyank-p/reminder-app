@@ -18,6 +18,7 @@
     "no-trailing-spaces": "error"
   },
   "globals": {
-    "publicKey": false
+    "publicKey": false,
+    "swPath": false
   }
 }
