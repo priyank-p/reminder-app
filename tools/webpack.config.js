@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const BundleTracker = require('webpack-bundle-tracker');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -105,7 +106,9 @@ module.exports = (env) => {
         chunks: 'all'
       }
     },
-    plugins: []
+    plugins: [
+      new webpack.HashedModuleIdsPlugin()
+    ]
   };
 
   if (production) {
