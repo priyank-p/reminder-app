@@ -97,7 +97,10 @@ module.exports = (env) => {
     resolve: {
       extensions: ['.js', '.json', '.scss', '.css'],
     },
-    devtool: production ? 'source-map' : 'cheap-module-eval-source-map'
+    devtool: production ? 'source-map' : 'cheap-module-eval-source-map',
+    optimization: {
+      concatenateModules: true,
+    }
   };
 
   if (production) {
