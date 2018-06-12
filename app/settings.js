@@ -46,6 +46,7 @@ module.exports = (app) => {
   app.set('view engine', 'hbs');
 
   // Configure headers
+  // TODO: Content-Security-Headers
   app.use(function (req, res, next) {
     res.setHeader('X-Frame-Options', 'DENY');
     res.setHeader('X-XSS-Protection', '1; mode=block');
