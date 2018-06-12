@@ -13,6 +13,12 @@ const allowedHosts = ALLOWED_HOSTS ? [ALLOWED_HOSTS] : undefined;
 function cssLoaders(isProd, bundles) {
   if (!isProd) {
     bundles.unshift('css-hot-loader');
+  } else {
+    for (let loader of bundles) {
+      if (typeof loader === 'object' && loader.loader === 'css-loader') {
+        loader.options.minimize = true;
+      }
+    }
   }
 
   return bundles;
