@@ -37,10 +37,6 @@ module.exports = (env) => {
       filename: production ? '[name]-[chunkhash].js' : '[name].js',
     },
     module: {
-      noParse: (file) => {
-        const isSW = /reminder-app-sw\.js/.test(file);
-        return isSW;
-      },
       rules: [
         {
           test: /\.(sass|scss)$/,
@@ -117,7 +113,7 @@ module.exports = (env) => {
       })
     );
 
-    config.modules.rules.push({
+    config.module.rules.push({
       test: /\.svg$/,
       loader: 'svg-url-loader',
       options: {
