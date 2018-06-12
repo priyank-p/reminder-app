@@ -104,11 +104,12 @@ module.exports = (env) => {
       splitChunks: {
         chunks: 'all'
       }
-    }
+    },
+    plugins: []
   };
 
   if (production) {
-    config.plugins = [
+    config.plugins.push(
       new CleanWebpackPlugin(['static/webpack-bundles'], {
         root: ROOT_DIR,
       }),
@@ -120,9 +121,9 @@ module.exports = (env) => {
         filename: '[name]-[contenthash].css',
         chunkFilename: '[id].css'
       })
-    ];
+    );
   } else {
-    config.plugins = [
+    config.plugins.push(
       new BundleTracker({
         path: path.join(ROOT_DIR, 'var'),
         filename: 'webpack-dev-bundles.json'
@@ -131,7 +132,7 @@ module.exports = (env) => {
         filename: '[name].css',
         chunkFilename: '[id].css'
       })
-    ];
+    );
 
     config.output.publicPath = '/webpack/';
     config.devServer = {
