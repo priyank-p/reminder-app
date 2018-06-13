@@ -50,6 +50,7 @@ module.exports = (app) => {
   app.use(function (req, res, next) {
     res.setHeader('X-Frame-Options', 'DENY');
     res.setHeader('X-XSS-Protection', '1; mode=block');
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000');
 
     if (!production) {
       res.setHeader('Service-Worker-Allowed', '/');
@@ -63,8 +64,6 @@ module.exports = (app) => {
     }
 
     if (production) {
-      res.setHeader('Strict-Transport-Security', 'max-age=31536000');
-
       // All the static files should have hashes in production
       // and we want to take full advantage -- and event when
       // we implement service-worker we still want this to here
