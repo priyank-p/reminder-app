@@ -97,12 +97,15 @@ function format_due_date(date) {
   return due_date;
 }
 
-webpackChunks['sw'].forEach(bundle => {
-  // there is a .js.map file here too in production.
-  if (/\.js$/.test(bundle.path)) {
-    env['sw-path'] = bundle.path;
-  }
-});
+if (webpackChunks['sw']) {
+  webpackChunks['sw'].forEach(bundle => {
+    // there is a .js.map file here too in production.
+    if (/\.js$/.test(bundle.path)) {
+      env['sw-path'] = bundle.path;
+    }
+  });
+}
+
 module.exports = {
   render_bundle,
   format_due_date,
