@@ -25,7 +25,6 @@ const express = require('express');
 const settings = require('./settings');
 const routes = require('./routes');
 
-
 const app = express();
 const tracker = require('./tracker'); // eslint-disable-line no-unused-vars
 const STATIC_DIR = path.resolve(__dirname, '../static');
