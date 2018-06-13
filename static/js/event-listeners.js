@@ -67,6 +67,8 @@ function setDueDate(n) {
     date.setDate(date.getDate() + 1);
   }
 
+  // TODO: Add protip section with the tip
+  // entering 0 in the quick-choose UI.
   if (n === 0) {
     date.setDate(Date.now());
   }
