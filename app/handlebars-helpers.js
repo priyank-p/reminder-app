@@ -87,14 +87,12 @@ function replace_with_newlines(text) {
   return text.replace(/\n/g, '\\n');
 }
 
-function format_due_date(date) {
+function utc_date(date) {
   if (date === '') {
     return;
   }
 
-  let due_date = dateFormat(date, 'shortDate');
-  due_date += ' ' + dateFormat(date, 'shortTime');
-  return due_date;
+  return date.toUTCString();
 }
 
 if (webpackChunks['sw']) {
@@ -108,7 +106,7 @@ if (webpackChunks['sw']) {
 
 module.exports = {
   render_bundle,
-  format_due_date,
+  utc_date,
   preserve_whitespace,
   replace_with_newlines,
   __updateBundle
