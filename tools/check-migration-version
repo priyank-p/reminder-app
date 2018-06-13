@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+const run = require('./run');
+const opts = {
+  capture: true,
+  silent: true
+};
+
+(async function check_migration_version() {
+  let changedFiles;
+  changedFiles = await run('git diff --cached --name-only', { ...opts });
+  if (changedFiles === '') {
+    // TODO: add ci test ranges here.
+    changedFiles = await run('git diff HEAD~1 --name-only', { ...opts });
+  }
+
+  let migrationFilesChanged = false;
+  let versionChanged = false;
+  changedFiles = changedFiles.split('\n');
+  changedFiles.forEach(file => {
+    file = file.trim();
+    if (file.includes('app/models/migrations')) {
+      migrationFilesChanged = true;
+    }
+
+    if (file === 'version.js') {
+      versionChanged = true;
+    }
+  });
+
+  if (migrationFilesChanged && !versionChanged) {
+    console.error('It looks like migration files were changed, but');
+    console.error('MIGRATION_VERSION in version.js was not bumped!');
+    process.exit(1);
+  }
+})();
