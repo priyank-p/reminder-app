@@ -15,18 +15,29 @@ function run(commandToRun, passedOpts = {}) {
     console.log('+', commandToRun);
   }
 
+  if (passedOpts.capture) {
+    passedOpts.stdio = 'pipe';
+    delete passedOpts.capture;
+  }
+
   delete passedOpts.silent;
   const opts = { ...defaultOpts, ...passedOpts };
   const proc = spawn(cmd, args, opts);
 
+  let output = '';
   return new Promise((resolve, reject) => {
     function check(code) {
       if (code != 0) {
-        reject();
+        reject(code, output);
         return;
       }
 
-      resolve();
+      resolve(output);
+    }
+
+    if (opts.stdio === 'pipe') {
+      proc.stdout.on('data', data => { output += data; });
+      proc.stderr.on('data', data => { output += data; });
     }
 
     proc.on('exit', check);
