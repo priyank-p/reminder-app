@@ -11,6 +11,10 @@ function run(commandToRun, passedOpts = {}) {
   const cmd = args[0];
   args.splice(0, 1);
 
+  // Deference object passed in so
+  // we can delete property without changing
+  // property passed in.
+  passedOpts = {  ...passedOpts };
   if (!passedOpts.silent) {
     console.log('+', commandToRun);
   }

@@ -8,10 +8,10 @@ const opts = {
 
 (async function check_migration_version() {
   let changedFiles;
-  changedFiles = await run('git diff --cached --name-only', { ...opts });
+  changedFiles = await run('git diff --cached --name-only', opts);
   if (changedFiles === '') {
     // TODO: add ci test ranges here.
-    changedFiles = await run('git diff HEAD~1 --name-only', { ...opts });
+    changedFiles = await run('git diff HEAD~1 --name-only', opts);
   }
 
   let migrationFilesChanged = false;
