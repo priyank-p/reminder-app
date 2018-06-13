@@ -18,7 +18,7 @@ export function getReminder(el, { isEditingUI }) {
 
   // don't tranform date to json/iso/utc it does work the same in
   // backend, meaning the date is changed in backend.
-  reminder.due_date = reminder.due_date.toLocaleString();
+  reminder.due_date = reminder.due_date.toUTCString();
   delete reminder.due_time;
   return reminder;
 }
