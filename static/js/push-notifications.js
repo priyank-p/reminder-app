@@ -1,6 +1,7 @@
 import * as request from './request';
 
 export let swReg;
+export const localStorageKey = 'push-subscribed';
 export function setSWReg(reg) {
   swReg = reg;
 }
@@ -26,11 +27,24 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
+export async function isRegistered() {
+  const subscription = await swReg.pushManager.getSubscription();
+  const subscriptionNotSent = (localStorage.getItem(localStorageKey) === null);
+  if (subscription === null || subscriptionNotSent) {
+    return false;
+  }
+
+  return true;
+}
+
 export async function register() {
   const subscription = await swReg.pushManager.subscribe({
     userVisibleOnly: true,
     applicationServerKey: urlBase64ToUint8Array(publicKey)
   });
 
-  await request.post('/subscribe', { body: subscription });
+  request.post('/subscribe', { body: subscription })
+    .then(() => {
+      localStorage.setItem(localStorageKey, 'yes');
+    });
 }
