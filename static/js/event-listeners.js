@@ -67,6 +67,10 @@ function setDueDate(n) {
     date.setDate(date.getDate() + 1);
   }
 
+  if (n === 0) {
+    date.setDate(Date.now());
+  }
+
   // the value muse be in standard yyyy-mm-dd format
   dueDateInput.value = dateFormat(date, 'yyyy-mm-dd');
   if (dueTimeInput.value === '') {
