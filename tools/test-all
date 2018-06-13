@@ -25,7 +25,8 @@ async function testAll() {
     run('npx eslint . --cache --cache-location=var/.eslintcache', runOpts),
     run('node tools/test-npm-dependencies', runOpts),
     run('node tools/run-tests', runOpts),
-    run('node tools/test-migrations', runOpts)
+    run('node tools/test-migrations', runOpts),
+    run('node tools/check-migration-version', runOpts)
   ]);
 }
 
