@@ -1,4 +1,16 @@
 import * as PushNotifications from './push-notifications';
+import dateFormat from 'dateformat';
+import $ from './dom';
+
+$('.reminder', 'nodelist').forEach((el) => {
+  const due_date = el.querySelector('.due-date');
+  const date = new Date(due_date.innerText);
+  let formattedDate = dateFormat(date, 'shortDate') + ' ';
+  formattedDate += dateFormat(date, 'shortTime');
+  due_date.innerText = formattedDate;
+});
+
+$('.reminders').classList.remove('hide');
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
