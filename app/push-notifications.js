@@ -26,6 +26,18 @@ webPush.setVapidDetails(
 );
 
 async function saveSubscription(pushSubscription) {
+  let isSaved = false;
+  webPushData.subscriptions.forEach(sub => {
+    if (sub.endpoint === pushSubscription.endpoint &&
+        sub.keys === pushSubscription.keys) {
+      isSaved = true;
+    }
+  });
+
+  if (isSaved) {
+    return;
+  }
+
   webPushData.subscriptions.push(pushSubscription);
   await writeFile(dataPath, JSON.stringify(webPushData, null, 2), 'utf8');
 }
