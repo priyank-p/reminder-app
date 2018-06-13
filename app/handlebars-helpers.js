@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const dateFormat = require('dateformat');
 const env = require('./env');
 
 const { development } = env;
