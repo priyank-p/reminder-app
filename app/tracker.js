@@ -6,7 +6,7 @@ async function checkReminders() {
   const allReminders = await reminders.getReminders();
   const date = new Date();
   for (const reminder of allReminders) {
-    if (!(reminder.due_date <= date)) {
+    if (!(reminder.due_date <= date) || reminder.notified) {
       continue;
     }
 
@@ -18,12 +18,12 @@ async function checkReminders() {
     };
 
     await pushNotifications.sendPushNotification(payload);
+    await reminders.updateReminder(reminder.id, { notified: true });
   }
 }
 
 // runs every 1 minute;
-const tracker = cron.schedule('* * * * * *', () => {
-  console.log(new Date().toTimeString());
+const tracker = cron.schedule('* * * * *', () => {
   checkReminders();
 });
 
