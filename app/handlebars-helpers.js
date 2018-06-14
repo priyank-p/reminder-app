@@ -87,7 +87,7 @@ function replace_with_newlines(text) {
 }
 
 function utc_date(date) {
-  if (date === '') {
+  if (!date) {
     return;
   }
 

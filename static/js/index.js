@@ -4,6 +4,11 @@ import $ from './dom';
 
 $('.reminder', 'nodelist').forEach((el) => {
   const due_date = el.querySelector('.due-date');
+
+  if (due_date.innerText === '') {
+    return;
+  }
+
   const date = new Date(due_date.innerText);
   let formattedDate = dateFormat(date, 'shortDate') + ' ';
   formattedDate += dateFormat(date, 'shortTime');
