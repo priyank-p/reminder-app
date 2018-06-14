@@ -6,6 +6,10 @@ async function checkReminders() {
   const allReminders = await reminders.getReminders();
   const date = new Date();
   for (const reminder of allReminders) {
+    if (!reminder.due_date) {
+      return;
+    }
+
     if (!(reminder.due_date <= date) || reminder.notified) {
       continue;
     }
