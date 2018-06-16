@@ -322,3 +322,40 @@ form .dropdown-section .quick-choose {
     right: -7px;
   }
 }
+
+#ask-for-push {
+  top: 0;
+  left: 0;
+  z-index: 3;
+  display: none;
+  background-color: $theme-color;
+  color: white;
+  padding: 10px 10px 10px 30px;
+
+  &.show {
+    display: block;
+  }
+
+  $color: darken($theme-color, 7%);
+  button {
+    font-family: $fonts;
+    font-size: 14px;
+    background-color: $color;
+    border: 1px solid $color;
+    color: white;
+    border-radius: 3px;
+  }
+}
+
+@media screen and (max-width: 1176px) {
+  #ask-for-push {
+    button {
+      display: block;
+      margin-top: 4px;
+    }
+
+    button:nth-child(1) {
+      margin-top: 9px;
+    }
+  }
+}
