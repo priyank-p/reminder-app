@@ -1,4 +1,5 @@
 import * as request from './request';
+import $ from './dom';
 
 export let swReg;
 export const localStorageKey = 'push-subscribed';
@@ -37,7 +38,7 @@ export async function isRegistered() {
   return true;
 }
 
-export async function register() {
+async function register() {
   const subscription = await swReg.pushManager.subscribe({
     userVisibleOnly: true,
     applicationServerKey: urlBase64ToUint8Array(publicKey)
@@ -47,4 +48,26 @@ export async function register() {
     .then(() => {
       localStorage.setItem(localStorageKey, 'yes');
     });
+}
+
+const ui = $('#ask-for-push');
+function closeUI() {
+  ui.classList.remove('show');
+}
+
+ui.addEventListener('click', (e) => {
+  const el = e.target;
+  if (el.classList.contains('enable-push')) {
+    register()
+      .then(closeUI)
+      .catch(closeUI);
+  }
+
+  if (el.classList.contains('close-modal')) {
+    closeUI();
+  }
+});
+
+export function showRegisterUI() {
+  ui.classList.add('show');
 }

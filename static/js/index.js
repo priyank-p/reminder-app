@@ -26,11 +26,9 @@ if ('serviceWorker' in navigator) {
 
       PushNotifications.setSWReg(reg);
 
-      // we register for push as soon as possible currently
-      // TODO: Set up a ui for this, this is a bad UX.
       const isRegistered = await PushNotifications.isRegistered();
       if (!isRegistered) {
-        PushNotifications.register();
+        PushNotifications.showRegisterUI();
       }
     }
 
