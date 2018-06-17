@@ -1,9 +1,9 @@
 # var directory
 
-This directory, ignore by git, hold all the development
-and app data, such as database and webpack files.
+This directory is ignored by git. It holds all the development
+and app data, such as database and webpack bundle files.
 
-Things stored in `var/` directory:
+Some of the things stored in `var/` directory:
   - nyc temp files in `nyc` and `.nyc_output` directory.
   - `reminder-app` and/or `reminder-app-{development|test}` databases
   - `webpack-bundles.json` and/or `webpack-dev-bundles.json` to track
