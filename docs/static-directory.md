@@ -13,7 +13,7 @@ some of which are named in a pretty self-explantory way:
   Couple of interesting files in that directory `var.scss` holds all the variables like, `$font-size`, `$theme-color`
   which we can modifiy and it should update the color, of font-size across the app which is awesome.
   Another note, since we use webpack any update to scss files in development are hot-reloaded in browsers,
-  meaning updated without reload in browser, which make development and design much more pleasant.
+  meaning updated without reload in browser, which make development and web designing much more pleasant.
 
   * `static/templates` - All the frontend html templates lives here, all the main page files should
   go on top level here, but there is one more directory called `partials` which holds, handlebars templates
