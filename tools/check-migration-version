@@ -6,6 +6,10 @@ const opts = {
   silent: true
 };
 
+/*
+This is ran to make sure the version is updated so other
+users may not face some un-predictable error from db in development.
+*/
 (async function check_migration_version() {
   let changedFiles;
   changedFiles = await run('git diff --cached --name-only', opts);
