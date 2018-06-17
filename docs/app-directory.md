@@ -24,15 +24,14 @@ and add it to the `routes` object in the file.
 
 #### `models` directory
 The models directory holds, all the backend models for db. We use
-leveldb which is super fast, no-sql db, we don't use leveldb directory
-since you just store a key, and a pair, which could work if we set all the
+leveldb which is super fast, no-sql db, we don't use leveldb directly
+since you can just store a key, and a pair, which could work if we set all the
 reminders which is json into one key, but that not ideal. We needed something
 that can store things in a more organized way, so we use a package called `level-uplevel`
-created by [priyank](https://github.com/priyankp10) which allows the data to be
-store in a more organized way.
+which allows the data to be store in a more organized way.
 
 By using the `level-uplevel` package we can also do migrations which are really neat
-when a thing changes.
+when a thing changes, the migrations are located at `app/models/migrations`.
 
 #### `errors` directory
 
