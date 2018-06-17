@@ -54,9 +54,10 @@ async function update_migration_version() {
   }
 
   fs.open(versionFile, 'w+', async () => {
+    // we output the version file in readable unminifed way.
     await writeFile(versionFile, `module.exports = ${
       JSON.stringify(versions, null, 2)
-    };`);
+    };\n`);
   });
 }
 
