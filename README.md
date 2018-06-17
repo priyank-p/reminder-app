@@ -14,7 +14,7 @@ node tools/dev-server
 
 The dev server by default runs on `localhost:7213`, you can
 customize this by setting the `PORT` enviorment variable to
-whatever you want instead. And a sidenote there is also
+whatever you want instead. And also note that there is also
 webpack-dev-server that gets started when you run the dev-server
 by default it will start on port `7214` or on the next port of (if
 specified) `PORT`.
