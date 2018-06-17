@@ -42,12 +42,12 @@ The webpack process handles all the frontend files.
 ## Rendering webpack bundles
 
 To render new webpack bundles, you will need to use a handlebars helper called
-`render_bundles` this accepts two arguments, the first one is webpack bundle name
+`render_bundle` this accepts two arguments, the first one is webpack bundle name
 from `tools/webpack.entries.js` and the other argument which is optional the html
 attributes to add. And the call must be inside handlebars triple braces `{{{` since
-it addes html,  so we will want it to be unescaped.
+it addes html, so we will want it to be unescaped.
 
-The `render_bundle` helpers handle a couple of things, it can also render html, css
+The `render_bundle` helpers handles couple of things, it can render js, css webpack bundles
 as `<script>` and `<link>`. It also supports multiple files in one entry so its possible
 to render both `css`, `js` mixed bundle. It will adjust the link to have the file hash 
 for the file name in production.
@@ -57,5 +57,5 @@ for the file name in production.
 {{{ render_bundle 'main' 'async' }}}
 
 // would lead to this output
-<script src="<link>" async></script>
+<script src="{{link}}" async></script>
 ```
