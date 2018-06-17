@@ -37,7 +37,7 @@ the top-level but is located in `tools/webpack.config.js` to avoid clutter in th
 directory of the project. We organized the webpack entry point in `tools/webpack.entry.js`
 file.
 
-The webpack process, all the frontend files.
+The webpack process handles all the frontend files.
 
 ## Rendering webpack bundles
 
