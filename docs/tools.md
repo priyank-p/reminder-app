@@ -10,7 +10,7 @@ you don't have `npx`, install it using `npm i -g npx`.
 
   - `tools/dev-server`: runs the dev-server.
   - `tools/migration-status.js`: exports a `Boolean` that indicated
-    weather migrations are need performed or not.
+    weather migrations are needed to be performed or not.
   - `tools/run-migrations`: performs migrations on database for development db.
   - `tools/run-tests`: runs tests
   - `tools/run.js`: provides a function that emulates `set -x` in bash.
