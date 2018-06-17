@@ -19,7 +19,7 @@ Reminder app uses couple of thing underneath the hood:
   with the small layer code of [level-uplevel](https://github.com/priyankp10/level-uplevel) we can do
   migrations and other cool stuff with it.
 
-### Documentation per subsystem:
+### Documentation per subsystem/directory:
   * [app directory - all the backend stuff](app-directory.md)
   * [app routes](app-directory.md#routes-directory-and-adding-a-route)
   * [backend-db - models, migrations and level-uplevel](app-directory.md#models-directory)
