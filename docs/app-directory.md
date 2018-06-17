@@ -7,7 +7,7 @@ express.
 
   * `env.js` - Just a simple module, we use to hold
   data that could be accessed from anywhere in the codebase.
-  * `handlebars-helpers` - Helpers used when rendering templates located at
+  * `handlebars-helpers.js` - Helpers used when rendering templates located at
   `static/templates`, once you add a helper function just export it and it will
   be available in the templates.
   * `settings.js` - File that sets all the required setting like `view engine`,
