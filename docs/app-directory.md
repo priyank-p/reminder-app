@@ -47,7 +47,8 @@ const AppErrors = require('./errors');
 
 const InvalidFieldErrorDesc = `
 The value passed into the field is invalid.
-  We recently changed to use a new type of this error field so you may need to adjust your code accordingly.
+We recently changed to use a new type of this error
+field so you may need to adjust your code accordingly.
 `
 
 class InvalidFieldError extends AppError {
