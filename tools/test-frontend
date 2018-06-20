@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+'use strict';
+
+const path = require('path');
+const fs = require('fs');
+const glob = require('glob');
+const argparser = require('../app/argparser');
+const env = require('../app/env');
+const { spawn } = require('child_process');
+
+env.setEnv('tests', true);
+env.setEnv('mode', 'test');
+
+process.chdir(path.resolve(__dirname, '../'));
+
+const ROOT_DIR = path.resolve(__dirname, '../');
+const TEST_DIR = path.resolve(__dirname, '../test');
+const args = argparser(`
+Run puppetter frontend tests:
+
+Usage:
+./tools/test-frontend file-one.js file-two.js
+./tools/test-frontend # to run all the tests
+`);
+
+const app = spawn('node', ['app', '--tests'], {
+  stdio: 'inherit',
+  env: { ...process.env, PORT: '3213' },
+  cwd: ROOT_DIR
+});
+
+global.assert = require('assert');
+let jsFiles = args.nargs;
+if (!jsFiles) {
+  jsFiles = glob.sync('test/frontend-tests/test-*.js')
+    .map(file => file.replace('test/', ''));
+}
+
+// add .js at the end if doesn't already exist.
+jsFiles = jsFiles.map(file => {
+  if (!file.endsWith('.js')) {
+    return file + '.js';
+  }
+
+  return file;
+});
+
+jsFiles.forEach((file, index) => {
+  file = path.resolve(TEST_DIR, file);
+  jsFiles[index] = file;
+  if (!fs.existsSync(file)) {
+    console.error(`Test file ${file} does not exsist.`);
+    process.exit(1);
+  }
+});
+
+global.testFiles = jsFiles;
+const tests = require('../test/frontend-tests/setup.js');
+tests()
+  .then(() => app.kill())
+  .catch(() => {
+    app.kill();
+    process.exit(1);
+  });
