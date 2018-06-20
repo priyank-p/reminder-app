@@ -5,16 +5,20 @@ const args = argparser(`
 Run rapp server.
 
 --dev, -d    Launch in development mode
+--tests, -t  Launch the app in test mode
 `);
 
 args.add('--dev', { alias: '-d', type: 'boolean', default: false });
+args.add('--tests', { alias: '-t', type: 'boolean', default: false });
 args.parse();
 
 env.setEnv('development', args.dev);
 env.setEnv('production', !args.dev);
+env.setEnv('tests', args.tests);
 
-if (env.development) {
-  env.setEnv('mode', 'development');
+if (env.development || env.tests) {
+  const mode = args.tests ? 'test' : 'development';
+  env.setEnv('mode', mode);
 }
 
 // load all the app  modules later once
