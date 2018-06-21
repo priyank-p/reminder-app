@@ -6,7 +6,7 @@ const fs = require('fs');
 const glob = require('glob');
 const argparser = require('../app/argparser');
 const env = require('../app/env');
-const { spawn } = require('child_process');
+const { spawn, execSync } = require('child_process');
 
 env.setEnv('tests', true);
 env.setEnv('mode', 'test');
@@ -22,6 +22,9 @@ Usage:
 ./tools/test-frontend file-one.js file-two.js
 ./tools/test-frontend # to run all the tests
 `);
+
+// run migration for test db
+execSync('node tools/run-migrations --test', { cwd: ROOT_DIR });
 
 const app = spawn('node', ['app', '--tests'], {
   stdio: 'inherit',
