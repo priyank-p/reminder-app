@@ -57,7 +57,10 @@ jsFiles.forEach((file, index) => {
 global.testFiles = jsFiles;
 const tests = require('../test/frontend-tests/setup.js');
 tests()
-  .then(() => app.kill())
+  .then(() => {
+    app.kill();
+    process.exit(0);
+  })
   .catch(() => {
     app.kill();
     process.exit(1);
