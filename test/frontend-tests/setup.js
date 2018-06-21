@@ -1,5 +1,4 @@
 const path = require('path');
-const { promisify } = require('util');
 const puppeteer = require('puppeteer');
 
 function gotoPage(page) {
@@ -35,6 +34,7 @@ async function frontend_tests() {
   const { testFiles } = global;
   const testPromises = [];
   testFiles.forEach(file => {
+    console.log('Starting tests for:', path.basename(file));
     const { browserTest, puppeteerTest } = require(file);
     const promises = [];
     if (browserTest) {
