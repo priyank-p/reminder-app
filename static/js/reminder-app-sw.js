@@ -4,15 +4,15 @@ const version = '{{sw-loader hash}}';
 // the minifier.
 console.log(version);
 
-self.addEventListener('install', function () {
+self.addEventListener('install', () => {
   self.skipWaiting();
 });
 
-self.addEventListener('activate', function (event) {
+self.addEventListener('activate', (event) => {
   event.waitUntil(self.clients.claim());
 });
 
-self.addEventListener('push', function (event) {
+self.addEventListener('push', (event) => {
   const { body, title, tag } = event.data.json();
 
   event.waitUntil(
