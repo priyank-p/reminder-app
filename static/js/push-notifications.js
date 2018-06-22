@@ -75,7 +75,7 @@ ui.addEventListener('click', (e) => {
   }
 
   if (el.classList.contains('do-not-ask')) {
-    localStorage.setItem('do-not-ask-for-push', true);
+    localStorage.setItem('do-not-ask-for-push', 'yes');
     closeUI();
   }
 });
