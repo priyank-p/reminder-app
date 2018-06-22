@@ -31,6 +31,13 @@ function urlBase64ToUint8Array(base64String) {
 export async function isRegistered() {
   const subscription = await swReg.pushManager.getSubscription();
   const subscriptionNotSent = (localStorage.getItem(localStorageKey) === null);
+
+  // user does not want push notifications.
+  const userDenied = localStorage.getItem('do-not-ask-for-push') !== null;
+  if (userDenied) {
+    return true;
+  }
+
   if (subscription === null || subscriptionNotSent) {
     return false;
   }
@@ -64,6 +71,11 @@ ui.addEventListener('click', (e) => {
   }
 
   if (el.classList.contains('close-modal')) {
+    closeUI();
+  }
+
+  if (el.classList.contains('do-not-ask')) {
+    localStorage.setItem('do-not-ask-for-push', true);
     closeUI();
   }
 });
