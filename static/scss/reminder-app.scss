@@ -20,7 +20,6 @@ main {
 }
 
 /* TODO: Add hover, focus stats styles */
-
 #add-reminder-btn {
   $size: 45px;
 
@@ -88,10 +87,8 @@ main {
     }
   }
 
-  label,
-  input,
-  textarea,
-  button {
+  label, input,
+  textarea, button {
     padding: 8px 10px;
   }
 
