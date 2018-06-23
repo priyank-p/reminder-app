@@ -1,5 +1,7 @@
+$reminder-width: 300px;
+
 .reminders {
-  columns: 300px;
+  columns: $reminder-width;
   column-gap: 15px;
   color: #eff1f3;
   width: 100%;
@@ -22,7 +24,7 @@
   padding: 5px 8px;
   width: auto;
   height: auto;
-  max-width: 350px;
+  max-width: $reminder-width;
   margin-top: 10px;
   position: relative;
   break-inside: avoid;
