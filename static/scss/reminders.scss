@@ -1,0 +1,105 @@
+.reminders {
+  color: #eff1f3;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  &.hide {
+    display: none;
+  }
+}
+
+.reminder {
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 8px;
+  width: auto;
+  height: auto;
+  max-width: 350px;
+  margin: 10px;
+  position: relative;
+
+  * {
+    font-family: $fonts;
+    font-size: 14px;
+    line-height: 2;
+    padding: 0 6px;
+    color: #0e0e0e;
+  }
+
+  .title, .edit-title {
+    font-size: 16px;
+    max-height: 30px;
+    margin-right: 40px;
+    @extend .handle-text-overflow;
+  }
+
+  .title.hide, .content.hide {
+    display: none;
+  }
+
+  .content .edit-content {
+    display: inline-table;
+    line-height: 1.5;
+    margin: 3px 0;
+    white-space: pre-line;
+  }
+
+  .edit-content {
+    width: 100%;
+    resize: none;
+    overflow-y: auto;
+  }
+
+  .edit {
+    $margin-size: 4px;
+
+    display: none;
+    border: 1px solid #ccc;
+    margin-top: $margin-size;
+    margin-bottom: $margin-size;
+  }
+
+  .edit.error {
+    border-color: $error-red;
+  }
+
+  .edit.show {
+    display: block;
+  }
+
+  .edit:focus {
+    outline: none;
+    border-bottom: 2px solid $theme-color;
+  }
+
+  .edit.error:focus {
+    border-color: $error-red;
+  }
+
+  .due-date {
+    content: "Due: ";
+    @extend .error;
+  }
+}
+
+h4.no-reminders {
+  font-size: 25px;
+  padding-top: 50px;
+}
+
+div.no-reminders {
+  font-size: 16px;
+  padding: 8px;
+}
+
+.no-reminders {
+  color: #000;
+  margin: 0 33%;
+  width: 33%;
+  height: auto;
+  vertical-align: middle;
+  text-align: center;
+}
