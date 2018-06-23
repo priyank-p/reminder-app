@@ -93,5 +93,5 @@ input, textarea {
 }
 
 html, body {
-  @include custom-scrollbar(10px, grey);
+  @include custom-scrollbar(7px, grey);
 }
