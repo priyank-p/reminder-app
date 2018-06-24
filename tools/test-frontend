@@ -6,10 +6,7 @@ const fs = require('fs');
 const glob = require('glob');
 const argparser = require('../app/argparser');
 const env = require('../app/env');
-const { spawn, execSync } = require('child_process');
-
-env.setEnv('tests', true);
-env.setEnv('mode', 'test');
+const { execSync } = require('child_process');
 
 process.chdir(path.resolve(__dirname, '../'));
 
@@ -26,11 +23,14 @@ Usage:
 // run migration for test db
 execSync('node tools/run-migrations --test', { cwd: ROOT_DIR });
 
-const app = spawn('node', ['app', '--tests'], {
-  stdio: 'inherit',
-  env: { ...process.env, PORT: '3213' },
-  cwd: ROOT_DIR
-});
+// setup env and argv for app server!
+process.env.PORT = 3213;
+process.argv = [
+  ...process.argv.slice(0, 2),
+  '--tests'
+];
+
+const app = require('../app');
 
 global.assert = require('assert');
 let jsFiles = args.nargs;
@@ -61,10 +61,10 @@ global.testFiles = jsFiles;
 const tests = require('../test/frontend-tests/setup.js');
 tests()
   .then(() => {
-    app.kill();
+    app.close();
     process.exit(0);
   })
   .catch(() => {
-    app.kill();
+    app.close();
     process.exit(1);
   });

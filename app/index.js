@@ -44,7 +44,7 @@ for (let routePath in routes) {
 }
 
 const port = process.env.PORT || 7213;
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server started on port: ${port}`);
 });
 
@@ -67,3 +67,5 @@ if (env.development) {
     }
   }));
 }
+
+module.exports = server;
