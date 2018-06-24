@@ -14,15 +14,15 @@ async function checkReminders() {
       continue;
     }
 
-    // TODO: Format the push notification more clearly
+    const { title, id } = reminder;
     const payload = {
-      title: reminder.title,
-      body: reminder.body,
-      tag: `reminder-${reminder.id}`
+      title: `Due: ${title}`,
+      body: `Hi! Just to remind you have following reminder due.\n${reminder.reminder}`,
+      tag: `reminder-${id}`
     };
 
     await pushNotifications.sendPushNotification(payload);
-    await reminders.updateReminder(reminder.id, { notified: true });
+    await reminders.updateReminder(id, { notified: true });
   }
 }
 
