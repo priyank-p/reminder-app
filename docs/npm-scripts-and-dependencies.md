@@ -10,5 +10,6 @@ npm-scripts:
    at `var/nyc/lcov-report/index.html`
 
 #### npm dependencies
-We prefer to have pinned dependencies for every npm package. This should
-allow us to avoid any breakage in app due to an upstream breaking changes.
+We prefer to have pinned npm dependencies in `package.json`, the
+`devDependencies` are not pinned. This just makes sure we have same version
+so any accidental breakage is not introduced.
