@@ -1,3 +1,13 @@
+{{!-- If there are no reminders --}}
+{{#unless reminders}}
+  <h4 class="no-reminders">No reminder(s) have been added yet!</h4>
+  <div class="no-reminders">
+    Click the "a" hotkey, or the add button on the
+    bottom right corner to open the reminder modal and
+    add a reminder.
+  </div>
+{{/unless}}
+
 <div class="reminders hide">
   {{#each reminders}}
     <div class="reminder" data-id="{{ id }}" title="{{ title }}">
@@ -24,14 +34,4 @@
       <div class="due-date">{{utc_date due_date}}</div>
     </div>
   {{/each}}
-
-  {{!-- If there are no reminders --}}
-  {{#unless reminders}}
-    <h4 class="no-reminders">No reminder(s) have been added yet!</h4>
-    <div class="no-reminders">
-      Click the "a" hotkey, or the add button on the
-      bottom right corner to open the reminder modal and
-      add a reminder.
-    </div>
-  {{/unless}}
 </div>
