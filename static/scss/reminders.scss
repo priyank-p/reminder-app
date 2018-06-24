@@ -59,7 +59,7 @@ $reminder-width: 300px;
   .edit-content {
     width: 100%;
     resize: none;
-    overflow-y: auto;
+    overflow: hidden; // we auto-resize the textarea using js
   }
 
   .edit {
