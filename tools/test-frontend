@@ -21,7 +21,11 @@ Usage:
 `);
 
 // run migration for test db
+console.log('Running migrations on test db...');
 execSync('node tools/run-migrations --test', { cwd: ROOT_DIR });
+console.log('Running webpack to build frontend files.');
+execSync('node ./node_modules/.bin/webpack --config ' +
+         'tools/webpack.config.js -p --env production', { cwd: ROOT_DIR, stdio: 'ignore' });
 
 // setup env and argv for app server!
 process.env.PORT = 3213;
@@ -59,6 +63,7 @@ jsFiles.forEach((file, index) => {
 
 global.testFiles = jsFiles;
 const tests = require('../test/frontend-tests/setup.js');
+console.log('Starting tests...');
 tests()
   .then(() => {
     app.close();
