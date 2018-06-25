@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const chalk = require('chalk');
 const run = require('./run');
 const opts = {
   capture: true,
@@ -32,9 +33,9 @@ users may not face some un-predictable error from db in development.
     }
   });
 
-  if (migrationFilesChanged && !versionChanged) {
-    console.error('It looks like migration files were changed, but');
-    console.error('MIGRATION_VERSION in version.js was not bumped!');
+  // if (migrationFilesChanged && !versionChanged) {
+    console.error(chalk.red('It looks like migration files were changed, but'));
+    console.error(chalk.red('MIGRATION_VERSION in version.js was not bumped!'));
     process.exit(1);
-  }
+  // }
 })();
