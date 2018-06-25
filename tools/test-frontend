@@ -6,6 +6,7 @@ const fs = require('fs');
 const glob = require('glob');
 const argparser = require('../app/argparser');
 const env = require('../app/env');
+const webpackInfo = require('./webpack-info');
 const { execSync } = require('child_process');
 
 process.chdir(path.resolve(__dirname, '../'));
@@ -23,9 +24,14 @@ Usage:
 // run migration for test db
 console.log('Running migrations on test db...');
 execSync('node tools/run-migrations --test', { cwd: ROOT_DIR });
-console.log('Running webpack to build frontend files.');
-execSync('node ./node_modules/.bin/webpack --config ' +
-         'tools/webpack.config.js -p --env production', { cwd: ROOT_DIR, stdio: 'ignore' });
+
+if (webpackInfo.needToPerformBuild) {
+  console.log('Running webpack to build frontend files...');
+  execSync('node ./node_modules/.bin/webpack --config ' +
+           'tools/webpack.config.js -p --env production', { cwd: ROOT_DIR, stdio: 'ignore' });
+} else {
+  console.log('Skipping webpack build.');
+}
 
 // setup env and argv for app server!
 process.env.PORT = 3213;
