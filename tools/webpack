@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+'use strict';
+
+const webpackInfo = require('./webpack-info');
+if (!webpackInfo.needToPerformBuild) {
+  console.log('No need build frontend assets using webpack.');
+  process.exit(0);
+}
+
+const path = require('path');
+const run = require('./run');
+
+const ROOT_DIR = path.resolve(__dirname, '../');
+const cmd = [
+  'node', 'node_modules/.bin/webpack', '--config', 'tools/webpack.config.js',
+  '-p', '--env', 'production'
+];
+
+run(cmd.join(' '), {
+  cwd: ROOT_DIR
+});
