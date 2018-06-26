@@ -14,7 +14,6 @@
 - [ ] Add babel in middle for transpling down to es5
 - [ ] Add post-css for automatic css vendors
 - [ ] Use strongloop or any other process manager for running express process
-- [ ] Help Tutorial
 - [ ] Favicon for reminder app
 - [ ] logos for reminder app
 - [ ] Allow a user to add comment on a reminder, this will be a awesome, and allow
