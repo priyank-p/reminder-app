@@ -26,5 +26,4 @@
 - [ ] Design a way, so a user can configure diffrent thing
 - [ ] Create a `/settings` page to configure various stuff
 - [ ] Improve performace on backend
-- [ ] Improve css performance, i.e painting reflows
 - [ ] Lastly re-ogranize parts of code base and refactor.
