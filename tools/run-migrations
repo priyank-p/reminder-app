@@ -86,6 +86,7 @@ async function run_migrations() {
     });
   });
 
+  spinner.info('Running Migrations:');
   for (let i = 0; i < migrations.length; i++) {
     spinner.info('   Applying migration ' + migrations[i].file);
     await migrations[i].migration();
