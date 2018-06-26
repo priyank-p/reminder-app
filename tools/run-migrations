@@ -5,6 +5,7 @@ const fs = require('fs');
 const fsExtra = require('fs-extra');
 const path = require('path');
 const { promisify } = require('util');
+const ora = require('ora');
 const env = require('../app/env');
 const version = require('../version');
 const argparser = require('../app/argparser');
@@ -24,11 +25,20 @@ args.add('--development', { type: 'boolean', alias: '-d' });
 args.add('--test', { type: 'boolean', alias: '-t' });
 
 args.parse();
+
+const spinner = new ora({
+  text: 'Running migrations',
+  spinner: 'dots2'
+});
+
+spinner.start();
 if (args.test || args.development) {
   env.setEnv('mode', args.test ? 'test' : 'development');
 } else {
   env.setEnv('production', true);
 
+  spinner.text = 'Backing up current db in var/backup';
+  spinner.color = 'green';
   // create a backup for production db.
   const DB_PATH = path.resolve(__dirname, '../var/reminder-app');
   if (fs.existsSync(DB_PATH)) {
@@ -42,6 +52,8 @@ const writeFile = promisify(fs.writeFile);
 const migrationDir = path.resolve(__dirname, '../app/models/migrations');
 
 async function update_migration_version() {
+  spinner.text = 'Updating migration version';
+  spinner.color = 'yellow';
   const versionFile = path.resolve(__dirname, '../var/version.js');
   let versions;
   try {
@@ -63,7 +75,8 @@ async function update_migration_version() {
 
 async function run_migrations() {
   const migrationFiles = await readdir(migrationDir);
-  console.log('Running migrations...');
+  spinner.text = 'Running migrations...';
+  spinner.color = 'blue';
   const migrations = [];
   migrationFiles.forEach(migrationFile => {
     const migration = require(path.join(migrationDir, migrationFile));
@@ -74,11 +87,12 @@ async function run_migrations() {
   });
 
   for (let i = 0; i < migrations.length; i++) {
-    console.log('    Applying migration', migrations[i].file);
+    spinner.info('   Applying migration ' + migrations[i].file);
     await migrations[i].migration();
   }
 
   await update_migration_version();
+  spinner.succeed('Migration ran successfully!');
 }
 
 run_migrations();
