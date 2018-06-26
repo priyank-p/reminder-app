@@ -19,10 +19,6 @@
 - [ ] logos for reminder app
 - [ ] Allow a user to add comment on a reminder, this will be a awesome, and allow
       a user to put status of their reminder.
-- [ ] better debug logging usign debug module
-- [ ] Use the debug module in browser for debugging and:
-        Automatically pass `<script>localStorage.debug = {theEnvDebugVariable}`
-        for browser debugging. It will also pretty print in browser with is great.
 - [ ] Internal stuff - Make argparser automactically create help for each argument
       By the help opt passed.
 - [ ] Revise all the security and best pratices from express website
