@@ -45,10 +45,10 @@
   "scripts": {
     "dev": "./tools/dev-server",
     "build": "webpack --config tools/webpack.config.js -p --env production",
-    "coverage": "nyc ./tools/test-all",
+    "coverage": "nyc node tools/test-all",
     "prod": "npm run build && node tools/run-migrations && node app",
-    "test": "./tools/test-all",
-    "migrations": "./tools/run-migrations -d",
+    "test": "node tools/test-all",
+    "migrations": "node tools/run-migrations -d",
     "lint": "eslint . --cache --cache-location=var/.eslintcache"
   },
   "nyc": {
