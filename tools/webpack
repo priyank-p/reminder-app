@@ -8,6 +8,7 @@ if (!webpackInfo.needToPerformBuild) {
 }
 
 const path = require('path');
+const ora = require('ora');
 const run = require('./run');
 
 const ROOT_DIR = path.resolve(__dirname, '../');
@@ -16,6 +17,18 @@ const cmd = [
   '-p', '--env', 'production'
 ];
 
-run(cmd.join(' '), {
-  cwd: ROOT_DIR
-});
+(async function() {
+  const spinner = new ora({
+    text: 'Build frontend assets using webpack',
+    spinner: 'dots'
+  });
+
+  spinner.start();
+  await run(cmd.join(' '), {
+    cwd: ROOT_DIR,
+    silent: true,
+    stdio: 'ignore'
+  });
+
+  spinner.succeed('Frontend files built.');
+})();
