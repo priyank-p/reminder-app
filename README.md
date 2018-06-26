@@ -1,5 +1,5 @@
 # reminder-app
-Work In Progress - Reminder App
+Under development - Reminder App
 
 ### Running the dev-server
 
