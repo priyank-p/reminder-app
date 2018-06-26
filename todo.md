@@ -8,7 +8,7 @@
       page to customize diffrent stuff, ie alert types though not everything
       should be in settings or in working order until proper backend db is set.
 - [X] Use a service-worker
-- [ ] Add push notification support for due notifications.
+- [X] Add push notification support for due notifications.
 - [ ] Setup better, backup system and add a tools, to revert db from backup.
 - [ ] Setup rate limiting for request (express-rate-limiting)
 - [ ] Add babel in middle for transpling down to es5
