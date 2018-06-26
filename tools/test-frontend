@@ -75,7 +75,8 @@ tests()
     app.close();
     process.exit(0);
   })
-  .catch(() => {
+  .catch((e) => {
+    console.log(e);
     app.close();
     process.exit(1);
   });
