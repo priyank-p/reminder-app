@@ -8,6 +8,8 @@ if (!webpackInfo.needToPerformBuild) {
 }
 
 const path = require('path');
+const fs = require('fs');
+const { promisify } = require('util');
 const ora = require('ora');
 const run = require('./run');
 
@@ -16,6 +18,31 @@ const cmd = [
   'node', 'node_modules/.bin/webpack', '--config', 'tools/webpack.config.js',
   '-p', '--env', 'production'
 ];
+
+const readFile = promisify(fs.readFile);
+const writeFile = promisify(fs.writeFile);
+async function remove_empty_js_from_bundle() {
+  const bundleFile = path.join(ROOT_DIR, 'var/webpack-bundles.json');
+  const bundle = JSON.parse(await readFile(bundleFile, 'utf8'));
+  const removelist = [
+    'main-css', 'vendor'
+  ];
+
+  for (let entry in bundle.chunks) {
+    bundle.chunks[entry].forEach((file, index) => {
+      if (file.name.endsWith('.css')) {
+        return;
+      }
+
+      const name = file.name.match(/(.+)-.{20}\..+/)[1];
+      if (removelist.includes(name)) {
+        bundle.chunks[entry].splice(index, 1);
+      }
+    });
+  }
+
+  await writeFile(bundleFile, JSON.stringify(bundle));
+}
 
 (async function() {
   const spinner = new ora({
@@ -30,5 +57,6 @@ const cmd = [
     stdio: 'ignore'
   });
 
+  await remove_empty_js_from_bundle();
   spinner.succeed('Frontend files built.');
 })();
