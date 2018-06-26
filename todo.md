@@ -23,7 +23,6 @@
 - [ ] Revise all the security and best pratices from express website
 - [ ] Revisit the design of the page and improve
 - [ ] Revist js file and tests
-- [ ] Setup test that can run in browser using karma.
 - [ ] Design a way, so a user can configure diffrent thing
 - [ ] Create a `/settings` page to configure various stuff
 - [ ] Improve performace on backend
