@@ -44,9 +44,9 @@
   },
   "scripts": {
     "dev": "./tools/dev-server",
-    "build": "webpack --config tools/webpack.config.js -p --env production",
+    "build": "node tools/webpack",
     "coverage": "nyc node tools/test-all",
-    "prod": "npm run build && node tools/run-migrations && node app",
+    "prod": "node tools/webpack && node tools/run-migrations && node app",
     "test": "node tools/test-all",
     "migrations": "node tools/run-migrations -d",
     "lint": "eslint . --cache --cache-location=var/.eslintcache"
