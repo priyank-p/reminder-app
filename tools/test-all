@@ -10,19 +10,25 @@ const runOpts = {
   cwd: ROOT_DIR
 };
 
+const prefix = 'node node_modules/.bin/';
+function node_module(cmd) {
+  cmd = cmd.join(' ');
+  return `${prefix}${cmd}`;
+}
+
 console.log('Running all the tests...');
 const webpackBundleFile = path.resolve(__dirname, '../var/webpack-dev-bundles.json');
 async function testAll() {
   if (!fs.existsSync(webpackBundleFile)) {
     console.log('Creating webpack bundles file...');
-    await run('npx webpack --config tools/webpack.config.js', {
+    await run(node_module`webpack --config tools/webpack.config.js`, {
       ...runOpts,
       silent: true
     });
   }
 
   await Promise.all([
-    run('npx eslint . --cache --cache-location=var/.eslintcache', runOpts),
+    run(node_module`eslint . --cache --cache-location=var/.eslintcache`, runOpts),
     run('node tools/test-npm-dependencies', runOpts),
     run('node tools/run-tests', runOpts),
     run('node tools/test-migrations', runOpts),
