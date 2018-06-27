@@ -15,7 +15,7 @@ const run = require('./run');
 
 const ROOT_DIR = path.resolve(__dirname, '../');
 const cmd = [
-  'node', 'node_modules/.bin/webpack', '--config', 'tools/webpack.config.js',
+  'npx', 'webpack', '--config', 'tools/webpack.config.js',
   '-p', '--env', 'production'
 ];
 

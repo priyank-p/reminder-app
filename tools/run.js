@@ -8,8 +8,12 @@ const defaultOpts = {
 
 function run(commandToRun, passedOpts = {}) {
   const args = commandToRun.split(' ');
-  const cmd = args[0];
+  let cmd = args[0];
   args.splice(0, 1);
+
+  if (process.platform === 'win32' && /np(m|x)/.test(cmd)) {
+    cmd = cmd + '.cmd';
+  }
 
   // Deference object passed in so
   // we can delete property without changing
