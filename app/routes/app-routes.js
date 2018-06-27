@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const env = require('../env');
 const reminders = require('../models/reminders');
 const pushNotifications = require('../push-notifications');
@@ -24,6 +25,11 @@ router.post('/subscribe', async (req, res) => {
 router.get('/reminder-app-sw.js', (req, res) => {
   res.type('js');
   res.sendFile(env['sw-path']);
+});
+
+router.get('/webapp-manifest.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/manifest+json');
+  res.sendFile(path.resolve(__dirname, '../../static/webapp-manifest.json'));
 });
 
 module.exports = router;
