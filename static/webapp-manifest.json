@@ -3,7 +3,9 @@
   "short_name": "Reminder App",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "teal",
-  "lang": "en".
+  "theme_color": "teal",
+  "background_color": "#f1f1f1",
+  "orientation": "portrait-primary",
+  "lang": "en",
   "description": "Reminder App - Keep track of your stuff."
 }
