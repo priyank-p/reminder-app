@@ -1,0 +1,9 @@
+{
+  "name": "Reminder App",
+  "short_name": "Reminder App",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "teal",
+  "lang": "en".
+  "description": "Reminder App - Keep track of your stuff."
+}
