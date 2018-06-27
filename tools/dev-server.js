@@ -6,7 +6,8 @@ const spawnOpts = {
   cwd: path.resolve(__dirname, '..'),
   env: process.env,
   stdio: 'inherit',
-  detached: true
+  detached: true,
+  windowsHide: true
 };
 
 const argparser = require('../app/argparser');
@@ -20,13 +21,13 @@ Flags:
 args.add('--webpack-output', { type: 'boolean' });
 args.parse();
 
-const webpackDevServer = './node_modules/.bin/webpack-dev-server';
-const webpackArgs = ['--config', 'tools/webpack.config.js', '--hot'];
+const npx = process.platform === 'win32' ? 'npx.cmd' : 'npx';
+const webpackArgs = ['webpack-dev-server', '--config', 'tools/webpack.config.js', '--hot'];
 if (!args['webpack-output']) {
   webpackArgs.push('--quiet');
 }
 
-const webpackProcess = spawn(webpackDevServer, webpackArgs, spawnOpts);
+const webpackProcess = spawn(npx, webpackArgs, spawnOpts);
 const expressServer = spawn('node', ['app', '--dev'], spawnOpts);
 
 devProcesses.set('webpack', webpackProcess);

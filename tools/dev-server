@@ -14,7 +14,7 @@ const needToMigrate = require('./migration-status');
     await run('node run-migrations --development');
   }
 
-  let cmd = 'node node_modules/.bin/nodemon --config tools/nodemon.json';
+  let cmd = 'npx nodemon --config tools/nodemon.json';
   cmd += ' tools/dev-server.js -- ' + process.argv.splice(2).join(' ');
   run(cmd, { cwd: ROOT_DIR });
 })();
