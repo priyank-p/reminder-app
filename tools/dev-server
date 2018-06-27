@@ -11,7 +11,7 @@ env.setEnv('mode', 'development');
 const needToMigrate = require('./migration-status');
 (async function dev_server() {
   if (needToMigrate) {
-    await run('./run-migrations --development');
+    await run('node run-migrations --development');
   }
 
   let cmd = 'npx nodemon --config tools/nodemon.json';
