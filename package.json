@@ -43,7 +43,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "dev": "./tools/dev-server",
+    "dev": "node tools/dev-server",
     "build": "node tools/webpack",
     "coverage": "nyc node tools/test-all",
     "prod": "node tools/webpack && node tools/run-migrations && node app",
