@@ -3,7 +3,7 @@
  * arhived reminders.
 */
 
-const { db } = require('../reminders-db');
+const { db } = require('../db');
 
 const tableName = 'arhive-reminders';
 async function migrate_03_archive_table() {
