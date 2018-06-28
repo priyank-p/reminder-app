@@ -31,7 +31,7 @@ if (development && env.mode !== 'test') {
   const file = path.resolve(__dirname, filePath);
   fs.watchFile(file, () => {
     webpackChunks = readJSON(file).chunks;
-    if (!webpackChunks) {
+    if (webpackChunks) {
       env['sw-path'] = webpackChunks['sw'][0];
     }
   });
