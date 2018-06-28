@@ -6,7 +6,6 @@ const spawnOpts = {
   cwd: path.resolve(__dirname, '..'),
   env: process.env,
   stdio: 'inherit',
-  detached: true,
   windowsHide: true
 };
 
