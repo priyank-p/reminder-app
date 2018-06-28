@@ -7,9 +7,16 @@ Install the npm dependencies using `npm i` if you haven't already then:
 ```bash
 node tools/dev-server
 
+# if you are using windows we recommend using `winpty`
+# otherwise Ctrl+C does not kill dev-server depending on what you are
+# using (specially git-bash for windows)
+winpty node tools/dev-server
+
 # if on unix you can also do, which works for almost
 # most of our tools in tools/
 ./tools/dev-server
+# or
+tools/dev-server
 ```
 
 The dev server by default runs on `localhost:7213`, you can
