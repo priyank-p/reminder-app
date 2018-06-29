@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+'use strict';
+
+const path = require('path');
+const ora = require('ora');
+const run = require('../tools/run');
+
+const spinner = new ora({
+  spinner: 'dots5',
+  text: 'Installing reminder-app'
+});
+
+const opts = {
+  cwd: path.resolve(__dirname, '../'),
+  silent: true
+};
+
+const ignore = {
+  ...opts, stdio: 'ignore'
+};
+
+spinner.start();
+process.env.NODE_ENV = 'production';
+process.env.PORT = process.env.PORT || 7000;
+
+async function install_reminder_app() {
+  // TODO: check if pm2 is installed globally
+  // if so make sure to run pm2 save
+  spinner.text = 'Installing npm dependencies';
+  spinner.color = 'blue';
+  await run('npm install --no-package-lock', ignore);
+  await run('npx pm2 update', ignore); // in case new version was added?
+  spinner.succeed();
+
+  spinner.text = 'Building frontend files and running migrations on database';
+  spinner.color = 'green';
+  await Promise.all([
+    run('node tools/webpack', opts),
+    run('node tools/run-migrations', opts)
+  ]);
+  spinner.succeed();
+
+  spinner.text = 'Starting reminder-app using pm2';
+  spinner.color = 'cyan';
+  await run('npx pm2 start app --name reminder-app', ignore);
+}
+
+function printError(err) {
+  spinner.fail('Oh no! Installation failed, see the traceback below for more info.');
+  console.error('You can open issue at the github repo for support.');
+  console.error('');
+  console.error(err);
+}
+
+install_reminder_app()
+  .then(() => spinner.succeed('Reminder App Installed Sucessfully!'))
+  .catch(err => printError(err));
