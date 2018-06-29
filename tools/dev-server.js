@@ -40,7 +40,7 @@ function killProcesses() {
 
   alreadyKilled = true;
   devProcesses.forEach((proc) => {
-    process.kill(-proc.pid);
+    process.kill(proc.pid);
   });
 }
 
