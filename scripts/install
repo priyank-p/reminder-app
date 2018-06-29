@@ -28,7 +28,7 @@ async function install_reminder_app() {
   // if so make sure to run pm2 save
   spinner.text = 'Installing npm dependencies';
   spinner.color = 'blue';
-  await run('npm install --no-package-lock', ignore);
+  await run('npm install --production --no-package-lock', ignore);
   await run('npx pm2 update', ignore); // in case new version was added?
   spinner.succeed();
 
