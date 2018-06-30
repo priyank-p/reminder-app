@@ -17,7 +17,8 @@ you don't have `npx`, install it using `npm i -g npx`.
     weather migrations are needed to be performed or not.
   - `tools/run-migrations`: performs migrations on database for development db.
   - `tools/run-tests`: runs tests
-  - `tools/run.js`: provides a function that emulates `set -x` in bash.
+  - `tools/run.js`: provides a function that emulates `set -x` in bash, and handles cross-platfrom
+    spawining issues like for windows `npx` needs to run as `npx.cmd`.
   - `tools/test-all`: runs all the tests
   - `tools/test-npm-dependencies`: checks weather npm dependencies are pinned to a
   specific version.
