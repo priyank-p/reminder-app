@@ -7,7 +7,7 @@ const path = require('path');
 const { promisify } = require('util');
 const ora = require('ora');
 const env = require('../app/env');
-const version = require('../version');
+const version = require('./version');
 const argparser = require('../app/argparser');
 
 const args = argparser(`
