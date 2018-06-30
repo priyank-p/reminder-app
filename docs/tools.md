@@ -8,6 +8,8 @@ Most of our tools, that run npm executables such as `nodemon` or `webpack`
 expects `npx` to be installed, it comes bundled with `npm` since v5.2.x+ if
 you don't have `npx`, install it using `npm i -g npx`.
 
+  - `tools/check-migration-version`: checks if `MIGRATION_VERSION` version was bumped
+  when the migration files were changed.
   - `tools/dev-server`: runs the dev-server.
   - `tools/migration-status.js`: exports a `Boolean` that indicated
     weather migrations are needed to be performed or not.
