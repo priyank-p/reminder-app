@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const env = require('../app/env');
-const version = require('../version');
+const version = require('./version');
 
 let needToMigrate = true;
 try {
