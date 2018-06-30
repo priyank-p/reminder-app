@@ -48,7 +48,6 @@
     "coverage": "nyc node tools/test-all",
     "prod": "node tools/webpack && node tools/run-migrations && node app",
     "test": "node tools/test-all",
-    "migrations": "node tools/run-migrations -d",
     "lint": "eslint . --cache --cache-location=var/.eslintcache"
   },
   "nyc": {
