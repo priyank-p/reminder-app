@@ -3,9 +3,20 @@ const path = require('path');
 const crypto = require('crypto');
 
 const ROOT_DIR = path.resolve(__dirname, '../');
-const cacheFile = path.join(ROOT_DIR, 'var/webpack-hash');
+const cacheFile = path.join(ROOT_DIR, 'var/cache-hashes');
 const bundlesFolder = path.join(ROOT_DIR, 'static/webpack-bundles');
+
 let hash;
+let currentHash;
+let caches;
+if (fs.existsSync(cacheFile)) {
+  caches = JSON.parse(fs.readFileSync(cacheFile));
+  currentHash = caches.hash;
+} else {
+  caches = {};
+  fs.writeFileSync(cacheFile, '{}', 'utf8');
+}
+
 function needToBuild() {
   const hashFunction = crypto.createHash('md5');
   const webpackFolders = [
@@ -22,14 +33,14 @@ function needToBuild() {
   }
 
   hash = hashFunction.digest('hex');
-  if (!fs.existsSync(cacheFile)) {
-    fs.writeFileSync(cacheFile, hash, 'utf8');
+  caches.hash = hash;
+  if (!currentHash) {
+    fs.writeFileSync(cacheFile, JSON.stringify(caches), 'utf8');
     return true;
   }
 
-  const currentHash = fs.readFileSync(cacheFile, 'utf8');
   if (currentHash !== hash) {
-    fs.writeFileSync(cacheFile, hash, 'utf8');
+    fs.writeFileSync(cacheFile, JSON.stringify(caches), 'utf8');
     return true;
   }
 
