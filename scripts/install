@@ -3,6 +3,7 @@
 
 const path = require('path');
 const ora = require('ora');
+const prepare = require('./prepare');
 const run = require('../tools/run');
 
 const spinner = new ora({
@@ -40,21 +41,9 @@ async function install_reminder_app() {
     await run('pm2 save', ignore);
   }
 
-  spinner.text = 'Installing npm dependencies';
-  spinner.color = 'blue';
-  await run('npm install --production --no-package-lock', ignore);
-  if (pm2Installed) {
-    await run('npx pm2 update', ignore);
-  }
-  spinner.succeed();
-
-  spinner.text = 'Building frontend files and running migrations on database';
-  spinner.color = 'green';
-  await Promise.all([
-    run('node tools/webpack', opts),
-    run('node tools/run-migrations', opts)
-  ]);
-  spinner.succeed();
+  await prepare(spinner, {
+    runPm2Save: pm2Installed
+  });
 
   spinner.text = 'Starting reminder-app using pm2';
   spinner.color = 'cyan';

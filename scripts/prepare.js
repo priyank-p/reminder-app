@@ -1,0 +1,40 @@
+const path = require('path');
+const run = require('../tools/run');
+
+const opts = {
+  cwd: path.resolve(__dirname, '../'),
+  silent: true
+};
+
+const ignore = {
+  ...opts, stdio: 'ignore'
+};
+
+/**
+ * Installs npm dependencies,
+ * Builds frontend files using webpack, and
+ * Runs migrations on the reminder-app database
+ *
+ * This function takes spinner, and opts
+ * opts.runPm2Save = Runs `pm2 save` command
+*/
+
+async function prepare(spinner, options) {
+  spinner.text = 'Installing npm dependencies';
+  spinner.color = 'blue';
+  await run('npm install --production --no-package-lock', ignore);
+  if (options.runPm2Save) {
+    await run('npx pm2 update', ignore);
+  }
+  spinner.succeed();
+
+  spinner.text = 'Building frontend files and running migrations on database';
+  spinner.color = 'green';
+  await Promise.all([
+    run('node tools/webpack', opts),
+    run('node tools/run-migrations', opts)
+  ]);
+  spinner.succeed();
+}
+
+module.exports = prepare;
