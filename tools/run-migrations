@@ -92,7 +92,9 @@ async function run_migrations() {
     await migrations[i].migration();
   }
 
-  await update_migration_version();
+  if (args.development) {
+    await update_migration_version();
+  }
   spinner.succeed('Migration ran successfully!');
 }
 
