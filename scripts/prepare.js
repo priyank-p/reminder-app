@@ -1,4 +1,5 @@
 const path = require('path');
+const npmInfo = require('./npm-info');
 const run = require('../tools/run');
 
 const opts = {
@@ -20,13 +21,15 @@ const ignore = {
 */
 
 async function prepare(spinner, options) {
-  spinner.text = 'Installing npm dependencies';
-  spinner.color = 'blue';
-  await run('npm install --production --no-package-lock', ignore);
-  if (options.runPm2Save) {
-    await run('npx pm2 update', ignore);
+  if (npmInfo.needToInstall) {
+    spinner.text = 'Installing npm dependencies';
+    spinner.color = 'blue';
+    await run('npm install --production --no-package-lock', ignore);
+    if (options.runPm2Save) {
+      await run('npx pm2 update', ignore);
+    }
+    spinner.succeed();
   }
-  spinner.succeed();
 
   spinner.text = 'Building frontend files and running migrations on database';
   spinner.color = 'green';
