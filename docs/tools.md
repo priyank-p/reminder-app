@@ -12,6 +12,7 @@ you don't have `npx`, install it using `npm i -g npx`.
   when the migration files were changed.
   The `tools/version.js` file needs to be updated if this tools throws error.
   - `tools/dev-server`: runs the dev-server.
+  - `tools/dev-server.js`: the script that actually spawns the dev-server, and webpack-dev-server.
   - `tools/migration-status.js`: exports a `Boolean` that indicated
     weather migrations are needed to be performed or not.
   - `tools/run-migrations`: performs migrations on database for development db.
