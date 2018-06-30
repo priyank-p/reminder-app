@@ -23,13 +23,29 @@ spinner.start();
 process.env.NODE_ENV = 'production';
 process.env.PORT = process.env.PORT || 7000;
 
+async function isPm2Installed() {
+  let isInstalled = true;
+  try {
+    await run('pm2 --help', ignore);
+  } catch(e) {
+    isInstalled = false;
+  }
+
+  return isInstalled;
+}
+
 async function install_reminder_app() {
-  // TODO: check if pm2 is installed globally
-  // if so make sure to run `pm2 save`
+  const pm2Installed = await isPm2Installed();
+  if (pm2Installed) {
+    await run('pm2 save', ignore);
+  }
+
   spinner.text = 'Installing npm dependencies';
   spinner.color = 'blue';
   await run('npm install --production --no-package-lock', ignore);
-  await run('npx pm2 update', ignore); // in case new version was added?
+  if (pm2Installed) {
+    await run('npx pm2 update', ignore);
+  }
   spinner.succeed();
 
   spinner.text = 'Building frontend files and running migrations on database';
