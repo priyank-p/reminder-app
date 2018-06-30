@@ -24,6 +24,8 @@ you don't have `npx`, install it using `npm i -g npx`.
     could be updated. Also emits `sw-dev.js` file in development.
   - `tools/test-all`: runs all the tests
   - `tools/test-frontend`: runs frontend end to end test using puppetter.
+  - `tools/test-migration-helpers.js`: Has helper function needed for migration tests.
+  - `tools/test-migrations`: Run tests for migrations.
   - `tools/test-npm-dependencies`: checks weather npm dependencies are pinned to a
   specific version.
   - `tools/nodemon.json`: nodemon related config.
