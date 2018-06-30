@@ -32,4 +32,5 @@ you don't have `npx`, install it using `npm i -g npx`.
   - `tools/webpack-entries.js`: This files has all the webpack entries.
   - `tools/version.js`: Tracks `MIGRATION_VERSION`.
   - `tools/nodemon.json`: nodemon related config.
+  - `tools/webpack-info.js`: Holds, hash info and provides caching support.
   - `tools/webpack.config.js` and `tools/webpack.entries.js`: webpack related config.
