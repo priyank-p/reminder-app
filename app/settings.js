@@ -53,6 +53,8 @@ module.exports = (app) => {
     res.setHeader('Strict-Transport-Security', 'max-age=31536000');
 
     if (!production) {
+      // we use service work emitted from the tools/sw-loader.js
+      // hence uses /webpack path.
       res.setHeader('Service-Worker-Allowed', '/');
     }
 
