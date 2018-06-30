@@ -28,6 +28,7 @@ you don't have `npx`, install it using `npm i -g npx`.
   - `tools/test-migrations`: Run tests for migrations.
   - `tools/test-npm-dependencies`: checks weather npm dependencies are pinned to a
   specific version.
+  - `tools/webpack`: Build frontend files using webpack only if needed.
   - `tools/version.js`: Tracks `MIGRATION_VERSION`.
   - `tools/nodemon.json`: nodemon related config.
   - `tools/webpack.config.js` and `tools/webpack.entries.js`: webpack related config.
