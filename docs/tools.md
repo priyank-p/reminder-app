@@ -10,6 +10,7 @@ you don't have `npx`, install it using `npm i -g npx`.
 
   - `tools/check-migration-version`: checks if `MIGRATION_VERSION` version was bumped
   when the migration files were changed.
+  The `tools/version.js` file needs to be updated if this tools throws error.
   - `tools/dev-server`: runs the dev-server.
   - `tools/migration-status.js`: exports a `Boolean` that indicated
     weather migrations are needed to be performed or not.
