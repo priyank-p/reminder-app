@@ -19,6 +19,9 @@ you don't have `npx`, install it using `npm i -g npx`.
   - `tools/run-tests`: runs tests
   - `tools/run.js`: provides a function that emulates `set -x` in bash, and handles cross-platfrom
     spawining issues like for windows `npx` needs to run as `npx.cmd`.
+  - `tools/sw-loader.js`: Its a custom webpack plugin that adds
+    the version hash if the frontend files are changed so cached files
+    could be updated. Also emits `sw-dev.js` file in development.
   - `tools/test-all`: runs all the tests
   - `tools/test-npm-dependencies`: checks weather npm dependencies are pinned to a
   specific version.
