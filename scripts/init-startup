@@ -1,0 +1,58 @@
+#!/usr/bin/env node
+'use strict';
+
+const run = require('../tools/run');
+
+const isWin = process.platform === 'win32';
+let cmd = 'npx pm2 startup';
+if (isWin) {
+  cmd = 'npx pm2-startup install';
+}
+
+console.log('Configuring pm2 to setup startup on system boot.');
+console.log(`
+This will make it so that the reminder-app will
+start automatically by pm2 on your os startup.
+Note: This may require admin (sudo / elavated terminal) access
+and may fail if not the case.
+`);
+
+
+async function init_startup() {
+  let output;
+  try {
+    await run(cmd, {
+      silent: true,
+      capture: true
+    });
+  } catch(e) {
+    // ignore the error, since pm2 exits with code of 1,
+    // eventhough everything goes successful.
+    output = e.output;
+  }
+
+  let startupCmd = '';
+  output = output.split('\n');
+  output.forEach(text => {
+    if (!text.startsWith('[pm2]') && text !== '') {
+      startupCmd = text;
+    }
+  });
+
+  console.log('Running startup config command:');
+  await run(startupCmd, { shell: true });
+  await run('pm2 save');
+}
+
+init_startup()
+  .then(() => {
+    console.log();
+    console.log('Reminder App will not start on os bootup!');
+  })
+  .catch(e => {
+    console.error('Failed to setup reminder-app to startup on restart!');
+    console.error('Its likely that you need admin/sudo access to set this up sucessfully!');
+    console.error();
+    console.error('Traceback: ');
+    console.error(e);
+  });
