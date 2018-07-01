@@ -91,6 +91,10 @@ $reminder-width: 300px;
   .due-date {
     @extend .error;
   }
+
+  &.deleted-by-sw {
+    background-color: #b5010729;
+  }
 }
 
 h4.no-reminders {
