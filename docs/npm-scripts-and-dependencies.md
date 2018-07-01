@@ -6,6 +6,7 @@ npm-scripts:
    * `npm test` - runs all the tests, `tools/test-all`
    * `npm run prod` - runs the app in production mode.
    * `npm run coverage` - gets the coverage report of test, will be
+   * `npm run lint-fix` - runs eslint with `--fix` flag.
    at `var/nyc/lcov-report/index.html`, you can access coverage report in
    dev-server at `/coverage`.
 
