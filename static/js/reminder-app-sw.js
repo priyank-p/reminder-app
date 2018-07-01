@@ -29,6 +29,20 @@ function deleteReminder(tag) {
   const id = parseInt(tag.replace('reminder-', ''));
   return fetch(`/api/reminders/delete/${id}`, {
     method: 'DELETE'
+  }).then(() => notifyDeletedRemider(id));
+}
+
+function notifyDeletedRemider(id) {
+  return clients.matchAll({
+    type: 'window',
+    includeUncontrolled: true
+  }).then(windows => {
+    windows.forEach(page => {
+      page.postMessage({
+        message: 'reminder-deleted',
+        id
+      });
+    });
   });
 }
 

@@ -1,4 +1,5 @@
 import * as PushNotifications from './push-notifications';
+import SWManager from './sw-manager';
 import dateFormat from 'dateformat';
 import $ from './dom';
 
@@ -30,6 +31,8 @@ if ('serviceWorker' in navigator) {
       if (!isRegistered) {
         PushNotifications.showRegisterUI();
       }
+
+      navigator.serviceWorker.addEventListener('message', SWManager);
     }
 
     register()
