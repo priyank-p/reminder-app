@@ -53,7 +53,7 @@ const init_startup = isWin ? init_startup_win : init_startup_win;
 init_startup()
   .then(() => {
     console.log();
-    console.log('Reminder App will not start on os bootup!');
+    console.log('Reminder App will now start on os bootup!');
   })
   .catch(e => {
     console.error('Failed to setup reminder-app to startup on restart!');
