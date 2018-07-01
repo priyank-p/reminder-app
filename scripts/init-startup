@@ -18,7 +18,12 @@ and may fail if not the case.
 `);
 
 
-async function init_startup() {
+async function init_startup_win() {
+  await run(cmd);
+  await run('npx pm2 save')
+}
+
+async function init_startup_unix() {
   let output;
   try {
     await run(cmd, {
@@ -44,6 +49,7 @@ async function init_startup() {
   await run('pm2 save');
 }
 
+const init_startup = isWin ? init_startup_win : init_startup_win;
 init_startup()
   .then(() => {
     console.log();
