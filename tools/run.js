@@ -36,7 +36,7 @@ function run(commandToRun, passedOpts = {}) {
   return new Promise((resolve, reject) => {
     function check(code) {
       if (code != 0) {
-        reject(code, output);
+        reject({ code, output });
         return;
       }
 
