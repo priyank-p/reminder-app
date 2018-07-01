@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 'use strict';
 
+const path = require('path');
 const run = require('../tools/run');
 
+const ROOT_DIR = path.resolve(__dirname, '../');
 const isWin = process.platform === 'win32';
+
 let cmd = 'npx pm2 startup';
 if (isWin) {
   cmd = 'npx pm2-startup install';
@@ -17,16 +20,28 @@ Note: This may require admin (sudo / elavated terminal) access
 and may fail if not the case.
 `);
 
+const opts = {
+  cwd: ROOT_DIR
+};
+
+process.env.NODE_ENV = 'production';
+process.env.PORT = process.env.PORT || 7000;
+
+async function savePm2List() {
+  await run('npx pm2 start app --name reminder-app', opts);
+  await run('npx pm2 save', opts);
+}
 
 async function init_startup_win() {
-  await run(cmd);
-  await run('npx pm2 save')
+  await run(cmd, opts);
+  await savePm2List();
 }
 
 async function init_startup_unix() {
   let output;
   try {
     await run(cmd, {
+      ...opts,
       silent: true,
       capture: true
     });
@@ -46,7 +61,7 @@ async function init_startup_unix() {
 
   console.log('Running startup config command:');
   await run(startupCmd, { shell: true });
-  await run('pm2 save');
+  await savePm2List();
 }
 
 const init_startup = isWin ? init_startup_win : init_startup_win;
