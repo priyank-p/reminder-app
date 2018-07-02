@@ -18,7 +18,8 @@ self.addEventListener('push', (event) => {
   event.waitUntil(
     self.registration.showNotification(title, {
       body: body,
-      tag: tag
+      tag: tag,
+      requireInteraction: true
     })
   );
 });
