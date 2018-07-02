@@ -47,9 +47,24 @@ function notifyDeletedRemider(id) {
   });
 }
 
+function openOrFocusWindow() {
+  return clients.matchAll({
+    type: 'window',
+    includeUncontrolled: true
+  }).then(windows => {
+    let appWindow = windows[0];
+    if (appWindow) {
+      return appWindow.focus();
+    }
+
+    return clients.openWindow(self.location.origin);
+  });
+}
+
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
   event.waitUntil(
-    deleteReminder(event.notification.tag)
+    deleteReminder(event.notification.tag),
+    openOrFocusWindow()
   );
 });
