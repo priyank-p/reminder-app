@@ -38,6 +38,13 @@ need to run it to setup auto-startup, you will likely need `sudo`
 access for it to work. In windows there is nothing that needs to be done
 just run the script.
 
+# Manually starting reminder-app
+
+You can also manually start the reminder-app using `pm2`.
+```bash
+npx pm2 start app --name reminder-app
+```
+
 ### Documentation per subsystem/directory:
   * [app directory - all the backend stuff](app-directory.md)
   * [app routes](app-directory.md#routes-directory-and-adding-a-route)
