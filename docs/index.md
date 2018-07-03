@@ -8,8 +8,10 @@ Installation is pretty simple, just run the install script.
 ```bash
 node scripts/install
 
-# if you use git-bash for windows or loading screen does now
-# show up on windows, use `winpty` which is bundled with git
+# if you use git-bash for windows or not see a spinner
+# on windows, you'll need to use `winpty` which is bundled with git
+# If you dont use winpty the installtion will run just fine but
+# the spinner we show will not output
 winpty node scripts/intall
 ```
 
