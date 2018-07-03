@@ -20,6 +20,22 @@ runs in the background, so a terminal windows does not have to be open.
 By default the app starts on port `7000` you can customize this by passing
 the `PORT` enviorment variable.
 
+# Start reminder-app on machine startup
+
+The reminder-app will run in the background, though once you shut down
+your machine the reminder-app will not auto start-up. There is a way to setup
+auto startup.
+
+```bash
+node scripts/init-startup
+```
+
+<!-- TODO: figure out what this does on macos -->
+This scripts will print out a command to run on linux, you will
+need to run it to setup auto-startup, you will likely need `sudo`
+access for it to work. In windows there is nothing that needs to be done
+just run the script.
+
 ### Documentation per subsystem/directory:
   * [app directory - all the backend stuff](app-directory.md)
   * [app routes](app-directory.md#routes-directory-and-adding-a-route)
