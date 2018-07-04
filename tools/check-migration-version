@@ -28,7 +28,7 @@ users may not face some un-predictable error from db in development.
       migrationFilesChanged = true;
     }
 
-    if (file === 'version.js') {
+    if (file === 'tools/version.js') {
       versionChanged = true;
     }
   });
