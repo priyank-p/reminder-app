@@ -1,5 +1,5 @@
 const escapeHTML = require('escape-html');
-const { reminders } = require('./reminders-db');
+const { reminders } = require('./db');
 
 function validateReminder(fields) {
   for (let field in fields) {

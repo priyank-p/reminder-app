@@ -2,7 +2,7 @@
   Inital migration to create the reminder database.
 */
 
-const { db } = require('../reminders-db');
+const { db } = require('../db');
 
 const tableName = 'reminders';
 async function migrate_00_reminder_db() {

@@ -3,7 +3,7 @@
   was notified!
 */
 
-const { db, reminders } = require('../reminders-db');
+const { db, reminders } = require('../db');
 
 const tableName = 'reminders';
 async function migrate_00_add_notified_field() {

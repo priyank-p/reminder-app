@@ -1,7 +1,7 @@
 async function test_db_table_created() {
   await migrations.run_migration(0);
 
-  const { reminders } = env['reminder-db'];
+  const { reminders } = env['db'];
   const { levelDB } = reminders.uplevel;
 
   const InternalProps = await levelDB.get('__InternalProps');

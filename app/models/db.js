@@ -18,5 +18,5 @@ module.exports = {
 
 // TODO: Move away from using db.
 if (env.tests) {
-  env.setEnv('reminder-db', module.exports);
+  env.setEnv('db', module.exports);
 }
