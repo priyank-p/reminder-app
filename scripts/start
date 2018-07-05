@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+'use strict';
+
+const path = require('path');
+const run = require('../tools/run');
+
+run('npx pm2 start app --name reminder-app', {
+  silent: true,
+  cwd: path.resolve(__dirname, '..')
+});
