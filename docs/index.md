@@ -48,9 +48,9 @@ npx pm2 start app --name reminder-app
 
 ### Documentation per subsystem/directory:
   * [Some info about the reminder-app](about.md)
-  * [app directory - all the backend stuff](app-directory.md)
-  * [app routes](app-directory.md#routes-directory-and-adding-a-route)
-  * [backend-db - models, migrations and level-uplevel](app-directory.md#models-directory)
+  * [App directory - all the backend stuff](app-directory.md)
+  * [App routes](app-directory.md#routes-directory-and-adding-a-route)
+  * [Backend-db - models, migrations and level-uplevel](app-directory.md#models-directory)
   * [npm scripts and dependencies](npm-scripts-and-dependencies.md)
   * [node tests](node-tests.md)
   * [tools](tools.md)
