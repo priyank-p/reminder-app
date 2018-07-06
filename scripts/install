@@ -3,6 +3,7 @@
 
 const path = require('path');
 const ora = require('ora');
+const inquirer = require('inquirer');
 const prepare = require('./prepare');
 const run = require('../tools/run');
 
@@ -57,6 +58,27 @@ function printError(err) {
   console.error(err);
 }
 
+async function prompt_init_startup() {
+  const prompt = [{
+    type: 'confirm',
+    name: 'startup',
+    message: 'Start reminder-app on machine startup (can later be setup using scripts/init-setup)',
+    default: false
+  }];
+
+  const response = await inquirer.prompt(prompt);
+
+  console.log();
+  if (response.startup) {
+    try {
+      await run('node scripts/init-startup', opts);
+    } catch(e) {
+      console.error('Setting up startup failed!');
+    }
+  }
+}
+
 install_reminder_app()
   .then(() => spinner.succeed('Reminder App Installed Sucessfully!'))
+  .then(prompt_init_startup)
   .catch(err => printError(err));
