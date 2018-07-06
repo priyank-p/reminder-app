@@ -28,12 +28,14 @@
     "pm2": "2.10.4",
     "sass-loader": "7.0.3",
     "source-map-loader": "0.2.3",
-    "start-on-windows-boot": "1.0.0",
     "svg-url-loader": "2.3.2",
     "web-push": "3.3.1",
     "webpack": "4.11.1",
     "webpack-bundle-tracker": "0.3.0",
     "webpack-cli": "3.0.3"
+  },
+  "optionalDependencies": {
+    "start-on-windows-boot": "1.0.0"
   },
   "devDependencies": {
     "eslint": "5.0.1",
