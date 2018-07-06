@@ -38,7 +38,7 @@
     "pm2-windows-startup": "1.0.3"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
+    "eslint": "5.0.1",
     "glob": "^7.1.2",
     "http-proxy-middleware": "^0.18.0",
     "nodemon": "^1.17.5",
