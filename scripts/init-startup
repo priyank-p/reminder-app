@@ -64,7 +64,7 @@ async function init_startup_unix() {
   await savePm2List();
 }
 
-const init_startup = isWin ? init_startup_win : init_startup_win;
+const init_startup = isWin ? init_startup_win : init_startup_unix;
 init_startup()
   .then(() => {
     console.log();
