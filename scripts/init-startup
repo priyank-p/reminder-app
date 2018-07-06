@@ -7,10 +7,7 @@ const run = require('../tools/run');
 const ROOT_DIR = path.resolve(__dirname, '../');
 const isWin = process.platform === 'win32';
 
-let cmd = 'npx pm2 startup';
-if (isWin) {
-  cmd = 'npx pm2-startup install';
-}
+const cmd = 'npx pm2 startup';
 
 console.log('Configuring pm2 to setup startup on system boot.');
 console.log(`
@@ -32,9 +29,15 @@ async function savePm2List() {
   await run('npx pm2 save', opts);
 }
 
-async function init_startup_win() {
-  await run(cmd, opts);
-  await savePm2List();
+function init_startup_win() {
+  const winstart = require('start-on-windows-boot');
+  return new Promise(resolve => {
+    const file = path.join(__dirname, 'reminder-app.exe');
+    winstart.enableAutoStart('reminder-app', file, async () => {
+      await savePm2List();
+      resolve();
+    });
+  });
 }
 
 async function init_startup_unix() {
