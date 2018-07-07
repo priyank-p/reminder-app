@@ -46,6 +46,29 @@ async function install_reminder_app() {
     runPm2Save: pm2Installed
   });
 
+  const prompts = [{
+    type: 'input',
+    name: 'port',
+    message: 'Select a port for reminder-app to run on',
+    default: process.env.PORT,
+    validate(input) {
+      const port = Number(input);
+      if (isNaN(port)) {
+        throw Error('Port should be a valid number!');
+      }
+
+      if (port < 0 || port > 65536) {
+        throw Error('A valid port is greater than 0 and less than 65536!');
+      }
+
+      return true;
+    }
+  }];
+
+  const response = await inquirer.prompt(prompts);
+  process.env.PORT = response.port;
+  console.log(process.env.PORT);
+
   spinner.text = 'Starting reminder-app using pm2';
   spinner.color = 'cyan';
   await run('npx pm2 start app --name reminder-app', ignore);
