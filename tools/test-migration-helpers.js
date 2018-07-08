@@ -1,10 +1,9 @@
 const path = require('path');
 const fs = require('fs-extra');
 
-
 async function resetTestDB() {
   let uplevel;
-  if (env['db']) {
+  if (env['db']) { /* global env */
     uplevel = env['db'].db;
     await uplevel.levelDB.close();
   }
