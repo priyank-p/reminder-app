@@ -5,7 +5,7 @@
 
 const { db } = require('../db');
 
-const tableName = 'arhive-reminders';
+const tableName = 'archive-reminders';
 async function migrate_03_archive_table() {
   const tableAdded = await db.hasTable(tableName);
   if (tableAdded) {
@@ -14,8 +14,8 @@ async function migrate_03_archive_table() {
 
   const arhive = await db.createTable(tableName);
   const { types } = db;
-  await arhive.addField('date', { type: types.date, default: Date.now });
-  await arhive.addField('reminder', { type: types.object, required: true });
+  await arhive.addField({ name: 'date', type: types.date, default: Date.now });
+  await arhive.addField({ name: 'reminder', type: types.object, required: true });
 }
 
 module.exports = migrate_03_archive_table;
