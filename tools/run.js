@@ -36,7 +36,12 @@ function run(commandToRun, passedOpts = {}) {
   return new Promise((resolve, reject) => {
     function check(code) {
       if (code != 0) {
-        reject({ code, cmd, output });
+        const data = { code, cmd, output };
+        if (output == '') {
+          delete data.output;
+        }
+
+        reject(data);
         return;
       }
 
