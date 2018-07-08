@@ -13,7 +13,7 @@
 - [ ] Setup rate limiting for request (express-rate-limiting)
 - [ ] Add babel in middle for transpling down to es5
 - [ ] Add post-css for automatic css vendors
-- [ ] Use strongloop or any other process manager for running express process
+- [X] Use pm2, a production process manager
 - [ ] Allow a user to add comment on a reminder, this will be a awesome, and allow
       a user to put status of their reminder.
 - [ ] Internal stuff - Make argparser automactically create help for each argument
