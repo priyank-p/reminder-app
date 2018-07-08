@@ -43,6 +43,9 @@ if the status says it disabled right click on it and enable it.
 
 You can also manually start the reminder-app using `pm2`.
 ```bash
+node scripts/start 
+
+# or
 npx pm2 start app --name reminder-app
 ```
 
