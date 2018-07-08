@@ -3,8 +3,19 @@ const fs = require('fs-extra');
 
 
 async function resetTestDB() {
+  let uplevel;
+  if (env['db']) {
+    uplevel = env['db'].db;
+    await uplevel.levelDB.close();
+  }
+
   const dbPath = path.resolve(__dirname, '../var/reminder-app-test');
   await fs.remove(dbPath);
+
+  if (uplevel) {
+    uplevel.init(dbPath);
+    await uplevel.waitUntilReady();
+  }
 }
 
 async function run_migration(number) {
