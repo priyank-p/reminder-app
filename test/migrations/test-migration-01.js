@@ -1,5 +1,5 @@
 async function test_notified_field_added() {
-  const { db, reminders } = env['reminder-db'];
+  const { db, reminders } = env['db'];
   const { levelDB } = reminders.uplevel;
 
   await migrations.run_migrations_upto(1);
