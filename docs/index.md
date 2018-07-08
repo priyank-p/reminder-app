@@ -35,8 +35,9 @@ node scripts/init-startup
 This script other than running `pm2` commands on linux, macos will run a command
 outputted by pm2 which will likely need `sudo` access to configure the startup system.
 (Note: You do not need to run this script with `sudo`).
-In windows there is nothing that needs to be done
-just run the script.
+Window has the easiest setup just run the script, then to ensure the
+app will start on boot type `startup` in the search bar and then look for reminder app
+if the status says it disabled right click on it and enable it.
 
 # Manually starting reminder-app
 
