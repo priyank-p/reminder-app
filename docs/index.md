@@ -32,11 +32,10 @@ auto startup.
 node scripts/init-startup
 ```
 
-<!-- TODO: figure out what this does on macos -->
-This script other than running `pm2` commands on linux will run a command
+This script other than running `pm2` commands on linux, macos will run a command
 outputted by pm2 which will likely need `sudo` access to configure the startup system.
 (Note: You do not need to run this script with `sudo`).
-In windows and macos there is nothing that needs to be done
+In windows there is nothing that needs to be done
 just run the script.
 
 # Manually starting reminder-app
