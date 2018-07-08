@@ -96,7 +96,7 @@ function utc_date(date) {
   return date.toUTCString();
 }
 
-if (webpackChunks['sw']) {
+if (webpackChunks && webpackChunks['sw']) {
   webpackChunks['sw'].forEach(bundle => {
     // there is a .js.map file here too in production.
     if (/\.js$/.test(bundle.path)) {
