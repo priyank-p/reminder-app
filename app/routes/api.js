@@ -21,7 +21,7 @@ router.post('/reminders/add', async (req, res) => {
 
 router.get('/reminders/all', async (req, res) => {
   const allReminders = await reminders.getReminders();
-  res.send(JSON.stringify(allReminders));
+  res.json(allReminders);
 });
 
 router.delete('/reminders/delete/:id', async (req, res) => {
