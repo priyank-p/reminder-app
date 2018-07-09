@@ -10,7 +10,7 @@ const db = new Uplevel(DB_PATH);
 // we don't use the async method here,
 // since we know the table is created in advance
 const reminders = new Uplevel.UplevelTableInstance(db, 'reminders');
-const arhives = new Uplevel.UplevelTableInstance(db, 'arhives');
+const arhives = new Uplevel.UplevelTableInstance(db, 'archive-reminders');
 
 module.exports = {
   reminders,
