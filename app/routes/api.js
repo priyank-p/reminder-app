@@ -1,9 +1,8 @@
 const express = require('express');
-const reminders = require('../../models/reminders');
-const archives = require('../../models/archives');
+const reminders = require('../models/reminders');
 
-const router = express.Router();
-router.post('/add', async (req, res) => {
+const router = new express.Router();
+router.post('/reminders/add', async (req, res) => {
   if (Object.keys(req.body).length === 0) {
     res.status(500);
     res.send('Reminder must be passed in!');
@@ -19,12 +18,12 @@ router.post('/add', async (req, res) => {
   res.send('Reminder Added!');
 });
 
-router.get('/all', async (req, res) => {
+router.get('/reminders/all', async (req, res) => {
   const allReminders = await reminders.getReminders();
   res.send(JSON.stringify(allReminders));
 });
 
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/reminders/delete/:id', async (req, res) => {
   const id = +req.params.id;
   if (isNaN(id)) {
     res.status(500);
@@ -32,7 +31,7 @@ router.delete('/delete/:id', async (req, res) => {
     return;
   }
 
-  Promise.all(archives.archive(id), reminders.deleteReminder(id))
+  reminders.deleteReminder(id)
     .then(() => {
       res.send(`Reminder with id: ${id} was deleted!`);
     })
@@ -42,7 +41,7 @@ router.delete('/delete/:id', async (req, res) => {
     });
 });
 
-router.post('/update/:id', async (req, res) => {
+router.post('/reminders/update/:id', async (req, res) => {
   const id = +req.params.id;
   if (isNaN(id)) {
     res.status(500);
@@ -55,6 +54,7 @@ router.post('/update/:id', async (req, res) => {
     res.send('Reminder must be passed in!');
     return;
   }
+
 
   reminders.updateReminder(id, req.body)
     .then(() => {
