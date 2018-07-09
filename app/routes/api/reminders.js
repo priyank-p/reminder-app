@@ -1,5 +1,5 @@
 const express = require('express');
-const reminders = require('../../models');
+const reminders = require('../../models/reminders');
 
 const router = express.Router();
 router.post('/add', async (req, res) => {
