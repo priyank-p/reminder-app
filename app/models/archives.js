@@ -9,6 +9,12 @@ async function archive(id) {
   });
 }
 
+async function getArchives() {
+  const rows = await arhives.getRows();
+  return rows;
+}
+
 module.exports = {
-  archive
+  archive,
+  getArchives
 };
