@@ -1,4 +1,5 @@
 const express = require('express');
+const archives = require('../models/archives');
 const reminders = require('../models/reminders');
 
 const router = new express.Router();
@@ -64,6 +65,11 @@ router.post('/reminders/update/:id', async (req, res) => {
       res.status(500);
       res.send(`Cannot updated reminder with id: ${id}!`);
     });
+});
+
+router.get('/archives/all', async (req, res) => {
+  const allArchives = await archives.getArchives();
+  res.json(allArchives);
 });
 
 module.exports = router;
