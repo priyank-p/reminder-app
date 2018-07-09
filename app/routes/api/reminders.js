@@ -1,5 +1,6 @@
 const express = require('express');
 const reminders = require('../../models/reminders');
+const archives = require('../../models/archives');
 
 const router = express.Router();
 router.post('/add', async (req, res) => {
@@ -31,7 +32,7 @@ router.delete('/delete/:id', async (req, res) => {
     return;
   }
 
-  reminders.deleteReminder(id)
+  Promise.all(archives.archive(id), reminders.deleteReminder(id))
     .then(() => {
       res.send(`Reminder with id: ${id} was deleted!`);
     })
