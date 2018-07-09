@@ -41,9 +41,16 @@ async function deleteReminder(id) {
   await reminders.deleteRow(id);
 }
 
+async function getReminderById(id) {
+  const reminders = await getReminders();
+  const reminder = reminders.filter(reminder => reminder.id === id);
+  return reminder[0];
+}
+
 module.exports = {
   addReminder,
   getReminders,
   updateReminder,
-  deleteReminder
+  deleteReminder,
+  getReminderById
 };
