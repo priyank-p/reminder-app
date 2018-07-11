@@ -86,11 +86,15 @@ module.exports = (env) => {
               emitDevFile: !production
             }
           }
+        },
+        {
+          test: /\.ts$/,
+          loader: 'ts-loader'
         }
       ]
     },
     resolve: {
-      extensions: ['.js', '.json', '.scss', '.css'],
+      extensions: ['.js', '.json', '.scss', '.css', '.ts'],
     },
     devtool: production ? 'source-map' : 'cheap-module-eval-source-map',
     plugins: [
