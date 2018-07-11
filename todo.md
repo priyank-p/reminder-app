@@ -12,6 +12,7 @@
       By the help opt passed.
 - [ ] Revise all the security and best pratices from express website.
 - [ ] Migrate JS file to typescript.
+- [ ] Add tslint for linting typescript files.
 
 ## Done
 
