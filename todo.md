@@ -10,7 +10,8 @@
       a user to put status of their reminder.
 - [ ] Internal stuff - Make argparser automactically create help for each argument
       By the help opt passed.
-- [ ] Revise all the security and best pratices from express website
+- [ ] Revise all the security and best pratices from express website.
+- [ ] Use typescript for type checking for frontend files. (Things like `static/js/request.js` really needs it.)
 
 ## Done
 
