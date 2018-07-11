@@ -11,6 +11,7 @@
 - [ ] Internal stuff - Make argparser automactically create help for each argument
       By the help opt passed.
 - [ ] Revise all the security and best pratices from express website.
+- [ ] Migrate JS file to typescript.
 
 ## Done
 
