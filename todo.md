@@ -7,7 +7,6 @@
 - [X] Use a service-worker
 - [X] Add push notification support for due notifications.
 - [ ] Setup better, backup system and add a tools, to revert db from backup.
-- [ ] Setup rate limiting for request (express-rate-limiting)
 - [ ] Add babel in middle for transpling down to es5
 - [ ] Add post-css for automatic css vendors
 - [X] Use pm2, a production process manager
