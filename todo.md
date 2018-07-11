@@ -4,9 +4,6 @@
 - [ ] Write browser extensions for quickly adding reminder from toolbar
       while still using reminder app in background, this should be done using
       something like cross browser WebExtensions.
-- [ ] After thinking about the first model, we will need a settings
-      page to customize diffrent stuff, ie alert types though not everything
-      should be in settings or in working order until proper backend db is set.
 - [X] Use a service-worker
 - [X] Add push notification support for due notifications.
 - [ ] Setup better, backup system and add a tools, to revert db from backup.
