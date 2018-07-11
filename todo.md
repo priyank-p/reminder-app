@@ -14,7 +14,6 @@
 - [ ] Revisit the design of the page and improve
 - [ ] Revist js file and tests
 - [ ] Design a way, so a user can configure diffrent thing
-- [ ] Create a `/settings` page to configure various stuff
 - [ ] Improve performace on backend
 - [ ] Lastly re-ogranize parts of code base and refactor.
 
