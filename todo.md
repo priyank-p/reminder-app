@@ -11,10 +11,6 @@
 - [ ] Internal stuff - Make argparser automactically create help for each argument
       By the help opt passed.
 - [ ] Revise all the security and best pratices from express website
-- [ ] Revisit the design of the page and improve
-- [ ] Revist js file and tests
-- [ ] Improve performace on backend
-- [ ] Lastly re-ogranize parts of code base and refactor.
 
 ## Done
 
