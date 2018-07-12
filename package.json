@@ -58,7 +58,8 @@
     "prod": "node tools/webpack && node tools/run-migrations && node app",
     "test": "node tools/test-all",
     "lint": "node tools/lint",
-    "eslint-fix": "eslint . --cache --cache-location=var/.eslintcache --fix"
+    "eslint-fix": "eslint . --cache --cache-location=var/.eslintcache --fix",
+    "tslint-fix": "tslint -c tools/tslint-config.json -p . --fix"
   },
   "nyc": {
     "report-dir": "var/nyc",
