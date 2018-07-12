@@ -28,6 +28,7 @@ you don't have `npx`, install it using `npm i -g npx`.
   - `tools/test-migrations`: Run tests for migrations.
   - `tools/test-npm-dependencies`: checks weather npm dependencies are pinned to a
   specific version.
+  - `tools/tslint-config.json`: config rules for typescript linting.
   - `tools/webpack`: Build frontend files using webpack only if needed.
   - `tools/webpack-entries.js`: This files has all the webpack entries.
   - `tools/version.js`: Tracks `MIGRATION_VERSION`.
