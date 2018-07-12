@@ -1,4 +1,7 @@
-export default function $(sel: string, type?: 'node' | 'nodelist'): Node | NodeList {
+type DomReturnType = Node | NodeList;
+type DomTypeParam = 'node' | 'nodelist';
+
+export default function $(sel: string, type?: DomTypeParam): DomReturnType {
   const els = document.querySelectorAll(sel);
   if (type === 'nodelist') {
     return els;
