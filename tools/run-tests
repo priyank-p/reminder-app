@@ -3,11 +3,13 @@
 const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
+const tsNode = require('ts-node');
 const argparser = require('../app/argparser');
 const env = require('../app/env');
 
 // to make test runnable from anywhere
 process.chdir(path.resolve(__dirname, '../'));
+tsNode.register();
 
 env.setEnv('tests', true);
 env.setEnv('mode', 'test');
