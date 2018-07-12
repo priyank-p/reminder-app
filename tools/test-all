@@ -23,6 +23,7 @@ async function testAll() {
 
   await Promise.all([
     run('npx eslint . --cache --cache-location=var/.eslintcache', runOpts),
+    run('npx tslint -c tools/tslint-config.json -p .', runOpts),
     run('node tools/test-npm-dependencies', runOpts),
     run('node tools/run-tests', runOpts),
     run('node tools/test-migrations', runOpts),
