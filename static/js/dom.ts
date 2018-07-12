@@ -1,4 +1,4 @@
-type DomReturnType = Node | NodeList;
+type DomReturnType = Element | NodeList | null;
 type DomTypeParam = 'node' | 'nodelist';
 
 export default function $(sel: string, type?: DomTypeParam): DomReturnType {
