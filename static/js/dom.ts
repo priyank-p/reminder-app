@@ -4,7 +4,7 @@ export default function $(sel: string, type: 'node' | 'nodelist'): Node | NodeLi
     return els;
   }
 
-  if (type === 'node' || (els && els.length == 1)) {
+  if (type === 'node' || (els && els.length === 1)) {
     return els[0];
   }
 
