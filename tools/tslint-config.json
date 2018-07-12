@@ -1,11 +1,13 @@
 {
   "defaultSeverity": "error",
-  "extends": "tslint:recommended",
+  "extends": [ "tslint-eslint-rules" ],
   "jsRules": {},
   "rulesDirectory": [],
   "rules": {
-    "quotemark": [true, "single"],
-    "trailing-comma": false,
-    "object-literal-sort-keys": false
+    "no-constant-condition": true,
+    "quotemark": ["error", "single"],
+    "triple-equals": true,
+    "no-trailing-whitespace": true,
+    "ter-indent": [true, 2]
   }
 }
