@@ -1,8 +1,8 @@
-const defaultPostHeaders = {
+const defaultPostHeaders: object = {
   'Content-Type': 'application/json'
 };
 
-export function post(url, opts) {
+export function post(url: string, opts?): Promise<Response> {
   if (typeof opts.body === 'object') {
     opts.body = JSON.stringify(opts.body);
   }
@@ -16,7 +16,7 @@ export function post(url, opts) {
   };
 
   const request = fetch(url, requestData)
-    .then(res => {
+    .then((res) => {
       if (!res.ok) {
         throw Error();
       }
