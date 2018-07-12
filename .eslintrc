@@ -16,7 +16,8 @@
     "indent": [ "error", 2 ],
     "quotes": [ "error", "single" ],
     "semi": [ "error", "always" ],
-    "no-trailing-spaces": "error"
+    "no-trailing-spaces": "error",
+    "eqeqeq": ["error", "always"]
   },
   "globals": {
     "publicKey": false,
