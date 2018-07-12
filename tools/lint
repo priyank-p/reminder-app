@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+'use strict';
+
+const path = require('path');
+const run = require('./run');
+
+const ROOT_DIR = path.resolve(__dirname, '../');
+const runOpts = {
+  cwd: ROOT_DIR
+};
+
+async function lint() {
+  await Promise.all([
+    run('npx eslint . --cache --cache-location=var/.eslintcache', runOpts),
+    run('npx tslint -c tools/tslint-config.json -p .', runOpts)
+  ]);
+}
+
+lint()
+  .catch(() => process.exitCode = 1);
