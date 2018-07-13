@@ -18,8 +18,8 @@ reminderModal.addEventListener('click', (e) => {
   }
 });
 
-function toggleDropdown(e) {
-  const el = e.target;
+function toggleDropdown(e: Event) {
+  const el: Element = e.target as Element;
   el.classList.toggle('show');
 }
 
