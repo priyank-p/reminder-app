@@ -1,7 +1,6 @@
-type DomReturnType = Element | NodeList | null;
 type DomTypeParam = 'node' | 'nodelist';
 
-export default function $(sel: string, type?: DomTypeParam): DomReturnType {
+export default function $(sel: string, type?: DomTypeParam): any {
   const els = document.querySelectorAll(sel);
   if (type === 'nodelist') {
     return els;
