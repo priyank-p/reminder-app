@@ -80,10 +80,13 @@ function setDueDate(n: number) {
   }
 }
 
-const quickDueDatePicker = $('.quick-choose input');
+const quickDueDatePicker: Element = $('.quick-choose input');
 quickDueDatePicker.addEventListener('input', (e) => {
-  const el = e.target;
-  setDueDate(el.value);
+  const el = e.target as HTMLInputElement;
+  // the el.value is alreay a number due to it
+  // being type=number but typescript or just by reading
+  // the code on can't understand this!
+  setDueDate(Number(el.value));
 });
 
 function hasClass(el, _class) {
