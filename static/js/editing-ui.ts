@@ -38,12 +38,12 @@ function updateReminderElement(id: number, reminder: any) {
   hideEditingUI(id);
 }
 
-function showErrorUI(id) {
+function showErrorUI(id: number) {
   const [ editElements ] = getEditElements(id);
   editElements.forEach(el => el.classList.add('error'));
 }
 
-function removeErrorUI(id) {
+function removeErrorUI(id: number) {
   const [ editElements ] = getEditElements(id);
   editElements.forEach(el => el.classList.remove('error'));
 }
