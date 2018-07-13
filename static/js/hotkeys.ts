@@ -24,7 +24,7 @@ export function disableHotkey(hotkey: string) {
   disabledHotkeys.push(hotkey);
 }
 
-export function reEnableHotkey(hotkey) {
+export function reEnableHotkey(hotkey: string) {
   hotkey = getHotkey(hotkey);
   if (!disabledHotkeys.includes(hotkey)) {
     throw new Error('Cannot re-enable hotkey that not disabled!');
