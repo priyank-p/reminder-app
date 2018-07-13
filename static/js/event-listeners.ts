@@ -100,7 +100,7 @@ function hideContextMenus() {
 }
 
 // auto resize the textarea for editing ui
-function resize(el) {
+function resize(el: Element) {
   el.style.height = 'auto';
   el.style.height = (el.scrollHeight) + 'px';
 }
