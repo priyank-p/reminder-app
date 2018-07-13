@@ -100,16 +100,16 @@ function hideContextMenus() {
 }
 
 // auto resize the textarea for editing ui
-function resize(el: Element) {
+function resize(el: HTMLElement) {
   el.style.height = 'auto';
   el.style.height = (el.scrollHeight) + 'px';
 }
 
 const reminders = $('.reminders');
-reminders.addEventListener('click', (e) => {
-  const el = e.target;
-  const reminder = el.parentElement.parentElement.parentElement;
-  const id = reminder.getAttribute('data-id');
+reminders.addEventListener('click', (e: Event) => {
+  const el: Element  = e.target as Element;
+  const reminder: Element = el.parentElement.parentElement.parentElement;
+  const id: number = +reminder.getAttribute('data-id');
 
   if (hasClass(el, 'delete-reminder')) {
     request.post(`/api/reminders/delete/${id}`, { method: 'DELETE' })
@@ -151,7 +151,7 @@ document.body.addEventListener('input', (e) => {
   const isTextarea = /textarea/i;
   const isAddReminderTextarea = el.id === 'reminder-textarea';
   if (isTextarea.test(el.tagName) && !isAddReminderTextarea) {
-    resize(e.target);
+    resize(e.target as HTMLElement);
   }
 });
 
