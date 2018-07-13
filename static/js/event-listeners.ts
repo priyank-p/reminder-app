@@ -24,12 +24,12 @@ function toggleDropdown(e: Event) {
 }
 
 const dropdowns = $('.dropdown-section .title', 'nodelist');
-dropdowns.forEach(dropdown => {
+dropdowns.forEach((dropdown: Element) => {
   dropdown.addEventListener('click', toggleDropdown);
 });
 
-const reminderForm: HTMLElement = $('#add-reminder-modal form');
-reminderForm.addEventListener('submit', function (e) {
+const reminderForm: Element = $('#add-reminder-modal form');
+reminderForm.addEventListener('submit', function (e: Event) {
   const reminder = getReminder(e.target, { isEditingUI: false });
   request.post('/api/reminders/add', { body: reminder })
     .then(() => {
