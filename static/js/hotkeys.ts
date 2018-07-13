@@ -34,7 +34,7 @@ export function reEnableHotkey(hotkey: string) {
   disabledHotkeys.splice(pos, 1);
 }
 
-export function isHotkeyDisabled(hotkey) {
+export function isHotkeyDisabled(hotkey: string): boolean {
   // this is not needed to be done if called by
   // checkHotkeys though since we export this function
   // we make sure it work with Ctrl+key or Control+key.
