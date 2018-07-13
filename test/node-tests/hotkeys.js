@@ -24,12 +24,12 @@ const target = {
 
 (function test_addHotkeys_function() {
   hotkeys.addHotkey('Ctrl+P', noop);
-  assert.deepStrictEqual(_hotkeys['Control+P'], noop);
+  assert.deepStrictEqual(_hotkeys()['Control+P'], noop);
 
   // test that in mac platforms it uses meta key
   global.navigator.platform = 'MacIntel';
   hotkeys.addHotkey('Ctrl+P', noop);
-  assert.deepStrictEqual(_hotkeys['Meta+P'], noop);
+  assert.deepStrictEqual(_hotkeys()['Meta+P'], noop);
 
   // reset stuff
   global.navigator.platform = 'Win32';
@@ -51,16 +51,16 @@ function getCountTracker() {
 
   hotkeys.addHotkey('a', singleHotkey.handler);
   hotkeys.addHotkey('Ctrl+a', comboHotkey.handler);
-  assert.deepStrictEqual(_hotkeys['a'], singleHotkey.handler);
-  assert.deepStrictEqual(_hotkeys['Control+a'], comboHotkey.handler);
+  assert.deepStrictEqual(_hotkeys()['a'], singleHotkey.handler);
+  assert.deepStrictEqual(_hotkeys()['Control+a'], comboHotkey.handler);
 
   _checkHotkeys({ key: 'a', ...target });
-  assert.deepStrictEqual(hotkeys._previousKeypress, 'a');
+  assert.deepStrictEqual(hotkeys._previousKeypress(), 'a');
 
   _checkHotkeys({ key: 'Control', ...target });
-  assert.deepStrictEqual(hotkeys._previousKeypress, 'Control');
+  assert.deepStrictEqual(hotkeys._previousKeypress(), 'Control');
   _checkHotkeys({ key: 'a', ...target });
-  assert.deepStrictEqual(hotkeys._previousKeypress, 'a');
+  assert.deepStrictEqual(hotkeys._previousKeypress(), 'a');
 
   // check that hotkeys are not triggred if
   // it input or textarea
@@ -106,7 +106,7 @@ function getCountTracker() {
 
 (function test_reEnabling_not_added_hotkey() {
   // first make sure it not yet disabled!
-  assert.deepStrictEqual(_disabledHotkeys['Not_Added'], undefined);
+  assert.deepStrictEqual(_disabledHotkeys()['Not_Added'], undefined);
   assert.throws(() => {
     hotkeys.reEnableHotkey('Not_Added');
   }, /^Error: Cannot re-enable hotkey that not disabled!/);
