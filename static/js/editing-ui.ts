@@ -27,7 +27,8 @@ export function hideEditingUI(reminderId: number) {
   reminderElements.forEach(el => el.classList.remove('hide'));
 }
 
-function updateReminderElement(id, reminder) {
+// TODO: create a Reminder Interface!
+function updateReminderElement(id: number, reminder: any) {
   const reminderElement = $(`.reminder[data-id="${id}"]`);
   const title = reminderElement.querySelector('.title');
   const content = reminderElement.querySelector('.content');
