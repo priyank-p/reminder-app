@@ -89,7 +89,7 @@ quickDueDatePicker.addEventListener('input', (e) => {
   setDueDate(Number(el.value));
 });
 
-function hasClass(el, _class) {
+function hasClass(el: Element, _class: string): Boolean {
   return el.classList.contains(_class);
 }
 
