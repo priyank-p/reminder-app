@@ -47,7 +47,7 @@ reminderForm.addEventListener('submit', function (e: Event) {
 const inputBaseSelector: string = '#add-reminder-modal form';
 const dueDateInput: HTMLInputElement = $(`${inputBaseSelector} input[type="date"]`);
 const dueTimeInput: HTMLInputElement = $(`${inputBaseSelector} input[type="time"]`);
-function setDueDate(n) {
+function setDueDate(n: number) {
   if (isNaN(n)) {
     return;
   }
@@ -62,7 +62,7 @@ function setDueDate(n) {
   // this is required because even though
   // Date object is smart about month rollover
   // it can't increment 10 days from last to second day
-  const date = new Date();
+  const date: Date = new Date();
   for (let i = 0; i < n; i++) {
     date.setDate(date.getDate() + 1);
   }
