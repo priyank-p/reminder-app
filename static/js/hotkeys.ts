@@ -1,6 +1,6 @@
 let previousKeypress = null;
 let hotkeys = {};
-let disabledHotkeys: any = [];
+let disabledHotkeys = [];
 
 export function getHotkey(keyBinding) {
   const useMetaKey = navigator.platform.includes('Mac');
