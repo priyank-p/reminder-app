@@ -144,9 +144,10 @@ reminders.addEventListener('click', (e) => {
 });
 
 document.body.addEventListener('input', (e) => {
+  const el = e.target as HTMLElement;
   const isTextarea = /textarea/i;
-  const isAddReminderTextarea = e.target.id === 'reminder-textarea';
-  if (isTextarea.test(e.target.tagName) && !isAddReminderTextarea) {
+  const isAddReminderTextarea = el.id === 'reminder-textarea';
+  if (isTextarea.test(el.tagName) && !isAddReminderTextarea) {
     resize(e.target);
   }
 });
