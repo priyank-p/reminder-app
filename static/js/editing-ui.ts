@@ -21,7 +21,7 @@ export function showEditingUI(reminderId: number) {
   reminderElements.forEach(el => el.classList.add('hide'));
 }
 
-export function hideEditingUI(reminderId) {
+export function hideEditingUI(reminderId: number) {
   const [ editElements, reminderElements ] = getEditElements(reminderId);
   editElements.forEach(el => el.classList.remove('show'));
   reminderElements.forEach(el => el.classList.remove('hide'));
