@@ -1,8 +1,8 @@
 let previousKeypress = null;
 let hotkeys = {};
-let disabledHotkeys = [];
+let disabledHotkeys: any = [];
 
-function getHotkey(keyBinding) {
+export function getHotkey(keyBinding) {
   const useMetaKey = navigator.platform.includes('Mac');
   if (useMetaKey) {
     keyBinding = keyBinding.replace('Ctrl', 'Meta');
@@ -12,19 +12,19 @@ function getHotkey(keyBinding) {
   return keyBinding;
 }
 
-function addHotkey(keyBinding, handler) {
+export function addHotkey(keyBinding, handler) {
   keyBinding = getHotkey(keyBinding);
   hotkeys[keyBinding] = handler;
 }
 
-function disableHotkey(hotkey) {
+export function disableHotkey(hotkey) {
   // TODO: Maybe consider throwing error when disabling hotkey
   // that is not yet added?
   hotkey = getHotkey(hotkey);
   disabledHotkeys.push(hotkey);
 }
 
-function reEnableHotkey(hotkey) {
+export function reEnableHotkey(hotkey) {
   hotkey = getHotkey(hotkey);
   if (!disabledHotkeys.includes(hotkey)) {
     throw new Error('Cannot re-enable hotkey that not disabled!');
@@ -34,7 +34,7 @@ function reEnableHotkey(hotkey) {
   disabledHotkeys.splice(pos, 1);
 }
 
-function isHotkeyDisabled(hotkey) {
+export function isHotkeyDisabled(hotkey) {
   // this is not needed to be done if called by
   // checkHotkeys though since we export this function
   // we make sure it work with Ctrl+key or Control+key.
@@ -42,7 +42,7 @@ function isHotkeyDisabled(hotkey) {
   return disabledHotkeys.includes(hotkey);
 }
 
-function checkHotkeys(e) {
+export function checkHotkeys(e) {
   // we don't want to trigger an event if the
   // user is typing something.
   const isInputElement = /input|textarea/i;
@@ -75,23 +75,18 @@ function checkHotkeys(e) {
 }
 
 document.addEventListener('keydown', checkHotkeys);
-module.exports = {
-  addHotkey,
-  disableHotkey,
-  isHotkeyDisabled,
-  reEnableHotkey,
 
-  // for use in tests or for debugging purposes
-  _checkHotkeys: checkHotkeys,
-  get _hotkeys() {
-    return hotkeys;
-  },
 
-  get _disabledHotkeys() {
-    return disabledHotkeys;
-  },
+// for use in tests or for debugging purposes
+export const _checkHotkeys = checkHotkeys;
+export function _hotkeys() {
+  return hotkeys;
+}
 
-  get _previousKeypress() {
-    return previousKeypress;
-  }
-};
+export function _disabledHotkeys() {
+  return disabledHotkeys;
+}
+
+export function _previousKeypress() {
+  return previousKeypress;
+}
