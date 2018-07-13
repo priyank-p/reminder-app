@@ -15,7 +15,7 @@ function getEditElements(id: number): Array<any> {
   return [ editElements, reminderElements ];
 }
 
-export function showEditingUI(reminderId) {
+export function showEditingUI(reminderId: number) {
   const [ editElements, reminderElements ] = getEditElements(reminderId);
   editElements.forEach(el => el.classList.add('show'));
   reminderElements.forEach(el => el.classList.add('hide'));
