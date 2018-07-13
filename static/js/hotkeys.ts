@@ -12,7 +12,7 @@ export function getHotkey(keyBinding: string): string {
   return keyBinding;
 }
 
-export function addHotkey(keyBinding, handler) {
+export function addHotkey(keyBinding: string, handler: Function) {
   keyBinding = getHotkey(keyBinding);
   hotkeys[keyBinding] = handler;
 }
