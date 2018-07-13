@@ -4,8 +4,8 @@ import * as editingUI from './editing-ui';
 import dateFormat from 'dateformat';
 import { getReminder } from './reminder-utils';
 
-const reminderModal = $('#add-reminder-modal');
-const addReminderBtn = $('#add-reminder-btn');
+const reminderModal: Element = $('#add-reminder-modal');
+const addReminderBtn: Element = $('#add-reminder-btn');
 function toogleReminderModal() {
   reminderModal.classList.toggle('open');
 }
@@ -28,7 +28,7 @@ dropdowns.forEach(dropdown => {
   dropdown.addEventListener('click', toggleDropdown);
 });
 
-const reminderForm = $('#add-reminder-modal form');
+const reminderForm: HTMLElement = $('#add-reminder-modal form');
 reminderForm.addEventListener('submit', function (e) {
   const reminder = getReminder(e.target, { isEditingUI: false });
   request.post('/api/reminders/add', { body: reminder })
@@ -44,9 +44,9 @@ reminderForm.addEventListener('submit', function (e) {
 // the quick due date picker, we get a number
 // and we update the due date fields, the due_time
 // would be by default 12 PM
-const inputBaseSelector = '#add-reminder-modal form';
-const dueDateInput = $(`${inputBaseSelector} input[type="date"]`);
-const dueTimeInput = $(`${inputBaseSelector} input[type="time"]`);
+const inputBaseSelector: string = '#add-reminder-modal form';
+const dueDateInput: HTMLInputElement = $(`${inputBaseSelector} input[type="date"]`);
+const dueTimeInput: HTMLInputElement = $(`${inputBaseSelector} input[type="time"]`);
 function setDueDate(n) {
   if (isNaN(n)) {
     return;
@@ -144,7 +144,7 @@ reminders.addEventListener('click', (e) => {
 });
 
 document.body.addEventListener('input', (e) => {
-  const el = e.target as HTMLElement;
+  const el = e.target as Element;
   const isTextarea = /textarea/i;
   const isAddReminderTextarea = el.id === 'reminder-textarea';
   if (isTextarea.test(el.tagName) && !isAddReminderTextarea) {
