@@ -2,8 +2,8 @@ let previousKeypress = null;
 let hotkeys = {};
 let disabledHotkeys = [];
 
-export function getHotkey(keyBinding) {
-  const useMetaKey = navigator.platform.includes('Mac');
+export function getHotkey(keyBinding: string): string {
+  const useMetaKey: boolean = navigator.platform.includes('Mac');
   if (useMetaKey) {
     keyBinding = keyBinding.replace('Ctrl', 'Meta');
   }
