@@ -1,6 +1,16 @@
-export function getReminder(el, { isEditingUI }) {
-  const reminder = {};
-  const selector = isEditingUI ? '.edit' : 'input, textarea';
+interface Reminder {
+  title: string,
+  reminder: string,
+  due_time: any,
+  due_date: string | Date | null,
+  created_at: string | Date | null,
+  notified: boolean,
+  id: number
+}
+
+export function getReminder(el: any, { isEditingUI }): Reminder {
+  const reminder: any = {};
+  const selector: string = isEditingUI ? '.edit' : 'input, textarea';
   const elements = el.querySelectorAll(selector);
 
   elements.forEach(input => {
