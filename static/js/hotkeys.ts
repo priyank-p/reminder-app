@@ -17,7 +17,7 @@ export function addHotkey(keyBinding: string, handler: Function) {
   hotkeys[keyBinding] = handler;
 }
 
-export function disableHotkey(hotkey) {
+export function disableHotkey(hotkey: string) {
   // TODO: Maybe consider throwing error when disabling hotkey
   // that is not yet added?
   hotkey = getHotkey(hotkey);
