@@ -48,9 +48,9 @@ function removeErrorUI(id: number) {
   editElements.forEach(el => el.classList.remove('error'));
 }
 
-export function updateReminder(id, updatedReminder) {
+export function updateReminder(id: number, updatedReminder: any) {
   const route = `/api/reminders/update/${id}`;
-  const data = {
+  const data: object = {
     body: updatedReminder
   };
 
