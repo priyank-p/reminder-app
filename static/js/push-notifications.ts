@@ -59,13 +59,13 @@ async function register(): Promise<void> {
     });
 }
 
-const ui = $('#ask-for-push');
+const ui: Element = $('#ask-for-push');
 function closeUI() {
   ui.classList.remove('show');
 }
 
-ui.addEventListener('click', (e) => {
-  const el = e.target;
+ui.addEventListener('click', (e: Event) => {
+  const el = e.target as Element;
   if (el.classList.contains('enable-push')) {
     register()
       .then(closeUI)
