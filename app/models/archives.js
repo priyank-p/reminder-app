@@ -18,8 +18,15 @@ async function deleteArchive(id) {
   await arhives.deleteRow(id);
 }
 
+async function getArchiveById(id) {
+  const allArchives = await getArchives();
+  const archive = allArchives.filter(archive => archive.id === id);
+  return archive[0];
+}
+
 module.exports = {
   archive,
   getArchives,
-  deleteArchive
+  deleteArchive,
+  getArchiveById
 };
