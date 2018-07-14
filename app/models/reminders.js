@@ -14,6 +14,10 @@ function validateReminder(fields) {
       continue;
     }
 
+    if (typeof fields[field] !== 'string') {
+      continue;
+    }
+
     // escape html early on, before adding it to db.
     let sanatized = fields[field].toString().trim();
     sanatized = escapeHTML(sanatized);
@@ -25,7 +29,8 @@ function validateReminder(fields) {
 
 async function addReminder(fields) {
   fields = validateReminder(fields);
-  await reminders.addRow(fields);
+  const id = await reminders.addRow(fields);
+  return id;
 }
 
 async function getReminders() {

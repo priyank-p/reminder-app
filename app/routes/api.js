@@ -89,4 +89,23 @@ router.get('/archives/:id', async (req, res) => {
     });
 });
 
+router.get('/archives/restore/:id', async (req, res) => {
+  const id = +req.params.id;
+  if (isNaN(id)) {
+    res.status(500).send('Id passed in must be valid!');
+    return;
+  }
+
+  try {
+    const archive = await archives.getArchiveById(id);
+    delete archive.reminder.id;
+    const newId = await reminders.addReminder(archive.reminder);
+    await archives.deleteArchive(id);
+    res.json({ newId });
+  } catch(e) {
+    console.log(e);
+    res.status(500).send(`Cannot restore archive with id: ${id}`);
+  }
+});
+
 module.exports = router;
