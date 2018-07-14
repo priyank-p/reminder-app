@@ -42,24 +42,25 @@ export function isHotkeyDisabled(hotkey: string): boolean {
   return disabledHotkeys.includes(hotkey);
 }
 
-export function checkHotkeys(e) {
+export function checkHotkeys(e: KeyboardEvent) {
   // we don't want to trigger an event if the
   // user is typing something.
+  const el = e.target as Element;
   const isInputElement = /input|textarea/i;
-  if (isInputElement.test(e.target.tagName)) {
+  if (isInputElement.test(el.tagName)) {
     return;
   }
 
   // for comboKey we don't care it previousKeypress was null
   // since hotkeys[comboKey] will not return a handler
-  const currentKey = e.key;
-  const comboKey = `${previousKeypress}+${currentKey}`;
+  const currentKey: string = e.key;
+  const comboKey: string = `${previousKeypress}+${currentKey}`;
   previousKeypress = currentKey;
 
   // figure out which hotkey to use
   // comboKey is the priority
-  const useCombokey = hotkeys[comboKey] || false;
-  const useSinglekey = hotkeys[currentKey] || false;
+  const useCombokey: string | boolean = hotkeys[comboKey] || false;
+  const useSinglekey: string | boolean = hotkeys[currentKey] || false;
 
   if (useCombokey && isHotkeyDisabled(comboKey)) {
     return;
@@ -69,8 +70,8 @@ export function checkHotkeys(e) {
     return;
   }
 
-  const noop = () => {};
-  const handler = hotkeys[comboKey] || hotkeys[currentKey] || noop;
+  const noop: Function =  () => {};
+  const handler: Function = hotkeys[comboKey] || hotkeys[currentKey] || noop;
   handler(e);
 }
 
