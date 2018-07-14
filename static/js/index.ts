@@ -3,7 +3,7 @@ import SWManager from './sw-manager';
 import dateFormat from 'dateformat';
 import $ from './dom';
 
-declare var swPath;
+declare const swPath;
 
 $('.reminder', 'nodelist').forEach((el: Element) => {
   const due_date: HTMLElement = el.querySelector('.due-date');

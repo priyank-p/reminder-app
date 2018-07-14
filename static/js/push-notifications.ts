@@ -1,6 +1,8 @@
 import * as request from './request';
 import $ from './dom';
 
+declare const publicKey;
+
 export let swReg;
 export const localStorageKey = 'push-subscribed';
 export function setSWReg(reg) {
