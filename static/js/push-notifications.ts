@@ -30,12 +30,12 @@ function urlBase64ToUint8Array(base64String: string): Uint8Array {
   return outputArray;
 }
 
-export async function isRegistered() {
-  const subscription = await swReg.pushManager.getSubscription();
-  const subscriptionNotSent = (localStorage.getItem(localStorageKey) === null);
+export async function isRegistered(): Promise<boolean> {
+  const subscription  = await swReg.pushManager.getSubscription();
+  const subscriptionNotSent: boolean = (localStorage.getItem(localStorageKey) === null);
 
   // user does not want push notifications.
-  const userDenied = localStorage.getItem('do-not-ask-for-push') !== null;
+  const userDenied: boolean = localStorage.getItem('do-not-ask-for-push') !== null;
   if (userDenied) {
     return true;
   }
