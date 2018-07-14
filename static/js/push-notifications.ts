@@ -47,8 +47,8 @@ export async function isRegistered(): Promise<boolean> {
   return true;
 }
 
-async function register() {
-  const subscription = await swReg.pushManager.subscribe({
+async function register(): Promise<void> {
+  const subscription: PushSubscription = await swReg.pushManager.subscribe({
     userVisibleOnly: true,
     applicationServerKey: urlBase64ToUint8Array(publicKey)
   });
