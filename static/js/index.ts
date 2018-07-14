@@ -13,7 +13,7 @@ $('.reminder', 'nodelist').forEach((el: Element) => {
   }
 
   const date = new Date(due_date.innerText);
-  let formattedDate = dateFormat(date, 'shortDate') + ' ';
+  let formattedDate: string = dateFormat(date, 'shortDate') + ' ';
   formattedDate += dateFormat(date, 'shortTime');
   due_date.innerText = formattedDate;
 });
@@ -23,13 +23,13 @@ $('.reminders').classList.remove('hide');
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     async function register() {
-      const reg = await navigator.serviceWorker.register(swPath, {
+      const reg: ServiceWorkerRegistration = await navigator.serviceWorker.register(swPath, {
         scope: '/'
       });
 
       PushNotifications.setSWReg(reg);
 
-      const isRegistered = await PushNotifications.isRegistered();
+      const isRegistered: boolean = await PushNotifications.isRegistered();
       if (!isRegistered) {
         PushNotifications.showRegisterUI();
       }
