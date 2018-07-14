@@ -32,7 +32,7 @@ router.delete('/reminders/delete/:id', async (req, res) => {
     return;
   }
 
-  reminders.deleteReminder(id)
+  Promise.all([archives.archive(id), reminders.deleteReminder(id)])
     .then(() => {
       res.send(`Reminder with id: ${id} was deleted!`);
     })
