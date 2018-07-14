@@ -72,4 +72,21 @@ router.get('/archives/all', async (req, res) => {
   res.json(allArchives);
 });
 
+router.get('/archives/:id', async (req, res) => {
+  const id = +req.params.id;
+  if (isNaN(id)) {
+    res.status(500);
+    res.send('A valid id must be passed in!');
+    return;
+  }
+
+  archives.getArchiveById(id)
+    .then(arhive => {
+      res.json(arhive);
+    })
+    .catch(() => {
+      res.status(500).send(`No arhives with id: ${id}.`);
+    });
+});
+
 module.exports = router;
