@@ -14,7 +14,12 @@ async function getArchives() {
   return rows;
 }
 
+async function deleteArchive(id) {
+  await arhives.deleteRow(id);
+}
+
 module.exports = {
   archive,
-  getArchives
+  getArchives,
+  deleteArchive
 };
