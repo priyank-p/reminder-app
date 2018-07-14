@@ -1,6 +1,6 @@
 const mainBundle = {
   'main': [
-    './static/js/index.js',
+    './static/js/index.ts',
     './static/js/app-hotkeys.ts',
     './static/js/event-listeners.ts'
   ],
