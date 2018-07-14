@@ -9,7 +9,7 @@ export function setSWReg(reg: ServiceWorkerRegistration) {
   swReg = reg;
 }
 
-export async function isPushRegistered() {
+export async function isPushRegistered(): Promise<boolean> {
   const { pushManager } = swReg;
   const subscription = pushManager.getSubscription();
   return (subscription !== null);
