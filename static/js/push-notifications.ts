@@ -3,9 +3,9 @@ import $ from './dom';
 
 declare const publicKey;
 
-export let swReg;
-export const localStorageKey = 'push-subscribed';
-export function setSWReg(reg) {
+export let swReg: ServiceWorkerRegistration;
+export const localStorageKey: string = 'push-subscribed';
+export function setSWReg(reg: ServiceWorkerRegistration) {
   swReg = reg;
 }
 
