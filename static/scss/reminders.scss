@@ -11,7 +11,7 @@ $reminder-width: 300px;
   height: auto;
   overflow: auto;
 
-  &.hide {
+  &.hide .due-date {
     display: none;
   }
 }
