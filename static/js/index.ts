@@ -5,7 +5,7 @@ import $ from './dom';
 
 declare const swPath;
 
-$('.reminder', 'nodelist').forEach((el: Element) => {
+($('.reminder', 'nodelist') as Node[]).forEach((el: Element) => {
   const due_date: HTMLElement = el.querySelector('.due-date');
 
   if (due_date.innerText === '') {
@@ -18,7 +18,7 @@ $('.reminder', 'nodelist').forEach((el: Element) => {
   due_date.innerText = formattedDate;
 });
 
-$('.reminders').classList.remove('hide');
+($('.reminders') as Element).classList.remove('hide');
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

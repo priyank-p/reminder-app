@@ -2,7 +2,7 @@ import $ from './dom';
 
 function reminderDeleted(id: number) {
   const selector = `.reminder[data-id="${id}"]`;
-  const reminder = $(selector);
+  const reminder = $(selector) as HTMLElement;
   reminder.classList.add('deleted-by-sw');
   reminder.title = '(deleted) ' + reminder.title;
 }

@@ -3,7 +3,7 @@ import * as request from './request';
 
 function getEditElements(id: number): Array<any> {
   const selector: string = `.reminder[data-id="${id}"]`;
-  const reminder = $(selector);
+  const reminder = $(selector) as Element;
 
   const editElements = reminder.querySelectorAll('.edit,.edit-ui');
   const reminderElements = [
@@ -29,9 +29,9 @@ export function hideEditingUI(reminderId: number) {
 
 // TODO: create a Reminder Interface!
 function updateReminderElement(id: number, reminder: any) {
-  const reminderElement = $(`.reminder[data-id="${id}"]`);
-  const title = reminderElement.querySelector('.title');
-  const content = reminderElement.querySelector('.content');
+  const reminderElement = $(`.reminder[data-id="${id}"]`) as HTMLElement;
+  const title = reminderElement.querySelector('.title') as HTMLElement;
+  const content = reminderElement.querySelector('.content') as HTMLElement;
 
   title.innerText = reminder.title;
   content.innerText = reminder.reminder;

@@ -4,8 +4,8 @@ import * as editingUI from './editing-ui';
 import dateFormat from 'dateformat';
 import { getReminder } from './reminder-utils';
 
-const reminderModal: Element = $('#add-reminder-modal');
-const addReminderBtn: Element = $('#add-reminder-btn');
+const reminderModal = $('#add-reminder-modal') as Element;
+const addReminderBtn = $('#add-reminder-btn') as Element;
 function toogleReminderModal() {
   reminderModal.classList.toggle('open');
 }
@@ -23,12 +23,12 @@ function toggleDropdown(e: Event) {
   el.classList.toggle('show');
 }
 
-const dropdowns = $('.dropdown-section .title', 'nodelist');
+const dropdowns = $('.dropdown-section .title', 'nodelist') as Node[];
 dropdowns.forEach((dropdown: Element) => {
   dropdown.addEventListener('click', toggleDropdown);
 });
 
-const reminderForm: Element = $('#add-reminder-modal form');
+const reminderForm = $('#add-reminder-modal form') as Element;
 reminderForm.addEventListener('submit', function (e: Event) {
   const reminder = getReminder(e.target, { isEditingUI: false });
   request.post('/api/reminders/add', { body: reminder })
@@ -45,8 +45,8 @@ reminderForm.addEventListener('submit', function (e: Event) {
 // and we update the due date fields, the due_time
 // would be by default 12 PM
 const inputBaseSelector: string = '#add-reminder-modal form';
-const dueDateInput: HTMLInputElement = $(`${inputBaseSelector} input[type="date"]`);
-const dueTimeInput: HTMLInputElement = $(`${inputBaseSelector} input[type="time"]`);
+const dueDateInput = $(`${inputBaseSelector} input[type="date"]`) as HTMLInputElement;
+const dueTimeInput = $(`${inputBaseSelector} input[type="time"]`) as HTMLInputElement;
 function setDueDate(n: number) {
   if (isNaN(n)) {
     return;
@@ -80,7 +80,7 @@ function setDueDate(n: number) {
   }
 }
 
-const quickDueDatePicker: Element = $('.quick-choose input');
+const quickDueDatePicker = $('.quick-choose input') as Element;
 quickDueDatePicker.addEventListener('input', (e) => {
   const el = e.target as HTMLInputElement;
   // the el.value is alreay a number due to it
@@ -94,7 +94,8 @@ function hasClass(el: Element, _class: string): Boolean {
 }
 
 function hideContextMenus() {
-  $('.menu.show', 'nodelist').forEach(el => {
+  const menus = $('.menu.show', 'nodelist') as Element[];
+  menus.forEach(el => {
     el.classList.remove('show');
   });
 }
@@ -105,7 +106,7 @@ function resize(el: HTMLElement) {
   el.style.height = (el.scrollHeight) + 'px';
 }
 
-const reminders = $('.reminders');
+const reminders = $('.reminders') as Element;
 reminders.addEventListener('click', (e: Event) => {
   const el: Element  = e.target as Element;
   const reminder: Element = el.parentElement.parentElement.parentElement;

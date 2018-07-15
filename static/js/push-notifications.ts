@@ -59,7 +59,7 @@ async function register(): Promise<void> {
     });
 }
 
-const ui: Element = $('#ask-for-push');
+const ui = $('#ask-for-push') as Element;
 function closeUI() {
   ui.classList.remove('show');
 }
