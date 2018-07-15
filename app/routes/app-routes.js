@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const env = require('../env');
 const reminders = require('../models/reminders');
+const archives = require('../models/archives');
 const pushNotifications = require('../push-notifications');
 
 const { webPushData } = pushNotifications;
@@ -12,6 +13,12 @@ router.get('/', async (req, res) => {
     reminders: await reminders.getReminders(),
     publicKey: webPushData.publicKey,
     swPath: env.production ? '/reminder-app-sw.js' : '/webpack/sw-dev.js'
+  });
+});
+
+router.get('/archives', async (req, res) => {
+  res.render('archives', {
+    archives: await archives.getArchives()
   });
 });
 
