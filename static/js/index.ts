@@ -5,7 +5,7 @@ import $ from './dom';
 
 declare const swPath;
 
-($('.reminder', 'nodelist') as Node[]).forEach((el: Element) => {
+($('.reminder, .archive', 'nodelist') as Node[]).forEach((el: Element) => {
   const due_date: HTMLElement = el.querySelector('.due-date');
 
   if (due_date.innerText === '') {
