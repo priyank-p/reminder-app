@@ -1,24 +1,9 @@
 import * as PushNotifications from './push-notifications';
 import SWManager from './sw-manager';
-import dateFormat from 'dateformat';
-import $ from './dom';
+import formatDate from './format-due-date';
 
 declare const swPath;
-
-($('.reminder, .archive', 'nodelist') as Node[]).forEach((el: Element) => {
-  const due_date: HTMLElement = el.querySelector('.due-date');
-
-  if (due_date.innerText === '') {
-    return;
-  }
-
-  const date = new Date(due_date.innerText);
-  let formattedDate: string = dateFormat(date, 'shortDate') + ' ';
-  formattedDate += dateFormat(date, 'shortTime');
-  due_date.innerText = formattedDate;
-});
-
-($('.reminders') as Element).classList.remove('hide');
+formatDate();
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
