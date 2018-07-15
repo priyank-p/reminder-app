@@ -10,12 +10,15 @@
   },
   "watch": [
     "tools/dev-server.js",
+    "tools/dev-server",
+    "tools/sw-loader.js",
     "tools/webpack.config.js",
-    "tools/webpack.enteries.js",
+    "tools/webpack-entries.js",
+    "tools/version.js",
     "app/"
   ],
   "env": {
     "NODE_ENV": "development"
   },
-  "ext": "js,json"
+  "ext": "ts,js,json"
 }
