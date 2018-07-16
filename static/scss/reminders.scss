@@ -1,6 +1,6 @@
 $reminder-width: 300px;
 
-.reminders {
+.reminders, .archives {
   columns: $reminder-width;
   column-gap: 15px;
   color: #eff1f3;
@@ -16,7 +16,7 @@ $reminder-width: 300px;
   }
 }
 
-.reminder {
+.reminder, .archive {
   display: inline-block;
   background-color: #fff;
   border: 1px solid #ccc;
