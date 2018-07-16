@@ -6,6 +6,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free-webfonts": "1.0.9",
     "body-parser": "1.18.3",
+    "cache-loader": "1.2.2",
     "chalk": "2.4.1",
     "clean-webpack-plugin": "0.1.19",
     "compression": "1.7.2",
