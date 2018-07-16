@@ -26,3 +26,14 @@ export function post(url: string, opts?): Promise<Response> {
 
   return request;
 }
+
+export function get(url: string | Request, opts?: RequestInit): Promise<Response> {
+  return fetch(url, opts)
+    .then(res => {
+      if (!res.ok) {
+        throw Error();
+      }
+
+      return res;
+    });
+}
