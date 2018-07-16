@@ -27,6 +27,14 @@ function cssLoaders(isProd, bundles) {
 
 module.exports = (env) => {
   const production = env === 'production';
+  const cacheLoader = {
+    loader: 'cache-loader',
+    options: {
+      cacheDirectory: path.resolve(__dirname, '../var/cache-loader'),
+      cacheIdentifier: production ? 'production' : 'development'
+    }
+  };
+
   const config = {
     mode: production ? 'production' : 'development',
     context: ROOT_DIR,
@@ -70,7 +78,7 @@ module.exports = (env) => {
         },
         {
           test: /\.(woff(2)?|ttf|eot|svg|otf|png)(\?v=\d+\.\d+\.\d+)?$/,
-          use: [{
+          use: [cacheLoader,{
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
@@ -119,14 +127,16 @@ module.exports = (env) => {
 
     config.module.rules.push({
       test: /\.svg$/,
-      loader: 'svg-url-loader',
-      options: {
-        // Inline files smaller than 10 kB (10240 bytes)
-        limit: 10 * 1024,
-        // Remove the quotes from the url
-        // (they’re unnecessary in most cases)
-        noquotes: true,
-      }
+      use: [cacheLoader, {
+        loader: 'svg-url-loader',
+        options: {
+          // Inline files smaller than 10 kB (10240 bytes)
+          limit: 10 * 1024,
+          // Remove the quotes from the url
+          // (they’re unnecessary in most cases)
+          noquotes: true,
+        }
+      }]
     });
   } else {
     config.plugins.push(
