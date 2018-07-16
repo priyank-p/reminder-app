@@ -1,7 +1,7 @@
 import $ from './dom';
 import * as request from './request';
 import * as editingUI from './editing-ui';
-import dateFormat from 'dateformat';
+import * as dateFormat from 'dateformat';
 import { getReminder } from './reminder-utils';
 
 const reminderModal = $('#add-reminder-modal') as Element;

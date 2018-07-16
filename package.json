@@ -40,6 +40,7 @@
     "start-on-windows-boot": "1.0.0"
   },
   "devDependencies": {
+    "@types/dateformat": "^1.0.1",
     "eslint": "5.0.1",
     "glob": "^7.1.2",
     "http-proxy-middleware": "^0.18.0",
@@ -65,8 +66,14 @@
   "nyc": {
     "report-dir": "var/nyc",
     "temp-directory": "var/.nyc_output",
-    "extension": [ ".js", ".ts" ],
-    "reporter": [ "lcov", "text-summary" ]
+    "extension": [
+      ".js",
+      ".ts"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ]
   },
   "keywords": [],
   "author": "Priyank Patel <priyankp390@gmail.com>",
