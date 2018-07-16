@@ -1,12 +1,12 @@
 import $ from './dom';
 import * as request from './request';
 
-function getEditElements(id: number): Array<any> {
+function getEditElements(id: number): Element[][] {
   const selector: string = `.reminder[data-id="${id}"]`;
   const reminder = $(selector) as Element;
 
-  const editElements = reminder.querySelectorAll('.edit,.edit-ui');
-  const reminderElements = [
+  const editElements: Element[] = Array.from(reminder.querySelectorAll('.edit,.edit-ui'));
+  const reminderElements: Element[] = [
     reminder.querySelector('.title'),
     reminder.querySelector('.content'),
     reminder.querySelector('.context-menu')
