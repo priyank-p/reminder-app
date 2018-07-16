@@ -5,6 +5,7 @@ const mainBundle = {
     './static/js/event-listeners.ts'
   ],
   'main-css': './static/scss/reminder-app.scss',
+  'archives': './static/js/archives.ts',
   'archives-css': './static/scss/archives.scss',
   'sw': './static/js/reminder-app-sw.js'
 };
