@@ -4,6 +4,7 @@ import * as editingUI from './editing-ui';
 import * as dateFormat from 'dateformat';
 import * as ReminderUtils from './reminder-utils';
 import { init as initContextMenus, hideContextMenus } from './context-menu';
+import { init as initTextareaAutoResize } from './textarea-autoresize';
 
 const {
   addReminderBtn, toogleReminderModal,
@@ -93,14 +94,9 @@ function hasClass(el: Element, _class: string): Boolean {
   return el.classList.contains(_class);
 }
 
-// auto resize the textarea for editing ui
-function resize(el: HTMLElement) {
-  el.style.height = 'auto';
-  el.style.height = (el.scrollHeight) + 'px';
-}
-
-// init context-menus
+// init context-menus and textare auto-resize
 initContextMenus();
+initTextareaAutoResize();
 
 const reminders = $('.reminders') as Element;
 reminders.addEventListener('click', (e: Event) => {
@@ -118,8 +114,6 @@ reminders.addEventListener('click', (e: Event) => {
   if (hasClass(el, 'edit-reminder')) {
     editingUI.showEditingUI(id);
     hideContextMenus();
-    resize(reminder.querySelector('textarea'));
-
     e.stopPropagation();
     return false;
   }
@@ -131,14 +125,5 @@ reminders.addEventListener('click', (e: Event) => {
 
   if (hasClass(el, 'cancel-editing')) {
     editingUI.hideEditingUI(id);
-  }
-});
-
-document.body.addEventListener('input', (e) => {
-  const el = e.target as Element;
-  const isTextarea = /textarea/i;
-  const isAddReminderTextarea = el.id === 'reminder-textarea';
-  if (isTextarea.test(el.tagName) && !isAddReminderTextarea) {
-    resize(e.target as HTMLElement);
   }
 });
