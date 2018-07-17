@@ -107,4 +107,17 @@ router.get('/archives/restore/:id', async (req, res) => {
   }
 });
 
+router.delete('/archives/delete/:id', async (req, res) => {
+  const id = Number(req.params.id);
+  if (isNaN(id)) {
+    res.status(500).send('Archive id must be valid!');
+  }
+
+  archives.deleteArchive(id)
+    .then(() => { res.send('Archive deleted.'); })
+    .catch(() => {
+      res.status(500).send(`Cannot delete archive with id ${id}.`);
+    });
+});
+
 module.exports = router;
