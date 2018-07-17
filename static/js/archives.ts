@@ -10,6 +10,12 @@ function restore(id: string) {
     });
 }
 
+function deleteArchive(id: string): Promise<Response> {
+  return request.post(`/api/archives/delete/${id}`, {
+    method: 'DELETE'
+  });
+}
+
 const archives = $('.archives') as Element;
 archives.addEventListener('click', (event: MouseEvent) => {
   const el: Element = event.target as Element;
@@ -18,5 +24,12 @@ archives.addEventListener('click', (event: MouseEvent) => {
 
   if (el.classList.contains('restore')) {
     restore(id);
+  }
+
+  if (el.classList.contains('delete')) {
+    deleteArchive(id)
+      .then(() => {
+        archive.parentElement.removeChild(archive);
+      });
   }
 });
