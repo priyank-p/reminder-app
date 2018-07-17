@@ -32,7 +32,7 @@ router.delete('/reminders/delete/:id', async (req, res) => {
     return;
   }
 
-  Promise.all([/*archives.archive(id),*/ reminders.deleteReminder(id)])
+  Promise.all([archives.archive(id), reminders.deleteReminder(id)])
     .then(() => {
       res.send(`Reminder with id: ${id} was deleted!`);
     })
@@ -103,7 +103,6 @@ router.get('/archives/restore/:id', async (req, res) => {
     await archives.deleteArchive(id);
     res.json({ newId });
   } catch(e) {
-    console.log(e);
     res.status(500).send(`Cannot restore archive with id: ${id}`);
   }
 });
