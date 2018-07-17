@@ -22,6 +22,12 @@ function readJSON(filePath) {
   return JSON.parse(contents);
 }
 
+const webpackNotReady = `
+window.addEventListener('DOMContentLoaded', () => {
+  document.body.innerHTML = 'Webpack process in not yet started, please ';
+  document.body.innerHTML += 'reload in couple of mintes';
+});`;
+
 const filePath = development ?
   '../var/webpack-dev-bundles.json' : '../var/webpack-bundles.json';
 let webpackStats = readJSON(filePath);
@@ -47,12 +53,7 @@ function render_bundle(bundle, attrs) {
   }
 
   if (development && webpackChunks === undefined) {
-    return `
-      <script>
-        document.body.innerHTML = 'Looks like, webpack process is done compiling frontend assets. ';
-        document.body.innerHTML += 'Please try refreshing it couple of seconds';
-      </script>
-    `;
+    return `<script>${webpackNotReady}</script>`;
   }
 
   const chunk = webpackChunks[bundle];

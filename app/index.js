@@ -60,7 +60,7 @@ if (env.development) {
       res.setHeader('Content-Type', 'applications/javascript');
       res.send(`
          window.addEventListener('DOMContentLoaded', () => {
-           document.body.innerHTML = 'Webpack process in not, yet started, please\n';
+           document.body.innerHTML = 'Webpack process in not yet started, please ';
            document.body.innerHTML += 'reload in couple of mintes';
          });
       `);
