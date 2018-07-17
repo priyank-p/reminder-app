@@ -2,13 +2,12 @@ import $ from './dom';
 import * as request from './request';
 import * as editingUI from './editing-ui';
 import * as dateFormat from 'dateformat';
-import { getReminder } from './reminder-utils';
+import * as ReminderUtils from './reminder-utils';
 
-const reminderModal = $('#add-reminder-modal') as Element;
-const addReminderBtn = $('#add-reminder-btn') as Element;
-function toogleReminderModal() {
-  reminderModal.classList.toggle('open');
-}
+const {
+  addReminderBtn, toogleReminderModal,
+  reminderModal, getReminder
+} = ReminderUtils;
 
 addReminderBtn.addEventListener('click', toogleReminderModal);
 reminderModal.addEventListener('click', (e) => {

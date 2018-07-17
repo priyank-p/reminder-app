@@ -1,3 +1,11 @@
+import $ from './dom';
+
+export const reminderModal = $('#add-reminder-modal') as Element;
+export const addReminderBtn = $('#add-reminder-btn') as Element;
+export function toogleReminderModal() {
+  reminderModal.classList.toggle('open');
+}
+
 interface Reminder {
   title: string,
   reminder: string,
