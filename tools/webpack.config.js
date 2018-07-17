@@ -78,13 +78,13 @@ module.exports = (env) => {
         },
         {
           test: /\.(woff(2)?|ttf|eot|svg|otf|png)(\?v=\d+\.\d+\.\d+)?$/,
-          use: [cacheLoader,{
+          use: {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
               outputPath: 'assets/'
             }
-          }]
+          }
         },
         {
           test: /reminder-app-sw\.js/,
