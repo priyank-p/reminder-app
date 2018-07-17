@@ -3,6 +3,7 @@ import * as request from './request';
 import * as editingUI from './editing-ui';
 import * as dateFormat from 'dateformat';
 import * as ReminderUtils from './reminder-utils';
+import { init as initContextMenus, hideContextMenus } from './context-menu';
 
 const {
   addReminderBtn, toogleReminderModal,
@@ -92,18 +93,14 @@ function hasClass(el: Element, _class: string): Boolean {
   return el.classList.contains(_class);
 }
 
-function hideContextMenus() {
-  const menus = $('.menu.show', 'nodelist') as Element[];
-  menus.forEach(el => {
-    el.classList.remove('show');
-  });
-}
-
 // auto resize the textarea for editing ui
 function resize(el: HTMLElement) {
   el.style.height = 'auto';
   el.style.height = (el.scrollHeight) + 'px';
 }
+
+// init context-menus
+initContextMenus();
 
 const reminders = $('.reminders') as Element;
 reminders.addEventListener('click', (e: Event) => {
@@ -135,15 +132,6 @@ reminders.addEventListener('click', (e: Event) => {
   if (hasClass(el, 'cancel-editing')) {
     editingUI.hideEditingUI(id);
   }
-
-  if (hasClass(el, 'context-menu-button')) {
-    hideContextMenus();
-
-    const menu = el.parentElement.querySelector('.menu');
-    menu.classList.toggle('show');
-    e.stopPropagation();
-    return false;
-  }
 });
 
 document.body.addEventListener('input', (e) => {
@@ -153,8 +141,4 @@ document.body.addEventListener('input', (e) => {
   if (isTextarea.test(el.tagName) && !isAddReminderTextarea) {
     resize(e.target as HTMLElement);
   }
-});
-
-document.body.addEventListener('click', () => {
-  hideContextMenus();
 });
