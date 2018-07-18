@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+'use strict';
+
+const path = require('path');
+const run = require('../tools/run');
+
+const ROOT_DIR = path.resolve(__dirname, '../');
+const isWin = process.platform === 'win32';
+
+async function unstartup_win() {
+  const winstart = require('start-on-windows-boot');
+  return new Promise((resolve) => {
+    winstart.disableAutoStart('reminder-app', resolve);
+  });
+}
+
+async function unstartup_unix() {
+  const cmd = 'npx pm2 unstartup';
+  await run(cmd, {
+    cwd: ROOT_DIR,
+    silent: true
+  });
+}
+
+const unstartup = isWin ? unstartup_win : unstartup_unix;
+unstartup()
+  .then(() => {
+    console.log('reminder-app will not startup on machine startup.');
+  })
+  .catch(err => {
+    console.error('TracebackL');
+    console.error(err);
+    console.errror();
+    console.error('Cannot stop reminder-app from starting at machine startup.');
+    console.error('Take a look at the traceback above.');
+  });
