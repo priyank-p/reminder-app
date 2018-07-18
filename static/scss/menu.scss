@@ -1,0 +1,19 @@
+@import './vars.scss';
+
+.menu-bar {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+
+  &:hover {
+    $hover-color: #E0E0E0;
+    background-color: $hover-color;
+    border: 1px solid $hover-color;
+  }
+
+  i {
+    font-size: 24px;
+  }
+}

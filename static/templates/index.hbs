@@ -10,7 +10,12 @@
   </head>
   <body>
     {{> ask-for-push-modal}}
-    <header>Reminder App</header>
+    <header>
+      <div class="menu-bar">
+        <i class="fas fa-bars"></i>
+      </div>
+      Reminder App
+    </header>
     <main>
       {{> reminders}}
       {{> add-reminder-form }}
