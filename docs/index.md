@@ -49,6 +49,13 @@ node scripts/start
 npx pm2 start app --name reminder-app
 ```
 
+# Stop running the reminder-app on startup:
+To stop, or to reverse, the `script/install` script you can run the
+`unstartup` script:
+```bash
+node scripts/unstartup
+```
+
 ### Documentation per subsystem/directory:
   * [Some info about the reminder-app](about.md)
   * [App directory - all the backend stuff](app-directory.md)
