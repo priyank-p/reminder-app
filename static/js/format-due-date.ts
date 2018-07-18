@@ -15,5 +15,5 @@ export default function formatDate() {
     due_date.innerText = formattedDate;
   });
 
-  ($('.reminders') as Element).classList.remove('hide');
+  ($('.reminders, .archives') as Element).classList.remove('hide');
 }
