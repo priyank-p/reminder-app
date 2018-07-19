@@ -2,6 +2,7 @@ import * as request from './request';
 import { init as initContextMenus } from './context-menu';
 import formatDate from './format-due-date';
 import $ from './dom';
+import * as menu from './menu';
 
 formatDate();
 initContextMenus();
@@ -35,4 +36,8 @@ archives.addEventListener('click', (event: MouseEvent) => {
         archive.parentElement.removeChild(archive);
       });
   }
+});
+
+menu.on('reminders', () => {
+  location.href = '/';
 });

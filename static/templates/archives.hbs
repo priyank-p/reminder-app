@@ -8,7 +8,17 @@
     <link rel="manifest" href="webapp-manifest.json">
   </head>
   <body>
-    <header>Archives</header>
+    <header>
+      <div class="menu-bar">
+        <i class="fas fa-bars"></i>
+        <div class="menu-sidebar">
+          <div class="close">&times;</div>   
+          <div data-menu="reminders">Reminders</div>
+        </div>
+      </div>
+
+      Archives
+    </header>
     <main>
       {{> archives }}
     </main>

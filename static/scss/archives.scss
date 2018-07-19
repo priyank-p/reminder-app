@@ -1,5 +1,6 @@
 @import './common.scss';
 @import './header.scss';
+@import './menu.scss';
 @import './context-menu.scss';
 @import './reminders.scss';
 
@@ -12,4 +13,9 @@ main {
   width: 100%;
   min-height: 86vh;
   background-color: $body-background-color;
+}
+
+.menu-bar:hover {
+  background-color: white;
+  color: #000; 
 }
