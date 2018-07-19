@@ -11,7 +11,6 @@
 - [ ] Internal stuff - Make argparser automactically create help for each argument
       By the help opt passed.
 - [ ] Revise all the security and best pratices from express website.
-- [ ] Migrate JS file to typescript.
 - [ ] Add tslint for linting typescript files.
 - [ ] Use [tsconfig-paths-webpack-plugin](https://www.npmjs.com/package/tsconfig-paths-webpack-plugin)
       to move the `tsconfig.json` file to `tools/` directory.
