@@ -47,6 +47,9 @@ if (args.test || args.development) {
   }
 }
 
+// make sure var/ exists otherwise leveldb will throw errors!
+fsExtra.mkdirpSync(path.resolve(__dirname, '../var'));
+
 const readdir = promisify(fs.readdir);
 const writeFile = promisify(fs.writeFile);
 const migrationDir = path.resolve(__dirname, '../app/models/migrations');
