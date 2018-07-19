@@ -13,10 +13,3 @@
 - [ ] Revise all the security and best pratices from express website.
 - [ ] Use [tsconfig-paths-webpack-plugin](https://www.npmjs.com/package/tsconfig-paths-webpack-plugin)
       to move the `tsconfig.json` file to `tools/` directory.
-
-## Done
-
-- [X] Investigate webpack flakes during development.
-- [X] Use a service-worker
-- [X] Add push notification support for due notifications.
-- [X] Use pm2, a production process manager
