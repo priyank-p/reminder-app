@@ -10,3 +10,8 @@ addHotkey('a', () => {
 addHotkey('Escape', () => {
   reminderModal.classList.remove('open');
 });
+
+const sidebar: Element = $('.menu-bar') as Element;
+addHotkey('s', () => {
+  sidebar.classList.toggle('show');
+});
