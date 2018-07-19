@@ -31,6 +31,8 @@ sidebar.addEventListener('click', (e: MouseEvent) => {
   menuHandlers.forEach(data => {
     if (data.name === name) {
       data.handler();
+
+      menubar.classList.remove('show');
       e.stopPropagation();
     }
   });
