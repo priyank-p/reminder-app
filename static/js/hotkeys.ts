@@ -77,7 +77,6 @@ export function checkHotkeys(e: KeyboardEvent) {
 
 document.addEventListener('keydown', checkHotkeys);
 
-
 // for use in tests or for debugging purposes
 export const _checkHotkeys = checkHotkeys;
 export function _hotkeys() {
