@@ -18,8 +18,12 @@
   }
 }
 
-.menu-sidebar {
+.menu-bar.show .menu-sidebar {
   display: inline-block;
+}
+
+.menu-sidebar {
+  display: none;
   position: absolute;
   top: -6px;
   left: -6px;
