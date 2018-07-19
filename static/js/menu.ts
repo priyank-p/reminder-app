@@ -1,10 +1,9 @@
 import $ from './dom';
 
-const menubar: Element = $('.menu-bar' ) as Element;
-const sidebar: Element = $('.menu-sidebar') as Element;
-const closeMenuButton: Element = $('.menu-sidebar .close') as Element;
+const menubar = $('.menu-bar' ) as Element;
+const sidebar = $('.menu-sidebar') as Element;
+const closeMenuButton = $('.menu-sidebar .close') as Element;
 
-console.log(closeMenuButton);
 menubar.addEventListener('click', (e: MouseEvent) => {
   menubar.classList.add('show');
 });
