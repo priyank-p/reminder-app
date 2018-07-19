@@ -6,3 +6,7 @@ const reminderModal = $('#add-reminder-modal') as Element;
 addHotkey('a', () => {
   reminderModal.classList.add('open');
 });
+
+addHotkey('Escape', () => {
+  reminderModal.classList.remove('open');
+});
