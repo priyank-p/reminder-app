@@ -5,4 +5,6 @@ import * as menu from './menu';
 formatDate();
 register();
 
-console.log(menu);
+menu.on('archive', () => {
+  location.href = '/archives';
+});
