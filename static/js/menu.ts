@@ -14,10 +14,14 @@ closeMenuButton.addEventListener('click', (e: MouseEvent) => {
   return false;
 });
 
-type MenuHandlers = [string, Function];
-export const menuHandlers: MenuHandlers[] = [];
+interface MenuHandler {
+  name: string;
+  handler: Function;
+}
+
+export const menuHandlers: MenuHandler[] = [];
 export function on(name: string, handler: Function) {
-  menuHandlers.push([name, handler])
+  menuHandlers.push({name, handler})
 }
 
 sidebar.addEventListener('click', (e: MouseEvent) => {
@@ -25,8 +29,8 @@ sidebar.addEventListener('click', (e: MouseEvent) => {
   const name: string = el.dataset.menu;
 
   menuHandlers.forEach(data => {
-    if (data[0] === name) {
-      data[1]();
+    if (data.name === name) {
+      data.handler();
       e.stopPropagation();
     }
   });
