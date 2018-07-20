@@ -1,0 +1,18 @@
+.status-bar {
+  @extend .handle-text-overflow;
+  position: absolute;
+  z-index: 4;
+  width: 280px;
+  height: 45px;
+  bottom: 14;
+  right: 74;
+  color: white;
+  background-color: #4c4c4c;
+  padding: 14px;
+  opacity: 0;
+  transition: all 0.30s ease-in-out;
+
+  &.show {
+    opacity: 1;
+  }
+}
