@@ -7,7 +7,7 @@ class ArgParser {
   constructor(helpText) {
     this._helpText = helpText;
     this._args = {};
-    this.aliases = {};
+    this._aliases = {};
   }
 
   /*
@@ -24,7 +24,7 @@ class ArgParser {
     opts.dest = opts.dest || arg.replace(/^--?/, '');
     this._args[arg] = opts;
     if (alias) {
-      this.aliases[alias] = this._args[arg];
+      this._aliases[alias] = this._args[arg];
     }
   }
 
@@ -50,7 +50,7 @@ class ArgParser {
       }
 
       const escapedArg = arg.replace(/=.*/, '');
-      const opts = this._args[escapedArg] || this.aliases[escapedArg];
+      const opts = this._args[escapedArg] || this._aliases[escapedArg];
       if (!opts) {
         throw new ArgumentParsingError(`unkown argument ${arg} was passed.`);
       }
