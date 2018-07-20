@@ -6,7 +6,7 @@ export function toogleReminderModal() {
   reminderModal.classList.toggle('open');
 }
 
-interface Reminder {
+export interface Reminder {
   title: string,
   reminder: string,
   due_time: any,

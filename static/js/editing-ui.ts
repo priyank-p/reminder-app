@@ -1,4 +1,5 @@
 import $ from './dom';
+import { Reminder as ReminderInterface, Reminder } from './reminder-utils';
 import * as request from './request';
 
 function getEditElements(id: number): Element[][] {
@@ -27,12 +28,7 @@ export function hideEditingUI(reminderId: number) {
   reminderElements.forEach(el => el.classList.remove('hide'));
 }
 
-interface IUpdateReminder {
-  title: string;
-  reminder: string;
-}
-
-function updateReminderElement(id: number, reminder: IUpdateReminder) {
+function updateReminderElement(id: number, reminder: ReminderInterface) {
   const reminderElement = $(`.reminder[data-id="${id}"]`) as HTMLElement;
   const title = reminderElement.querySelector('.title') as HTMLElement;
   const content = reminderElement.querySelector('.content') as HTMLElement;
@@ -52,7 +48,7 @@ function removeErrorUI(id: number) {
   editElements.forEach(el => el.classList.remove('error'));
 }
 
-export function updateReminder(id: number, updatedReminder: any) {
+export function updateReminder(id: number, updatedReminder: ReminderInterface) {
   const route = `/api/reminders/update/${id}`;
   const data: object = {
     body: updatedReminder
