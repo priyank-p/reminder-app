@@ -6,7 +6,7 @@ const {
 class ArgParser {
   constructor(helpText) {
     this._helpText = helpText;
-    this.args = {};
+    this._args = {};
     this.aliases = {};
   }
 
@@ -22,9 +22,9 @@ class ArgParser {
   add(arg, opts = {}) {
     const { alias } = opts;
     opts.dest = opts.dest || arg.replace(/^--?/, '');
-    this.args[arg] = opts;
+    this._args[arg] = opts;
     if (alias) {
-      this.aliases[alias] = this.args[arg];
+      this.aliases[alias] = this._args[arg];
     }
   }
 
@@ -50,7 +50,7 @@ class ArgParser {
       }
 
       const escapedArg = arg.replace(/=.*/, '');
-      const opts = this.args[escapedArg] || this.aliases[escapedArg];
+      const opts = this._args[escapedArg] || this.aliases[escapedArg];
       if (!opts) {
         throw new ArgumentParsingError(`unkown argument ${arg} was passed.`);
       }
@@ -77,8 +77,8 @@ class ArgParser {
     });
 
     // set the defaults and check for required stuff
-    for (let arg in this.args) {
-      let { dest, default: _default, required, type } = this.args[arg];
+    for (let arg in this._args) {
+      let { dest, default: _default, required, type } = this._args[arg];
       if (_default && this[dest] === undefined) {
         this[dest] = _default;
       }
