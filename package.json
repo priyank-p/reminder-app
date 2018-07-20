@@ -24,7 +24,7 @@
     "level-uplevel": "2.0.1",
     "mini-css-extract-plugin": "0.4.1",
     "node-cron": "1.2.1",
-    "node-sass": "4.9.0",
+    "node-sass": "4.9.2",
     "ora": "2.1.0",
     "pm2": "2.10.4",
     "sass-loader": "7.0.3",
