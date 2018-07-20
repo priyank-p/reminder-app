@@ -3,6 +3,7 @@ import { init as initContextMenus } from './context-menu';
 import formatDate from './format-due-date';
 import $ from './dom';
 import * as menu from './menu';
+import * as statusbar from './status-bar';
 
 formatDate();
 initContextMenus();
@@ -33,6 +34,7 @@ archives.addEventListener('click', (event: MouseEvent) => {
   if (el.classList.contains('delete')) {
     deleteArchive(id)
       .then(() => {
+        statusbar.show('Archive deleted');
         archive.parentElement.removeChild(archive);
       });
   }
