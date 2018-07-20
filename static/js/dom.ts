@@ -1,7 +1,6 @@
 type DomReturnType = HTMLElement | Node[] | null;
 type DomTypeParam = 'node' | 'nodelist';
 
-// TODO: Figure out correct return type for this function
 export default function $(sel: string, type?: DomTypeParam): DomReturnType {
   const els: Node[] = Array.from(document.querySelectorAll(sel));
   if (type === 'nodelist') {
