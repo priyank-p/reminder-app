@@ -1,5 +1,6 @@
 import $ from './dom';
-import { Reminder as ReminderInterface, Reminder } from './reminder-utils';
+import { Reminder as ReminderInterface } from './reminder-utils';
+import * as statusbar from './status-bar';
 import * as request from './request';
 
 function getEditElements(id: number): Element[][] {
@@ -56,6 +57,7 @@ export function updateReminder(id: number, updatedReminder: ReminderInterface) {
 
   request.post(route, data)
     .then(() => {
+      statusbar.show('Reminder updated');
       removeErrorUI(id);
       updateReminderElement(id, updatedReminder);
     })
