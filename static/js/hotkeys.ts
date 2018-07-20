@@ -18,8 +18,6 @@ export function addHotkey(keyBinding: string, handler: Function) {
 }
 
 export function disableHotkey(hotkey: string) {
-  // TODO: Maybe consider throwing error when disabling hotkey
-  // that is not yet added?
   hotkey = getHotkey(hotkey);
   disabledHotkeys.push(hotkey);
 }
