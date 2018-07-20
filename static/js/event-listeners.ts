@@ -3,6 +3,7 @@ import * as request from './request';
 import * as editingUI from './editing-ui';
 import * as dateFormat from 'dateformat';
 import * as ReminderUtils from './reminder-utils';
+import * as statusbar from './status-bar';
 import { init as initContextMenus, hideContextMenus } from './context-menu';
 import { init as initTextareaAutoResize } from './textarea-autoresize';
 
@@ -107,6 +108,7 @@ reminders.addEventListener('click', (e: Event) => {
   if (hasClass(el, 'delete-reminder')) {
     request.post(`/api/reminders/delete/${id}`, { method: 'DELETE' })
       .then(() => {
+        statusbar.show('Reminder Deleted');
         reminder.parentElement.removeChild(reminder);
       });
   }
