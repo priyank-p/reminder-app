@@ -44,8 +44,22 @@ async function saveSubscription(pushSubscription) {
 
 async function sendPushNotification(data) {
   data = JSON.stringify(data);
+
+  let needToUpdate = false;
   for (let sub of webPushData.subscriptions) {
-    await webPush.sendNotification(sub, data);
+    try {
+      await webPush.sendNotification(sub, data);
+    } catch (e) {
+      // this error probably means the subscruction is now
+      // invalidated by brower because user denied push notification
+      const index = webPushData.subscriptions.indexOf(sub);
+      webPushData.subscriptions.splice(index, 1);
+      needToUpdate = true;
+    }
+  }
+
+  if (needToUpdate) {
+    await writeFile(dataPath, JSON.stringify(webPushData, null, 2), 'utf8');
   }
 }
 
