@@ -8,9 +8,9 @@ const { promisify } = require('util');
 const ora = require('ora');
 const env = require('../app/env');
 const version = require('./version');
-const argparser = require('../app/argparser');
+const ArgParser = require('../app/argparser');
 
-const args = argparser(`
+const args = new ArgParser(`
 Run migrations on database.
 The database will not work unless migration are not applied.
 

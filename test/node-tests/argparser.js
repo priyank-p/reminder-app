@@ -1,4 +1,4 @@
-const argparser = require('../../app/argparser');
+const ArgParser = require('../../app/ArgParser');
 
 {
   // Test all the errors thrown
@@ -9,7 +9,7 @@ const argparser = require('../../app/argparser');
   ];
   errorData.forEach(([arg, opts, argv]) => {
     assert.throws(() => {
-      const args = new argparser();
+      const args = new ArgParser();
       args.add(arg, opts);
       args.parse(argv);
     }, /^ArgumentRequiredError:/);
@@ -17,13 +17,13 @@ const argparser = require('../../app/argparser');
 
   // test passing argument not described
   assert.throws(() => {
-    const args = new argparser();
+    const args = new ArgParser();
     args.parse(['-c', '--noargh']);
   }, /^ArgumentParsingError:/);
 }
 
 (function test_dest_option() {
-  const args = new argparser();
+  const args = new ArgParser();
   args.add('--dest', { dest: 'new-dest' });
   args.parse(['--dest', 'destination']);
 
@@ -32,7 +32,7 @@ const argparser = require('../../app/argparser');
 })();
 
 (function test_type_bool() {
-  const args = new argparser();
+  const args = new ArgParser();
   args.add('--bool', { type: 'boolean' });
   args.add('--another', { alias: '-a', type: 'boolean' });
   args.add('--third-one', { alias: '-t', type: 'boolean', dest: 'third' });
@@ -44,7 +44,7 @@ const argparser = require('../../app/argparser');
 })();
 
 (function test_values_set() {
-  const args = new argparser();
+  const args = new ArgParser();
   args.add('--one');
   args.add('--two');
   args.parse(['--one=one_value', '--two', 'two_value']);
@@ -54,21 +54,21 @@ const argparser = require('../../app/argparser');
 })();
 
 (function test_nargs() {
-  const args = new argparser();
+  const args = new ArgParser();
   const nargs = ['one', 'two', 'three'];
   args.parse(nargs);
   assert.deepStrictEqual(args.nargs, nargs);
 })();
 
 (function test_removing_spaces() {
-  const args = new argparser();
+  const args = new ArgParser();
   const nargs = ['one', '', 'two', 'three'];
   args.parse(nargs);
   assert.deepStrictEqual(args.nargs, nargs);
 })();
 
 (function test_applying_defaults() {
-  const args = new argparser();
+  const args = new ArgParser();
   args.add('--one', { default: 'default-value' });
   args.parse([]);
   assert.deepStrictEqual(args.one, 'default-value');
@@ -80,7 +80,7 @@ const argparser = require('../../app/argparser');
     does not parse down to:
       args.arg = '--next-arg'
   */
-  const args = new argparser();
+  const args = new ArgParser();
   args.add('--one');
   args.add('--two');
   args.parse(['--one', '--two']);

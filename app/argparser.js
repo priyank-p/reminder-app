@@ -104,6 +104,4 @@ class ArgParser {
   }
 }
 
-module.exports = function argparser(helpText) {
-  return new ArgParser(helpText);
-};
+module.exports = ArgParser;

@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
 const tsNode = require('ts-node');
-const argparser = require('../app/argparser');
+const ArgParser = require('../app/argparser');
 const env = require('../app/env');
 
 // to make test runnable from anywhere
@@ -15,7 +15,7 @@ env.setEnv('tests', true);
 env.setEnv('mode', 'test');
 env.setEnv('development', true);
 const TEST_DIR = path.resolve(__dirname, '../test');
-const args = argparser(`
+const args = new ArgParser(`
 Run node tests:
 
 Usage:

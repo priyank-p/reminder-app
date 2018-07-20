@@ -4,7 +4,7 @@
 const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
-const argparser = require('../app/argparser');
+const ArgParser = require('../app/argparser');
 const env = require('../app/env');
 
 // to make test runnable from anywhere
@@ -13,7 +13,7 @@ process.chdir(path.resolve(__dirname, '../'));
 env.setEnv('tests', true);
 env.setEnv('mode', 'test');
 const TEST_DIR = path.resolve(__dirname, '../test/migrations');
-const args = argparser(`
+const args = new ArgParser(`
 Run migration tests:
 
 Usage:

@@ -4,7 +4,7 @@
 const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
-const argparser = require('../app/argparser');
+const ArgParser = require('../app/argparser');
 const env = require('../app/env');
 const webpackInfo = require('./webpack-info');
 const { execSync } = require('child_process');
@@ -13,7 +13,7 @@ process.chdir(path.resolve(__dirname, '../'));
 
 const ROOT_DIR = path.resolve(__dirname, '../');
 const TEST_DIR = path.resolve(__dirname, '../test');
-const args = argparser(`
+const args = new ArgParser(`
 Run puppetter frontend tests:
 
 Usage:

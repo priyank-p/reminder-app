@@ -9,8 +9,8 @@ const spawnOpts = {
   windowsHide: true
 };
 
-const argparser = require('../app/argparser');
-const args = argparser(`
+const ArgParser = require('../app/argparser');
+const args = new ArgParser(`
 Runs the reminder-app development server.
 
 Flags:

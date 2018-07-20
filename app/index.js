@@ -1,7 +1,7 @@
-const argparser = require('./argparser');
+const ArgParser = require('./argparser');
 const env = require('./env');
 
-const args = argparser(`
+const args = new ArgParser(`
 Run rapp server.
 
 --dev, -d    Launch in development mode
