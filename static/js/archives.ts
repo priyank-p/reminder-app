@@ -36,6 +36,9 @@ archives.addEventListener('click', (event: MouseEvent) => {
       .then(() => {
         statusbar.show('Archive deleted');
         archive.parentElement.removeChild(archive);
+      })
+      .catch(() => {
+        statusbar.show('Failed to delete archive');
       });
   }
 });
