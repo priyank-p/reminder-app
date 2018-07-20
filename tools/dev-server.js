@@ -15,11 +15,11 @@ Runs the reminder-app development server.
 
 Flags:
 ----------------
---webpack-output    Enables webpack output for dev-server, which is disabled by default.
---debug             Launches dev-server node process with --inspect flag
+--webpack-output, -w    Enables webpack output for dev-server, which is disabled by default.
+--debug, -d             Launches dev-server node process with --inspect flag
 `);
-args.add('--webpack-output', { type: 'boolean' });
-args.add('--debug', { type: 'boolean' });
+args.add('--webpack-output', { type: 'boolean', alias: '-w' });
+args.add('--debug', { type: 'boolean', alias: '-d' });
 args.parse();
 
 const npx = process.platform === 'win32' ? 'npx.cmd' : 'npx';
