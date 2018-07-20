@@ -20,7 +20,7 @@ try {
 }
 
 webPush.setVapidDetails(
-  'mailto:priyankp390@gmail.com', // TODO: Figure out what can we put here?
+  'mailto:priyankp390@gmail.com',
   webPushData.publicKey,
   webPushData.privateKey
 );
