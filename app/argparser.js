@@ -43,7 +43,7 @@ class ArgParser {
         process.exit(0);
       }
 
-      if (!this.isArg(arg)) {
+      if (!this._isArg(arg)) {
         if (!this.nargs) { this.nargs = []; }
         this.nargs.push(arg);
         return;
@@ -72,7 +72,7 @@ class ArgParser {
 
       // else the value of the arument is next one
       const nextArg = args[index + 1];
-      if (this.isArg(nextArg)) { return; }
+      if (this._isArg(nextArg)) { return; }
       this[dest] = nextArg;
     });
 
@@ -95,7 +95,7 @@ class ArgParser {
     return this;
   }
 
-  isArg(arg) {
+  _isArg(arg) {
     return /^--?.+/.test(arg);
   }
 
