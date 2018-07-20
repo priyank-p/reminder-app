@@ -62,6 +62,7 @@ export function updateReminder(id: number, updatedReminder: ReminderInterface) {
       updateReminderElement(id, updatedReminder);
     })
     .catch(() => {
+      statusbar.show('Failed to updated reminder!');
       showErrorUI(id);
     });
 }
