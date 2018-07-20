@@ -5,7 +5,7 @@ const {
 
 class ArgParser {
   constructor(helpText) {
-    this.helpText = helpText;
+    this._helpText = helpText;
     this.args = {};
     this.aliases = {};
   }
@@ -39,7 +39,7 @@ class ArgParser {
     args.forEach((arg, index) => {
       /* istanbul ignore if: can't test for console.log */
       if (arg === 'help' || arg === '--help' || arg === '-h') {
-        console.log(this.helpText);
+        console.log(this._helpText);
         process.exit(0);
       }
 
