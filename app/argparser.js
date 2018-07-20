@@ -65,7 +65,7 @@ class ArgParser {
         return;
       }
 
-      if (this.hasArgValue(arg)) {
+      if (this._hasArgValue(arg)) {
         this[dest] = arg.replace(/^--?.+=/, '');
         return;
       }
@@ -99,7 +99,7 @@ class ArgParser {
     return /^--?.+/.test(arg);
   }
 
-  hasArgValue(arg) {
+  _hasArgValue(arg) {
     return /^--?.+=.*/.test(arg);
   }
 }
