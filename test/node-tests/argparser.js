@@ -1,4 +1,4 @@
-const ArgParser = require('../../app/ArgParser');
+const ArgParser = require('../../app/argparser');
 
 {
   // Test all the errors thrown
