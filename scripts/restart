@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+'use strict';
+
+const path = require('path');
+const run = require('../tools/run');
+
+const ROOT_DIR = path.resolve(__dirname, '../');
+run('npx pm2 reload reminder-app --update-env', {
+  cwd: ROOT_DIR
+});
