@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@types/dateformat": "^1.0.1",
-    "eslint": "^5.1.0",
+    "eslint": "^5.2.0",
     "glob": "^7.1.2",
     "http-proxy-middleware": "^0.18.0",
     "nodemon": "^1.17.5",
