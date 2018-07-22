@@ -74,10 +74,6 @@ function setDueDate(n: number) {
 
   // TODO: Add protip section with the tip
   // entering 0 in the quick-choose UI.
-  if (n === 0) {
-    date.setDate(Date.now());
-  }
-
   // the value muse be in standard yyyy-mm-dd format
   dueDateInput.value = dateFormat(date, 'yyyy-mm-dd');
   if (dueTimeInput.value === '') {
