@@ -18,7 +18,6 @@ module.exports = {
   db
 };
 
-// TODO: Move away from using db.
 if (env.tests) {
   env.setEnv('db', module.exports);
 }
