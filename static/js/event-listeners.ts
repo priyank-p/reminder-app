@@ -20,6 +20,9 @@ reminderModal.addEventListener('click', (e) => {
   }
 });
 
+const closeModal = $('#add-reminder-modal .close-modal') as Element;
+closeModal.addEventListener('click', toogleReminderModal);
+
 function toggleDropdown(e: Event) {
   const el: Element = e.target as Element;
   el.classList.toggle('show');

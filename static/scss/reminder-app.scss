@@ -63,6 +63,19 @@ main {
   height: 100%;
   background-color: #4c4c4c7d;
 
+  .close-modal {
+    @extend .solid-bold-text;
+
+    position: absolute;
+    margin-left: 304px;
+    top: 74px;
+    font-size: 30px;
+
+    &:hover {
+      color: $error-red;
+    }
+  }
+
   form {
     cursor: initial;
     color: #000;
