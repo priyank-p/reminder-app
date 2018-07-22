@@ -1,6 +1,6 @@
 const webpackInfo = require('./webpack-info');
 
-module.exports = function (content, map, meta) {
+module.exports = function swLoader(content, map, meta) {
   const callback = this.async();
   content = content.replace(/\{\{sw-loader\shash\}\}/, webpackInfo.hash);
   if (this.query.emitDevFile === true) {

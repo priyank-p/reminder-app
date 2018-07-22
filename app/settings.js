@@ -36,7 +36,7 @@ module.exports = (app) => {
   }
 
   app.set('views', path.join(ROOT_DIR, 'static/templates'));
-  app.engine('hbs',  handlebars({
+  app.engine('hbs', handlebars({
     extname: '.hbs',
     partialsDir: 'static/templates/partials',
     helpers: handlebarsHelpers
