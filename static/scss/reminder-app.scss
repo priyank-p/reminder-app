@@ -12,7 +12,6 @@ main {
   margin-top: 4px;
 }
 
-/* TODO: Add hover, focus stats styles */
 #add-reminder-btn {
   $size: 45px;
 
@@ -40,6 +39,12 @@ main {
   outline: none;
   background-color: #fff;
   color: $theme-color;
+}
+
+#add-reminder-btn:focus {
+  $percent: 15%;
+  background-color: darken(#fff, $percent);
+  color: darken($theme-color, $percent);
 }
 
 #add-reminder-btn:active {
