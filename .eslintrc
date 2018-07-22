@@ -17,7 +17,11 @@
     "quotes": [ "error", "single" ],
     "semi": [ "error", "always" ],
     "no-trailing-spaces": "error",
-    "eqeqeq": ["error", "always"]
+    "eqeqeq": ["error", "always"],
+    "space-before-function-paren": ["error", "never"],
+    "no-multi-spaces": ["error", { "ignoreEOLComments": true }],
+    "camelcase": "off",
+    "object-property-newline": "off"
   },
   "globals": {
     "publicKey": false,
