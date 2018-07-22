@@ -18,7 +18,10 @@
     "semi": [ "error", "always" ],
     "no-trailing-spaces": "error",
     "eqeqeq": ["error", "always"],
-    "space-before-function-paren": ["error", "never"],
+    "space-before-function-paren": ["error", {
+      "asyncArrow": "always",
+      "named": "never"
+    }],
     "no-multi-spaces": ["error", { "ignoreEOLComments": true }],
     "camelcase": "off",
     "object-property-newline": "off"
