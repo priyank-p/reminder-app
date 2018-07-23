@@ -133,3 +133,10 @@ div.no-reminders, div.no-archives {
     right: -7px;
   }
 }
+
+// we add 32px extra margin to the last reminder so
+// the context menu does not cut off to next coloumn
+// see: https://github.com/priyankp10/reminder-app/issues/22
+.reminder:nth-last-child(1) {
+  margin-bottom: 32px;
+}
