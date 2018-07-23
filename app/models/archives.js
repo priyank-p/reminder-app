@@ -24,9 +24,28 @@ async function getArchiveById(id) {
   return archive[0];
 }
 
+// based on https://stackoverflow.com/a/6154840
+async function get30DaysOldArchives() {
+  const archives = await getArchives();
+
+  const old = [];
+  const today = new Date();
+  archives.forEach(archive => {
+    const created = new Date(archive.date);
+    const diffrence = (today.getTime() - created.getTime());
+    const daysOld = diffrence / (1000 * 60 * 60 * 24);
+    if (daysOld > 30) {
+      old.push(archive);
+    }
+  });
+
+  return old;
+}
+
 module.exports = {
   archive,
   getArchives,
   deleteArchive,
-  getArchiveById
+  getArchiveById,
+  get30DaysOldArchives
 };
