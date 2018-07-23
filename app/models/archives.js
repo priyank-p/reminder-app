@@ -1,21 +1,21 @@
 const reminders = require('./reminders');
-const { arhives } = require('./db');
+const { archives } = require('./db');
 
 async function archive(id) {
   const reminder = await reminders.getReminderById(id);
-  await arhives.addRow({
+  await archives.addRow({
     date: new Date(),
     reminder
   });
 }
 
 async function getArchives() {
-  const rows = await arhives.getRows();
+  const rows = await archives.getRows();
   return rows;
 }
 
 async function deleteArchive(id) {
-  await arhives.deleteRow(id);
+  await archives.deleteRow(id);
 }
 
 async function getArchiveById(id) {
