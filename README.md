@@ -1,6 +1,17 @@
 # reminder-app
 Under development - Reminder App
 
+### Install reminder-app
+
+To install reminder-app, consider
+[the installation docs](docs/index.md#install-reminder-app).
+Installing reminder-app will make it so you don't have to run
+the server yourself and installation also provides a option to configure
+it so reminder-app starts on machine startup for all platforms (Windows,
+MacOS, and Linux). If you decide not to choose that option at first
+you can later configure that by running the startup script
+`node scripts/init-startup`.
+
 ### Running the dev-server
 
 Install the npm dependencies using `npm i` if you haven't already then:
