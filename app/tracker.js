@@ -27,8 +27,7 @@ async function checkReminders() {
 }
 
 // runs every 1 minute;
-const tracker = cron.schedule('* * * * *', () => {
+cron.schedule('* * * * *', () => {
+  // delete reminder if they are due
   checkReminders();
 });
-
-module.exports = tracker;
