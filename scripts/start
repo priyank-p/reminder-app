@@ -2,9 +2,19 @@
 'use strict';
 
 const path = require('path');
+const pm2 = require('./pm2');
 const run = require('../tools/run');
 
-run('npx pm2 start app --name reminder-app', {
-  silent: true,
-  cwd: path.resolve(__dirname, '..')
-});
+async function start() {
+  const runPm2Update = await pm2.shouldRunUpdateCmd();
+  if (runPm2Update) {
+    await run('npx pm2 update');
+  }
+
+  await run('npx pm2 start app --name reminder-app', {
+    silent: true,
+    cwd: path.resolve(__dirname, '..')
+  });
+}
+
+start();
