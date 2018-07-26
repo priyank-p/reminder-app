@@ -53,17 +53,13 @@ async function saveCurrentVersions() {
 async function shouldRunUpdateCmd() {
   const saved = await getSavedVersions();
   const current = await getCurrentVersions();
-
-  const versionJSON = JSON.stringify(current);
   if (!saved) {
-    await writeFile(pm2File, versionJSON, 'utf8');
     return true;
   }
 
   const sameNodeVersion = saved.node === current.node;
   const samePm2Version = saved.pm2 === current.pm2;
   if (!(sameNodeVersion && samePm2Version)) {
-    await writeFile(pm2File, versionJSON, 'utf8');
     return true;
   }
 
@@ -77,6 +73,8 @@ async function runPm2UpdateIfNeeded() {
       cwd: ROOT_DIR,
       silent: true
     });
+
+    await saveCurrentVersions();
   }
 }
 
