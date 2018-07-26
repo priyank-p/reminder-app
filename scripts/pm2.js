@@ -5,7 +5,7 @@ const run = require('../tools/run');
 
 const ROOT_DIR = path.resolve(__dirname, '../');
 const pm2File = path.join(ROOT_DIR, 'var/pm2.json');
-const nopm2File = !(fs.existsSync(pm2File));
+let nopm2File = !(fs.existsSync(pm2File));
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 
@@ -30,6 +30,11 @@ async function getCurrentVersions() {
   pm2 = pm2.split('\n')[0];
   const versions = { node, pm2 };
   return versions;
+}
+
+async function saveCurrentVersions() {
+  const versions = await getCurrentVersions();
+  await writeFile(pm2File, JSON.stringify(versions), 'utf8');
 }
 
 /*
@@ -77,5 +82,6 @@ async function runPm2UpdateIfNeeded() {
 
 module.exports = {
   shouldRunUpdateCmd,
-  runPm2UpdateIfNeeded
+  runPm2UpdateIfNeeded,
+  saveCurrentVersions
 };

@@ -1,4 +1,5 @@
 const path = require('path');
+const pm2 = require('./pm2');
 const npmInfo = require('./npm-info');
 const run = require('../tools/run');
 
@@ -37,6 +38,7 @@ async function prepare(spinner, options) {
     run('node tools/webpack', opts),
     run('node tools/run-migrations', opts)
   ]);
+  await pm2.saveCurrentVersions();
   spinner.succeed();
 }
 
