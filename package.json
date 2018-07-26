@@ -10,7 +10,7 @@
     "chalk": "2.4.1",
     "clean-webpack-plugin": "0.1.19",
     "compression": "1.7.3",
-    "css-hot-loader": "1.4.0",
+    "css-hot-loader": "1.4.1",
     "css-loader": "1.0.0",
     "dateformat": "3.0.3",
     "escape-html": "1.0.3",
