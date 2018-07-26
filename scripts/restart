@@ -7,11 +7,7 @@ const run = require('../tools/run');
 
 const ROOT_DIR = path.resolve(__dirname, '../');
 async function restart() {
-  const runPm2Update = await pm2.shouldRunUpdateCmd();
-  if (runPm2Update) {
-    await run('npx pm2 update');
-  }
-
+  await pm2.runPm2UpdateIfNeeded();
   await run('npx pm2 reload reminder-app --update-env', {
     cwd: ROOT_DIR
   });
