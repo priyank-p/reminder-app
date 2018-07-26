@@ -2,9 +2,19 @@
 'use strict';
 
 const path = require('path');
+const pm2 = require('./pm2');
 const run = require('../tools/run');
 
 const ROOT_DIR = path.resolve(__dirname, '../');
-run('npx pm2 reload reminder-app --update-env', {
-  cwd: ROOT_DIR
-});
+async function restart() {
+  const runPm2Update = await pm2.shouldRunUpdateCmd();
+  if (runPm2Update) {
+    await run('npx pm2 update');
+  }
+
+  await run('npx pm2 reload reminder-app --update-env', {
+    cwd: ROOT_DIR
+  });
+}
+
+restart();
