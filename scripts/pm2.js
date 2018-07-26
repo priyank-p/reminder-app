@@ -65,6 +65,17 @@ async function shouldRunUpdateCmd() {
   return false;
 }
 
+async function runPm2UpdateIfNeeded() {
+  const runPm2Update = await shouldRunUpdateCmd();
+  if (runPm2Update) {
+    await run('npx pm2 update', {
+      cwd: ROOT_DIR,
+      silent: true
+    });
+  }
+}
+
 module.exports = {
-  shouldRunUpdateCmd
+  shouldRunUpdateCmd,
+  runPm2UpdateIfNeeded
 };
