@@ -6,6 +6,7 @@ const child_process = require('child_process');
 // commands are ran!
 const runData = [];
 const version = {
+  node: process.version,
   pm2: 'v1.0.0'
 };
 
@@ -79,6 +80,25 @@ async function test_pm2_should_run_update_cmd() {
   assert.equal(await pm2.shouldRunUpdateCmd(), false);
 }
 
+async function test_run_pm2_update_if_needed() {
+  version.pm2 = 'v2.0.0';
+  assert(await pm2.shouldRunUpdateCmd());
+  await pm2.runPm2UpdateIfNeeded();
+  const expected = JSON.stringify(version);
+  assert.deepStrictEqual(pm2File, expected);
+
+  const runCalls = runData.length;
+  const writeCalls = fsCalls.writeFile.length;
+  await pm2.shouldRunUpdateCmd();
+
+  // run should be only called once meanwhile
+  // writeFile should not be called if the
+  // version did not change
+  assert.deepEqual(runData.length, runCalls + 1);
+  assert.deepEqual(fsCalls.writeFile.length, writeCalls);
+}
+
 (async function pm2_tests() {
   await test_pm2_should_run_update_cmd();
+  await test_run_pm2_update_if_needed();
 })();
