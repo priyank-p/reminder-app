@@ -1,34 +1,9 @@
 const fs = require('fs');
 const assert = require('assert');
-const child_process = require('child_process');
+const path = require('path');
+const { RunStub } = require('./stubs');
 
-// stub child_process.spawn so no actual
-// commands are ran!
-const runData = [];
-const version = {
-  node: process.version,
-  pm2: 'v1.0.0'
-};
-
-function StubbedSpawn(cmd, args, opts) {
-  cmd = cmd.replace(/\.cmd$/, '');
-  let command = cmd + ' ' + args.join(' ');
-  runData.push([ command, opts ]);
-
-  return {
-    on(evt, callback) { callback(0); },
-    stderr: { on() {} },
-    stdout: {
-      on(evt, callback) {
-        if (command === 'npx pm2 -v') {
-          callback(version.pm2);
-        }
-      }
-    }
-  };
-}
-
-child_process.spawn = StubbedSpawn;
+RunStub.stub();
 
 // stub fs calls to we don't change actual
 // data in var/
@@ -39,9 +14,15 @@ const fsCalls = {
   writeFile: []
 };
 
+const _fs_exists_sync = fs.existsSync;
+const pm2FilePath = path.resolve(__dirname, '../../var/pm2.json');
 function StubbedFsExsistSync(filepath) {
   fsCalls.existsSync.push([ filepath ]);
-  return (pm2File !== '');
+  if (filepath === pm2FilePath) {
+    return (pm2File !== '');
+  }
+
+  return _fs_exists_sync;
 }
 
 function StubbedFsReadFile(filepath, encoding, callback) {
@@ -71,34 +52,37 @@ async function test_pm2_should_run_update_cmd() {
   assert(await pm2.shouldRunUpdateCmd());
 
   pm2File = JSON.stringify({
-    pm2: version.pm2,
+    pm2: RunStub.version,
     node: 'NOT_THE_SAME_VERSION'
   });
   assert(await pm2.shouldRunUpdateCmd());
 
-  pm2File = JSON.stringify({ pm2: version.pm2, node: process.version });
+  pm2File = JSON.stringify({ pm2: RunStub.version.pm2, node: process.version });
   assert.equal(await pm2.shouldRunUpdateCmd(), false);
 }
 
 async function test_run_pm2_update_if_needed() {
-  version.pm2 = 'v2.0.0';
+  RunStub.version.pm2 = 'v2.0.0';
   assert(await pm2.shouldRunUpdateCmd());
   await pm2.runPm2UpdateIfNeeded();
-  const expected = JSON.stringify(version);
+  const expected = JSON.stringify(RunStub.version);
   assert.deepStrictEqual(pm2File, expected);
 
-  const runCalls = runData.length;
+  const runCalls = RunStub.calls.length;
   const writeCalls = fsCalls.writeFile.length;
   await pm2.shouldRunUpdateCmd();
 
   // run should be only called once meanwhile
   // writeFile should not be called if the
   // version did not change
-  assert.deepEqual(runData.length, runCalls + 1);
+  assert.deepEqual(RunStub.calls.length, runCalls + 1);
   assert.deepEqual(fsCalls.writeFile.length, writeCalls);
 }
 
 (async function pm2_tests() {
   await test_pm2_should_run_update_cmd();
   await test_run_pm2_update_if_needed();
+
+  // restore stub
+  RunStub.restore();
 })();
