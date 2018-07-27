@@ -1,8 +1,19 @@
 #!/usr/bin/env node
 'use strict';
 
+const ArgParser = require('../app/argparser');
 const webpackInfo = require('./webpack-info');
-if (!webpackInfo.needToPerformBuild) {
+
+const args = new ArgParser(`
+Builds frontend assets using webpack.
+Usage:
+  --force, -f           Build assets despite of no need to do so.
+`);
+
+args.add('--force', { type: 'boolean', alias: '-f' });
+args.parse();
+
+if (!webpackInfo.needToPerformBuild && !args.force) {
   console.log('No need build frontend assets using webpack.');
   process.exit(0);
 }
