@@ -26,7 +26,9 @@ Usage:
 args.parse();
 let jsFiles = args.nargs;
 if (!jsFiles) {
-  jsFiles = glob.sync('test/node-tests/**/*.js')
+  const nodeTests = glob.sync('test/node-tests/**/*.js');
+  const scriptsTests = glob.sync('test/scripts/**/*.js');
+  jsFiles = [...nodeTests, ...scriptsTests]
     .map(file => file.replace('test/', ''));
 }
 
