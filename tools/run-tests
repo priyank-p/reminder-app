@@ -19,7 +19,7 @@ const args = new ArgParser(`
 Run node tests:
 
 Usage:
-./tools/run-tests file-one.js file-two.js
+./tools/run-tests node-tests/args.js scripts/pm2.js
 ./tools/run-tests # to run all the tests
 `);
 
