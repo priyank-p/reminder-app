@@ -41,6 +41,18 @@ jsFiles = jsFiles.map(file => {
   return file;
 });
 
+// relative to test/ directory
+const exclude = [
+  'scripts/stubs.js'
+];
+
+jsFiles.forEach((file, index) => {
+  const relative = file.replace(TEST_DIR, '');
+  if (exclude.includes(relative)) {
+    jsFiles.splice(index, 1);
+  }
+});
+
 // set globals
 global.assert = require('assert');
 global.fixtures = require('../test/node-tests/fixtures');
