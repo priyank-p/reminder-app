@@ -5,12 +5,11 @@ const run = require('../tools/run');
 
 const ROOT_DIR = path.resolve(__dirname, '../');
 const pm2File = path.join(ROOT_DIR, 'var/pm2.json');
-let nopm2File = !(fs.existsSync(pm2File));
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 
 async function getSavedVersions() {
-  if (nopm2File) {
+  if (!fs.existsSync(pm2File)) {
     return false;
   }
 
