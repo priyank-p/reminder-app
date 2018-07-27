@@ -14,6 +14,12 @@ const fsCalls = {
   writeFile: []
 };
 
+const originals = {
+  existsSync: fs.existsSync,
+  readFile: fs.readFile,
+  writeFile: fs.writeFile
+};
+
 const _fs_exists_sync = fs.existsSync;
 const pm2FilePath = path.resolve(__dirname, '../../var/pm2.json');
 function StubbedFsExsistSync(filepath) {
@@ -85,4 +91,7 @@ async function test_run_pm2_update_if_needed() {
 
   // restore stub
   RunStub.restore();
+  for (let prop in originals) {
+    fs[prop] = originals[prop];
+  }
 })();
