@@ -1,5 +1,7 @@
 {
   "globals": {
+    "fetch": false,
+    "request": false,
     "assert": false,
     "fixtures": false,
     "migrations": false,
