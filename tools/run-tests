@@ -56,6 +56,8 @@ jsFiles.forEach((file, index) => {
 // set globals
 global.assert = require('assert');
 global.fixtures = require('../test/node-tests/fixtures');
+global.fetch = require('node-fetch');
+global.request = require('../static/js/request');
 
 jsFiles.forEach(file => {
   file = path.join(TEST_DIR, file);
