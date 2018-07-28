@@ -2,7 +2,7 @@ const ArgParser = require('./argparser');
 const env = require('./env');
 
 const args = new ArgParser(`
-Run rapp server.
+Run reminder-app server.
 
 --dev, -d    Launch in development mode
 --tests, -t  Launch the app in test mode
