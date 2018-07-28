@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+'use strict';
+
+const path = require('path');
+const glob = require('glob');
+const tsNode = require('ts-node');
+const ArgParser = require('../app/argparser');
+const app = require('../app');
+const env = require('../app/env');
+
+// to make test runnable from anywhere
+process.chdir(path.resolve(__dirname, '../tests/app/'));
+tsNode.register();
+
+env.setEnv('tests', true);
+env.setEnv('mode', 'test');
+env.setEnv('development', true);
+
+const args = new ArgParser(`
+Run node tests:
+
+Usage:
+./tools/run-tests node-tests/args.js scripts/pm2.js
+./tools/run-tests # to run all the tests
+`);
+
+args.parse();
+let testFiles = args.nargs;
+if (!jsFiles) {
+  jsFiles = glob.sync('**/*.js');
+  console.log(jsFiles);
+}
