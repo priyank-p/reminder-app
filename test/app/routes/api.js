@@ -15,13 +15,13 @@ async function test_add_reminder_route() {
 
   await assertPromiseThrows(async () => {
     await request.post(url, { body: {} });
-  });
+  }, /^Error: Reminder must be passed in!$/);
 
   await assertPromiseThrows(async () => {
     await request.post(url, {
       body: { invalidRequest: true }
     });
-  });
+  }, /^Error: Incorrect reminder provided$/);
 }
 
 async function api_tests() {
