@@ -11,7 +11,7 @@ const env = require('../app/env');
 process.chdir(path.resolve(__dirname, '../'));
 
 env.setEnv('tests', true);
-env.setEnv('mode', 'test');
+env.setEnv('mode', 'migrations-test');
 const TEST_DIR = path.resolve(__dirname, '../test/migrations');
 const args = new ArgParser(`
 Run migration tests:

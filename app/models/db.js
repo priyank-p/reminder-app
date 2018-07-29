@@ -5,7 +5,7 @@ const env = require('../env');
 const { production } = env;
 let DB_NAME = production ? 'reminder-app' : 'reminder-app-development';
 if (env.tests) {
-  DB_NAME = 'reminder-app-test';
+  DB_NAME = `reminder-app-${env.mode}`;
 }
 
 const DB_PATH = path.resolve(__dirname, '../../var/', DB_NAME);
