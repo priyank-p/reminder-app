@@ -35,9 +35,11 @@ if (!testFiles) {
 global.assert = require('assert');
 global.fetch = require('node-fetch');
 global.request = require('../static/js/request');
-global.db = require('../app/models/db');
+global.reminders = require('../app/models/reminders');
+global.archives = require('../app/models/archives');
 
 function startServer() {
+  process.env.PORT = '8827';
   process.argv.push('--tests');
   const app = require('../app');
   global.app = app;
