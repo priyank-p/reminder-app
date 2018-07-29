@@ -1,5 +1,7 @@
 {
   "globals": {
+    "reminders": false,
+    "archives": true,
     "fetch": false,
     "request": false,
     "assert": false,
