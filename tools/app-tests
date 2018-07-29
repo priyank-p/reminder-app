@@ -35,6 +35,7 @@ if (!testFiles) {
 global.assert = require('assert');
 global.fetch = require('node-fetch');
 global.request = require('../static/js/request');
+global.db = require('../app/models/db');
 
 function startServer() {
   process.argv.push('--tests');
