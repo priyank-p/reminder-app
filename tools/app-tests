@@ -3,6 +3,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const fsExtra = require('fs-extra');
 const glob = require('glob');
 const tsNode = require('ts-node');
 const ArgParser = require('../app/argparser');
@@ -31,6 +32,9 @@ let testFiles = args.nargs;
 if (!testFiles) {
   testFiles = glob.sync('**/*.js');
 }
+
+const DB_PATH = path.join(__dirname, `../var/reminder-app-${env.mode}`);
+fsExtra.removeSync(DB_PATH);
 
 global.assert = require('assert');
 global.fetch = require('node-fetch');
