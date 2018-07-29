@@ -2,14 +2,16 @@
 'use strict';
 
 const path = require('path');
+const fs = require('fs');
 const glob = require('glob');
 const tsNode = require('ts-node');
 const ArgParser = require('../app/argparser');
-const app = require('../app');
 const env = require('../app/env');
+const run = require('./run');
 
 // to make test runnable from anywhere
-process.chdir(path.resolve(__dirname, '../tests/app/'));
+const TEST_DIR = path.resolve(__dirname, '../test/app/');
+process.chdir(TEST_DIR);
 tsNode.register();
 
 env.setEnv('tests', true);
@@ -17,16 +19,78 @@ env.setEnv('mode', 'test');
 env.setEnv('development', true);
 
 const args = new ArgParser(`
-Run node tests:
+Run app tests:
 
 Usage:
-./tools/run-tests node-tests/args.js scripts/pm2.js
-./tools/run-tests # to run all the tests
+./tools/app-tests <filename>
+./tools/app-tests # to run all the tests
 `);
 
 args.parse();
 let testFiles = args.nargs;
-if (!jsFiles) {
-  jsFiles = glob.sync('**/*.js');
-  console.log(jsFiles);
+if (!testFiles) {
+  testFiles = glob.sync('**/*.js');
 }
+
+global.assert = require('assert');
+global.fetch = require('node-fetch');
+global.request = require('../static/js/request');
+
+function startServer() {
+  process.argv.push('--tests');
+  const app = require('../app');
+  global.app = app;
+
+  const serverReady = new Promise((resolve) => {
+    app.on('server-ready', (server) => {
+      resolve(server);
+    });
+  });
+
+  return serverReady;
+}
+
+const ROOT_DIR = path.resolve(__dirname, '../');
+const WEBPACK_BUNDLE_FILE = path.resolve(__dirname, '../var/webpack-bundles.json');
+const bundleFileExists = fs.existsSync(WEBPACK_BUNDLE_FILE);
+
+const runOpts = {
+  silent: true,
+  stdio: 'ignore',
+  cwd: ROOT_DIR
+};
+
+async function app_tests() {
+  if (!bundleFileExists) {
+    console.log('Creating webpack bundle file...');
+    await run('node tools/webpack -f', runOpts);
+  }
+
+  console.log('Running migrations on test db...');
+  await run('node tools/run-migrations -t', runOpts);
+
+  const server = await startServer();
+  const testPromises = [];
+  testFiles.forEach(file => {
+    file = path.join(TEST_DIR, file);
+    if (!fs.existsSync(file)) {
+      console.error(`Test file ${file} does not exsist.`);
+      process.exit(1);
+    }
+
+    console.log('running test file: ', path.basename(file));
+    const test = require(file);
+    testPromises.push(test());
+  });
+
+  await Promise.all(testPromises);
+  server.close();
+  process.exit(0);
+}
+
+app_tests()
+  .catch(err => {
+    console.log('An error occured: ');
+    console.error(err);
+    process.exit(1);
+  });
