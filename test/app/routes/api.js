@@ -12,6 +12,10 @@ async function test_add_reminder_route() {
   assert.deepStrictEqual(addedReminder.title, reminder.title);
   assert.deepStrictEqual(addedReminder.reminder, reminder.reminder);
   assert.deepStrictEqual(addedReminder.due_date, reminder.due_date);
+
+  await assertPromiseThrows(async () => {
+    await request.post(url, { body: {} });
+  });
 }
 
 async function api_tests() {
