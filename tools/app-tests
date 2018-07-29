@@ -80,7 +80,9 @@ async function app_tests() {
 
     console.log('running test file: ', path.basename(file));
     const test = require(file);
-    testPromises.push(test());
+    if (typeof test === 'function') {
+      testPromises.push(test());
+    }
   });
 
   await Promise.all(testPromises);
