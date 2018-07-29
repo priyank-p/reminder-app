@@ -3,6 +3,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const url = require('url');
 const fsExtra = require('fs-extra');
 const glob = require('glob');
 const tsNode = require('ts-node');
@@ -38,10 +39,32 @@ fsExtra.removeSync(DB_PATH);
 
 global.assert = require('assert');
 global.fetch = require('node-fetch');
-global.request = require('../static/js/request');
+
+process.env.PORT = '8827';
+const request = require('../static/js/request');
+class ExtendedRequest {
+  constructor() {
+    this.request = request;
+    this.baseURL = `http://localhost:${process.env.PORT}`;
+  }
+
+  getURL(passedUrl) {
+    const { baseURL } = this;
+    return url.resolve(baseURL, passedUrl);
+  }
+
+  post(url, ...args) {
+    return request.post(this.getURL(url), ...args);
+  }
+
+  get(url, ...args) {
+    return request.get(this.getURL(url), ...args);
+  }
+}
+
+global.request = new ExtendedRequest();
 
 function startServer() {
-  process.env.PORT = '8827';
   process.argv.push('--tests');
   const app = require('../app');
   global.app = app;

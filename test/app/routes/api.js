@@ -1,5 +1,5 @@
 async function test_add_reminder_route() {
-  const url = 'http://localhost:8827/api/reminders/add';
+  const url = '/api/reminders/add';
   const reminder = {
     title: 'Test Reminder',
     reminder: 'Test Reminder Body',
