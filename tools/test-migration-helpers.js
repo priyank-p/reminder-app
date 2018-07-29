@@ -1,14 +1,15 @@
 const path = require('path');
 const fs = require('fs-extra');
 
+const { env } = global;
 async function resetTestDB() {
   let uplevel;
-  if (env['db']) { /* global env */
+  if (env['db']) {
     uplevel = env['db'].db;
     await uplevel.levelDB.close();
   }
 
-  const dbPath = path.resolve(__dirname, '../var/reminder-app-test');
+  const dbPath = path.resolve(__dirname, `../var/reminder-app-${env.mode}`);
   await fs.remove(dbPath);
 
   if (uplevel) {
