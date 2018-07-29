@@ -45,6 +45,7 @@ for (let routePath in routes) {
 
 const port = process.env.PORT || 7213;
 const server = app.listen(port, () => {
+  app.emit('server-ready', server);
   console.log(`Server started on port: ${port}`);
 });
 
@@ -85,4 +86,4 @@ function performGracefulShutdown() {
 process.on('SIGINT', performGracefulShutdown);
 process.on('SIGTERM', performGracefulShutdown);
 
-module.exports = server;
+module.exports = app;
