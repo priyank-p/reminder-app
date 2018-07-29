@@ -68,4 +68,21 @@ if (env.development) {
   }));
 }
 
+function performGracefulShutdown() {
+  console.log('Shutting down server...');
+  server.close();
+
+  // this is due to leveldb keeping the event
+  // loop alive, we can also avoid doing so
+  // by db.close() but we don't have access to it
+  // here and windows not terminating node process
+  // on SIGINT.
+  process.exit(0);
+}
+
+// needed for windows and tests as sometimes
+// server will be left open.
+process.on('SIGINT', performGracefulShutdown);
+process.on('SIGTERM', performGracefulShutdown);
+
 module.exports = server;
