@@ -16,7 +16,7 @@ process.chdir(TEST_DIR);
 tsNode.register();
 
 env.setEnv('tests', true);
-env.setEnv('mode', 'test');
+env.setEnv('mode', 'tests');
 env.setEnv('development', true);
 
 const args = new ArgParser(`
@@ -39,8 +39,6 @@ fsExtra.removeSync(DB_PATH);
 global.assert = require('assert');
 global.fetch = require('node-fetch');
 global.request = require('../static/js/request');
-global.reminders = require('../app/models/reminders');
-global.archives = require('../app/models/archives');
 
 function startServer() {
   process.env.PORT = '8827';
@@ -75,6 +73,9 @@ async function app_tests() {
 
   console.log('Running migrations on test db...');
   await run('node tools/run-migrations -t', runOpts);
+
+  global.reminders = require('../app/models/reminders');
+  global.archives = require('../app/models/archives');
 
   const server = await startServer();
   const testPromises = [];
