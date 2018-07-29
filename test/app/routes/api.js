@@ -16,6 +16,12 @@ async function test_add_reminder_route() {
   await assertPromiseThrows(async () => {
     await request.post(url, { body: {} });
   });
+
+  await assertPromiseThrows(async () => {
+    await request.post(url, {
+      body: { invalidRequest: true }
+    });
+  });
 }
 
 async function api_tests() {

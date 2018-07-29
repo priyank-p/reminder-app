@@ -5,7 +5,7 @@ const reminders = require('../models/reminders');
 const router = new express.Router();
 router.post('/reminders/add', async (req, res) => {
   if (Object.keys(req.body).length === 0) {
-    res.status(500);
+    res.status(400);
     res.send('Reminder must be passed in!');
     return;
   }
@@ -15,8 +15,11 @@ router.post('/reminders/add', async (req, res) => {
     reminder.due_date = new Date(reminder.due_date);
   }
 
-  await reminders.addReminder(reminder);
-  res.send('Reminder Added!');
+  await reminders.addReminder(reminder)
+    .then(() => res.send('Reminder Added!'))
+    .catch(() => {
+      res.status(400).send('Incorrect reminder provided');
+    });
 });
 
 router.get('/reminders/all', async (req, res) => {
