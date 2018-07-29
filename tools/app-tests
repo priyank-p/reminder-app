@@ -64,6 +64,17 @@ class ExtendedRequest {
 
 global.request = new ExtendedRequest();
 
+async function assertPromiseThrows(func, exception) {
+  let error;
+  await func().catch(err => { error = err; });
+  global.assert.throws(() => {
+    if (error)
+      throw error;
+  }, exception);
+}
+
+global.assertPromiseThrows = assertPromiseThrows;
+
 function startServer() {
   process.argv.push('--tests');
   const app = require('../app');
