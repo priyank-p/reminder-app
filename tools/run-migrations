@@ -17,12 +17,12 @@ The database will not work unless migration are not applied.
 Flags:
   --production, -p     Runs the migrations on production db. [default]
   --development, -d    Runs migrations on development db.
-  --test, -t           Runs migrations on test db.
+  --tests, -t           Runs migrations on test db.
 `);
 
 args.add('--production', { type: 'boolean', alias: '-p' });
 args.add('--development', { type: 'boolean', alias: '-d' });
-args.add('--test', { type: 'boolean', alias: '-t' });
+args.add('--tests', { type: 'boolean', alias: '-t' });
 
 args.parse();
 
@@ -32,8 +32,16 @@ const spinner = new ora({
 });
 
 spinner.start();
-if (args.test || args.development) {
-  env.setEnv('mode', args.test ? 'test' : 'development');
+if (args.tests) {
+  env.setEnv('tests', true);
+}
+
+if (args.development) {
+  env.setEnv('development', true);
+}
+
+if ((args.tests || args.development) && env.mode === undefined) {
+  env.setEnv('mode', args.tests ? 'tests' : 'development');
 } else {
   env.setEnv('production', true);
 
