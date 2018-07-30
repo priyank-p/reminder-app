@@ -24,8 +24,28 @@ async function test_add_reminder_route() {
   }, /^Error: Incorrect reminder provided$/);
 }
 
+async function test_reminders_all_route() {
+  const url = '/api/reminders/all';
+  await reminders.addReminder({
+    title: 'Just Another Reminder For Test',
+    reminder: 'Test Reminder for testing /reminders/all',
+    due_date: new Date('January 12 1999')
+  });
+
+  // we test the json here, since parsed json object seems to have
+  // date not tranformed in actual one
+  const actual = await request.get(url).then(r => r.text());
+  const expected = JSON.stringify(await reminders.getReminders());
+  assert.deepEqual(actual, expected);
+}
+
 async function api_tests() {
-  await test_add_reminder_route();
+  const tests = [
+    test_add_reminder_route(),
+    test_reminders_all_route()
+  ];
+
+  await Promise.all(tests);
 }
 
 module.exports = api_tests;
