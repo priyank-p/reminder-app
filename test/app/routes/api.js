@@ -122,11 +122,21 @@ async function test_get_archive_by_id_route() {
   });
 
   const archiveId = await archives.archive(reminderId);
-  const url = `/api/archives/${archiveId}`;
+  let url = `/api/archives/${archiveId}`;
 
   const expected = await archives.getArchiveById(archiveId);
   const actual = await request.get(url).then(r => r.text());
   assert.deepEqual(JSON.stringify(expected), actual);
+
+  url = '/api/archives/ERROR';
+  await assertPromiseThrows(async () => {
+    await request.get(url);
+  }, /^Error: A valid id must be passed in!$/);
+
+  url = '/api/archives/12390123';
+  await assertPromiseThrows(async () => {
+    await request.get(url);
+  }, /^Error: No archive with id: \d+.$/);
 }
 
 async function api_tests() {
