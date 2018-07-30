@@ -66,7 +66,7 @@ router.post('/reminders/update/:id', async (req, res) => {
     })
     .catch(() => {
       res.status(400);
-      res.send(`Cannot updated reminder with id: ${id}!`);
+      res.send(`Cannot update reminder with id: ${id}!`);
     });
 });
 

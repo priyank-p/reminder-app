@@ -81,12 +81,31 @@ async function test_update_reminder_route() {
     reminder: 'Updated Test Passed!'
   };
 
-  const url = `/api/reminders/update/${id}`;
+  let url = `/api/reminders/update/${id}`;
   await request.post(url, { body: updatedReminder });
 
   const actual = await reminders.getReminderById(id);
   assert.deepEqual(actual.title, updatedReminder.title);
   assert.deepEqual(actual.reminder, updatedReminder.reminder);
+
+  url = '/api/reminders/update/ERROR';
+  await assertPromiseThrows(async () => {
+    await request.post(url, { body: {} });
+  }, /^Error: Reminder id to delete must be passed in/);
+
+  url = '/api/reminders/update/2323132';
+  await assertPromiseThrows(async () => {
+    await request.post(url, { body: {} });
+  }, /^Error: Reminder must be passed in!$/);
+
+  await assertPromiseThrows(async () => {
+    await request.post(url, {
+      body: {
+        das: 'sd',
+        ads: 'dsdasd'
+      }
+    });
+  }, /^Error: Cannot update reminder with id:/);
 }
 
 async function api_tests() {
