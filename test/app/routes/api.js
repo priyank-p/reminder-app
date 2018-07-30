@@ -39,10 +39,32 @@ async function test_reminders_all_route() {
   assert.deepEqual(actual, expected);
 }
 
+async function test_delete_reminder_route() {
+  const reminder = {
+    title: 'Test',
+    reminder: 'test'
+  };
+
+  const id = await reminders.addReminder(reminder);
+
+  let url = `/api/reminders/delete/${id}`;
+  await request.post(url, { method: 'DELETE' });
+  assert.deepStrictEqual(await reminders.getReminderById(id), undefined);
+
+  const allArchives = await archives.getArchives();
+  const archive = allArchives.filter(archive => {
+    return (archive.reminder.id === id);
+  })[0];
+
+  assert.deepStrictEqual(archive.reminder.title, reminder.title);
+  assert.deepStrictEqual(archive.reminder.reminder, reminder.reminder);
+}
+
 async function api_tests() {
   const tests = [
     test_add_reminder_route(),
-    test_reminders_all_route()
+    test_reminders_all_route(),
+    test_delete_reminder_route()
   ];
 
   await Promise.all(tests);
