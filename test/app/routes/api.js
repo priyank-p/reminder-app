@@ -58,6 +58,16 @@ async function test_delete_reminder_route() {
 
   assert.deepStrictEqual(archive.reminder.title, reminder.title);
   assert.deepStrictEqual(archive.reminder.reminder, reminder.reminder);
+
+  url = '/api/reminders/delete/ERROR';
+  await assertPromiseThrows(async () => {
+    await request.post(url, { method: 'DELETE' });
+  }, /^Error: Reminder id to delete must be passed in, and must be valid integer$/);
+
+  url = '/api/reminders/delete/89342839489324';
+  await assertPromiseThrows(async () => {
+    await await request.post(url, { method: 'DELETE' });
+  }, /^Error: Cannot delete reminder with id:/);
 }
 
 async function api_tests() {
