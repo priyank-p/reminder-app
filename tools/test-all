@@ -36,10 +36,10 @@ async function testAll() {
 }
 
 testAll()
-.then(() => {
-  console.log('All test ran successfully!');
-})
-.catch(() => {
-  console.log('Some test failed, check traceback above for more details.');
-  process.exit(1);
-});
+  .then(() => {
+    console.log('All test ran successfully!');
+  })
+  .catch(() => {
+    console.log('Some test failed, check traceback above for more details.');
+    process.exit(1);
+  });
