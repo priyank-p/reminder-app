@@ -108,11 +108,19 @@ async function test_update_reminder_route() {
   }, /^Error: Cannot update reminder with id:/);
 }
 
+async function test_all_archives_route() {
+  const url = '/api/archives/all';
+  const allArchives = await archives.getArchives();
+  const actual = await request.get(url).then(r => r.text());
+  assert.deepStrictEqual(JSON.stringify(allArchives), actual);
+}
+
 async function api_tests() {
   await test_add_reminder_route();
   await test_reminders_all_route();
   await test_delete_reminder_route();
   await test_update_reminder_route();
+  await test_all_archives_route();
 }
 
 module.exports = api_tests;
