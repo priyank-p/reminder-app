@@ -22,13 +22,17 @@ async function testAll() {
   }
 
   await Promise.all([
-    run('node tools/app-tests', runOpts),
     run('node tools/lint', runOpts),
     run('node tools/test-npm-dependencies', runOpts),
     run('node tools/run-tests', runOpts),
     run('node tools/test-migrations', runOpts),
     run('node tools/check-migration-version', runOpts)
   ]);
+
+  // we don't run this in parallel since it causes
+  // test flakes and needs a server running which is
+  // better to run not-in-parallel.
+  await run('node tools/app-tests', runOpts);
 }
 
 testAll()
