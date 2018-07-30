@@ -3,10 +3,12 @@ const { archives } = require('./db');
 
 async function archive(id) {
   const reminder = await reminders.getReminderById(id);
-  await archives.addRow({
+  const archiveId = await archives.addRow({
     date: new Date(),
     reminder
   });
+
+  return archiveId;
 }
 
 async function getArchives() {
