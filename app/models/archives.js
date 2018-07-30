@@ -23,6 +23,10 @@ async function deleteArchive(id) {
 async function getArchiveById(id) {
   const allArchives = await getArchives();
   const archive = allArchives.filter(archive => archive.id === id);
+  if (archive[0] === undefined) {
+    throw Error(`No archive with id: ${id}.`);
+  }
+
   return archive[0];
 }
 

@@ -84,11 +84,11 @@ router.get('/archives/:id', async (req, res) => {
   }
 
   archives.getArchiveById(id)
-    .then(arhive => {
-      res.json(arhive);
+    .then(archive => {
+      res.json(archive);
     })
-    .catch(() => {
-      res.status(400).send(`No arhives with id: ${id}.`);
+    .catch((err) => {
+      res.status(400).send(err.message);
     });
 });
 

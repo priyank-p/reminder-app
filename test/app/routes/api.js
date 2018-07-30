@@ -115,12 +115,27 @@ async function test_all_archives_route() {
   assert.deepStrictEqual(JSON.stringify(allArchives), actual);
 }
 
+async function test_get_archive_by_id_route() {
+  const reminderId = await reminders.addReminder({
+    title: 'test archives',
+    reminder: 'archives'
+  });
+
+  const archiveId = await archives.archive(reminderId);
+  const url = `/api/archives/${archiveId}`;
+
+  const expected = await archives.getArchiveById(archiveId);
+  const actual = await request.get(url).then(r => r.text());
+  assert.deepEqual(JSON.stringify(expected), actual);
+}
+
 async function api_tests() {
   await test_add_reminder_route();
   await test_reminders_all_route();
   await test_delete_reminder_route();
   await test_update_reminder_route();
   await test_all_archives_route();
+  await test_get_archive_by_id_route();
 }
 
 module.exports = api_tests;
