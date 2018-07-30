@@ -70,14 +70,30 @@ async function test_delete_reminder_route() {
   }, /^Error: Cannot delete reminder with id:/);
 }
 
-async function api_tests() {
-  const tests = [
-    test_add_reminder_route(),
-    test_reminders_all_route(),
-    test_delete_reminder_route()
-  ];
+async function test_update_reminder_route() {
+  const id = await reminders.addReminder({
+    title: 'Update Me',
+    reminder: 'Test Updating reminder route!'
+  });
 
-  await Promise.all(tests);
+  const updatedReminder = {
+    title: 'Update Me (updated)',
+    reminder: 'Updated Test Passed!'
+  };
+
+  const url = `/api/reminders/update/${id}`;
+  await request.post(url, { body: updatedReminder });
+
+  const actual = await reminders.getReminderById(id);
+  assert.deepEqual(actual.title, updatedReminder.title);
+  assert.deepEqual(actual.reminder, updatedReminder.reminder);
+}
+
+async function api_tests() {
+  await test_add_reminder_route();
+  await test_reminders_all_route();
+  await test_delete_reminder_route();
+  await test_update_reminder_route();
 }
 
 module.exports = api_tests;
