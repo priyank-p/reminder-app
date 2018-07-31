@@ -2,7 +2,6 @@ import * as request from './request';
 import { init as initContextMenus } from './context-menu';
 import formatDate from './format-due-date';
 import $ from './dom';
-import * as menu from './menu';
 import * as statusbar from './status-bar';
 
 formatDate();
@@ -41,8 +40,4 @@ archives.addEventListener('click', (event: MouseEvent) => {
         statusbar.show('Failed to delete archive');
       });
   }
-});
-
-menu.on('reminders', () => {
-  location.href = '/';
 });
