@@ -8,7 +8,12 @@
     <link rel="manifest" href="webapp-manifest.json">
   </head>
   <body>
-    <header>Archives</header>
+    <header>
+      <div class="back-button">
+        <i class="fas fa-arrow-left"></i>
+      </div>
+      Archives
+    </header>
     <main>
       {{> archives }}
       <div class="archive-info">Note: Archive's are deleted automatically after 30 days.</div>

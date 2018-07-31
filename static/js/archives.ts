@@ -41,3 +41,8 @@ archives.addEventListener('click', (event: MouseEvent) => {
       });
   }
 });
+
+const backButton = $('.back-button') as Node;
+backButton.addEventListener('click', () => {
+  location.href = '/';
+});
