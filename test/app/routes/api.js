@@ -139,6 +139,20 @@ async function test_get_archive_by_id_route() {
   }, /^Error: No archive with id: \d+.$/);
 }
 
+async function test_delete_archive_route() {
+  const reminderId = await reminders.addReminder({
+    title: 'Title',
+    reminder: 'Reminder'
+  });
+
+  const archiveId = await archives.archive(reminderId);
+  const url = `/api/archives/delete/${archiveId}`;
+  await request.post(url, { method: 'DELETE' });
+  await assertPromiseThrows(async () => {
+    await archives.getArchiveById(archiveId);
+  }, /^Error: No archive with id: 2.$/);
+}
+
 async function api_tests() {
   await test_add_reminder_route();
   await test_reminders_all_route();
@@ -146,6 +160,7 @@ async function api_tests() {
   await test_update_reminder_route();
   await test_all_archives_route();
   await test_get_archive_by_id_route();
+  await test_delete_archive_route();
 }
 
 module.exports = api_tests;
