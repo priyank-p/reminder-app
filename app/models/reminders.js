@@ -4,9 +4,15 @@ const { reminders } = require('./db');
 function validateReminder(fields) {
   const allowedFields = ['title', 'reminder', 'due_date'];
   for (let field in fields) {
-    const isEmpty = field === '';
+    const isEmpty = (field === '') || (fields[field] === '');
     const isNotString = typeof fields[field] !== 'string';
-    if (field === 'due_date' || isEmpty || isNotString) {
+
+    if (isEmpty) {
+      delete fields[field];
+      continue;
+    }
+
+    if (field === 'due_date' || isNotString) {
       continue;
     }
 
