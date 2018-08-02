@@ -66,7 +66,7 @@ async function test_delete_reminder_route() {
 
   url = '/api/reminders/delete/89342839489324';
   await assertPromiseThrows(async () => {
-    await await request.post(url, { method: 'DELETE' });
+    await request.post(url, { method: 'DELETE' });
   }, /^Error: Cannot delete reminder with id:/);
 }
 
