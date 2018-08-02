@@ -3,18 +3,9 @@ const { reminders } = require('./db');
 
 function validateReminder(fields) {
   for (let field in fields) {
-    if (field === 'due_date') {
-      continue;
-    }
-
-    // Figure out why browser sends an empty
-    // key/value is this a bug on our side?
-    if (field === '') {
-      delete fields[field];
-      continue;
-    }
-
-    if (typeof fields[field] !== 'string') {
+    const isEmpty = field === '';
+    const isNotString = typeof fields[field] !== 'string';
+    if (field === 'due_date' || isEmpty || isNotString) {
       continue;
     }
 
@@ -53,6 +44,7 @@ async function getReminderById(id) {
 }
 
 module.exports = {
+  validateReminder,
   addReminder,
   getReminders,
   updateReminder,
