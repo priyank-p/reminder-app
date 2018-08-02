@@ -2,11 +2,16 @@ const escapeHTML = require('escape-html');
 const { reminders } = require('./db');
 
 function validateReminder(fields) {
+  const allowedFields = ['title', 'reminder', 'due_date'];
   for (let field in fields) {
     const isEmpty = field === '';
     const isNotString = typeof fields[field] !== 'string';
     if (field === 'due_date' || isEmpty || isNotString) {
       continue;
+    }
+
+    if (!allowedFields.includes(field)) {
+      delete fields[field];
     }
 
     // escape html early on, before adding it to db.
