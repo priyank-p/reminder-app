@@ -1,3 +1,8 @@
+const testReminder = {
+  title: 'Title',
+  reminder: 'reminder body'
+};
+
 async function test_add_reminder_route() {
   const url = '/api/reminders/add';
   const reminder = {
@@ -153,6 +158,20 @@ async function test_delete_archive_route() {
   }, /^Error: No archive with id: 2.$/);
 }
 
+async function test_restore_archive_route() {
+  const reminderId = await reminders.addReminder(testReminder);
+  const archiveId = await archives.archive(reminderId);
+
+  const url = `/api/archives/restore/${archiveId}`;
+  const { newId } = await request.get(url).then(r => r.json());
+  const restored = await reminders.getReminderById(newId);
+  assert.deepStrictEqual(restored.title, testReminder.title);
+  assert.deepStrictEqual(restored.reminder, testReminder.reminder);
+  await assertPromiseThrows(async () => {
+    await archives.getArchiveById(archiveId);
+  }, /^Error: No archive with id: 2.$/);
+}
+
 async function api_tests() {
   await test_add_reminder_route();
   await test_reminders_all_route();
@@ -161,6 +180,7 @@ async function api_tests() {
   await test_all_archives_route();
   await test_get_archive_by_id_route();
   await test_delete_archive_route();
+  await test_restore_archive_route();
 }
 
 module.exports = api_tests;
