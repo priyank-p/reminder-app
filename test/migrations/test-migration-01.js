@@ -12,7 +12,7 @@ async function test_notified_field_added() {
 
   const rows = [
     { id: 0, title: 'TestNotified', reminder: 'Migration',
-      due_date: new Date(), create_at: new Date() }
+      due_date: new Date(), created_at: new Date() }
   ];
 
   await levelDB.put('reminders', rows);

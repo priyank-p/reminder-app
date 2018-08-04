@@ -13,9 +13,15 @@ async function test_db_table_created() {
     'title',
     'reminder',
     'due_date',
-    'create_at'
+    'created_at'
   ];
   assert.deepEqual(Object.keys(InternalProps.tables.reminders), expectedRows);
+
+  // test misspelled field correction
+  const { uplevel } = reminders;
+  await uplevel.renameField('reminders', 'created_at', 'create_at');
+  await migrations.run_migration(0);
+  assert.deepEqual(await uplevel.hasField('reminders', 'create_at'), false);
 }
 
 module.exports = test_db_table_created;
