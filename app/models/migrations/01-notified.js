@@ -5,23 +5,23 @@
 
 const { db, reminders } = require('../db');
 
-const tableName = 'reminders';
 async function migrate_00_add_notified_field() {
-  const InternalProps = await db.getInternalProps();
-  const rows = await reminders.getRows();
-  const { types, levelDB } = db;
+  const hasNotifiedField = await reminders.hasField('notified');
+  if (hasNotifiedField) {
+    return;
+  }
 
-  InternalProps.tables[tableName].notified = {
+  const { types } = db;
+  const field = {
+    name: 'notified',
     type: types.boolean,
     default: false
   };
 
-  rows.forEach((row, index) => {
-    rows[index].notified = false;
+  await reminders.migrations.addField(field, (row) => {
+    row.notified = false;
+    return row;
   });
-
-  await levelDB.put(db.InternalPropsKey, InternalProps);
-  await levelDB.put(tableName, rows);
 }
 
 module.exports = migrate_00_add_notified_field;

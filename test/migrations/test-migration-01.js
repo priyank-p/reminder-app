@@ -2,13 +2,9 @@ async function test_notified_field_added() {
   const { db, reminders } = env['db'];
   const { levelDB } = reminders.uplevel;
 
-  await migrations.run_migrations_upto(1);
+  await migrations.run_migrations_upto(0);
   const InternalProps = await db.getInternalProps();
   const reminderProps = InternalProps.tables['reminders'];
-  assert.deepStrictEqual(reminderProps.notified, {
-    type: 'boolean',
-    default: false
-  });
 
   const rows = [
     { id: 0, title: 'TestNotified', reminder: 'Migration',
@@ -17,16 +13,14 @@ async function test_notified_field_added() {
 
   await levelDB.put('reminders', rows);
   await migrations.run_migration(1);
-  assert.deepStrictEqual(await reminders.getRows(), [{
+  assert.deepEqual(await reminders.getRows(), [{
     ...rows[0],
     notified: false
   }]);
 
-  // check adding normally does not cause
-  // validation issue....
-  delete rows[0].id;
-  await reminders.addRow({
-    ...rows[0]
+  assert.deepStrictEqual(reminderProps.notified, {
+    type: 'boolean',
+    default: false
   });
 }
 
