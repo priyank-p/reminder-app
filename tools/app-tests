@@ -37,6 +37,7 @@ if (!testFiles) {
 const DB_PATH = path.join(__dirname, `../var/reminder-app-${env.mode}`);
 fsExtra.removeSync(DB_PATH);
 
+global.env = env;
 global.assert = require('assert');
 global.fetch = require('node-fetch');
 
