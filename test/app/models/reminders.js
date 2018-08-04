@@ -16,8 +16,15 @@ async function test_add_reminder_method() {
   });
 }
 
+async function test_get_reminders_method() {
+  const actual = await db.reminders.getRows();
+  const expected = await reminders.getReminders();
+  assert.deepEqual(actual, expected);
+}
+
 async function reminder_model_tests() {
   await test_add_reminder_method();
+  await test_get_reminders_method();
 }
 
 module.exports = reminder_model_tests;
