@@ -43,6 +43,9 @@ global.env = env;
 global.migrationFiles = fs.readdirSync(path.resolve(__dirname, '../app/models/migrations'));
 global.migrations = require('./test-migration-helpers');
 
+// make sure env['db'] is set before the tests are ran!
+require('../app/models/db');
+
 (async function run_migration_test() {
   for (let i = 0; i < testFiles.length; i++) {
     let file = testFiles[i];
