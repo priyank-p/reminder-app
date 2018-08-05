@@ -16,10 +16,12 @@ option to start it on machine startup.
 Usage:
 --port, -p          Specify port for reminder-app to start on
 --startup, -s       Makes reminder-app start on
+--non-interactive   Disables interactive prompts, mostly used in CI
 `);
 
 args.add('--port', { type: 'number', alias: '-p' });
 args.add('--startup', { type: 'boolean', alias: '-s' });
+args.add('--non-interactive', { type: 'boolean', dest: 'nonInteractive' });
 args.parse();
 
 const spinner = new ora({
@@ -54,6 +56,10 @@ async function isPm2Installed() {
 async function prompt_for_port() {
   if (args.port) {
     process.env.PORT = args.port;
+    return;
+  }
+
+  if (args.nonInteractive) {
     return;
   }
 
@@ -116,6 +122,10 @@ async function startup() {
 async function prompt_init_startup() {
   if (args.startup) {
     await startup();
+    return;
+  }
+
+  if (args.nonInteractive) {
     return;
   }
 
