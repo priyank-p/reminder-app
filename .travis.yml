@@ -14,6 +14,11 @@ cache:
 
 script:
   - npm run coverage
+  
+  # run install script by removing /var
+  # directory
+  - rm -rf var
+  - node scripts/install
 
 after_success:
   - npm i codecov
