@@ -6,11 +6,6 @@
 const { db, reminders } = require('../db');
 
 async function migrate_00_add_notified_field() {
-  const hasNotifiedField = await reminders.hasField('notified');
-  if (hasNotifiedField) {
-    return;
-  }
-
   const { types } = db;
   const field = {
     name: 'notified',
