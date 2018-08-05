@@ -4,8 +4,21 @@
 const path = require('path');
 const ora = require('ora');
 const inquirer = require('inquirer');
+const ArgParser = require('../app/argparser');
 const prepare = require('./prepare');
 const run = require('../tools/run');
+
+const args = new ArgParser(`
+Reminder App installation script.
+This script installs reminder-app, and also gives you and
+option to start it on machine startup.
+
+Usage:
+--port, -p          Specify port for reminder-app to start on
+`);
+
+args.add('--port', { type: 'number', alias: '-p' });
+args.parse();
 
 const spinner = new ora({
   spinner: 'dots5',
@@ -37,6 +50,11 @@ async function isPm2Installed() {
 }
 
 async function prompt_for_port() {
+  if (args.port) {
+    process.env.PORT = args.port;
+    return;
+  }
+
   const prompts = [{
     type: 'input',
     name: 'port',
