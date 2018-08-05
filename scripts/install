@@ -15,9 +15,11 @@ option to start it on machine startup.
 
 Usage:
 --port, -p          Specify port for reminder-app to start on
+--startup, -s       Makes reminder-app start on
 `);
 
 args.add('--port', { type: 'number', alias: '-p' });
+args.add('--startup', { type: 'boolean', alias: '-s' });
 args.parse();
 
 const spinner = new ora({
@@ -102,7 +104,21 @@ function printError(err) {
   console.error(err);
 }
 
+async function startup() {
+  console.log();
+  try {
+    await run('node scripts/init-startup', opts);
+  } catch(e) {
+    console.error('Setting up startup failed!');
+  }
+}
+
 async function prompt_init_startup() {
+  if (args.startup) {
+    await startup();
+    return;
+  }
+
   const prompt = [{
     type: 'confirm',
     name: 'startup',
@@ -111,14 +127,8 @@ async function prompt_init_startup() {
   }];
 
   const response = await inquirer.prompt(prompt);
-
-  console.log();
   if (response.startup) {
-    try {
-      await run('node scripts/init-startup', opts);
-    } catch(e) {
-      console.error('Setting up startup failed!');
-    }
+    await startup();
   }
 }
 
