@@ -1,4 +1,5 @@
 const fs = require('fs');
+const fsExtra = require('fs-extra');
 const path = require('path');
 const { promisify } = require('util');
 const run = require('../tools/run');
@@ -33,6 +34,8 @@ async function getCurrentVersions() {
 
 async function saveCurrentVersions() {
   const versions = await getCurrentVersions();
+  const varDir = await path.parse(pm2File).dir;
+  await fsExtra.ensureDir(varDir);
   await writeFile(pm2File, JSON.stringify(versions), 'utf8');
 }
 
