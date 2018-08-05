@@ -21,7 +21,7 @@
     "fs-extra": "7.0.0",
     "helmet": "3.13.0",
     "inquirer": "6.0.0",
-    "level-uplevel": "2.0.3",
+    "level-uplevel": "2.0.4",
     "mini-css-extract-plugin": "0.4.1",
     "node-cron": "1.2.1",
     "node-sass": "4.9.2",
