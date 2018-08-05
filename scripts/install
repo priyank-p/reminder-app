@@ -65,14 +65,9 @@ async function install_reminder_app() {
     }
   }];
 
-  // TODO: Do this more properly by adding
-  // non-interactive flag / --port flag.
-  if (process.env.CI === undefined) {
-    const response = await inquirer.prompt(prompts);
-    process.env.PORT = response.port;
-  } else {
-    process.env.PORT = 7000;
-  }
+  const response = await inquirer.prompt(prompts);
+  process.env.PORT = response.port;
+  console.log(process.env.PORT);
 
   spinner.text = 'Starting reminder-app using pm2';
   spinner.color = 'cyan';
