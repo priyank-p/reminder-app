@@ -36,16 +36,7 @@ async function isPm2Installed() {
   return isInstalled;
 }
 
-async function install_reminder_app() {
-  const pm2Installed = await isPm2Installed();
-  if (pm2Installed) {
-    await run('pm2 save', ignore);
-  }
-
-  await prepare(spinner, {
-    runPm2Save: pm2Installed
-  });
-
+async function prompt_for_port() {
   const prompts = [{
     type: 'input',
     name: 'port',
@@ -67,6 +58,19 @@ async function install_reminder_app() {
 
   const response = await inquirer.prompt(prompts);
   process.env.PORT = response.port;
+}
+
+async function install_reminder_app() {
+  const pm2Installed = await isPm2Installed();
+  if (pm2Installed) {
+    await run('pm2 save', ignore);
+  }
+
+  await prepare(spinner, {
+    runPm2Save: pm2Installed
+  });
+
+  await prompt_for_port();
 
   spinner.text = 'Starting reminder-app using pm2';
   spinner.color = 'cyan';
