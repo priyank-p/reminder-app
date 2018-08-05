@@ -16,9 +16,11 @@ script:
   - npm run coverage
   
   # run install script by removing /var
-  # directory
-  - rm -rf var
+  # directory to make sure we catch error's regarding
+  # /var directory not being present.
+  - mv var _var
   - node scripts/install --non-interactive
+  - mv _var var
 
 after_success:
   - npm i codecov
