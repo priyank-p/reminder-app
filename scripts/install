@@ -67,7 +67,6 @@ async function install_reminder_app() {
 
   const response = await inquirer.prompt(prompts);
   process.env.PORT = response.port;
-  console.log(process.env.PORT);
 
   spinner.text = 'Starting reminder-app using pm2';
   spinner.color = 'cyan';
