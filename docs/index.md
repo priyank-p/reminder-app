@@ -12,7 +12,7 @@ node scripts/install
 # on windows, you'll need to use `winpty` which is bundled with git
 # If you dont use winpty the installtion will run just fine but
 # the spinner we show will not output
-winpty node scripts/intall
+winpty node scripts/install
 ```
 
 This will do couple of things, install npm dependencies, build
