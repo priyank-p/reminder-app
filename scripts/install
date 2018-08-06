@@ -12,16 +12,14 @@ const args = new ArgParser(`
 Reminder App installation script.
 This script installs reminder-app, and also gives you and
 option to start it on machine startup.
-
-Usage:
---port, -p          Specify port for reminder-app to start on
---startup, -s       Makes reminder-app start on
---non-interactive   Disables interactive prompts, mostly used in CI
 `);
 
-args.add('--port', { type: 'number', alias: '-p' });
-args.add('--startup', { type: 'boolean', alias: '-s' });
-args.add('--non-interactive', { type: 'boolean', dest: 'nonInteractive' });
+args.add('--port', { type: 'number', alias: '-p',
+  help: 'Specify port for reminder-app to start on' });
+args.add('--startup', { type: 'boolean', alias: '-s',
+  help: 'Makes reminder-app start on' });
+args.add('--non-interactive', { type: 'boolean', dest: 'nonInteractive',
+  help: 'Disables interactive prompts, mostly used in CI' });
 args.parse();
 
 const spinner = new ora({
