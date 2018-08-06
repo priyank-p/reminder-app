@@ -116,7 +116,7 @@ class ArgParser {
     }
 
     if (argsHelpText !== '') {
-      this._helpText += '\n\nUsage:\n\n';
+      this._helpText += '\n\nUsage:\n';
       this._helpText += argsHelpText;
     }
 
