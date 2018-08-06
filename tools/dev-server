@@ -14,7 +14,18 @@ const needToMigrate = require('./migration-status');
     await run('node run-migrations --development');
   }
 
+  const passedArgs = process.argv.splice(2);
   let cmd = 'npx nodemon --config tools/nodemon.json';
-  cmd += ' tools/dev-server.js -- ' + process.argv.splice(2).join(' ');
-  run(cmd, { cwd: ROOT_DIR });
+  cmd += ' tools/dev-server.js -- ' + passedArgs.join(' ');
+
+  // we show help an not run nodemon in case
+  // help | --help | -h is passed as first argument
+  const firstArg = (passedArgs[0] || '').trim();
+  const runOpts = { cwd: ROOT_DIR };
+  if (firstArg === 'help' || firstArg === '--help' || firstArg === '-h') {
+    cmd = 'node tools/dev-server.js -h';
+    runOpts.silent = true;
+  }
+
+  run(cmd, runOpts);
 })();
