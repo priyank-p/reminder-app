@@ -5,15 +5,10 @@ const {
 
 class ArgParser {
   constructor(helpText) {
-    this._helpText = helpText;
+    this._helpText = helpText || '';
+    this._helpText = this._helpText.trim();
     this._args = {};
     this._aliases = {};
-
-    // trim the extra newlines, mostly because
-    // we use template strings
-    if (this.helpText) {
-      this.helpText = this.helpText.trim();
-    }
   }
 
   /*
