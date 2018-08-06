@@ -1,15 +1,12 @@
 const ArgParser = require('./argparser');
 const env = require('./env');
 
-const args = new ArgParser(`
-Run reminder-app server.
+const args = new ArgParser('Run reminder-app server.');
 
---dev, -d    Launch in development mode
---tests, -t  Launch the app in test mode
-`);
-
-args.add('--dev', { alias: '-d', type: 'boolean', default: false });
-args.add('--tests', { alias: '-t', type: 'boolean', default: false });
+args.add('--dev', { alias: '-d', type: 'boolean', default: false,
+  help: 'Launch in development mode' });
+args.add('--tests', { alias: '-t', type: 'boolean', default: false,
+  help: 'Launch the app in test mode' });
 args.parse();
 
 env.setEnv('development', args.dev);
