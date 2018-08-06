@@ -10,16 +10,11 @@ const spawnOpts = {
 };
 
 const ArgParser = require('../app/argparser');
-const args = new ArgParser(`
-Runs the reminder-app development server.
-
-Flags:
-----------------
---webpack-output, -w    Enables webpack output for dev-server, which is disabled by default.
---debug, -d             Launches dev-server node process with --inspect flag
-`);
-args.add('--webpack-output', { type: 'boolean', alias: '-w' });
-args.add('--debug', { type: 'boolean', alias: '-d' });
+const args = new ArgParser('Runs the reminder-app development server');
+args.add('--webpack-output', { type: 'boolean', alias: '-w',
+  help: 'Enables webpack output for dev-server' });
+args.add('--debug', { type: 'boolean', alias: '-d',
+  help: 'Launches dev-server node process with --inspect flag' });
 args.parse();
 
 const npx = process.platform === 'win32' ? 'npx.cmd' : 'npx';
