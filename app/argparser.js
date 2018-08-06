@@ -40,7 +40,7 @@ class ArgParser {
     args.forEach((arg, index) => {
       /* istanbul ignore if: can't test for console.log */
       if (arg === 'help' || arg === '--help' || arg === '-h') {
-        console.log(this._helpText);
+        this._showHelp();
         process.exit(0);
       }
 
@@ -102,6 +102,35 @@ class ArgParser {
 
   _hasArgValue(arg) {
     return /^--?.+=.*/.test(arg);
+  }
+
+  _showHelp() {
+    let argsHelpText = '';
+    for (let arg in this._args) {
+      const opts = this._args[arg];
+      if (!opts.help) {
+        continue;
+      }
+
+      argsHelpText += this._formatHelpText(arg, opts);
+    }
+
+    if (argsHelpText !== '') {
+      this._helpText += '\n\nUsage:\n\n';
+      this._helpText += argsHelpText;
+    }
+
+    console.log(this._helpText);
+  }
+
+  _formatHelpText(arg, opts) {
+    let helpText = arg;
+    if (opts.alias) {
+      helpText += `, ${opts.alias}`;
+    }
+
+    helpText += `\t\t\t${opts.help}\n`;
+    return helpText;
   }
 }
 
