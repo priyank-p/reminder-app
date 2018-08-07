@@ -12,18 +12,15 @@ const ArgParser = require('../app/argparser');
 
 const args = new ArgParser(`
 Run migrations on database.
-The database will not work unless migration are not applied.
-
-Flags:
-  --production, -p     Runs the migrations on production db. [default]
-  --development, -d    Runs migrations on development db.
-  --tests, -t           Runs migrations on test db.
+The database will not work unless migration are not applied      
 `);
 
-args.add('--production', { type: 'boolean', alias: '-p' });
-args.add('--development', { type: 'boolean', alias: '-d' });
-args.add('--tests', { type: 'boolean', alias: '-t' });
-
+args.add('--production', { type: 'boolean', alias: '-p',
+  help: 'Runs the migrations on production db. [default]' });
+args.add('--development', { type: 'boolean', alias: '-d',
+  help: 'Runs migrations on development db.' });
+args.add('--tests', { type: 'boolean', alias: '-t',
+  help: 'Runs migrations on test db.' });
 args.parse();
 
 const spinner = new ora({
