@@ -120,7 +120,7 @@ class ArgParser {
       this._helpText += argsHelpText;
     }
 
-    console.log(this._helpText);
+    process.stdout.write(this._helpText);
   }
 
   _formatHelpText(arg, opts) {
