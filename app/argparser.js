@@ -124,7 +124,7 @@ class ArgParser {
   }
 
   _formatHelpText(arg, opts) {
-    let helpText = arg;
+    let helpText = '  ' + arg;
     if (opts.alias) {
       helpText += `, ${opts.alias}`;
     }
