@@ -17,7 +17,7 @@ class ArgParser {
      - default: the default value if not passed in
      - type (boolean, string): default string.
      - help: help text for the argument.
-     - dest (string): the key.
+     - dest (string): the key to save it as.
      - required (boolean): weather or not flag value is required.
   */
   add(arg, opts = {}) {
@@ -97,10 +97,12 @@ class ArgParser {
   }
 
   _isArg(arg) {
+    // regex checks for --something or -something
     return /^--?.+/.test(arg);
   }
 
   _hasArgValue(arg) {
+    // regex checks for --something=value
     return /^--?.+=.*/.test(arg);
   }
 
