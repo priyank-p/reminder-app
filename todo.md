@@ -11,3 +11,4 @@
 - Revise all the security and best pratices from express website.
 - Use [tsconfig-paths-webpack-plugin](https://www.npmjs.com/package/tsconfig-paths-webpack-plugin)
   to move the `tsconfig.json` file to `tools/` directory.
+- Support importing event from google calenders or other major platforms.
