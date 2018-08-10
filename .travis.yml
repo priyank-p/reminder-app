@@ -7,7 +7,7 @@ os:
   - osx
   - linux
 
-sudo: false
+sudo: required
 cache:
   directories:
     - node_modules
@@ -20,7 +20,7 @@ script:
   # /var directory not being present.
   - mv var _var
   - mv node_modules _node_modules
-  - node scripts/install --non-interactive
+  - node scripts/install --non-interactive --startup
   - mv _var var
   - mv _node_modules node_modules 
 
