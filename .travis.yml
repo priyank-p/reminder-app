@@ -14,13 +14,15 @@ cache:
 
 script:
   - npm run coverage
-  
+
   # run install script by removing /var
   # directory to make sure we catch error's regarding
   # /var directory not being present.
   - mv var _var
+  - mv node_modules _node_modules
   - node scripts/install --non-interactive
   - mv _var var
+  - mv _node_modules node_modules 
 
 after_success:
   - npm i codecov
