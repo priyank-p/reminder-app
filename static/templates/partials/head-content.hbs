@@ -4,10 +4,12 @@
   <meta name="theme-color" content="#008080">
   <meta charset="utf-8">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/dark/apple-touch-icon.png">
-  <link rel="shortcut icon" href="/static/icons/dark/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/dark/icon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/dark/icon-16x16.png">
-  <link rel="mask-icon" href="/static/icons/dark/icon.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#9f00a7">
+  {{#unless no-default-icons}}
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/dark/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/static/icons/dark/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/dark/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/dark/icon-16x16.png">
+    <link rel="mask-icon" href="/static/icons/dark/icon.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#3c3f44">
+  {{/unless}}
 </head>
