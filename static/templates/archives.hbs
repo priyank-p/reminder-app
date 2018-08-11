@@ -2,9 +2,19 @@
   <head>
     {{> head-content
       title='Reminder App - Archives'
+      no-default-icons='true'
     }}
     {{{ render_bundle 'archives-css' }}}
     {{{ render_bundle 'vendor' }}}
+    
+    {{!-- we use color logo on archive page since it's theme matches color logo --}}
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/static/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/icon-16x16.png">
+    <link rel="mask-icon" href="/static/icons/icon.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#3c3f44">
+
     <link rel="manifest" href="webapp-manifest.json">
   </head>
   <body>
