@@ -7,5 +7,26 @@
   "background_color": "#f1f1f1",
   "orientation": "portrait-primary",
   "lang": "en",
-  "description": "Reminder App - Keep track of your stuff."
+  "description": "Reminder App - Keep track of your stuff.",
+  "icons": [{
+    "src": "/static/icons/icon-16x16.png",
+    "sizes": "16x16",
+    "type": "image/png"
+  },{
+    "src": "/static/icons/icon-32x32.png",
+    "sizes": "32x32",
+    "type": "image/png"
+  },{
+    "src": "/static/icons/icon-150x150.png",
+    "sizes": "150x150",
+    "type": "image/png"
+  },{
+    "src": "/static/icons/icon-192x192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  },{
+    "src": "/static/icons/icon-384x384.png",
+    "sizes": "384x384",
+    "type": "image/png"
+  }]
 }
