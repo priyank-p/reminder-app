@@ -43,7 +43,7 @@ $reminder-width: 300px;
 }
 
 .reminder, .archive {
-  display: inline-block;
+  display: inline-table;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
