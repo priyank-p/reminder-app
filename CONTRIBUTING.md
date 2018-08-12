@@ -17,12 +17,14 @@ git checkout my-branch-name
 
 ## 3. Commit
 ```bash
-git commit -m "Commit description here"
+git commit -m "commit message here"
 ```
 
 ### Commit Message Guidelines
-Commit messages have to end with a period and use lowercase letters if possible.
-If you're working on an issue, add `Fixed #<issue-number>` to the commit message's description.
+Start the commit message with a subsystem, and have a good summary of changes
+followed by a colon after subsystem.
+If you're working on an issue, add `Fixed #<issue-number>` to the commit message's
+description so that respective issue is closed once you commits are merged into master.
 
 Good commit messages:
 - `css: fix broken add reminder modal.`
