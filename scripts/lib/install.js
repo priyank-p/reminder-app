@@ -60,8 +60,16 @@ async function prompt_for_port(args) {
   process.env.PORT = response.port;
 }
 
+function printError(err, spinner) {
+  spinner.fail('Oh no! Installation failed, see the traceback below for more info.');
+  console.error('You can open issue at the github repo for support.');
+  console.error('');
+  console.error(err);
+}
+
 module.exports = {
   ignore, opts,
   isPm2Installed,
-  prompt_for_port
+  prompt_for_port,
+  printError,
 };

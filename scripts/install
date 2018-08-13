@@ -33,13 +33,6 @@ process.env.PORT = process.env.PORT || 7000;
 
 const { opts, ignore } = installHelpers;
 
-function printError(err) {
-  spinner.fail('Oh no! Installation failed, see the traceback below for more info.');
-  console.error('You can open issue at the github repo for support.');
-  console.error('');
-  console.error(err);
-}
-
 async function startup() {
   console.log();
   try {
@@ -116,4 +109,4 @@ async function install_reminder_app() {
 install_reminder_app()
   .then(() => spinner.succeed('Reminder App Installed Sucessfully!'))
   .then(prompt_init_startup)
-  .catch(err => printError(err));
+  .catch(err => installHelpers.printError(err, spinner));
