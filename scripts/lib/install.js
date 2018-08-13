@@ -67,9 +67,19 @@ function printError(err, spinner) {
   console.error(err);
 }
 
+async function startup() {
+  console.log();
+  try {
+    await run('node scripts/init-startup', opts);
+  } catch(e) {
+    console.error('Setting up startup failed!');
+  }
+}
+
 module.exports = {
   ignore, opts,
   isPm2Installed,
   prompt_for_port,
   printError,
+  startup,
 };

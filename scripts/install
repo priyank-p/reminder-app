@@ -31,20 +31,10 @@ spinner.start();
 process.env.NODE_ENV = 'production';
 process.env.PORT = process.env.PORT || 7000;
 
-const { opts, ignore } = installHelpers;
-
-async function startup() {
-  console.log();
-  try {
-    await run('node scripts/init-startup', opts);
-  } catch(e) {
-    console.error('Setting up startup failed!');
-  }
-}
-
+const { ignore } = installHelpers;
 async function prompt_init_startup() {
   if (args.startup) {
-    await startup();
+    await installHelpers.startup();
     return;
   }
 
@@ -61,7 +51,7 @@ async function prompt_init_startup() {
 
   const response = await inquirer.prompt(prompt);
   if (response.startup) {
-    await startup();
+    await installHelpers.startup();
   }
 }
 
