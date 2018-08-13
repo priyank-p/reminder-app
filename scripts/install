@@ -2,7 +2,6 @@
 'use strict';
 
 const ora = require('ora');
-const inquirer = require('inquirer');
 const installHelpers = require('./lib/install');
 const ArgParser = require('../app/argparser');
 const prepare = require('./prepare');
@@ -32,28 +31,6 @@ process.env.NODE_ENV = 'production';
 process.env.PORT = process.env.PORT || 7000;
 
 const { ignore } = installHelpers;
-async function prompt_init_startup() {
-  if (args.startup) {
-    await installHelpers.init_startup();
-    return;
-  }
-
-  if (args.nonInteractive) {
-    return;
-  }
-
-  const prompt = [{
-    type: 'confirm',
-    name: 'startup',
-    message: 'Start reminder-app on machine startup (can later be setup using scripts/init-setup)',
-    default: false
-  }];
-
-  const response = await inquirer.prompt(prompt);
-  if (response.startup) {
-    await installHelpers.init_startup();
-  }
-}
 
 // running this install script twice and when
 // a production server is using leveldb will cause error
@@ -98,5 +75,5 @@ async function install_reminder_app() {
 
 install_reminder_app()
   .then(() => spinner.succeed('Reminder App Installed Sucessfully!'))
-  .then(prompt_init_startup)
+  .then(installHelpers.prompt_init_startup)
   .catch(err => installHelpers.printError(err, spinner));

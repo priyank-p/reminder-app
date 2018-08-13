@@ -76,10 +76,34 @@ async function init_startup() {
   }
 }
 
+async function prompt_init_startup(args) {
+  if (args.startup) {
+    await init_startup();
+    return;
+  }
+
+  if (args.nonInteractive) {
+    return;
+  }
+
+  const prompt = [{
+    type: 'confirm',
+    name: 'startup',
+    message: 'Start reminder-app on machine startup (can later be setup using scripts/init-setup)',
+    default: false
+  }];
+
+  const response = await inquirer.prompt(prompt);
+  if (response.startup) {
+    await init_startup();
+  }
+}
+
 module.exports = {
   ignore, opts,
   isPm2Installed,
   prompt_for_port,
   printError,
   init_startup,
+  prompt_init_startup
 };
