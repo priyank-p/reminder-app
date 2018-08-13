@@ -31,18 +31,7 @@ spinner.start();
 process.env.NODE_ENV = 'production';
 process.env.PORT = process.env.PORT || 7000;
 
-
 const { opts, ignore } = installHelpers;
-async function isPm2Installed() {
-  let isInstalled = true;
-  try {
-    await run('pm2 --help', ignore);
-  } catch(e) {
-    isInstalled = false;
-  }
-
-  return isInstalled;
-}
 
 async function prompt_for_port() {
   if (args.port) {
@@ -141,7 +130,7 @@ async function ensure_not_installed() {
 async function install_reminder_app() {
   await ensure_not_installed();
 
-  const pm2Installed = await isPm2Installed();
+  const pm2Installed = await installHelpers.isPm2Installed();
   if (pm2Installed) {
     await run('pm2 save', ignore);
   }
