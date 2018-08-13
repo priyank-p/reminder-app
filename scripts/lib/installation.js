@@ -123,9 +123,9 @@ async function ensure_not_installed(spinner) {
 module.exports = {
   ignore, opts,
   isPm2Installed,
-  prompt_for_port,
   printError,
   init_startup,
+  prompt_for_port,
   prompt_init_startup,
   ensure_not_installed
 };
