@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 'use strict';
 
-const path = require('path');
 const ora = require('ora');
 const inquirer = require('inquirer');
+const installHelpers = require('./lib/install');
 const ArgParser = require('../app/argparser');
 const prepare = require('./prepare');
 const run = require('../tools/run');
@@ -27,20 +27,12 @@ const spinner = new ora({
   text: 'Installing reminder-app'
 });
 
-// helper variables and functions
-const opts = {
-  cwd: path.resolve(__dirname, '../'),
-  silent: true
-};
-
-const ignore = {
-  ...opts, stdio: 'ignore'
-};
-
 spinner.start();
 process.env.NODE_ENV = 'production';
 process.env.PORT = process.env.PORT || 7000;
 
+
+const { opts, ignore } = installHelpers;
 async function isPm2Installed() {
   let isInstalled = true;
   try {
