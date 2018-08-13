@@ -67,7 +67,7 @@ function printError(err, spinner) {
   console.error(err);
 }
 
-async function startup() {
+async function init_startup() {
   console.log();
   try {
     await run('node scripts/init-startup', opts);
@@ -81,5 +81,5 @@ module.exports = {
   isPm2Installed,
   prompt_for_port,
   printError,
-  startup,
+  init_startup,
 };

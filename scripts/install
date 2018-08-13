@@ -34,7 +34,7 @@ process.env.PORT = process.env.PORT || 7000;
 const { ignore } = installHelpers;
 async function prompt_init_startup() {
   if (args.startup) {
-    await installHelpers.startup();
+    await installHelpers.init_startup();
     return;
   }
 
@@ -51,7 +51,7 @@ async function prompt_init_startup() {
 
   const response = await inquirer.prompt(prompt);
   if (response.startup) {
-    await installHelpers.startup();
+    await installHelpers.init_startup();
   }
 }
 
