@@ -1,10 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-const ora = require('ora');
-const installation = require('./lib/installation');
 const ArgParser = require('../app/argparser');
-const prepare = require('./prepare');
 const run = require('../tools/run');
 
 const args = new ArgParser(`
@@ -20,6 +17,18 @@ args.add('--startup', { type: 'boolean', alias: '-s',
 args.add('--non-interactive', { type: 'boolean', dest: 'nonInteractive',
   help: 'Disables interactive prompts, mostly used in CI' });
 args.parse();
+
+// we install required dependencies first then required them
+// the won't be installed at first
+const requiredDeps = require('./lib/required-deps');
+const runDepsInstall = requiredDeps.needToInstall();
+if (runDepsInstall) {
+  requiredDeps.runInstall();
+}
+
+const ora = require('ora');
+const prepare = require('./prepare');
+const installation = require('./lib/installation');
 
 const spinner = new ora({
   spinner: 'dots5',
