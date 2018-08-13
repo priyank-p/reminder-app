@@ -99,11 +99,33 @@ async function prompt_init_startup(args) {
   }
 }
 
+// running this install script twice and when
+// a production server is using leveldb will cause error
+// when running migrations so if the app is running we pre-quit.
+async function ensure_not_installed(spinner) {
+  let isAppRunning = true;
+  try {
+    await run('npx pm2 describe reminder-app', ignore);
+  } catch (e) {
+    isAppRunning = false;
+  }
+
+  if (isAppRunning) {
+    spinner.fail('reminder-app is already installed and running.');
+    console.error();
+    console.error('reminder-app is already installed re-running this script');
+    console.error('will just cause error when running migrations on database; since the database');
+    console.error('will already be in use by the app running.');
+    process.exit(1);
+  }
+}
+
 module.exports = {
   ignore, opts,
   isPm2Installed,
   prompt_for_port,
   printError,
   init_startup,
-  prompt_init_startup
+  prompt_init_startup,
+  ensure_not_installed
 };
