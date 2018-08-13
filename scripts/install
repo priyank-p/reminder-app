@@ -2,7 +2,7 @@
 'use strict';
 
 const ora = require('ora');
-const installHelpers = require('./lib/install');
+const installation = require('./lib/installation');
 const ArgParser = require('../app/argparser');
 const prepare = require('./prepare');
 const run = require('../tools/run');
@@ -30,13 +30,13 @@ spinner.start();
 process.env.NODE_ENV = 'production';
 process.env.PORT = process.env.PORT || 7000;
 
-const { ignore } = installHelpers;
+const { ignore } = installation;
 
 // logic that installs reminder-app
 async function install_reminder_app() {
-  await installHelpers.ensure_not_installed(spinner);
+  await installation.ensure_not_installed(spinner);
 
-  const pm2Installed = await installHelpers.isPm2Installed();
+  const pm2Installed = await installation.isPm2Installed();
   if (pm2Installed) {
     await run('pm2 save', ignore);
   }
@@ -45,7 +45,7 @@ async function install_reminder_app() {
     runPm2Save: pm2Installed
   });
 
-  await installHelpers.prompt_for_port(args);
+  await installation.prompt_for_port(args);
 
   spinner.text = 'Starting reminder-app using pm2';
   spinner.color = 'cyan';
@@ -54,5 +54,5 @@ async function install_reminder_app() {
 
 install_reminder_app()
   .then(() => spinner.succeed('Reminder App Installed Sucessfully!'))
-  .then(installHelpers.prompt_init_startup)
-  .catch(err => installHelpers.printError(err, spinner));
+  .then(installation.prompt_init_startup)
+  .catch(err => installation.printError(err, spinner));
