@@ -53,7 +53,7 @@ router.post('/reminders/update/:id', async (req, res) => {
     return;
   }
 
-  if (Object.keys(req.body).length !== 2) {
+  if (Object.keys(req.body).length === 0) {
     res.status(400);
     res.send('Reminder must be passed in!');
     return;
