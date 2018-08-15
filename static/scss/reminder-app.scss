@@ -183,6 +183,12 @@ form .dropdown-section .quick-choose {
   }
 }
 
+.edit-ui button {
+  background-color: #fff;
+  border: none;
+  padding: 1px;
+}
+
 @media screen and (max-width: 1060px) {
   #ask-for-push {
     button {
