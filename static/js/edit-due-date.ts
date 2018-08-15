@@ -11,6 +11,11 @@ function setup() {
     editElement.setAttribute('placeholder', 'Due Date');
     editElement.setAttribute('value', el.textContent.trim());
     reminder.appendChild(editElement);
+
+    const errorTooltip = document.createElement('div');
+    errorTooltip.classList.add('error-tooltip');
+    errorTooltip.textContent = 'Due Date is not valid!';
+    reminder.appendChild(errorTooltip);
   });
 }
 
