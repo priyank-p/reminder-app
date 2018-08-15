@@ -114,6 +114,15 @@
 
   .due-date {
     @extend .error;
+
+    &.hide {
+      display: none;
+    }
+  }
+
+  .edit-due-date {
+    display: none !important;
+    border-color: #ccc;
   }
 
   &.deleted-by-sw {

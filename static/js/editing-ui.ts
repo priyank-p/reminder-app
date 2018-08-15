@@ -11,7 +11,8 @@ function getEditElements(id: number): Element[][] {
   const reminderElements: Element[] = [
     reminder.querySelector('.title'),
     reminder.querySelector('.content'),
-    reminder.querySelector('.context-menu')
+    reminder.querySelector('.context-menu'),
+    reminder.querySelector('.due-date')
   ];
 
   return [ editElements, reminderElements ];
