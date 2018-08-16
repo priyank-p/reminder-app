@@ -1,5 +1,6 @@
 import $ from './dom';
 import { Reminder as ReminderInterface } from './reminder-utils';
+import * as dateFormat from 'dateformat';
 import * as statusbar from './status-bar';
 import * as request from './request';
 
@@ -63,9 +64,15 @@ function updateReminderElement(id: number, reminder: ReminderInterface) {
   const reminderElement = $(`.reminder[data-id="${id}"]`) as HTMLElement;
   const title = reminderElement.querySelector('.title') as HTMLElement;
   const content = reminderElement.querySelector('.content') as HTMLElement;
+  const dueDate = reminderElement.querySelector('.due-date') as HTMLElement;
+
+  const date = new Date(reminder.due_date);
+  let formatted: string = dateFormat(date, 'shortDate') + ' ';
+  formatted += dateFormat(date, 'shortTime');
 
   title.innerText = reminder.title;
   content.innerText = reminder.reminder;
+  dueDate.innerText = formatted;
   hideEditingUI(id);
 }
 
