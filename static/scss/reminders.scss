@@ -121,7 +121,6 @@
   }
 
   .edit-due-date {
-    display: none !important;
     border-color: #ccc;
   }
 
@@ -184,7 +183,16 @@ div.no-reminders, div.no-archives {
   z-index: 2; // when edit ui is not hidden we need this to be on top
   padding: 0;
 
-  .update-reminder:hover { color: #265d29; }
+  .update-reminder {
+    &:hover {
+      color: #265d29;
+    }
+
+    &[disabled] {
+      color: #ccc;
+    }
+  }
+
   .cancel-editing:hover { color: $error-red; }
   i { padding: 0 1px; }
   &.show { display: block; }

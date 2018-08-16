@@ -3,7 +3,8 @@ import { Reminder as ReminderInterface } from './reminder-utils';
 import * as statusbar from './status-bar';
 import * as request from './request';
 
-function getEditElements(id: number): Element[][] {
+type GetEditElementsReturnType = [ Element[], Element[], Element ];
+function getEditElements(id: number): GetEditElementsReturnType {
   const selector: string = `.reminder[data-id="${id}"]`;
   const reminder = $(selector) as Element;
 
@@ -15,13 +16,41 @@ function getEditElements(id: number): Element[][] {
     reminder.querySelector('.due-date')
   ];
 
-  return [ editElements, reminderElements ];
+  return [ editElements, reminderElements, reminder ];
+}
+
+function handleDateInput(reminder: Element, editDueDate: any) {
+  const rawDate = editDueDate.value;
+  if (rawDate === '') {
+    return;
+  }
+
+  const date = new Date(rawDate);
+  const isInvalid = isNaN(date.getDate());
+
+  const updateReminder = reminder.querySelector('.update-reminder');
+  const tooltip = reminder.querySelector('.error-tooltip');
+  if (isInvalid) {
+    updateReminder.setAttribute('disabled', 'true');
+    tooltip.classList.add('show');
+  } else {
+    updateReminder.removeAttribute('disabled');
+    tooltip.classList.remove('show');
+  }
 }
 
 export function showEditingUI(reminderId: number) {
-  const [ editElements, reminderElements ] = getEditElements(reminderId);
+  const [
+    editElements, reminderElements, reminder
+  ] = getEditElements(reminderId);
+
   editElements.forEach(el => el.classList.add('show'));
   reminderElements.forEach(el => el.classList.add('hide'));
+
+  const editDueDate = reminder.querySelector('.edit-due-date');
+  editDueDate.addEventListener('input', () => {
+    handleDateInput(reminder, editDueDate);
+  });
 }
 
 export function hideEditingUI(reminderId: number) {
