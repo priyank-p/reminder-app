@@ -26,7 +26,7 @@ function needToInstall() {
     return fs.existsSync(modulePath);
   });
 
-  return shouldInstall;
+  return !shouldInstall;
 }
 
 function runInstall() {
