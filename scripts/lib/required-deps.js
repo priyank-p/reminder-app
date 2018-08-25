@@ -7,6 +7,8 @@
 
 const path = require('path');
 const { spawnSync } = require('child_process');
+
+const ROOT_DIR = path.resolve(__dirname, '../../');
 const depsToInstall = [
   'ora',
   'inquirer',
@@ -31,7 +33,7 @@ function needToInstall() {
 function runInstall() {
   console.log('Installion few module from npm...');
   const res = spawnSync(npmExe, cmd.split(' '), {
-    cwd: path.resolve(__dirname, '../../'),
+    cwd: ROOT_DIR,
     stdio: 'ignore'
   });
 
