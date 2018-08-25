@@ -36,9 +36,11 @@ function handleDateInput(reminder: Element, editDueDate: any) {
   const tooltip = reminder.querySelector('.error-tooltip');
   if (isInvalid) {
     updateReminder.setAttribute('disabled', 'true');
+    editDueDate.classList.add('error');
     tooltip.classList.add('show');
   } else {
     updateReminder.removeAttribute('disabled');
+    editDueDate.classList.remove('error');
     tooltip.classList.remove('show');
   }
 }
