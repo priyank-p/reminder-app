@@ -26,8 +26,11 @@ function handleDateInput(reminder: Element, editDueDate: any) {
     return;
   }
 
+  // a valid date check also includes checking is
+  // it is a number since new Date(3) or 23812981293 is valid
+  // but not something a user will expect; and is incorrect behavior
   const date = new Date(rawDate);
-  const isInvalid = isNaN(date.getDate());
+  const isInvalid = isNaN(date.getDate()) || /^\d+$/.test(rawDate);
 
   const updateReminder = reminder.querySelector('.update-reminder');
   const tooltip = reminder.querySelector('.error-tooltip');
