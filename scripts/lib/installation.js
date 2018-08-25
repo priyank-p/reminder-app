@@ -78,8 +78,7 @@ async function init_startup() {
 
 async function prompt_init_startup(args) {
   if (args.startup) {
-    await init_startup();
-    return;
+    return init_startup();
   }
 
   if (args.nonInteractive) {

@@ -63,5 +63,5 @@ async function install_reminder_app() {
 
 install_reminder_app()
   .then(() => spinner.succeed('Reminder App Installed Sucessfully!'))
-  .then(installation.prompt_init_startup)
+  .then(() => installation.prompt_init_startup(args))
   .catch(err => installation.printError(err, spinner));
