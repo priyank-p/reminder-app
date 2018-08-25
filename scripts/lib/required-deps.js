@@ -6,6 +6,7 @@
 */
 
 const path = require('path');
+const fs = require('fs');
 const { spawnSync } = require('child_process');
 
 const ROOT_DIR = path.resolve(__dirname, '../../');
@@ -20,12 +21,10 @@ const depsToInstall = [
 const npmExe = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 const cmd = `install ${depsToInstall.join(' ')} --no-save --no-package-lock`;
 function needToInstall() {
-  let shouldInstall = false;
-  try {
-    depsToInstall.forEach(dep => require(dep));
-  } catch (e) {
-    shouldInstall = true;
-  }
+  const shouldInstall = depsToInstall.every(dep => {
+    const modulePath = path.join(ROOT_DIR, 'node_modules', dep);
+    return fs.existsSync(modulePath);
+  });
 
   return shouldInstall;
 }
