@@ -1,6 +1,16 @@
 # Reminder App Docs
 
-Reminder App - still under development reminder app.
+Reminder app runs locally on a server listening on the
+port you can configure during installation. With a use
+of a process manager, `pm2`, it can also start reminder-app
+during your machine startup (we support all platform
+Linux, Windows, and MacOS).
+
+Reminder app allows you to setup up reminders and can notify you
+when they are due using a web push notifications. The notification only
+works if the browser is open, however, the reminder-app tab does not need to
+be open to get those notifications. We also plan to write an extension
+in near feature so you can enter reminder as easily as possible.
 
 # Install reminder-app
 
