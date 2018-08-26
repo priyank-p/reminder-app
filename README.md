@@ -1,5 +1,5 @@
 # reminder-app
-Under development - Reminder App
+#### Reminder app helps you to stay on top of you reminders!
 
 ### Install reminder-app
 
