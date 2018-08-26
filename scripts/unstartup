@@ -28,7 +28,7 @@ unstartup()
     console.log('reminder-app will not startup on machine startup.');
   })
   .catch(err => {
-    console.error('TracebackL');
+    console.error('Traceback:');
     console.error(err);
     console.errror();
     console.error('Cannot stop reminder-app from starting at machine startup.');
