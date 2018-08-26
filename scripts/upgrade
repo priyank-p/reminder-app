@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+'use strict';
+
+const ora = require('ora');
+const prepare = require('./prepare');
+const installation = require('./lib/installation');
+const ArgParser = require('../app/argparser');
+const run = require('../tools/run');
+
+const args = new ArgParser(`
+Reminder App upgrade script.
+This script does and upgrade to running reminder-app
+server. You should pull code the latest code that you
+want to upgrade locally before running this script.
+
+Once you have code that you to upgrade to, this script
+will run database migrations, build frontend files
+and reload process manager to use the latest code.
+`);
+
+args.add('--port', { type: 'number', alias: '-p',
+  help: 'Specify new port to run the app on.' });
+args.add('--non-interactive', { type: 'boolean', dest: 'nonInteractive',
+  help: 'Disables interactive prompts, mostly used in CI' });
+args.parse();
+
+const spinner = new ora({
+  spinner: 'dots4',
+  text: 'Upgrading reminder-app'
+});
+
+const { ignore } = installation;
+async function perform_upgrade() {
+  // TODO: only stop app when running migrations at last!
+  // for minimum downtime
+  spinner.start();
+  spinner.text = 'Stopping reminder-app for upgrade!';
+  await run('npx pm2 stop reminder-app', ignore);
+  await prepare(spinner);
+
+  spinner.text = 'Reloading Reminder App';
+  await run('npx pm2 reload reminder-app', ignore);
+}
+
+perform_upgrade()
+  .then(() => spinner.succeed('Reminder app upgraded!'))
+  .catch(err => {
+    spinner.fail('Upgrade failed!');
+    console.error();
+    console.error('Traceback: ');
+    console.error(err);
+  });
