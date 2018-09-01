@@ -38,8 +38,7 @@ const simplepicker = new SimplePicker('body');
 const $simplepickerButton = $('#add-reminder-modal .simplepicker-button') as Element;
 const $dueDateEl = $simplepickerButton.nextElementSibling as HTMLElement;
 $simplepickerButton.addEventListener('click', () => {
-  // TODO: Remove this any once this bug is fixed upstream.
-  (simplepicker as any).open();
+  simplepicker.open();
   $simplepickerButton.innerHTML = 'Choose due date';
   $dueDateEl.style.display = 'block';
 });
