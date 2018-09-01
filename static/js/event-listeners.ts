@@ -1,3 +1,4 @@
+import SimplePicker = require('simplepicker');
 import $ from './dom';
 import * as request from './request';
 import * as editingUI from './editing-ui';
@@ -33,9 +34,30 @@ dropdowns.forEach((dropdown: Element) => {
   dropdown.addEventListener('click', toggleDropdown);
 });
 
+const simplepicker = new SimplePicker('body');
+const $simplepickerButton = $('#add-reminder-modal .simplepicker-button') as Element;
+const $dueDateEl = $simplepickerButton.nextElementSibling as HTMLElement;
+$simplepickerButton.addEventListener('click', () => {
+  // TODO: Remove this any once this bug is fixed upstream.
+  (simplepicker as any).open();
+  $simplepickerButton.innerHTML = 'Choose due date';
+  $dueDateEl.style.display = 'block';
+});
+
+let dueDate: null | Date;
+simplepicker.on('submit', (date, readableDate) => {
+  dueDate = date;
+  $dueDateEl.textContent = readableDate;
+});
+
+simplepicker.on('close', () => {
+  dueDate = null;
+  $dueDateEl.textContent = 'No Date Selected!';
+});
+
 const reminderForm = $('#add-reminder-modal form') as Element;
 reminderForm.addEventListener('submit', function (e: Event) {
-  const reminder = getReminder(e.target, { isEditingUI: false });
+  const reminder = getReminder(e.target, { isEditingUI: false, dueDate });
   request.post('/api/reminders/add', { body: reminder })
     .then(() => {
       window.location.reload();

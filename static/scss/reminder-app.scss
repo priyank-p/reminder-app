@@ -189,6 +189,12 @@ form .dropdown-section .quick-choose {
   padding: 1px;
 }
 
+// the upstream project has lower z-index than our form
+// modal
+.simplepicker-wrapper {
+  z-index: 6;
+}
+
 @media screen and (max-width: 1060px) {
   #ask-for-push {
     button {
