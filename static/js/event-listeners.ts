@@ -44,52 +44,6 @@ reminderForm.addEventListener('submit', function (e: Event) {
   e.preventDefault();
 });
 
-
-// set the due date of the .quick-choose -
-// the quick due date picker, we get a number
-// and we update the due date fields, the due_time
-// would be by default 12 PM
-const inputBaseSelector: string = '#add-reminder-modal form';
-const dueDateInput = $(`${inputBaseSelector} input[type="date"]`) as HTMLInputElement;
-const dueTimeInput = $(`${inputBaseSelector} input[type="time"]`) as HTMLInputElement;
-function setDueDate(n: number) {
-  if (isNaN(n)) {
-    return;
-  }
-
-  // its possible to enter negative number despite
-  // the the input min/max attributes...
-  // to avoid infinite loop
-  if (n < 0) {
-    return;
-  }
-
-  // this is required because even though
-  // Date object is smart about month rollover
-  // it can't increment 10 days from last to second day
-  const date: Date = new Date();
-  for (let i = 0; i < n; i++) {
-    date.setDate(date.getDate() + 1);
-  }
-
-  // TODO: Add protip section with the tip
-  // entering 0 in the quick-choose UI.
-  // the value muse be in standard yyyy-mm-dd format
-  dueDateInput.value = dateFormat(date, 'yyyy-mm-dd');
-  if (dueTimeInput.value === '') {
-    dueTimeInput.value = '12:00';
-  }
-}
-
-const quickDueDatePicker = $('.quick-choose input') as Element;
-quickDueDatePicker.addEventListener('input', (e) => {
-  const el = e.target as HTMLInputElement;
-  // the el.value is alreay a number due to it
-  // being type=number but typescript or just by reading
-  // the code on can't understand this!
-  setDueDate(Number(el.value));
-});
-
 function hasClass(el: Element, _class: string): Boolean {
   return el.classList.contains(_class);
 }
