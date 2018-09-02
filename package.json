@@ -28,7 +28,7 @@
     "ora": "3.0.0",
     "pm2": "2.10.4",
     "sass-loader": "7.0.3",
-    "simplepicker": "1.2.0",
+    "simplepicker": "1.2.1",
     "source-map-loader": "0.2.3",
     "svg-url-loader": "2.3.2",
     "ts-loader": "4.4.2",

@@ -34,7 +34,10 @@ dropdowns.forEach((dropdown: Element) => {
   dropdown.addEventListener('click', toggleDropdown);
 });
 
-const simplepicker = new SimplePicker('body');
+const simplepicker = new SimplePicker({
+  zIndex: 6
+});
+
 const $simplepickerButton = $('#add-reminder-modal .simplepicker-button') as Element;
 const $dueDateEl = $simplepickerButton.nextElementSibling as HTMLElement;
 $simplepickerButton.addEventListener('click', () => {
