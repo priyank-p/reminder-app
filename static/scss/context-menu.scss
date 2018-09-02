@@ -2,6 +2,7 @@
   position: relative;
   z-index: 2; // when edit ui is not hidden we need this to be on top
   padding: 0;
+  cursor: pointer;
 
   .context-menu-button {
     position: absolute;
