@@ -67,6 +67,7 @@ node scripts/unstartup
 ```
 
 ### Documentation per subsystem/directory:
+  * [More information about managing reminder-app](management.md)
   * [Some info about the reminder-app](about.md)
   * [App directory - all the backend stuff](app-directory.md)
   * [App routes](app-directory.md#routes-directory-and-adding-a-route)
