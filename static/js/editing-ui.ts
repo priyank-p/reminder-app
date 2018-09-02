@@ -72,12 +72,15 @@ function updateReminderElement(id: number, reminder: ReminderInterface) {
   const dueDate = reminderElement.querySelector('.due-date') as HTMLElement;
 
   const date = new Date(reminder.due_date);
-  let formatted: string = dateFormat(date, 'shortDate') + ' ';
-  formatted += dateFormat(date, 'shortTime');
+  let formattedDate = '';
+  if (!isNaN(date.getTime())) {
+    let formatted: string = dateFormat(date, 'shortDate') + ' ';
+    formatted += dateFormat(date, 'shortTime');
+  }
 
   title.innerText = reminder.title;
   content.innerText = reminder.reminder;
-  dueDate.innerText = formatted;
+  dueDate.innerText = formattedDate;
   hideEditingUI(id);
 }
 
@@ -103,7 +106,7 @@ export function updateReminder(id: number, updatedReminder: ReminderInterface) {
       removeErrorUI(id);
       updateReminderElement(id, updatedReminder);
     })
-    .catch(() => {
+    .catch((e) => {
       statusbar.show('Failed to updated reminder!');
       showErrorUI(id);
     });
