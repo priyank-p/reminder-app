@@ -22,3 +22,12 @@ git checkout v1.0.0-beta
 # run the upgrade script
 node scripts/upgrade
 ```
+
+## Other tools in scripts directory
+
+  * `scripts/start` - start the reminder-app manually,
+    useful when the startup is not configured.
+  
+  * `script/restart` - restarts the reminder-app.
+  * `script/init-startup` - configure startup.
+  * `script/unstartup` - stops the startup configured.
