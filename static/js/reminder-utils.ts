@@ -33,7 +33,6 @@ export function getReminder(el: any, opts: getReminderOpts): Reminder {
   // don't tranform date to json/iso/utc it does work the same in
   // backend, meaning the date is changed in backend.
   if (opts.dueDate) {
-    debugger;
     reminder.due_date = opts.dueDate.toUTCString();
   }
 
