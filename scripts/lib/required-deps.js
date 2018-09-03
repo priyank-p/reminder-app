@@ -30,7 +30,7 @@ function needToInstall() {
 }
 
 function runInstall() {
-  console.log('Installion few module from npm...');
+  console.log('Installing few module from npm...');
   const res = spawnSync(npmExe, cmd.split(' '), {
     cwd: ROOT_DIR,
     stdio: 'ignore'
