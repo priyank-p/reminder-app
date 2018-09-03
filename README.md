@@ -48,7 +48,7 @@ To upgrade reminder-app you'll need to fetch the latest
 code from github. Pulling latest code does not upgrade the
 reminder-app. To finish the upgrade run the upgrade script
 `node scripts/upgrade` to finish the upgrade. It will involve
-some downtime.
+minor downtime.
 
 ```bash
 # for to example upgrading to a specific tag v1.0.0-beta
