@@ -14,6 +14,13 @@ works if the browser is open, however, the reminder-app tab does not need to
 be open to get those notifications. We also plan to write an extension
 in near feature so you can add reminder's easily.
 
+  * [Install reminder app](#install-reminder-app)
+  * [Upgrading reminder-app](#upgrading-reminder-app)
+  * [Devlopement - Running the dev server](#running-the-dev-server)
+
+Useful documentation about [managing reminder-app is in `docs/index.md`](docs/index.md).
+You can also checkout other documentation in [`docs/` directory](docs/)
+
 # Install reminder-app
 
 Installing reminder-app will make it so you don't have to run
