@@ -1,16 +1,47 @@
 # reminder-app
+
 #### Reminder app helps you to stay on top of you reminders!
 
-### Install reminder-app
+Reminder app runs locally on a server listening on the
+port you can configure during installation. With a use
+of a process manager, `pm2`, it can also start reminder-app
+during your machine startup (we support all platform
+Linux, Windows, and MacOS).
 
-To install reminder-app, consider
-[the installation docs](docs/index.md#install-reminder-app).
+Reminder app allows you to setup up reminders and can notify you
+when they are due using a web push notifications. The notification only
+works if the browser is open, however, the reminder-app tab does not need to
+be open to get those notifications. We also plan to write an extension
+in near feature so you can enter reminder as easily as possible.
+
+# Install reminder-app
+
 Installing reminder-app will make it so you don't have to run
-the server yourself and installation also provides a option to configure
+the server yourself (manually in a terminal or keep it open!)
+and installation also provides a option to configure
 it so reminder-app starts on machine startup for all platforms (Windows,
 MacOS, and Linux). If you decide not to choose that option at first
 you can later configure that by running the startup script
 `node scripts/init-startup`.
+
+Installation is pretty simple, just run the install script.
+```bash
+node scripts/install
+
+# if you use git-bash for windows or not see a spinner
+# on windows, you'll need to use `winpty` which is bundled with git
+# If you dont use winpty the installtion will run just fine but
+# the spinner we show will not output
+winpty node scripts/install
+```
+
+This will do couple of things, install npm dependencies, build
+frontend assets using webpack, and run database migrations. And
+start the production process manager `pm2` that will make sure the app
+runs in the background, so a terminal windows does not have to be open.
+By default the app starts on port `7000` you can customize this by passing
+the `PORT` enviorment variable.
+
 
 ### Running the dev-server
 
