@@ -21,7 +21,7 @@ the server yourself (manually in a terminal or keep it open!)
 and installation also provides a option to configure
 it so reminder-app starts on machine startup for all platforms (Windows,
 MacOS, and Linux). If you decide not to choose that option at first
-you can later configure that by running the startup script
+(during installation) you can later configure that by running the startup script
 `node scripts/init-startup`.
 
 Installation is pretty simple, just run the install script.
