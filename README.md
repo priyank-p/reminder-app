@@ -43,12 +43,10 @@ node scripts/install
 winpty node scripts/install
 ```
 
-This will do couple of things, install npm dependencies, build
-frontend assets using webpack, and run database migrations. And
-start the production process manager `pm2` that will make sure the app
+Installation script will do couple of things: install npm dependencies, build
+frontend assets using webpack, and run database migrations. It also
+starts the production process manager `pm2` that will make sure the app
 runs in the background, so a terminal windows does not have to be open.
-By default the app starts on port `7000` you can customize this by passing
-the `PORT` enviorment variable.
 
 ### Upgrading reminder-app
 
