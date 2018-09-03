@@ -34,6 +34,13 @@ To stop, or to reverse, the `script/startup` script you can run the
 node scripts/unstartup
 ```
 
+# Stop reminder-app
+To stop reminder app run the stop script. It will stop the running
+reminder-app process.
+```bash
+node scripts/stop
+```
+
 ### Documentation per subsystem/directory:
   * [Some info about the reminder-app](about.md)
   * [App directory - all the backend stuff](app-directory.md)
