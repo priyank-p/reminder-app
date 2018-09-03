@@ -42,6 +42,25 @@ runs in the background, so a terminal windows does not have to be open.
 By default the app starts on port `7000` you can customize this by passing
 the `PORT` enviorment variable.
 
+### Upgrading reminder-app
+
+To upgrade reminder-app you'll need to fetch the latest
+code from github. Pulling latest code does not upgrade the
+reminder-app. To finish the upgrade run the upgrade script
+`node scripts/upgrade` to finish the upgrade. It will involve
+some downtime.
+
+```bash
+# for to example upgrading to a specific tag v1.0.0-beta
+# fetch all remote refs.
+git fetch --all
+
+# checkout out to sepecific tag
+git checkout v1.0.0-beta
+
+# run the upgrade script
+node scripts/upgrade
+```
 
 ### Running the dev-server
 
