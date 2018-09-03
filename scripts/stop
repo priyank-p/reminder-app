@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+'use strict';
+
+const path = require('path');
+const pm2 = require('./pm2');
+const run = require('../tools/run');
+
+async function stop() {
+  await pm2.runPm2UpdateIfNeeded();
+  await run('npx pm2 stop app --name reminder-app', {
+    silent: true,
+    cwd: path.resolve(__dirname, '..')
+  });
+}
+
+stop();
