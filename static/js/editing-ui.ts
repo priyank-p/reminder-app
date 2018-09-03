@@ -74,8 +74,8 @@ function updateReminderElement(id: number, reminder: ReminderInterface) {
   const date = new Date(reminder.due_date);
   let formattedDate = '';
   if (!isNaN(date.getTime())) {
-    let formatted: string = dateFormat(date, 'shortDate') + ' ';
-    formatted += dateFormat(date, 'shortTime');
+    formattedDate = dateFormat(date, 'shortDate') + ' ';
+    formattedDate += dateFormat(date, 'shortTime');
   }
 
   title.innerText = reminder.title;
