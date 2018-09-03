@@ -30,7 +30,7 @@ node scripts/install
 
 # if you use git-bash for windows or not see a spinner
 # on windows, you'll need to use `winpty` which is bundled with git
-# If you dont use winpty the installtion will run just fine but
+# If you don't use winpty the installtion will run just fine but
 # the spinner we show will not output
 winpty node scripts/install
 ```
