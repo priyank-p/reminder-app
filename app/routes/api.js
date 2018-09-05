@@ -110,6 +110,10 @@ router.get('/archives/restore/:id', async (req, res) => {
       delete archive.reminder.due_date;
     }
 
+    // set notifed field to false, so user gets 
+    // notification again when the notification is restored
+    archive.reminder.notified = false;
+
     const newId = await reminders.addReminder(archive.reminder);
     await archives.deleteArchive(id);
     res.json({ newId });
