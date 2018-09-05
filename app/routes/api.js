@@ -101,7 +101,11 @@ router.get('/archives/restore/:id', async (req, res) => {
 
   try {
     const archive = await archives.getArchiveById(id);
+    
+    // remove old id, and due date
     delete archive.reminder.id;
+    delete archive.reminder.due_date;
+
     const newId = await reminders.addReminder(archive.reminder);
     await archives.deleteArchive(id);
     res.json({ newId });
