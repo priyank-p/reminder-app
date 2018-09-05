@@ -101,15 +101,20 @@ router.get('/archives/restore/:id', async (req, res) => {
 
   try {
     const archive = await archives.getArchiveById(id);
-    
-    // remove old id, and due date
+  
+    // remove old id, and due date if its already due.
     delete archive.reminder.id;
-    delete archive.reminder.due_date;
+    const { due_date } = archive.reminder;
+    const today = new Date();
+    if (due_date instanceof Date && due_date < today) {
+      delete archive.reminder.due_date;
+    }
 
     const newId = await reminders.addReminder(archive.reminder);
     await archives.deleteArchive(id);
     res.json({ newId });
   } catch(e) {
+    console.error(e);
     res.status(400).send(`Cannot restore archive with id: ${id}`);
   }
 });
