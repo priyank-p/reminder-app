@@ -38,6 +38,10 @@ $reminder-width: 300px;
     color: #0e0e0e;
   }
 
+  .content {
+    overflow-wrap: break-word;
+  }
+
   .title, .edit-title {
     font-size: 16px;
     max-height: 30px;
