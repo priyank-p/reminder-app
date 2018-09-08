@@ -66,3 +66,10 @@ handlebarsHelpers.__updateBundle(webpack_prod_bundle);
   assert.deepStrictEqual(expected['js'], actual['js']);
   assert.deepStrictEqual(expected['css'], actual['css']);
 })();
+
+(function test_preserve_whitespace_function() {
+  const reminder = 'Sentence one.\n Sentence Two.\n';
+  const actual = handlebarsHelpers.preserve_whitespace(reminder);
+  const expected = 'Sentence one.<br> Sentence Two.<br>';
+  assert.deepStrictEqual(actual, expected);
+})();
