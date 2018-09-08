@@ -73,3 +73,13 @@ handlebarsHelpers.__updateBundle(webpack_prod_bundle);
   const expected = 'Sentence one.<br> Sentence Two.<br>';
   assert.deepStrictEqual(actual, expected);
 })();
+
+(function test_utc_date_helper() {
+  const { utc_date } = handlebarsHelpers;
+  const date = new Date();
+  const actual = utc_date(date);
+  const expected = date.toUTCString();
+
+  assert.deepStrictEqual(actual, expected);
+  assert.deepStrictEqual(utc_date(), undefined);
+})();
