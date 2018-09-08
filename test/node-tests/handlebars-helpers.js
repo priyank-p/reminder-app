@@ -83,3 +83,14 @@ handlebarsHelpers.__updateBundle(webpack_prod_bundle);
   assert.deepStrictEqual(actual, expected);
   assert.deepStrictEqual(utc_date(), undefined);
 })();
+
+(function test_render_reminder_content() {
+  const { render_reminder_content } = handlebarsHelpers;
+  const reminder = 'Some Text.\n Go to https://github.com\n';
+  const actual = render_reminder_content(reminder);
+  const expected = 'Some Text.<br> Go to <a href="https://github.com" ' +
+                   'target="_blank" rel="noopener noreferer">https://github.com</a><br>';
+
+  assert.deepStrictEqual(actual, expected);
+  assert.deepStrictEqual(render_reminder_content('a'), 'a');
+})();
