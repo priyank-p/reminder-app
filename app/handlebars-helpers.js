@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const linkifyURLS = require('linkify-urls');
 const env = require('./env');
 
 const { development } = env;
@@ -97,6 +98,18 @@ function utc_date(date) {
   return date.toUTCString();
 }
 
+function render_reminder_content(reminder) {
+  const html = preserve_whitespace(reminder);
+  const linkifiedHTML = linkifyURLS(html, {
+    attributes: {
+      target: '_blank',
+      rel: 'noopener noreferer'
+    }
+  }).trim();
+
+  return linkifiedHTML;
+}
+
 if (webpackChunks && webpackChunks.sw) {
   webpackChunks.sw.forEach(bundle => {
     // there is a .js.map file here too in production.
@@ -111,5 +124,6 @@ module.exports = {
   utc_date,
   preserve_whitespace,
   replace_with_newlines,
+  render_reminder_content,
   __updateBundle
 };
