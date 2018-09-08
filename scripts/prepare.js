@@ -21,7 +21,7 @@ const ignore = {
  * opts.runPm2Save = Runs `pm2 save` command
 */
 
-async function prepare(spinner, options) {
+async function prepare(spinner, options = {}) {
   if (npmInfo.needToInstall) {
     spinner.text = 'Installing npm dependencies';
     spinner.color = 'blue';
