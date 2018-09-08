@@ -86,10 +86,6 @@ function preserve_whitespace(html) {
   return html.replace(/\n/g, '<br>');
 }
 
-function replace_with_newlines(text) {
-  return text.replace(/\n/g, '\\n');
-}
-
 function utc_date(date) {
   if (!date) {
     return;
@@ -123,7 +119,6 @@ module.exports = {
   render_bundle,
   utc_date,
   preserve_whitespace,
-  replace_with_newlines,
   render_reminder_content,
   __updateBundle
 };
