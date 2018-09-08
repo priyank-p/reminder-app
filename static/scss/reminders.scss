@@ -42,6 +42,22 @@ $reminder-width: 300px;
     overflow-wrap: break-word;
   }
 
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #4c4c4c;
+  }
+
+  a:visited, a:active {
+    color: darken(#4c4c4c, 20%);
+  }
+
+  a:hover, a:active, a:visited {
+    text-decoration: underline;
+  }
+
   .title, .edit-title {
     font-size: 16px;
     max-height: 30px;
