@@ -36,9 +36,9 @@ function run(commandToRun, passedOpts = {}) {
   return new Promise((resolve, reject) => {
     function check(code) {
       if (code !== 0) {
-        const data = { code, cmd, output };
+        const data = { code, cmd: commandToRun };
         if (output === '') {
-          delete data.output;
+          data.output = output;
         }
 
         reject(data);
