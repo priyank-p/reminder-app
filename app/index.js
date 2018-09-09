@@ -13,7 +13,7 @@ env.setEnv('development', args.dev);
 env.setEnv('production', !args.dev);
 env.setEnv('tests', args.tests);
 
-if (env.development || env.tests) {
+if (env.development || env.tests && env.mode === undefined) {
   const mode = args.tests ? 'test' : 'development';
   env.setEnv('mode', mode);
 }
