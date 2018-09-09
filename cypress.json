@@ -1,6 +1,7 @@
 {
-  "integrationFolder": "test/cypress/integration",
+  "baseUrl": "http://localhost:7070",
   "env": {
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "PORT": "7070"
   }
 }
