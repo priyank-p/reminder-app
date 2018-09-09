@@ -11,6 +11,8 @@ sudo: required
 cache:
   directories:
     - node_modules
+    - ~/.cache/Cypress
+    - ~/Library/Caches/Cypress
 
 script:
   # runs tools/test-all
