@@ -35,3 +35,8 @@ Cypress.Commands.add('deleteLastReminder', () => {
     cy.get('.menu .delete-reminder').click();
   });
 });
+
+Cypress.Commands.add('deleteReminder', { prevSubject: 'element' }, (el) => {
+  el.find('.context-menu-btn').click();
+  el.find('.menu .delete-reminder').click();
+});
