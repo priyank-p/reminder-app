@@ -23,3 +23,15 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('openReminderModal', () => {
+  cy.get('#add-reminder-btn').click();
+});
+
+Cypress.Commands.add('deleteLastReminder', () => {
+  const lastAdded = cy.get('.reminders .reminder:last-child');
+  lastAdded.within(() => {
+    cy.get('.context-menu-button').click();
+    cy.get('.menu .delete-reminder').click();
+  });
+});
