@@ -21,6 +21,8 @@ args.add('--development', { type: 'boolean', alias: '-d',
   help: 'Runs migrations on development db.' });
 args.add('--tests', { type: 'boolean', alias: '-t',
   help: 'Runs migrations on test db.' });
+args.add('--mode', { type: 'string', alias: '-m',
+  help: 'Sets the mode used for test and developement.' });
 args.parse();
 
 const spinner = new ora({
@@ -35,6 +37,10 @@ if (args.tests) {
 
 if (args.development) {
   env.setEnv('development', true);
+}
+
+if (args.mode) {
+  env.setEnv('mode', args.mode);
 }
 
 if ((args.tests || args.development) && env.mode === undefined) {
