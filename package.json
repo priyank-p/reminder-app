@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@types/dateformat": "^1.0.1",
+    "cypress": "^3.1.0",
     "eslint": "^5.2.0",
     "glob": "^7.1.2",
     "http-proxy-middleware": "^0.18.0",
