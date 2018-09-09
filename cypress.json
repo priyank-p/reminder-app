@@ -1,3 +1,6 @@
 {
-    "integrationFolder": "test/cypress/integration"
+  "integrationFolder": "test/cypress/integration",
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
