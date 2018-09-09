@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+const path = require('path');
+const run = require('./run');
+const env = require('../app/env');
+
+const ROOT_DIR = path.resolve(__dirname, '..');
+process.env.PORT = 7070;
+process.env.NODE_ENV = 'production';
+env.setEnv('mode', 'frontend-tests');
+
+process.argv.splice(2);
+process.argv.push('--tests');
+
+async function test_frontend() {
+  await run('node tools/run-migrations -t --mode frontend-tests', { cwd: ROOT_DIR, silent: true });
+  await run('node tools/webpack', { cwd: ROOT_DIR, silent: true });
+
+  const server = require('../app');
+  await run('npx cypress run', { cwd: ROOT_DIR });
+  server.close();
+}
+
+test_frontend()
+  .then(() => {
+    console.log('Frontend test passed.');
+  })
+  .catch(err => {
+    console.error('Frontend tests failed. Try running test using `npx cypress open`');
+    console.error(err);
+  });
