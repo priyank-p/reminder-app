@@ -6,5 +6,9 @@ static/webpack-bundles/
 cypress/screenshots
 cypress/videos
 
+# for now ignore fixtures folder created by cypress
+# we don't need it for now.
+cypress/fixtures
+
 .DS_Store
 *.log
