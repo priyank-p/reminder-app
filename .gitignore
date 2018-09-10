@@ -2,5 +2,9 @@ var/
 node_modules/
 static/webpack-bundles/
 
+# cypress related debug files
+cypress/screenshots
+cypress/videos
+
 .DS_Store
 *.log
