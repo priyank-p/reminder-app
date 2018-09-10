@@ -18,6 +18,9 @@ Window has the easiest setup just run the script, then to ensure the
 app will start on boot type `startup` in the search bar and then look for reminder app
 if the status says it disabled right click on it and enable it.
 
+You can also do it manually by running `pm2 startup` and following its instructions, though this
+command does not work on windows hence windows user need to run the script.
+
 # Manually starting reminder-app
 
 You can also manually start the reminder-app using `pm2`.
