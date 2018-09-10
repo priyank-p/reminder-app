@@ -33,6 +33,7 @@ async function testAll() {
   // test flakes and needs a server running which is
   // better to run not-in-parallel.
   await run('node tools/app-tests', runOpts);
+  await run('node tools/test-frontend', runOpts);
 }
 
 testAll()
