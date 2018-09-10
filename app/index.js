@@ -83,4 +83,7 @@ function performGracefulShutdown() {
 process.on('SIGINT', performGracefulShutdown);
 process.on('SIGTERM', performGracefulShutdown);
 
-module.exports = server;
+module.exports = {
+  app,
+  server
+};

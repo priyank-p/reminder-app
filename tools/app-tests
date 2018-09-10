@@ -79,7 +79,7 @@ global.assertPromiseThrows = assertPromiseThrows;
 
 function startServer() {
   process.argv.push('--tests');
-  const app = require('../app');
+  const { app } = require('../app');
   global.app = app;
 
   const serverReady = new Promise((resolve) => {
