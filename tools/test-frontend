@@ -31,8 +31,10 @@ async function test_frontend() {
 test_frontend()
   .then(() => {
     console.log('Frontend test passed.');
+    process.exit(0); // due to leveldb
   })
   .catch(err => {
     console.error('Frontend tests failed. Try running test using `npx cypress open`');
     console.error(err);
+    process.exit(1);
   });
