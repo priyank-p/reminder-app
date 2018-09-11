@@ -55,6 +55,7 @@ async function init_startup_unix() {
   }
 
   let startupCmd = '';
+  output = output || '';
   output = output.split('\n');
   output.forEach(text => {
     if (!text.startsWith('[pm2]') && text !== '') {
