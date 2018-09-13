@@ -32,7 +32,7 @@ MacOS, and Linux). If you decide not to choose that option at first
 `node scripts/init-startup`. You can also start reminder-app manually by running
 `node scripts/start`.
 
-Installation is pretty simple, just run the install script.
+Installation is pretty simple, just run the install script:
 ```bash
 node scripts/install
 
