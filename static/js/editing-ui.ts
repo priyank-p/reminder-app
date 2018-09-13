@@ -2,6 +2,7 @@ import $ from './dom';
 import { Reminder as ReminderInterface } from './reminder-utils';
 import * as dateFormat from 'dateformat';
 import * as linkifyURLS from 'linkify-urls';
+import { resize } from './textarea-autoresize';
 import * as statusbar from './status-bar';
 import * as request from './request';
 
@@ -53,6 +54,12 @@ export function showEditingUI(reminderId: number) {
 
   editElements.forEach(el => el.classList.add('show'));
   reminderElements.forEach(el => el.classList.add('hide'));
+
+  // resize the textarea since its only done
+  // when user enters somethings
+  const $editTextarea = reminder.querySelector('.edit-content') as HTMLElement;
+  console.log($editTextarea);
+  resize($editTextarea);
 
   const editDueDate = reminder.querySelector('.edit-due-date');
   editDueDate.addEventListener('input', () => {
