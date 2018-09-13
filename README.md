@@ -9,7 +9,7 @@ during your machine startup (we support all platform
 Linux, Windows, and MacOS).
 
 Reminder app allows you to setup up reminders and can notify you,
-when they are due, using a web push notifications. The notification only
+when they are due, using web push notifications. The notification only
 works if the browser is open, however, the reminder-app tab does not need to
 be open to get those notifications. We also plan to write an extension
 in near feature so you can add reminder's easily.
