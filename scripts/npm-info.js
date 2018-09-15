@@ -9,7 +9,7 @@ let caches;
 if (!fs.existsSync(cacheFile)) {
   // we make sure /var directory is avalible
   const pathInfo = path.parse(cacheFile);
-  fsExtra.emptyDirSync(pathInfo.dir);
+  fsExtra.ensureDirSync(pathInfo.dir);
 
   caches = {};
   fs.writeFileSync(cacheFile, '{}', 'utf8');
