@@ -25,6 +25,17 @@ git checkout my-branch-name
 git commit -m "commit message here"
 ```
 
+## Rebasing
+Updating your local fork in important to make sure you are always up-to-date with
+the current state of repo, and you should do often or before you make a PR.
+```
+git fetch upstream
+git rebase upstream/master
+
+# or 
+git pull upstream master --rebase
+```
+
 ### Commit Message Guidelines
 Start the commit message with a subsystem, and have a good summary of changes
 followed by a colon after subsystem.
