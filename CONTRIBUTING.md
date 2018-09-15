@@ -5,8 +5,9 @@ Follow this guide to contribute to reminder-app.
 First you should fork this repository on github using the fork button on the top right corner.
 Then you should clone your forked repository locally by (replace `<Your-GitHub-Username>` with your username):
 ```bash
-git clone https://github.com/<Your-GitHub-Username>/reminder-app
+git clone https://github.com/<Your-GitHub-Username>/reminder-app.git
 cd reminder-app
+git remote add upstream https://github.com/priyankp10/reminder-app.git
 ```
 
 Then install npm dependencies by running `npm i`. Once that's done you can run
