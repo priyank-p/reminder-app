@@ -58,5 +58,4 @@ Bad commit messages:
 ## 4. Pull Request
 
 Make a pull request by going to [reminder-app](https://github.com/priyankp10/reminder-app),
-press "New pull request", add a title and a description and wait for the owner to
-merge or close your PR.
+press "New pull request", add a title and a description.
