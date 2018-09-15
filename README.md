@@ -21,6 +21,12 @@ in near feature so you can add reminder's easily.
 Useful documentation about [managing reminder-app is in `docs/index.md`](docs/index.md).
 You can also checkout other documentation in [`docs/` directory](docs/)
 
+To quickly test reminder-app out online we do have the project hosted on [glitch](https://glitch.com),
+visit https://reminder-app.glitch.me/ to quickly test it out! But do note that the hosted version
+will often be not upgraded to latest version or may not work, in either cases, if you suspect, do open
+an issue and we will fix it. Also project hosted on glitch do take some time to start up so expect
+couple of seconds of waititing time.
+
 # Install reminder-app
 
 Installing reminder-app will make it so you don't have to run
