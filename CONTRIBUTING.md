@@ -1,5 +1,11 @@
 # Contributing to reminder-app
-Follow this guide to contribute to reminder-app.
+
+Before you start contributing to this project we recommend you
+join the reminder-app zulip server at https://reminder-app.zulipchat.com
+and introduce youself at the [#new-members stream](https://reminder-app.zulipchat.com/#narrow/stream/141123-new-members) if you haven't already.
+
+The below documentation should help you contributing to this project
+if you are not familir with git or git command line.
 
 ## 1. Fork and Clone and Install Dependencies
 First you should fork this repository on github using the fork button on the top right corner.
