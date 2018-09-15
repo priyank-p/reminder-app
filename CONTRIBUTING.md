@@ -1,12 +1,16 @@
 # Contributing to reminder-app
 Follow this guide to contribute to reminder-app.
 
-## 1. Clone
-Start by cloning the repository:
+## 1. Fork and Clone and Install Dependencies
+First you should fork this repository on github using the fork button on the top right corner.
+Then you should clone your forked repository locally by (replace `<Your-GitHub-Username>` with your username):
 ```bash
-git clone https://github.com/priyankp10/reminder-app
+git clone https://github.com/<Your-GitHub-Username>/reminder-app
 cd reminder-app
 ```
+
+Then install npm dependencies by running `npm i`. Once that's done you can run
+the dev-server using `node tools/dev-server`.
 
 ## 2. Branch
 Create a branch and make some changes:
