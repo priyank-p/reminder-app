@@ -4,6 +4,9 @@ Before you start contributing to this project we recommend you
 join the reminder-app zulip server at https://reminder-app.zulipchat.com
 and introduce youself at the [#new-members stream](https://reminder-app.zulipchat.com/#narrow/stream/141123-new-members) if you haven't already.
 
+For documentation about spefic subsystem or directory like (tests, frontend files etc) checkout
+[the list on index.md](https://github.com/priyankp10/reminder-app/blob/master/docs/index.md#documentation-per-subsystemdirectory); if it isn't there you can ask question on reminder-app zulip.
+
 The below documentation should help you contributing to this project
 if you are not familir with git or git command line.
 
