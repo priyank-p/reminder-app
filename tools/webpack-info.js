@@ -27,7 +27,7 @@ webpackFiles.forEach(file => {
   webpackFiles.push(filePath);
 });
 
-const needToUpdate = HashManager.needToUpdate('webpack', { files: webpackFiles });
+const needToUpdate = HashManager.needToUpdate('webpack', new HashManager.FilesArray(webpackFiles));
 const hash = HashManager.getCacheData().webpack || HashManager.cachedHash.get('webpack');
 
 let needToPerformBuild = needToUpdate;

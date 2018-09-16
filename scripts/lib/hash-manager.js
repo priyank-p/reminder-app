@@ -3,12 +3,19 @@ const fsExtra = require('fs-extra');
 const path = require('path');
 const crypto = require('crypto');
 
+class FilesArray {
+  constructor(files) {
+    this.files = files;
+  }
+}
+
 class HashManager {
   constructor() {
     const VAR_DIR = path.resolve(__dirname, '../../var');
     this.cacheFile = path.join(VAR_DIR, 'hashes.json');
     this.missing = !fs.existsSync(this.cacheFile);
     this.cachedHash = new Map();
+    this.FilesArray = FilesArray;
 
     // we make sure /var directory is present
     fsExtra.ensureDirSync(VAR_DIR);
@@ -48,13 +55,20 @@ class HashManager {
 
   generateHash(hashable) {
     const hashFunction = crypto.createHash('md5');
-    if (typeof hashable === 'string') {
-      hashFunction.update(hashable, 'utf8');
-    } else {
-      hashable.forEach((hashableItem) => {
+    const isFilesArray = hashable instanceof FilesArray;
+    if (isFilesArray) {
+      hashable.files.forEach((hashableItem) => {
         hashableItem = this.getFileModificationTime(hashableItem);
         hashFunction.update(hashableItem, 'utf8');
       });
+    }
+
+    if (typeof hashable !== 'string' && !isFilesArray) {
+      hashable = JSON.stringify(hashable);
+    }
+
+    if (typeof hashable === 'string') {
+      hashFunction.update(hashable, 'utf8');
     }
 
     return hashFunction.digest('hex');
@@ -72,23 +86,16 @@ class HashManager {
 
   /**
     key: the name of cache key ie npm
-    hashInfo: object possible keys
-      - rawString (string): string to create hash off of;
-      - files (array): array of files to create hash off of;
+    hashable (string, object, array, FilesArray): hashable thing.
     saveHash (default: false, boolean): save hash immediatly default false;
   **/
-  needToUpdate(key, hashInfo, saveHash = false) {
+  needToUpdate(key, hashable, saveHash = false) {
     const data = this.getCacheData();
     const savedHash = data[key];
 
     let notSavedBefore = false;
     if (savedHash === undefined) {
       notSavedBefore = true;
-    }
-
-    let hashable = hashInfo.rawString;
-    if (hashInfo.files) {
-      hashable = hashInfo.files;
     }
 
     const currentHash = this.generateHash(hashable);
