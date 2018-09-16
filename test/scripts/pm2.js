@@ -28,7 +28,7 @@ function StubbedFsExsistSync(filepath) {
     return (pm2File !== '');
   }
 
-  return _fs_exists_sync;
+  return _fs_exists_sync(filepath);
 }
 
 function StubbedFsReadFile(filepath, encoding, callback) {
