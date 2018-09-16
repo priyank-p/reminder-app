@@ -1,57 +1,39 @@
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
+const HashManager = require('../scripts/lib/hash-manager');
 
-const ROOT_DIR = path.resolve(__dirname, '../');
-const cacheFile = path.join(ROOT_DIR, 'var/cache-hashes');
-const bundlesFolder = path.join(ROOT_DIR, 'static/webpack-bundles');
+const webpackFiles = [];
+const ROOT_DIR = path.resolve(__dirname, '..');
+const webpackFolders = [ 'static/js', 'static/scss' ];
+const files = [
+  'tools/webpack-entries.js', 'tools/webpack.config.js',
+  'tools/webpack', 'tools/webpack-info.js'
+];
 
-let hash;
-let currentHash;
-let caches;
-if (fs.existsSync(cacheFile)) {
-  caches = JSON.parse(fs.readFileSync(cacheFile));
-  currentHash = caches.hash;
-} else {
-  caches = {};
-  fs.writeFileSync(cacheFile, '{}', 'utf8');
-}
+webpackFolders.forEach(folder => {
+  const dirPath = path.resolve(ROOT_DIR, folder);
+  const files = fs.readdirSync(dirPath);
+  files.forEach(file => {
+    webpackFiles.push(path.resolve(dirPath, file));
+  });
+});
 
-function needToBuild() {
-  const hashFunction = crypto.createHash('md5');
-  const webpackFolders = [
-    'js', 'scss'
-  ];
+files.forEach(file => {
+  webpackFiles.push(path.resolve(ROOT_DIR, file));
+});
 
-  for (let dir of webpackFolders) {
-    const dirPath = path.join(ROOT_DIR, 'static', dir);
-    const files = fs.readdirSync(dirPath);
-    files.forEach(file => {
-      const stats = fs.statSync(path.join(dirPath, file));
-      hashFunction.update(stats.mtime.toString());
-    });
-  }
+webpackFiles.forEach(file => {
+  const filePath = path.resolve(ROOT_DIR, file);
+  webpackFiles.push(filePath);
+});
 
-  hash = hashFunction.digest('hex');
-  caches.hash = hash;
-  if (!currentHash) {
-    fs.writeFileSync(cacheFile, JSON.stringify(caches), 'utf8');
-    return true;
-  }
-
-  if (currentHash !== hash) {
-    fs.writeFileSync(cacheFile, JSON.stringify(caches), 'utf8');
-    return true;
-  }
-
-  if (!fs.existsSync(bundlesFolder)) {
-    return true;
-  }
-
-  return false;
-}
-
+const needToPerformBuild = HashManager.needToUpdate('webpack', { files: webpackFiles });
+const hash = HashManager.getCacheData().webpack || HashManager.cachedHash.get('webpack');
 module.exports = {
-  needToPerformBuild: needToBuild(),
-  hash
+  needToPerformBuild,
+  hash,
+  saveHash() {
+    module.exports.needToPerformBuild = false;
+    HashManager.save('webpack');
+  }
 };

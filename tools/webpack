@@ -69,5 +69,9 @@ async function remove_empty_js_from_bundle() {
   });
 
   await remove_empty_js_from_bundle();
+  if (webpackInfo.needToPerformBuild) {
+    webpackInfo.saveHash();
+  }
+
   spinner.succeed('Frontend files built.');
 })();

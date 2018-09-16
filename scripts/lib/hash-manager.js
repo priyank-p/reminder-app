@@ -25,7 +25,7 @@ class HashManager {
       return {};
     }
 
-    let content = fs.readFileSync(this.scacheFile, 'utf8');
+    let content = fs.readFileSync(this.cacheFile, 'utf8');
     try {
       content = JSON.parse(content);
       return content;
