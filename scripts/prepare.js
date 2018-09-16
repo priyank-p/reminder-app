@@ -29,6 +29,8 @@ async function prepare(spinner, options = {}) {
     if (options.runPm2Save) {
       await run('npx pm2 update', ignore);
     }
+
+    npmInfo.saveHash();
     spinner.succeed();
   }
 
@@ -38,6 +40,7 @@ async function prepare(spinner, options = {}) {
     run('node tools/webpack', opts),
     run('node tools/run-migrations', opts)
   ]);
+
   await pm2.saveCurrentVersions();
   spinner.succeed();
 }

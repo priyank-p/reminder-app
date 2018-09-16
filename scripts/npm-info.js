@@ -1,34 +1,11 @@
-const fs = require('fs');
-const fsExtra = require('fs-extra');
-const path = require('path');
-const crypto = require('crypto');
-const packageJSON = require('../package.json');
+const HashManager = require('./lib/hash-manager');
+const pkg = require('../package.json');
 
-const cacheFile = path.resolve(__dirname, '../var/cache-hashes');
-let caches;
-if (!fs.existsSync(cacheFile)) {
-  // we make sure /var directory is avalible
-  const pathInfo = path.parse(cacheFile);
-  fsExtra.ensureDirSync(pathInfo.dir);
-
-  caches = {};
-  fs.writeFileSync(cacheFile, '{}', 'utf8');
-} else {
-  caches = JSON.parse(fs.readFileSync(cacheFile, 'utf8'));
-}
-
-const hashFunction = crypto.createHash('md5');
-hashFunction.update(JSON.stringify(packageJSON.dependencies));
-
-const hash = hashFunction.digest('hex');
-let needToInstall = false;
-
-if (!caches.npm || caches.npm !== hash) {
-  needToInstall = true;
-  caches.npm = hash;
-  fs.writeFileSync(cacheFile, JSON.stringify(caches), 'utf8');
-}
-
+const dependencies = JSON.stringify({ ...pkg.dependencies, ...pkg.optionalDependencies });
+const needToInstall = HashManager.needToUpdate('npm', { rawString: dependencies });
 module.exports = {
-  needToInstall
+  needToInstall,
+  saveHash() {
+    HashManager.save('npm');
+  }
 };
