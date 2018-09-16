@@ -27,8 +27,20 @@ webpackFiles.forEach(file => {
   webpackFiles.push(filePath);
 });
 
-const needToPerformBuild = HashManager.needToUpdate('webpack', { files: webpackFiles });
+const needToUpdate = HashManager.needToUpdate('webpack', { files: webpackFiles });
 const hash = HashManager.getCacheData().webpack || HashManager.cachedHash.get('webpack');
+
+let needToPerformBuild = needToUpdate;
+if (!needToUpdate) {
+  // check if webpack-bundles.json and webpack-bundles
+  // exist!
+  const buildFiles = ['var/webpack-bundles.json', 'static/webpack-bundles'];
+  needToPerformBuild = buildFiles.every(file => {
+    const filePath = path.join(ROOT_DIR, file);
+    return fs.existsSync(filePath);
+  });
+}
+
 module.exports = {
   needToPerformBuild,
   hash,
