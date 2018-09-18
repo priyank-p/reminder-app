@@ -3,3 +3,4 @@
 *.jpg binary
 *.gif binary
 package-lock.json binary
+scripts/reminder-app.exe binary
