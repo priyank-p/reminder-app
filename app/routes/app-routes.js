@@ -39,4 +39,16 @@ router.get('/webapp-manifest.json', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../static/webapp-manifest.json'));
 });
 
+// route to be cache by service worker
+// since the "Add to Home" functionality
+// does not work unless the site works offline but
+// we don't internet access on localhost so we cache this
+// page.
+// Error:
+//    Site cannot be installed: the page does not work offline
+router.get('/offline', (req, res) => {
+  res.type('html');
+  res.send('Offline Page for SW and for Add to Home Functionality!');
+});
+
 module.exports = router;
