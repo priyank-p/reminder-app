@@ -13,19 +13,19 @@
     "sizes": "16x16",
     "type": "image/png"
   },{
-    "src": "/static/icons/icon-32x32.png",
+    "src": "/static/icons/dark/icon-32x32.png",
     "sizes": "32x32",
     "type": "image/png"
   },{
-    "src": "/static/icons/icon-150x150.png",
+    "src": "/static/icons/dark/icon-150x150.png",
     "sizes": "150x150",
     "type": "image/png"
   },{
-    "src": "/static/icons/icon-192x192.png",
+    "src": "/static/icons/dark/icon-192x192.png",
     "sizes": "192x192",
     "type": "image/png"
   },{
-    "src": "/static/icons/icon-384x384.png",
+    "src": "/static/icons/dark/icon-384x384.png",
     "sizes": "384x384",
     "type": "image/png"
   }]
