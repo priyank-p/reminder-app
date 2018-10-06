@@ -4,8 +4,13 @@ const version = '{{sw-loader hash}}';
 // the minifier.
 console.log(version);
 
-self.addEventListener('install', () => {
+self.addEventListener('install', event => {
   self.skipWaiting();
+  event.waitUntil(
+    caches.open(version, cache => {
+      return cache.addAll(['/offline']);
+    })
+  );
 });
 
 self.addEventListener('activate', (event) => {
