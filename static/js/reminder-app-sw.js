@@ -73,3 +73,10 @@ self.addEventListener('notificationclick', (event) => {
     openOrFocusWindow()
   );
 });
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    fetch(event.request)
+      .catch(() => caches.match('/offline'))
+  );
+});
