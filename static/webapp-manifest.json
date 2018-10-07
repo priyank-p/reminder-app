@@ -9,7 +9,7 @@
   "lang": "en",
   "description": "Reminder App - Keep track of your stuff.",
   "icons": [{
-    "src": "/static/icons/icon-16x16.png",
+    "src": "/static/icons/dark/icon-16x16.png",
     "sizes": "16x16",
     "type": "image/png"
   },{
