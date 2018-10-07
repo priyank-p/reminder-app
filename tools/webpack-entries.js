@@ -2,7 +2,8 @@ const mainBundle = {
   'main': [
     './static/js/index.ts',
     './static/js/app-hotkeys.ts',
-    './static/js/event-listeners.ts'
+    './static/js/event-listeners.ts',
+    './static/js/install-app-banner.ts'
   ],
   'main-css': [
     './static/scss/reminder-app.scss',
