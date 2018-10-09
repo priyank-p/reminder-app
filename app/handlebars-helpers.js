@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const linkifyURLS = require('linkify-urls');
+const markdown = require('./markdown');
 const env = require('./env');
 
 const { development } = env;
@@ -95,15 +96,15 @@ function utc_date(date) {
 }
 
 function render_reminder_content(reminder) {
-  const html = preserve_whitespace(reminder);
-  const linkifiedHTML = linkifyURLS(html, {
+  let html = linkifyURLS(reminder, {
     attributes: {
       target: '_blank',
       rel: 'noopener noreferer'
     }
   }).trim();
 
-  return linkifiedHTML;
+  html = markdown(html);
+  return html;
 }
 
 if (webpackChunks && webpackChunks.sw) {

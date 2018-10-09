@@ -5,6 +5,7 @@ import * as linkifyURLS from 'linkify-urls';
 import { resize } from './textarea-autoresize';
 import * as statusbar from './status-bar';
 import * as request from './request';
+import * as markdown from '../../app/markdown.js';
 
 type GetEditElementsReturnType = [ Element[], Element[], Element ];
 function getEditElements(id: number): GetEditElementsReturnType {
@@ -85,12 +86,15 @@ function updateReminderElement(id: number, reminder: ReminderInterface) {
     formattedDate += dateFormat(date, 'shortTime');
   }
 
-  content.innerHTML = linkifyURLS(reminder.reminder, {
+  let html = linkifyURLS(reminder.reminder, {
     attributes: {
       target: '_blank',
       rel: 'noopener noreferer'
     }
   }).trim();
+
+  html = markdown(html);
+  content.innerHTML = html;
 
   title.innerText = reminder.title;
   dueDate.innerText = formattedDate;
