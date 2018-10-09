@@ -58,7 +58,6 @@ export function showEditingUI(reminderId: number) {
   // resize the textarea since its only done
   // when user enters somethings
   const $editTextarea = reminder.querySelector('.edit-content') as HTMLElement;
-  console.log($editTextarea);
   resize($editTextarea);
 
   const editDueDate = reminder.querySelector('.edit-due-date');
