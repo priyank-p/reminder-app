@@ -1,7 +1,6 @@
 import $ from './dom';
 import { Reminder as ReminderInterface } from './reminder-utils';
 import * as dateFormat from 'dateformat';
-import * as linkifyURLS from 'linkify-urls';
 import { resize } from './textarea-autoresize';
 import * as statusbar from './status-bar';
 import * as request from './request';
@@ -86,16 +85,7 @@ function updateReminderElement(id: number, reminder: ReminderInterface) {
     formattedDate += dateFormat(date, 'shortTime');
   }
 
-  let html = linkifyURLS(reminder.reminder, {
-    attributes: {
-      target: '_blank',
-      rel: 'noopener noreferer'
-    }
-  }).trim();
-
-  html = markdown(html);
-  content.innerHTML = html;
-
+  content.innerHTML = markdown(reminder.reminder);
   title.innerText = reminder.title;
   dueDate.innerText = formattedDate;
   hideEditingUI(id);

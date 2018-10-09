@@ -22,7 +22,6 @@
     "helmet": "3.13.0",
     "inquirer": "6.0.0",
     "level-uplevel": "2.0.5",
-    "linkify-urls": "2.0.0",
     "marked": "0.5.1",
     "mini-css-extract-plugin": "0.4.1",
     "node-cron": "1.2.1",
