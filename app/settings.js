@@ -21,6 +21,10 @@ module.exports = (app) => {
     // ensures security related stuff
     app.use(helmet());
 
+    // regex to ignore minifying reminder content
+    // to preserve whitespace.
+    const reminderContentRegex = /<div class="content">.*<\/div>/;
+
     // compress html in production
     app.use(minifyHTML({
       override: true,
@@ -30,7 +34,8 @@ module.exports = (app) => {
         collapseWhitespace: true,
         collapseBooleanAttributes: true,
         removeAttributeQuotes: true,
-        minifyJS: true
+        minifyJS: true,
+        ignoreCustomFragments: [ reminderContentRegex ]
       }
     }));
   }
