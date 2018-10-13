@@ -5,6 +5,9 @@ const path = require('path');
 const pm2 = require('./pm2');
 const run = require('../tools/run');
 
+// make sure PORT is set to default 7000
+process.env.PORT = process.env.PORT || 7000;
+
 async function start() {
   await pm2.runPm2UpdateIfNeeded();
   await run('npx pm2 start app --name reminder-app', {
