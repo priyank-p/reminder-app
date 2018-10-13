@@ -19,11 +19,11 @@
   }
 }
 
-.menu-bar.show .menu-sidebar {
+.menu-bar.show .menu-holder {
   display: inline-block;
 }
 
-.menu-sidebar {
+.menu-holder {
   position: fixed;
   display: none;
   width: 100%;
@@ -36,7 +36,7 @@
   margin: 0;
 }
 
-.menu-sidebar .menu-holder {
+.menu-holder .menu-sidebar {
   display: inline-block;
   height: 100vh;
   width: 300px;
