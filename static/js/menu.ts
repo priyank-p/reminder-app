@@ -1,6 +1,7 @@
 import $ from './dom';
 
 const menubar = $('.menu-bar' ) as Element;
+const menuholder = $('.menu-holder') as Element;
 const sidebar = $('.menu-sidebar') as Element;
 const closeMenuButton = $('.menu-sidebar .close') as Element;
 
@@ -28,14 +29,17 @@ sidebar.addEventListener('click', (e: MouseEvent) => {
   const el: HTMLElement = e.target as HTMLElement;
   const name: string = el.dataset.menu;
 
+  e.stopPropagation();
   menuHandlers.forEach(data => {
     if (data.name === name) {
       data.handler();
 
       menubar.classList.remove('show');
-      e.stopPropagation();
     }
   });
 });
 
-
+menuholder.addEventListener('click', (e: MouseEvent) => {
+  menubar.classList.remove('show');
+  e.stopPropagation();
+});
