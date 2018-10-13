@@ -6,7 +6,6 @@
   padding: 10px;
   border-radius: 50%;
   border: 1px solid transparent;
-  cursor: pointer;
   margin-right: 4px;
 
   &:hover {
@@ -61,5 +60,9 @@
 
   .close:hover {
     color: white;
+  }
+
+  div {
+    cursor: pointer;
   }
 }
