@@ -26,6 +26,7 @@ function validateReminder(fields) {
     fields[field] = sanatized;
   }
 
+  fields.created_at = new Date();
   return fields;
 }
 
