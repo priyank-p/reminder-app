@@ -2,9 +2,9 @@ const fs = require('fs');
 const fsExtra = require('fs-extra');
 const path = require('path');
 const { promisify } = require('util');
-const run = require('../tools/run');
+const run = require('../../tools/run');
 
-const ROOT_DIR = path.resolve(__dirname, '../');
+const ROOT_DIR = path.resolve(__dirname, '../../');
 const pm2File = path.join(ROOT_DIR, 'var/pm2.json');
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);

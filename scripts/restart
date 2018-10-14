@@ -2,7 +2,7 @@
 'use strict';
 
 const path = require('path');
-const pm2 = require('./pm2');
+const pm2 = require('./lib/pm2');
 const run = require('../tools/run');
 
 const ROOT_DIR = path.resolve(__dirname, '../');
