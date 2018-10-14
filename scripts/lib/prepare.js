@@ -1,10 +1,10 @@
 const path = require('path');
-const pm2 = require('./pm2');
-const npmInfo = require('./lib/npm-info');
-const run = require('../tools/run');
+const pm2 = require('../pm2');
+const npmInfo = require('./npm-info');
+const run = require('../../tools/run');
 
 const opts = {
-  cwd: path.resolve(__dirname, '../'),
+  cwd: path.resolve(__dirname, '../../'),
   silent: true
 };
 

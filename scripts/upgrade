@@ -2,7 +2,7 @@
 'use strict';
 
 const ora = require('ora');
-const prepare = require('./prepare');
+const prepare = require('./lib/prepare');
 const installation = require('./lib/installation');
 const ArgParser = require('../app/argparser');
 const run = require('../tools/run');
