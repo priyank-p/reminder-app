@@ -24,6 +24,9 @@ args.add('--non-interactive', { type: 'boolean', dest: 'nonInteractive',
   help: 'Disables interactive prompts, mostly used in CI' });
 args.parse();
 
+process.env.NODE_ENV = 'production';
+process.env.PORT = args.port || process.env.PORT || 7000;
+
 const spinner = new ora({
   spinner: 'dots4',
   text: 'Upgrading reminder-app'
@@ -39,7 +42,7 @@ async function perform_upgrade() {
   await prepare(spinner);
 
   spinner.text = 'Reloading Reminder App';
-  await run('npx pm2 reload reminder-app', ignore);
+  await run('npx pm2 reload reminder-app --update-env', ignore);
 }
 
 perform_upgrade()
