@@ -46,7 +46,7 @@ fs.existsSync = StubbedFsExsistSync;
 fs.readFile = StubbedFsReadFile;
 fs.writeFile = StubbedFsWriteFile;
 
-const pm2 = require('../../scripts/pm2');
+const pm2 = require('../../scripts/lib/pm2');
 async function test_pm2_should_run_update_cmd() {
   assert(pm2File === '');
   assert(await pm2.shouldRunUpdateCmd());
