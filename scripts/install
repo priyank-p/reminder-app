@@ -37,7 +37,7 @@ const spinner = new ora({
 
 spinner.start();
 process.env.NODE_ENV = 'production';
-process.env.PORT = process.env.PORT || 7000;
+process.env.PORT = args.port || process.env.PORT || 7000;
 
 const { ignore } = installation;
 
