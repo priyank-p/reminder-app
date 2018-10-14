@@ -1,5 +1,5 @@
-const HashManager = require('./lib/hash-manager');
-const pkg = require('../package.json');
+const HashManager = require('./hash-manager');
+const pkg = require('../../package.json');
 
 const dependencies = { ...pkg.dependencies, ...pkg.optionalDependencies };
 const needToInstall = HashManager.needToUpdate('npm', dependencies);

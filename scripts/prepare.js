@@ -1,6 +1,6 @@
 const path = require('path');
 const pm2 = require('./pm2');
-const npmInfo = require('./npm-info');
+const npmInfo = require('./lib/npm-info');
 const run = require('../tools/run');
 
 const opts = {
