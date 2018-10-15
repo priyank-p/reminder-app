@@ -21,17 +21,17 @@ in near feature so you can add reminder's easily.
 Useful documentation about [managing reminder-app is in `docs/index.md`](docs/index.md).
 You can also checkout other documentation in [`docs/` directory](docs/)
 
-To provide feedback or get support we have a [reminder-app zulip server](https://reminder-app.zulipchat.com),
-we recommend that you do join the reminder-app zulip server, introduce your self at 
-[#new-members stream](https://reminder-app.zulipchat.com/#narrow/stream/141123-new-members) and/or use the
-[#test-stream](https://reminder-app.zulipchat.com/#narrow/stream/141125-test-stream) to try out zulip
-and it's great thread modal (works really well!).
-
 To quickly test reminder-app out online we do have the project hosted on [glitch](https://glitch.com),
 visit https://reminder-app.glitch.me/ to quickly test it out! But do note that the hosted version
 will often be not upgraded to latest version or may not work, in either cases, if you suspect, do open
 an issue and we will fix it or even better post the issue at https://reminder-app.zulipchat.com.
 Also project hosted on glitch do take some time to start up so expect couple of seconds of waititing time.
+
+To provide feedback or get support we have a [reminder-app zulip server](https://reminder-app.zulipchat.com),
+we recommend that you do join the reminder-app zulip server, introduce your self at
+[#new-members stream](https://reminder-app.zulipchat.com/#narrow/stream/141123-new-members) and/or use the
+[#test-stream](https://reminder-app.zulipchat.com/#narrow/stream/141125-test-stream) to try out zulip
+and it's great thread modal (works really well!).
 
 # Install reminder-app
 
