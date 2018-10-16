@@ -31,6 +31,12 @@ $reminder-width: 300px;
   break-inside: avoid;
   margin-bottom: 10px;
 
+  // make reminder elements display inline-block
+  // to avoid weird cutoff of element due to a bug
+  // in chrome (clipping bug):
+  //    https://stackoverflow.com/a/19834283
+  display: inline-block;
+
   * {
     font-family: $fonts;
     font-size: 14px;
