@@ -189,7 +189,9 @@ form .dropdown-section .quick-choose {
 .edit-ui button {
   background-color: #fff;
   border: none;
-  padding: 1px;
+  padding: 0;
+  margin: -2px;
+  font-size: 18px;
 }
 
 @media screen and (max-width: 1060px) {
