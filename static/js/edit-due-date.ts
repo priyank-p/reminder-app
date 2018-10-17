@@ -8,7 +8,7 @@ function setup() {
     editElement.classList.add('edit');
     editElement.classList.add('edit-due-date');
     editElement.setAttribute('name', 'due_date');
-    editElement.setAttribute('placeholder', 'Due Date');
+    editElement.setAttribute('placeholder', 'Due date (in any format)');
     editElement.setAttribute('value', el.textContent.trim());
     reminder.appendChild(editElement);
 
