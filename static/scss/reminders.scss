@@ -134,11 +134,11 @@ $reminder-width: 300px;
     border-radius: 4px;
     background-color: #555;
     color: #fff;
-    width: 166px;
+    width: auto;
+    padding: 1px 15px;
     text-align: center;
     position: absolute;
     bottom: -32px;
-    max-width: 170px;
     text-align: center;
 
     &::after {
