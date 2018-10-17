@@ -70,6 +70,12 @@ export function hideEditingUI(reminderId: number) {
   const [ editElements, reminderElements ] = getEditElements(reminderId);
   editElements.forEach(el => el.classList.remove('show'));
   reminderElements.forEach(el => el.classList.remove('hide'));
+
+  // make sure to hide invalid date tooltip when edit mode
+  // is closed
+  const $reminderEl = editElements[0].parentElement;
+  const $errorTooltip = $reminderEl.querySelector('.error-tooltip');
+  $errorTooltip.classList.remove('show');
 }
 
 function updateReminderElement(id: number, reminder: ReminderInterface) {
