@@ -66,6 +66,10 @@ async function remove_empty_js_from_bundle() {
     cwd: ROOT_DIR,
     silent: true,
     stdio: 'ignore'
+  }).catch(err => {
+    spinner.fail('Webpack process failed!');
+    console.error(err);
+    process.exit(1);
   });
 
   await remove_empty_js_from_bundle();
