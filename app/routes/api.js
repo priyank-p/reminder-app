@@ -36,8 +36,8 @@ router.delete('/reminders/delete/:id', async (req, res) => {
   }
 
   Promise.all([archives.archive(id), reminders.deleteReminder(id)])
-    .then(() => {
-      res.send(`Reminder with id: ${id} was deleted!`);
+    .then(([archiveId]) => {
+      res.send({ archiveId });
     })
     .catch(() => {
       res.status(400);
