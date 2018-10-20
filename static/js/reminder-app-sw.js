@@ -35,10 +35,13 @@ function deleteReminder(tag) {
   const id = parseInt(tag.replace('reminder-', ''));
   return fetch(`/api/reminders/delete/${id}`, {
     method: 'DELETE'
-  }).then(() => notifyDeletedRemider(id));
+  }).then(res => res.json())
+    .then(res => {
+      notifyDeletedRemider(id, res.archiveId);
+    });
 }
 
-function notifyDeletedRemider(id) {
+function notifyDeletedRemider(id, archiveId) {
   return clients.matchAll({
     type: 'window',
     includeUncontrolled: true
@@ -46,7 +49,8 @@ function notifyDeletedRemider(id) {
     windows.forEach(page => {
       page.postMessage({
         message: 'reminder-deleted',
-        id
+        id,
+        archiveId
       });
     });
   });
