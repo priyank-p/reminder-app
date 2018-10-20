@@ -15,6 +15,7 @@ be open to get those notifications. We also plan to write an extension
 in near feature so you can add reminder's easily.
 
   * [Install reminder app](#install-reminder-app)
+  * [Installing using docker](#docker-installation)
   * [Upgrading reminder-app](#upgrading-reminder-app)
   * [Devlopement - Running the dev server](#running-the-dev-server)
 
@@ -59,6 +60,25 @@ Installation script will do couple of things: install npm dependencies, build
 frontend assets using webpack, and run database migrations. It also
 starts the production process manager `pm2` that will make sure the app
 runs in the background, so a terminal windows does not have to be open.
+
+# Docker Installation
+
+You can also install reminder-app using docker:
+```bash
+# build the reminder-app docker image
+[sudo] docker build -t reminder-app .
+
+# run the image; can be accessed through
+# port 7000.
+[sudo] docker run -p 7000:7000 -d reminder-app
+```
+
+Eventhough, you can install using docker you can't have
+the start on machine startup feature of reminder-app unless
+you use the [install reminder-app directly on you machine](#install-reminder-app).
+If you don't want that feature and prefer docker this option
+is for you and it is like running `node script/start` to start
+reminder-app when you need it.
 
 ### Upgrading reminder-app
 
