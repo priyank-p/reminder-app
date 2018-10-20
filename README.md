@@ -1,4 +1,8 @@
 # reminder-app
+[![Reminder App](https://img.shields.io/badge/reminder--app-join_chat-green.svg?&style=flat-square)](https://reminder-app.zulipchat.com)
+[![Build Status](https://img.shields.io/travis/com/priyank-p/reminder-app.svg?style=flat-square)](https://travis-ci.com/priyank-p/reminder-app)
+[![codecov](https://img.shields.io/codecov/c/github/priyank-p/reminder-app.svg?style=flat-square)](https://codecov.io/gh/priyank-p/reminder-app)
+
 
 #### Reminder app helps you to stay on top of you reminders!
 
