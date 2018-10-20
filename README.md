@@ -14,6 +14,15 @@ works if the browser is open, however, the reminder-app tab does not need to
 be open to get those notifications. We also plan to write an extension
 in near feature so you can add reminder's easily.
 
+#### Why did I create reminder-app?
+
+Well, I use to use a notepad to keep track of stuff in high school, but now since
+we have computers and work online, I feel like having to get my notepad is not
+too convient anymore and so I made reminder-app in though of benefits it could provide
+with the biggest one being it could notify me.
+
+#### Section links
+
   * [Install reminder app](#install-reminder-app)
   * [Installing using docker](#docker-installation)
   * [Upgrading reminder-app](#upgrading-reminder-app)
