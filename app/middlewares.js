@@ -6,7 +6,7 @@ const env = require('./env');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const { production } = env;
-module.exports = (app) => {
+module.exports = function applyMiddlewares(app) {
   if (production) {
     const compression = require('compression');
     const helmet = require('helmet');

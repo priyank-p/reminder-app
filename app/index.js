@@ -23,13 +23,13 @@ if (env.development || env.tests && env.mode === undefined) {
 // setting depending the mode (production | development)
 const path = require('path');
 const express = require('express');
-const settings = require('./settings');
+const applyMiddlewares = require('./middlewares');
 const routes = require('./routes');
 
 const app = express();
 const tracker = require('./tracker'); // eslint-disable-line no-unused-vars
 const STATIC_DIR = path.resolve(__dirname, '../static');
-settings(app);
+applyMiddlewares(app);
 app.use('/static', express.static(STATIC_DIR));
 
 // apply all the routes
