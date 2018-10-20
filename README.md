@@ -68,14 +68,13 @@ You can also install reminder-app using docker:
 # build the reminder-app docker image
 [sudo] docker build -t reminder-app .
 
-# run the image; can be accessed through
-# port 7000.
+# run the image; can be accessed through port 7000.
 [sudo] docker run -p 7000:7000 -d reminder-app
 ```
 
 Eventhough, you can install using docker you can't have
 the start on machine startup feature of reminder-app unless
-you use the [install reminder-app directly on you machine](#install-reminder-app).
+you [install reminder-app directly on you machine](#install-reminder-app).
 If you don't want that feature and prefer docker this option
 is for you and it is like running `node script/start` to start
 reminder-app when you need it.
