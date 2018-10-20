@@ -7,7 +7,6 @@
     "no-constant-condition": true,
     "quotemark": ["error", "single"],
     "triple-equals": true,
-    "no-trailing-whitespace": true,
-    "ter-indent": [true, 2]
+    "no-trailing-whitespace": true
   }
 }
