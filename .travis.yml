@@ -17,15 +17,10 @@ cache:
 script:
   # runs tools/test-all
   - npm run coverage
-
-  # run install script by removing /var
-  # directory to make sure we catch error's regarding
-  # /var directory not being present.
-  - mv var _var
-  - rm -rf node_modules
-  - node scripts/install --non-interactive --startup
-  - mv _var var 
-
-after_success:
   - npm i codecov nyc
   - nyc report --reporter=lcov > codecov.info && codecov
+
+  # First run git clean -xdf to remove ignore file
+  # and make the state similar to newly cloned repository
+  - git clean -xdf
+  - node scripts/install --non-interactive --startup
