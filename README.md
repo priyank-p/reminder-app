@@ -1,5 +1,4 @@
 # reminder-app
-[![Reminder App](https://img.shields.io/badge/reminder--app-join_chat-green.svg?&style=flat-square)](https://reminder-app.zulipchat.com)
 [![Build Status](https://img.shields.io/travis/com/priyank-p/reminder-app.svg?style=flat-square)](https://travis-ci.com/priyank-p/reminder-app)
 [![codecov](https://img.shields.io/codecov/c/github/priyank-p/reminder-app.svg?style=flat-square)](https://codecov.io/gh/priyank-p/reminder-app)
 
@@ -38,14 +37,7 @@ You can also checkout other documentation in [`docs/` directory](docs/)
 To quickly test reminder-app out online we do have the project hosted on [glitch](https://glitch.com),
 visit https://reminder-app.glitch.me/ to quickly test it out! Glitch does take some time to start up
 so expect couple of seconds of waiting time. If you suspect that hosted app on glitch
-is not up to date or doesn't work open an issue or post this at https://reminder-app.zulipchat.com and
-we will fix it.
-
-To provide feedback or get support we have a [reminder-app zulip server](https://reminder-app.zulipchat.com),
-we recommend that you do join the reminder-app zulip server, introduce your self at
-[#new-members stream](https://reminder-app.zulipchat.com/#narrow/stream/141123-new-members) and/or use the
-[#test-stream](https://reminder-app.zulipchat.com/#narrow/stream/141125-test-stream) to try out zulip
-and it's great thread modal (works really well!).
+is not up to date or doesn't work open an issue and we will fix it.
 
 # Install reminder-app
 
