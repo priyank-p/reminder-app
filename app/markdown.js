@@ -2,7 +2,7 @@ const marked = require('marked');
 
 const renderer = new marked.Renderer();
 const _renderer = {
-  link: renderer.link
+  link: renderer.link // save the original link method for later use.
 };
 
 function escape(text) {
