@@ -2,10 +2,10 @@ const marked = require('marked');
 
 const renderer = new marked.Renderer();
 const _renderer = {
-  link: renderer.link // save the original link method for later use.
+  link: renderer.link // save the original link method for later use
 };
 
-function escape(text) {
+function escapeText(text) {
   return text
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
@@ -16,8 +16,8 @@ function escape(text) {
 }
 
 renderer.link = (href, title, text) => {
-  href = escape(href);
-  text = escape(text);
+  href = escapeText(href);
+  text = escapeText(text);
 
   let html = _renderer.link.call(marked, href, title, text);
   html = html
