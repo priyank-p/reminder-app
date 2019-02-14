@@ -21,7 +21,7 @@ renderer.link = (href, title, text) => {
 
   let html = _renderer.link.call(marked, href, title, text);
   html = html
-    .replace('>', ' rel="noopener noreferer">');
+    .replace('>', ' rel="noopener noreferer" target="_blank">');
   return html;
 };
 
