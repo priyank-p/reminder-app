@@ -13,7 +13,7 @@ main {
 }
 
 #add-reminder-btn {
-  $size: 45px;
+  $size: 54px;
 
   @extend .solid-bold-text;
   position: fixed;
@@ -25,9 +25,8 @@ main {
   background-color: $theme-color;
   border-radius: 50%;
   text-align: center;
-  padding-top: 0.5px;
   font-family: Verdana;
-  font-size: 23px;
+  font-size: 24px;
   bottom: 16px;
   right: 16px;
   user-select: none;
