@@ -3,6 +3,17 @@ const archives = require('../models/archives');
 const reminders = require('../models/reminders');
 
 const router = new express.Router();
+const websockets = [];
+router.ws('/api-events', (ws) => {
+  const index = websockets.push(ws) - 1;
+  ws.on('close', () => websockets.splice(index, 1));
+});
+
+function sendAPIEvent(msg) {
+  msg = JSON.stringify(msg);
+  websockets.forEach(ws => ws.send(msg));
+}
+
 router.post('/reminders/add', async (req, res) => {
   if (Object.keys(req.body).length === 0) {
     res.status(400);
@@ -16,7 +27,14 @@ router.post('/reminders/add', async (req, res) => {
   }
 
   await reminders.addReminder(reminder)
-    .then(() => res.send('Reminder Added!'))
+    .then(() => {
+      sendAPIEvent({
+        event: 'reminder-added',
+        data: reminder
+      });
+
+      res.send('Reminder Added!');
+    })
     .catch(() => {
       res.status(400).send('Incorrect reminder provided');
     });
@@ -37,6 +55,11 @@ router.delete('/reminders/delete/:id', async (req, res) => {
 
   Promise.all([archives.archive(id), reminders.deleteReminder(id)])
     .then(([archiveId]) => {
+      sendAPIEvent({
+        event: 'reminder-deleted',
+        data: id
+      });
+
       res.send({ archiveId });
     })
     .catch(() => {
@@ -62,6 +85,11 @@ router.post('/reminders/update/:id', async (req, res) => {
 
   reminders.updateReminder(id, req.body)
     .then(() => {
+      sendAPIEvent({
+        event: 'reminder-updated',
+        data: req.body
+      });
+
       res.send(`Reminder with id: ${id} was updated!`);
     })
     .catch(() => {
@@ -116,7 +144,12 @@ router.get('/archives/restore/:id', async (req, res) => {
 
     const newId = await reminders.addReminder(archive.reminder);
     await archives.deleteArchive(id);
+
     res.json({ newId });
+    sendAPIEvent({
+      event: 'archive-restored',
+      data: { ...archive.reminder, id: newId }
+    });
   } catch(e) {
     console.error(e);
     res.status(400).send(`Cannot restore archive with id: ${id}`);
@@ -130,7 +163,14 @@ router.delete('/archives/delete/:id', async (req, res) => {
   }
 
   archives.deleteArchive(id)
-    .then(() => { res.send('Archive deleted.'); })
+    .then(() => {
+      sendAPIEvent({
+        event: 'archive-deleted',
+        data: id
+      });
+
+      res.send('Archive deleted.');
+    })
     .catch(() => {
       res.status(400).send(`Cannot delete archive with id ${id}.`);
     });
