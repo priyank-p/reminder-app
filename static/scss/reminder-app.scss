@@ -7,7 +7,7 @@
 
 main {
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 58px);
   background-color: $body-background-color;
   margin-top: 4px;
 }
