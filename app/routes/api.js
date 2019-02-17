@@ -87,7 +87,7 @@ router.post('/reminders/update/:id', async (req, res) => {
     .then(() => {
       sendAPIEvent({
         event: 'reminder-updated',
-        data: req.body
+        data: { ...req.body, id }
       });
 
       res.send(`Reminder with id: ${id} was updated!`);
