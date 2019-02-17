@@ -9,8 +9,8 @@ formatDate();
 setupDateEditing();
 register();
 
-apiEvents.on('reminder-deleted', (id) => {
-  const $reminder = $(`.reminder[data-id="${id}"]`);
+apiEvents.on('reminder-deleted', (id: number) => {
+  const $reminder: HTMLElement = $(`.reminder[data-id="${id}"]`) as HTMLElement;
   if ($reminder) {
     $reminder.parentElement.removeChild($reminder);
   }
