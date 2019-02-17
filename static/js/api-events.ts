@@ -31,7 +31,7 @@ class APIEvents {
       handlers[event] = [];
     }
 
-    handler[event].push(handler);
+    handlers[event].push(handler);
   }
 }
 
