@@ -92,7 +92,8 @@ router.post('/reminders/update/:id', async (req, res) => {
 
       res.send(`Reminder with id: ${id} was updated!`);
     })
-    .catch(() => {
+    .catch((e) => {
+      console.error(e);
       res.status(400);
       res.send(`Cannot update reminder with id: ${id}!`);
     });
@@ -116,6 +117,7 @@ router.get('/archives/:id', async (req, res) => {
       res.json(archive);
     })
     .catch((err) => {
+      console.error(err);
       res.status(400).send(err.message);
     });
 });
@@ -171,7 +173,8 @@ router.delete('/archives/delete/:id', async (req, res) => {
 
       res.send('Archive deleted.');
     })
-    .catch(() => {
+    .catch((e) => {
+      console.error(e);
       res.status(400).send(`Cannot delete archive with id ${id}.`);
     });
 });
