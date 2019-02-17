@@ -19,7 +19,6 @@ class APIEvents {
     const { event } = msg;
     const { handlers } = this;
 
-    console.log(msg);
     if (handlers[event] !== undefined) {
       handlers[event].forEach(handler => handler(msg.data));
     }
