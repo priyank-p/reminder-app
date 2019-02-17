@@ -78,7 +78,7 @@ export function hideEditingUI(reminderId: number) {
   $errorTooltip.classList.remove('show');
 }
 
-function updateReminderElement(id: number, reminder: ReminderInterface) {
+export function updateReminderElement(id: number, reminder: ReminderInterface) {
   const reminderElement = $(`.reminder[data-id="${id}"]`) as HTMLElement;
   const title = reminderElement.querySelector('.title') as HTMLElement;
   const content = reminderElement.querySelector('.content') as HTMLElement;

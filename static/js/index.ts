@@ -4,6 +4,8 @@ import register from './register';
 import * as menu from './menu';
 import { apiEvents } from './api-events';
 import $ from './dom';
+import { updateReminderElement } from './editing-ui';
+import { Reminder } from './reminder-utils';
 
 formatDate();
 setupDateEditing();
@@ -15,6 +17,10 @@ apiEvents.on('reminder-deleted', (id: number) => {
     $reminder.parentElement.removeChild($reminder);
   }
 });
+
+apiEvents.on('reminder-updated', (updatedReminder) => {
+  updateReminderElement(updatedReminder.id, updatedReminder as Reminder);
+})
 
 menu.on('archive', () => {
   location.href = '/archives';
