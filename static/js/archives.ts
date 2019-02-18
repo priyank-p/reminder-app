@@ -3,7 +3,9 @@ import { init as initContextMenus } from './context-menu';
 import formatDate from './format-due-date';
 import $ from './dom';
 import * as statusbar from './status-bar';
+import APIEvents from './api-events';
 
+const apiEvents = new APIEvents();
 formatDate();
 initContextMenus();
 

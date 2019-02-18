@@ -2,7 +2,7 @@ interface APIEventHandlers {
     [eventName: string]: Function[];
 }
 
-class APIEvents {
+export default class APIEvents {
   websocket: WebSocket;
   handlers: APIEventHandlers;
   constructor() {
@@ -37,5 +37,3 @@ class APIEvents {
     handlers[event].push(handler);
   }
 }
-
-export const apiEvents = new APIEvents();
