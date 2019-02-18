@@ -20,7 +20,7 @@ apiEvents.on('reminder-deleted', (id: number) => {
 
 apiEvents.on('reminder-updated', (updatedReminder) => {
   updateReminderElement(updatedReminder.id, updatedReminder as Reminder);
-})
+});
 
 menu.on('archive', () => {
   location.href = '/archives';

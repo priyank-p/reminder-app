@@ -21,6 +21,10 @@ class APIEvents {
 
     if (handlers[event] !== undefined) {
       handlers[event].forEach(handler => handler(msg.data));
+    } else {
+      // update the current state by reloading when event
+      // is not handled.
+      location.reload();
     }
   }
 
