@@ -17,7 +17,7 @@ async function checkReminders() {
 
     const { title, id } = reminder;
     const payload = {
-      title: `Hey! A reminder for an task`,
+      title: 'Hey! A reminder for an task',
       body: `${title}\n${reminder.reminder}`,
       tag: `reminder-${id}`
     };
