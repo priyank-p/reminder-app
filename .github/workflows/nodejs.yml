@@ -1,0 +1,27 @@
+name: reminder-app tests
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and test
+      run: |
+        npm install
+        npm run coverage  # runs tools/test-all + coverage profiling
+        npm install codecov nyc
+        nyc report --reporter=lcov > codecov.info && codecov
+        git clean -xdf  # restore repo to a newly cloned stat for install test
+        node scripts/install --non-interactive --startup
